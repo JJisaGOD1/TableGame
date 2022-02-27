@@ -1,5 +1,5 @@
 package com.tablegame.model.bean.member;
-
+//111
 import java.io.Serializable;
 import java.util.Date;
 
