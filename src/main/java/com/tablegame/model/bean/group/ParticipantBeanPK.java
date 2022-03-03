@@ -1,4 +1,4 @@
-package com.tablegame.model.group;
+package com.tablegame.model.bean.group;
 
 import java.io.Serializable;
 import java.util.Objects;

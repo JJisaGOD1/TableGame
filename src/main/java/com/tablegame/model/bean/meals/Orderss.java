@@ -30,8 +30,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "Orders")
-public class Orders {
+@Table(name = "Orderss")
+public class Orderss {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,7 +63,7 @@ public class Orders {
     private Set<MealList> mealList;
 	
 	
-	public Orders() {
+	public Orderss() {
 	}
 
 	@PrePersist // 當 Entity 狀態要變成 Persistent 的時候，做以下方法

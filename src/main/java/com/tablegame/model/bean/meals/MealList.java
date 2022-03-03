@@ -31,7 +31,7 @@ public class MealList {
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns({ @JoinColumn(name = "fk_order_id", referencedColumnName = "order_id")})
-	private Orders orders;
+	private Orderss orders;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns({ @JoinColumn(name = "fk_food_id", referencedColumnName = "food_id")})
@@ -76,13 +76,13 @@ public class MealList {
 
 
 
-	public Orders getOrders() {
+	public Orderss getOrders() {
 		return orders;
 	}
 
 
 
-	public void setOrders(Orders orders) {
+	public void setOrders(Orderss orders) {
 		this.orders = orders;
 	}
 
