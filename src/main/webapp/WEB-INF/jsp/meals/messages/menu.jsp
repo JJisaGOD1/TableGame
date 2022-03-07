@@ -25,11 +25,12 @@
 }
 
 .top_food_banner_bg {
-	background-image: url(uploaded/food_banner.png);
+	background-image: url('uploaded/food_banner.png');
 	background-repeat: no-repeat;
 	/* 	background-attachment: fixed; */
 	/* 	background-size: 100% 100%; */
 	width: 100vw;
+	height: 100vh;
 }
 
 .finished_order_icon{
@@ -45,24 +46,33 @@
 /*  	background-size: 100%; */
 
 /* } */
+.bgImg{
+	position: absolute;
+	top: 10px;
+	right: 0;
+	z-index: -5;
+	width: 100vw;
+}
 </style>
 </head>
-<body>
+<body >
+	<img class="bgImg" src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" />
+<!-- 	<div class="top_food_banner_bg"></div> -->
+	
 
-	<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" /> </a>
+	<!-- <div style="background: cover url('<c:url value="/uploaded/food_banner.png"/>'); background-size: cover; width: 100vw; height: 500px;"></div> -->
+	
 
 
+	<div style="background: cover url(uploaded/food_banner.png); background-size: cover; width: 100vw;">
+		<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" /> </a>
+		
+		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
+		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
 
-	<img src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" />
-	<div class="top_food_banner_bg"></div>
-	<div
-		style="background-image: url(uploaded/food_banner.png); background-size: cover; width: 100vw; height: 500px;"></div>
-	<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
-	<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
-
-	<div class="row justify-content-center">
-		<a href="${contextRoot}/goToCart">查看訂單</a>
-	</div>
+		<div class="row justify-content-center">
+			<a href="${contextRoot}/goToCart">查看訂單</a>
+		</div>
 
 	<div class="wrap">
 		<!-- <div class="menu">
@@ -200,6 +210,7 @@
 
 		<!-- 	===================頁碼===================	 -->
 	</div>
+
 	<div class="row justify-content-center">
 		<div class="col-9">
 			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
@@ -224,6 +235,10 @@
 		</div>
 	</div>
 	<!-- 	===================頁碼()以上===================	 -->
+		
+		
+	</div>
+	
 
 	<script>
 		function addFoodAlert() {

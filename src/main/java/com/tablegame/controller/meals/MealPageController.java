@@ -85,13 +85,22 @@ public class MealPageController {
 	@GetMapping("/foodList")
 	public ModelAndView viewFoodListPage(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		mav.setViewName("messages/foodList");
+		mav.setViewName("meals/messages/foodList");
 		Page<FoodList> page = foodService.findByPage(pageNumber);
 //		List<FoodList> text = page.getContent();
 		mav.getModel().put("page", page);
 //		mav.addObject("page", page);
 		return mav;
 	}
+	
+	@ResponseBody
+	@PostMapping("/foodListAjax")
+	public List<FoodList> findFoodList(){
+		List<FoodList> foodList = foodService.findAllFood();
+		return foodList;
+		
+	}
+	
 
 	@GetMapping("/editFood")
 	public ModelAndView editFood(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId) {

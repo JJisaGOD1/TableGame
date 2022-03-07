@@ -43,7 +43,7 @@ public class FoodListService {
 	}
 	
 	
-	public List<FoodList> findAllMessage(){
+	public List<FoodList> findAllFood(){
 		List<FoodList> messages = dao.findAll();
 		
 		return messages;
