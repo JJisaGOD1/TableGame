@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "rating")
 public class RatingsBean implements Serializable {
@@ -26,6 +28,7 @@ public class RatingsBean implements Serializable {
 	@Column(name = "rating_name")
 	private String rateName;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ratingsBean")
 	private Set<MembersBean> membersBean =  new LinkedHashSet<MembersBean>();
 
