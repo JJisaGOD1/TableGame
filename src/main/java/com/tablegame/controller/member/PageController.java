@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.dto.googleLoginDto;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.member.RatingsBean;
 import com.tablegame.service.member.MembersService;
@@ -122,6 +125,15 @@ public class PageController {
 		
 		mav.setViewName("addCustomer");
 		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "/ajax/googlelogin")
+	public MembersBean googleLogin(@RequestBody googleLoginDto dto, HttpSession session) {
+		String email = dto.getEmail();
+		MembersBean memberBean = service.findByEmail(email);
+		session.setAttribute("member", memberBean);
+		return memberBean;
 	}
 	
 	
