@@ -26,10 +26,7 @@ public class PageController {
 	@Autowired
 	private MembersService service;
 	
-	@GetMapping(value = "/")
-	public String index() {
-		return "index";
-	}
+
 	
 	@GetMapping(value = "/login")
 	public String login() {

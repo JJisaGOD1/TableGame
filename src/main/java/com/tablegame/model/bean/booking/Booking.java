@@ -1,4 +1,4 @@
-package com.example.booking.model;
+package com.tablegame.model.bean.booking;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,16 +22,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tablegame.model.bean.member.MembersBean;
 
 @Entity
 @Table(name = "booking")
 @Component
 public class Booking implements Serializable {
 
+	private static final Integer id = null;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "order_id")
+	private Integer orderId;
 
 	@Column(name = "several")
 	private Integer several;
@@ -50,16 +53,16 @@ public class Booking implements Serializable {
 	private String period;
 
 	@Transient
-	@Column(name = "logins_id")
-	private Integer loginId;
+	@Column(name = "member_customer_id")
+	private Integer member_customer_Id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "logins_id")
-	private Login user;
+	@JoinColumn(name = "member_customer_id")
+	private MembersBean user;
 
-//	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE")
-//	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
-//	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date added;
 //	
 	@PrePersist // 當 Entity 狀態要變成 Persistent 的時候，做以下方法
@@ -69,25 +72,49 @@ public class Booking implements Serializable {
 		}
 	}
 
-	public int getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
+	
 
 	public String getPeriod() {
 		return period;
 	}
 
-	public Login getUser() {
+	public MembersBean getUser() {
 		return user;
 	}
 
-	public void setUser(Login user) {
+
+
+	public void setUser(MembersBean user) {
 		this.user = user;
 	}
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+
+
+	public Integer getMember_customer_Id() {
+		return member_customer_Id;
+	}
+
+
+
+	public void setMember_customer_Id(Integer member_customer_Id) {
+		this.member_customer_Id = member_customer_Id;
+	}
+
+
+
+	
+
+
 
 	public void setPeriod(String period) {
 		this.period = period;
@@ -108,25 +135,19 @@ public class Booking implements Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-//
-//	public Date getAdded() {
-//		return added;
-//	}
-//
-//	public void setAdded(Date added) {
-//		this.added = added;
-//	}
+
+	public Date getAdded() {
+		return added;
+	}
+
+	public void setAdded(Date added) {
+		this.added = added;
+	}
 
 	public Booking() {
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public Integer getSeveral() {
 		return several;
@@ -158,8 +179,8 @@ public class Booking implements Serializable {
 		builder.append(number);
 		builder.append(", remark=");
 		builder.append(remark);
-//		builder.append(", added=");
-//		builder.append(added);
+		builder.append(", added=");
+		builder.append(added);
 		builder.append("]");
 		return builder.toString();
 	}
