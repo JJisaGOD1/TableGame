@@ -80,7 +80,7 @@ public class ProductController {
 
 //		mav.addObject("page", page);
 
-		mav.setViewName("messages/editProduct");
+		mav.setViewName("product/editProduct");
 
 		return mav;
 	}
@@ -89,7 +89,7 @@ public class ProductController {
 	public ModelAndView editMessagePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product msg,
 			BindingResult result) {
 
-		mav.setViewName("messages/editProduct");
+		mav.setViewName("product/editProduct");
 		if (!result.hasErrors()) {
 			if (msg.getMaxplayer() < msg.getMinplayer()) {
 				String a = "最大人數需大於最小人數";
@@ -163,7 +163,7 @@ public class ProductController {
 
 //		mav.addObject("page", page);
 
-		mav.setViewName("messages/changePicture");
+		mav.setViewName("product/changePicture");
 
 		return mav;
 	}
@@ -172,7 +172,7 @@ public class ProductController {
 	public ModelAndView changePicturePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product product,
 			BindingResult result) {
 
-		mav.setViewName("messages/changePicture");
+		mav.setViewName("product/changePicture");
 
 		System.out.println("getOriginalFilename:" + product.getPhoto().getOriginalFilename());
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSS");
@@ -234,7 +234,7 @@ public class ProductController {
 
 //		mav.addObject("page", page);
 
-		mav.setViewName("messages/checkHistory");
+		mav.setViewName("product/checkHistory");
 
 		return mav;
 	}
