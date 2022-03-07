@@ -25,20 +25,23 @@ import javax.persistence.TemporalType;
 public class MealList {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "meal_list_id")
 	private Integer mealListId;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumns({ @JoinColumn(name = "fk_order_id", referencedColumnName = "order_id")})
-	private Orderss orders;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_order_id")
+	private MealOrders orders;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumns({ @JoinColumn(name = "fk_food_id", referencedColumnName = "food_id")})
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_food_id")
 	private FoodList foodList;
 	
-	@Column(name = "food_count")
-	private String foodCount;
+	@Column(name = "price")
+	private Double itemPrice;
+	
+	@Column(name = "quantity")
+	private Integer quantity;
 	
 	
 //	@EmbeddedId
@@ -63,11 +66,9 @@ public class MealList {
 	}
 
 
-
 	public Integer getMealListId() {
 		return mealListId;
 	}
-
 
 
 	public void setMealListId(Integer mealListId) {
@@ -75,17 +76,14 @@ public class MealList {
 	}
 
 
-
-	public Orderss getOrders() {
+	public MealOrders getOrders() {
 		return orders;
 	}
 
 
-
-	public void setOrders(Orderss orders) {
+	public void setOrders(MealOrders orders) {
 		this.orders = orders;
 	}
-
 
 
 	public FoodList getFoodList() {
@@ -93,23 +91,29 @@ public class MealList {
 	}
 
 
-
 	public void setFoodList(FoodList foodList) {
 		this.foodList = foodList;
 	}
 
 
-
-	public String getFoodCount() {
-		return foodCount;
+	public Double getItemPrice() {
+		return itemPrice;
 	}
 
 
-
-	public void setFoodCount(String foodCount) {
-		this.foodCount = foodCount;
+	public void setItemPrice(Double itemPrice) {
+		this.itemPrice = itemPrice;
 	}
 
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 
 	@Override
@@ -121,11 +125,18 @@ public class MealList {
 		builder.append(orders);
 		builder.append(", foodList=");
 		builder.append(foodList);
-		builder.append(", foodCount=");
-		builder.append(foodCount);
+		builder.append(", itemPrice=");
+		builder.append(itemPrice);
+		builder.append(", quantity=");
+		builder.append(quantity);
 		builder.append("]");
 		return builder.toString();
 	}
+
+
+	
+	
+	
 	
 	
 }
