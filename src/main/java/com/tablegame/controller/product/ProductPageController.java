@@ -28,14 +28,7 @@ public class ProductPageController {
 	@Autowired
 	private OrdersService serviceOs;
 
-	@GetMapping("/")
-	public ModelAndView home(HttpSession session, ModelAndView mav) {
-		String a = (String) session.getAttribute("username");
 
-		mav.setViewName("index");
-
-		return mav;
-	}
 
 	@GetMapping("/about")
 	public String aboutPage() {
@@ -95,12 +88,7 @@ public class ProductPageController {
 //		return null;
 	}
 
-	@GetMapping("/logout")
-	public ModelAndView logout(ModelAndView mav, HttpSession session) {
-		session.invalidate();
-		mav.setViewName("redirect:/");
-		return mav;
-	}
+
 
 	@GetMapping("/viewProductsnologin")
 	public ModelAndView viewProductsnologin(ModelAndView mav,
