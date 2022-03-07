@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.model.bean.product.Product;
 
 @Entity
 @Table(name = "opinion")
@@ -58,7 +60,7 @@ public class CommentsBean implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "fk_product_id")
-	private ProductsBean productsBean;
+	private Product productsBean;
 	
 	public CommentsBean() {
 	}
@@ -126,11 +128,11 @@ public class CommentsBean implements Serializable {
 		this.conditionsBean = conditionsBean;
 	}
 
-	public ProductsBean getProductsBean() {
+	public Product getProductsBean() {
 		return productsBean;
 	}
 
-	public void setProductsBean(ProductsBean productsBean) {
+	public void setProductsBean(Product productsBean) {
 		this.productsBean = productsBean;
 	}
 
