@@ -86,7 +86,7 @@ public class ProductCartController {
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteProduct(product, Map);
-		mav.setViewName("redirect:/goToCart");
+		mav.setViewName("redirect:/goToProductCart");
 		return mav;
 	}
 
@@ -97,15 +97,15 @@ public class ProductCartController {
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteOneProduct(product, Map);
-		mav.setViewName("redirect:/goToCart");
+		mav.setViewName("redirect:/goToProductCart");
 		return mav;
 	}
 
-	@GetMapping(value = "/goToCart")
+	@GetMapping(value = "/goToProductCart")
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("cart");
 		mav.addObject("C", cart);
-		mav.setViewName("messages/Cart");
+		mav.setViewName("messages/ProductCart");
 		return mav;
 	}
 

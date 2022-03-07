@@ -45,7 +45,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="${contextRoot}/goToCart"><input type="button"
+			<a href="${contextRoot}/goToProductCart"><input type="button"
 				value="回到購物車"></a>
 		</div>
 	</div>
