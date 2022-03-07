@@ -45,7 +45,7 @@ public class ProductService {
 	}
 
 	public Page<Product> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 3, Sort.Direction.DESC, "productId");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 6, Sort.Direction.DESC, "productId");
 
 		return dao.findAll(pgb);
 	}

@@ -56,7 +56,7 @@ public class ProductCartController {
 		Product p = serviceP.findById(id);
 		mav.addObject("P", p);
 
-		mav.setViewName("messages/showImformation");
+		mav.setViewName("product/showImformation");
 		return mav;
 
 	}
@@ -105,7 +105,7 @@ public class ProductCartController {
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("cart");
 		mav.addObject("C", cart);
-		mav.setViewName("messages/ProductCart");
+		mav.setViewName("product/ProductCart");
 		return mav;
 	}
 
@@ -143,7 +143,7 @@ public class ProductCartController {
 
 		if (flag == true) {
 			mav.addObject("P", a);
-			mav.setViewName("messages/errorStockPay");
+			mav.setViewName("product/errorStockPay");
 			return mav;
 		}
 
