@@ -3,9 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
+
 <!DOCTYPE html>
 <html>
 <head>
+
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+
 <meta charset="UTF-8">
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -146,14 +150,21 @@ h1 {
 		</a>
 
 		<nav class="navbar">
-			<a href="#home">首頁</a> <a href="#about">最新消息</a> <a href="#menu">會員招募</a>
-			<a href="#products">店鋪資訊</a> <a href="#review">商品</a> <a
-				href="#contact">點餐</a> <a href="#blogs">開團</a>
-		</nav>	
+
+			<a href="#home">首頁</a>
+			<a href="#about">最新消息</a>
+			<a href="#menu">會員招募</a>
+			<a href="#products">店鋪資訊</a>
+			<a href="#review">商品</a>
+			<a href="${contextRoot}/startOrder">點餐</a>
+			<a href="#blogs">開團</a>
+		</nav>
+
 
 		<div class="icons" style="display: flex">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
+
 			
 			<c:if test="${member.ratingsBean.id == null }">
 			<div style="display: flex">
@@ -174,6 +185,7 @@ h1 {
 			</div>
 			</c:if>
 			
+
 		</div>
 
 		<div class="search-form">
