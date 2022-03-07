@@ -20,7 +20,7 @@ public class OrderList {
 
 	private Integer quantity;
 
-	private Integer price;
+	private Double price;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_id")
@@ -46,11 +46,11 @@ public class OrderList {
 		this.quantity = quantity;
 	}
 
-	public Integer getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
