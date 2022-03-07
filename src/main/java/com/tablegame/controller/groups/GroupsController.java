@@ -1,4 +1,4 @@
-package tw.home.tablegame.controller;
+package com.tablegame.controller.groups;
 
 import java.util.List;
 import java.util.Map;
@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import tw.home.tablegame.model.bean.GroupBean;
-import tw.home.tablegame.model.bean.ParticipantBean;
-import tw.home.tablegame.model.bean.ProductBean;
-import tw.home.tablegame.model.bean.UserBean;
-import tw.home.tablegame.model.service.GroupsService;
+import com.tablegame.model.bean.group.GroupBean;
+import com.tablegame.model.bean.group.ParticipantBean;
+import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.model.bean.product.Product;
+import com.tablegame.service.groups.GroupsService;
+
+
 
 @Controller
 @RequestMapping("/groups")
@@ -44,7 +46,7 @@ public class GroupsController {
 		String date=intYear+"/"+intMonth+"/"+intDay;
 		hs.setAttribute("date", date);
 		date=(String)hs.getAttribute("date");
-		UserBean user = (UserBean)(hs.getAttribute("userBean"));
+		MembersBean user = (MembersBean)(hs.getAttribute("userBean"));
 		
 		List<GroupBean> groups = service.getGroupsByDate(date);
 		Map<Integer,Integer> perGroupNumMap=service.getPlayerNumMapByDate(date);
@@ -69,7 +71,7 @@ public class GroupsController {
 
 	@RequestMapping("/FillNewGroupData")
 	public ModelAndView fillNewGroupData(ModelAndView mav, @RequestParam(name = "date") String date) {
-		List<ProductBean> allProds = service.getAllProductBean();
+		List<Product> allProds = service.getAllProductBean();
 		mav.getModel().put("date", date);
 		mav.getModel().put("products", allProds);
 		mav.setViewName("FillNewGroupDataView");
@@ -81,7 +83,7 @@ public class GroupsController {
 			@RequestParam(name = "date") String date, @RequestParam(name = "product") String productId,
 			@RequestParam(name = "playersNumWithLauncher") String playersNumWithLauncher,
 			@RequestParam(name = "introduction") String introduction) {
-		UserBean launcher = (UserBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
 		service.insertNewGroup(launcher, date, productId, playersNumWithLauncher, introduction);
 
 //		mav.getModel().put("date", date);
@@ -95,7 +97,7 @@ public class GroupsController {
 	@GetMapping("/DeleteGroup/{groupId}")
 	public ModelAndView deleteGroup(ModelAndView mav, RedirectAttributes attr, HttpSession hs,
 			@PathVariable int groupId) {
-		UserBean launcher = (UserBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
 		service.delectGroupById(groupId, launcher);
 		String date = (String) hs.getAttribute("date");
 		attr.addFlashAttribute("date", date);
@@ -107,7 +109,7 @@ public class GroupsController {
 
 	@GetMapping("/ToJoin/{groupId}")
 	public ModelAndView toJoin(ModelAndView mav, HttpSession hs, RedirectAttributes attr, @PathVariable int groupId) {
-		UserBean participant = (UserBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
 		GroupBean group = service.getGroupsById(groupId);
 
 		int[] theGroupNum = service.getTheGroupNum(groupId);
@@ -124,7 +126,7 @@ public class GroupsController {
 	@PostMapping("/Join")
 	public ModelAndView join(ModelAndView mav, HttpSession hs, @RequestParam int groupId,
 			@RequestParam int joinPlayersNum) {
-		UserBean participant = (UserBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
 		service.insertNewParticipant(participant, groupId, joinPlayersNum);
 		String date = (String) hs.getAttribute("date");
 
@@ -134,7 +136,7 @@ public class GroupsController {
 	
 	@GetMapping("/Quit/{groupId}")
 	public ModelAndView quit(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		UserBean participant = (UserBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
 		service.quitTheGroup(participant,groupId);
 		String date = (String) hs.getAttribute("date");
 		mav.setViewName("redirect:/groups/TheDateState/" + date);
@@ -143,12 +145,12 @@ public class GroupsController {
 	
 	@GetMapping("/ToUpdateParticipantData/{groupId}")
 	public ModelAndView toUpdateParticipantData(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		UserBean joiner = (UserBean) hs.getAttribute("userBean");
+		MembersBean joiner = (MembersBean) hs.getAttribute("userBean");
 		
 		GroupBean group = service.getGroupsById(groupId);
 		int[] theGroupNum = service.getTheGroupNum(groupId);
 		int remainingNum = theGroupNum[1];
-		ParticipantBean participant=service.getParticipantById(joiner.getUserId(),groupId);
+		ParticipantBean participant=service.getParticipantById(joiner.getId(),groupId);
 		int participantNumNow = participant.getParticipantNum();
 		remainingNum=remainingNum+participantNumNow;
 		
@@ -164,7 +166,7 @@ public class GroupsController {
 	public ModelAndView updateParticipant(ModelAndView mav, HttpSession hs,
 			@PathVariable int groupId,
 			@RequestParam int updateNum) {
-		UserBean joiner = (UserBean) hs.getAttribute("userBean");
+		MembersBean joiner = (MembersBean) hs.getAttribute("userBean");
 		String date = (String) hs.getAttribute("date");
 		
 		service.updateParticipantNum(joiner,groupId,updateNum);
@@ -175,15 +177,15 @@ public class GroupsController {
 	
 	@GetMapping("/ToUpdateGroupData/{groupId}")
 	public ModelAndView toUpdateGroupData(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		UserBean launcher = (UserBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
 		GroupBean group = service.getGroupsById(groupId);
-		List<ProductBean> allProds = service.getAllProductBean();
+		List<Product> allProds = service.getAllProductBean();
 		
 		//copy ToUpdateParticipantData的code 
 		int[] theGroupNum = service.getTheGroupNum(groupId);
 		int playersNumNow = theGroupNum[0];
 		int remainingNum = theGroupNum[1];
-		ParticipantBean participant=service.getParticipantById(launcher.getUserId(),groupId);
+		ParticipantBean participant=service.getParticipantById(launcher.getId(),groupId);
 		int launcherPlayerNow=participant.getParticipantNum();
 		remainingNum=remainingNum+launcherPlayerNow;
 		

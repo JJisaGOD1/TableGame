@@ -26,6 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.tablegame.model.bean.member.Member;
+import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 
 @Entity
@@ -73,7 +74,7 @@ public class GroupBean implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "launcherId")
-	private Member launcher;
+	private MembersBean launcher;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //單向
 	@JoinColumn(name = "productId")
@@ -90,95 +91,80 @@ public class GroupBean implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "group")//雙向  
 	private List<ParticipantBean>  participants=new LinkedList<ParticipantBean>();
 
-
 	public int getGroupId() {
 		return groupId;
 	}
-
 
 	public void setGroupId(int groupId) {
 		this.groupId = groupId;
 	}
 
-
 	public int getLauncherId() {
 		return launcherId;
 	}
-
 
 	public void setLauncherId(int launcherId) {
 		this.launcherId = launcherId;
 	}
 
-
 	public int getProductId() {
 		return productId;
 	}
-
 
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
-
 	public Date getGameDate() {
 		return gameDate;
 	}
-
 
 	public void setGameDate(Date gameDate) {
 		this.gameDate = gameDate;
 	}
 
-
 	public String getIntroduction() {
 		return introduction;
 	}
-
 
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
 
-
 	public Date getCreatedTime() {
 		return createdTime;
 	}
-
 
 	public void setCreatedTime(Date createdTime) {
 		this.createdTime = createdTime;
 	}
 
-
-	public Member getLauncher() {
+	public MembersBean getLauncher() {
 		return launcher;
 	}
 
-
-	public void setLauncher(Member launcher) {
+	public void setLauncher(MembersBean launcher) {
 		this.launcher = launcher;
 	}
-
 
 	public Product getProduct() {
 		return product;
 	}
 
-
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
 
 	public List<ParticipantBean> getParticipants() {
 		return participants;
 	}
 
-
 	public void setParticipants(List<ParticipantBean> participants) {
 		this.participants = participants;
 	}
+
+
+	
 
 		
 }

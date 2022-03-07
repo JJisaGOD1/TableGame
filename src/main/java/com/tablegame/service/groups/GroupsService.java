@@ -1,4 +1,4 @@
-package com.tablegame.service;
+package com.tablegame.service.groups;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -13,16 +13,19 @@ import org.springframework.stereotype.Service;
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
 import com.tablegame.model.bean.group.ParticipantBeanPK;
+import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 import com.tablegame.model.repository.groups.GroupsRepository;
 import com.tablegame.model.repository.groups.ParticipantRepository;
+import com.tablegame.model.repository.member.MembersRepository;
+import com.tablegame.model.repository.product.ProductRepository;
 
 
 
 @Service
 public class GroupsService {
 	@Autowired
-	private UserRepository userDao;
+	private MembersRepository userDao;
 	
 	@Autowired
 	private ProductRepository productDao;
@@ -33,8 +36,8 @@ public class GroupsService {
 	@Autowired
 	private ParticipantRepository participantDao;
 	
-	public UserBean getUser(int userid) {
-		Optional<UserBean> user = userDao.findById(userid);
+	public MembersBean getUser(int userid) {
+		Optional<MembersBean> user = userDao.findById(userid);
 		if(user.isPresent()) {
 			return user.get();
 		}
@@ -51,7 +54,7 @@ public class GroupsService {
 		return Prod;
 	}
 	
-	public void insertNewGroup(UserBean launcher, String date, String prodId, String playersNumWithLauncher, String introduction) {
+	public void insertNewGroup(MembersBean launcher, String date, String prodId, String playersNumWithLauncher, String introduction) {
 		//
 		Date gameDate = stringToDate(date);
 		
@@ -84,7 +87,7 @@ public class GroupsService {
 		return groupsDao.findByGameDate(gameDate);
 	}
 	
-	public void delectGroupById(int groupId, UserBean launcher) {
+	public void delectGroupById(int groupId, MembersBean launcher) {
 		
 //		var participantId=new ParticipantBeanPK(groupId,launcher.getUserId());
 		GroupBean group = groupsDao.getById(groupId);
@@ -123,13 +126,13 @@ public class GroupsService {
 		for(ParticipantBean p:participants) {
 			theGroupPlayersNum+=p.getParticipantNum();
 		}
-		int remainingNum=group.getProduct().getMaxPlayers()-theGroupPlayersNum;
+		int remainingNum=group.getProduct().getMaxplayer()-theGroupPlayersNum;
 		theGroupNum[0]=theGroupPlayersNum;
 		theGroupNum[1]=remainingNum;
 		return theGroupNum;
 	}
 	
-	public void insertNewParticipant(UserBean participant, int groupId, int joinPlayersNum) {
+	public void insertNewParticipant(MembersBean participant, int groupId, int joinPlayersNum) {
 		ParticipantBean pb=new ParticipantBean();
 		pb.setGroup(groupsDao.getById(groupId));
 		pb.setParticipant(participant);
@@ -137,35 +140,35 @@ public class GroupsService {
 		participantDao.save(pb);
 	}
 	
-	public Map<Integer, Integer> getGroupsUsersMap(UserBean user, List<GroupBean> groups) {
+	public Map<Integer, Integer> getGroupsUsersMap(MembersBean user, List<GroupBean> groups) {
 		var groupsUsersMap = new LinkedHashMap<Integer, Integer>();
 		for(GroupBean g:groups) {
 			List<ParticipantBean> participants = g.getParticipants();
 			for(ParticipantBean p:participants) {
-				if(p.getParticipant().getUserId()==user.getUserId()) {
-					groupsUsersMap.put(g.getGroupId(),user.getUserId());
-					System.out.println(g.getGroupId()+" "+user.getUserId());
+				if(p.getParticipant().getId()==user.getId()) {
+					groupsUsersMap.put(g.getGroupId(),user.getId());
+					System.out.println(g.getGroupId()+" "+user.getId());
 				}
 			}
 		}
 		return groupsUsersMap;
 	}
 	
-	public Map<Integer, Integer> getOneJoinedNumMap(UserBean participant, String date) {
+	public Map<Integer, Integer> getOneJoinedNumMap(MembersBean participant, String date) {
 		Map<Integer, Integer> oneJoinedNumMap = new LinkedHashMap<Integer,Integer>();
-		List<ParticipantBean> participants = participantDao.getOneJoinedNumByDate(participant.getUserId(),date);
+		List<ParticipantBean> participants = participantDao.getOneJoinedNumByDate(participant.getId(),date);
 		for(ParticipantBean p:participants) {
 			oneJoinedNumMap.put(p.getGroup().getGroupId(),p.getParticipantNum());
 		}
 		return oneJoinedNumMap;
 	}
 	
-	public void quitTheGroup(UserBean participant, int groupId) {
-		participantDao.deleteById(new ParticipantBeanPK(groupId, participant.getUserId()));
+	public void quitTheGroup(MembersBean participant, int groupId) {
+		participantDao.deleteById(new ParticipantBeanPK(groupId, participant.getId()));
 	}
 	
-	public void updateParticipantNum(UserBean joiner, int groupId, int updateNum) {
-		ParticipantBean pb = participantDao.getById(new ParticipantBeanPK(groupId, joiner.getUserId()));
+	public void updateParticipantNum(MembersBean joiner, int groupId, int updateNum) {
+		ParticipantBean pb = participantDao.getById(new ParticipantBeanPK(groupId, joiner.getId()));
 //		pb.setGroup(groupsDao.getById(groupId));
 //		pb.setParticipant(joiner);
 		pb.setParticipantNum(updateNum);
@@ -176,7 +179,7 @@ public class GroupsService {
 	public void updateGroupDate(int groupId, int productId, int updateNum, String updateIntroduction) {
 		GroupBean group = groupsDao.getById(groupId);
 															//group.getLauncherId()無法找到
-		ParticipantBean participant = this.getParticipantById(group.getLauncher().getUserId(), groupId);
+		ParticipantBean participant = this.getParticipantById(group.getLauncher().getId(), groupId);
 		
 		group.setIntroduction(updateIntroduction);
 		group.setProduct(productDao.getById(productId));
