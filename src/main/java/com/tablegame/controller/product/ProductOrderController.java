@@ -28,7 +28,7 @@ public class ProductOrderController {
 
 		mav.addObject("P", P);
 
-		mav.setViewName("messages/checkOrders");
+		mav.setViewName("product/checkOrders");
 		return mav;
 	}
 
@@ -40,7 +40,7 @@ public class ProductOrderController {
 			orders.setProcessingstatus("處理中");
 		}
 		mav.addObject("orders", orders);
-		mav.setViewName("messages/checkOrderList");
+		mav.setViewName("product/checkOrderList");
 		serviceOs.insert(orders);
 		return mav;
 	}
@@ -61,7 +61,7 @@ public class ProductOrderController {
 		ProductOrders orders = serviceOs.findById(id);
 
 		mav.addObject("orders", orders);
-		mav.setViewName("messages/checkOrderList");
+		mav.setViewName("product/checkOrderList");
 		return mav;
 	}
 

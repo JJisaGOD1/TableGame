@@ -45,7 +45,7 @@
 							<td><c:out value="${P.low_age}" />
 							<td><img src="<c:url value='/Photo/${P.photourl}'/>"
 								style="height: 100px" name="${P.photourl}" id="${P.photourl}"
-								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
+								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />s
 							<td><c:out value="${P.stock}" />
 							<td><c:out value="${P.sellstatus}" />
 							<td><a href="${contextRoot}/editProduct?id=${P.product_id}"><input
