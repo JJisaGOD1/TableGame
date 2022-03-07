@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.tablegame.model.bean.member.Member;
+import com.tablegame.model.bean.member.MembersBean;
 
 @Entity
 @Table(name = "Orders")
@@ -34,7 +34,7 @@ public class Orders {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
-	private Member member;
+	private MembersBean member;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orders", cascade = CascadeType.ALL)
 	private Set<OrderList> orderlist = new LinkedHashSet<OrderList>();

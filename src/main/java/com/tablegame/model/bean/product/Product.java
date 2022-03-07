@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Product")
 public class Product implements Serializable {
@@ -33,7 +34,8 @@ public class Product implements Serializable {
 	@Column(name = "product_id")
 	private Integer productId;
 
-	private String product_name;
+	@Column(name = "product_name")
+	private String productName;
 
 	@Min(value = 0, message = "價錢不可小於0")
 	private Double price;
@@ -53,6 +55,11 @@ public class Product implements Serializable {
 
 	private String sellstatus;
 
+//	@JsonManagedReference
+//	@OneToMany(cascade = CascadeType.REMOVE)
+//	@JoinColumn(name = "productid_id")
+//	private Set<ProductImformation> PIBeans;
+
 	@Min(value = 0, message = "庫存不可小於0")
 	private Integer Stock;
 
@@ -60,30 +67,30 @@ public class Product implements Serializable {
 
 	private Integer problem_count;
 
+	public String getProductintroduce() {
+		return productintroduce;
+	}
+
+	public void setProductintroduce(String productintroduce) {
+		this.productintroduce = productintroduce;
+	}
+
+	public Integer getProblem_count() {
+		return problem_count;
+	}
+
+	public void setProblem_count(Integer problem_count) {
+		this.problem_count = problem_count;
+	}
+
 	@Transient
 	private MultipartFile photo;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
-	private Set<OrderList> orderlist = new LinkedHashSet<OrderList>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+	private Set<OrderList> orderList = new LinkedHashSet<OrderList>();
 
 	public Product() {
 
-	}
-
-	public Product(Integer productId, String product_name, @Min(value = 0, message = "價錢不可小於0") Double price,
-			String gametype, @Min(value = 1, message = "最小人數不可小於1") Integer minplayer,
-			@Min(value = 1, message = "最大人數不可小於1") Integer maxplayer,
-			@Min(value = 1, message = "最小年齡不可小於1") Integer low_age, String photourl, String sellstatus) {
-		super();
-		this.productId = productId;
-		this.product_name = product_name;
-		this.price = price;
-		this.gametype = gametype;
-		this.minplayer = minplayer;
-		this.maxplayer = maxplayer;
-		this.low_age = low_age;
-		this.photourl = photourl;
-		this.sellstatus = sellstatus;
 	}
 
 	public Integer getStock() {
@@ -98,12 +105,16 @@ public class Product implements Serializable {
 		return productId;
 	}
 
-	public String getProduct_name() {
-		return product_name;
+	public void setProduct_id(Integer product_id) {
+		this.productId = product_id;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public String getProduct_name() {
+		return productName;
+	}
+
+	public void setProduct_name(String productName) {
+		this.productName = productName;
 	}
 
 	public Double getPrice() {
@@ -168,22 +179,6 @@ public class Product implements Serializable {
 
 	public void setPhoto(MultipartFile photo) {
 		this.photo = photo;
-	}
-
-	public String getProductintroduce() {
-		return productintroduce;
-	}
-
-	public void setProductintroduce(String productintroduce) {
-		this.productintroduce = productintroduce;
-	}
-
-	public Integer getProblem_count() {
-		return problem_count;
-	}
-
-	public void setProblem_count(Integer problem_count) {
-		this.problem_count = problem_count;
 	}
 
 }
