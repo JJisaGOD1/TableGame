@@ -18,19 +18,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	*{
-		margin: 0;
-		padding: 0;
-	}
+* {
+	margin: 0;
+	padding: 0;
+}
 </style>
 </head>
 <body>
-	<div class="row justify-content-center">
-		<a href="${contextRoot}/goToProductCart"><input type="button"
-			value="查看購物車"></a>
-	</div>
-	<div class="wrap" style="width: 1360px">
-		<div class="content">
+
+	<div class="wrap" style="width: 1500px; padding: 3%;">
+		<div class="content" style="width: 1000px; padding: 3%;">
 			<c:forEach items="${P.content}" var="P">
 				<c:choose>
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
@@ -51,14 +48,32 @@
 									<c:out value="${P.price}" />
 								</p>
 								<a href="${contextRoot}/addToCart?id=${P.product_id}&quantity=1"
-									class="btn btn-primary">加入一個到購物車</a>
+									class="btn btn-primary" onclick="return confirm('是否加入購物車?')">加入一個到購物車</a>
 							</div>
 						</div>
 					</c:when>
 				</c:choose>
 			</c:forEach>
 		</div>
-
+		<aside>
+			<table class="table" style="width: 200px">
+				<thead class="table table-dark" style="width: 100px">
+					<tr>
+						<th>商品名稱</th>
+						<th>購買量</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${cart.productMap}" var='C'>
+						<tr>
+							<td style="width: 100px"><c:out
+									value="${C.value.product.product_name}" /></td>
+							<td style="width: 100px"><c:out value="${C.value.quantity}" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</aside>
 
 	</div>
 	<div class="row justify-content-center">
@@ -87,6 +102,10 @@
 		</div>
 		<div class="col"></div>
 		<div class="col"></div>
+	</div>
+	<div class="row justify-content-center">
+		<a href="${contextRoot}/goToCart"><input type="button"
+			value="查看購物車"></a>
 	</div>
 </body>
 <script>
