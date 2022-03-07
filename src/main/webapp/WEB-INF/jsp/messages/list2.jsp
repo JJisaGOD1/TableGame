@@ -17,7 +17,7 @@
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<a href="${contextRoot}/goToCart"><input type="button"
+			<a href="${contextRoot}/goToProductCart"><input type="button"
 				value="前往購物車"></a>
 			<table class="table">
 				<thead class="table table-dark">

@@ -23,7 +23,7 @@ import com.tablegame.model.bean.member.MembersBean;
 
 @Entity
 @Table(name = "Orders")
-public class Orders {
+public class ProductOrders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
@@ -43,7 +43,7 @@ public class Orders {
 	private MembersBean member;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orders", cascade = CascadeType.ALL)
-	private Set<OrderList> orderlist = new LinkedHashSet<OrderList>();
+	private Set<ProductOrderList> orderlist = new LinkedHashSet<ProductOrderList>();
 
 	public Integer getOrderId() {
 		return orderId;
@@ -81,11 +81,11 @@ public class Orders {
 		this.member = member;
 	}
 
-	public Set<OrderList> getOrderList() {
+	public Set<ProductOrderList> getOrderList() {
 		return orderlist;
 	}
 
-	public void setOrderList(Set<OrderList> orderList) {
+	public void setOrderList(Set<ProductOrderList> orderList) {
 		this.orderlist = orderList;
 	}
 

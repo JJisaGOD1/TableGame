@@ -26,7 +26,7 @@
 </head>
 <body>
 	<div class="row justify-content-center">
-		<a href="${contextRoot}/goToCart"><input type="button"
+		<a href="${contextRoot}/goToProductCart"><input type="button"
 			value="查看購物車"></a>
 	</div>
 	<div class="wrap" style="width: 1360px">

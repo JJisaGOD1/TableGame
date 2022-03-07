@@ -8,7 +8,7 @@ import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.repository.product.MemberRepository;
 
 @Service
-public class MemberService {
+public class ProductMemberService {
 
 	@Autowired
 	private MemberRepository dao;

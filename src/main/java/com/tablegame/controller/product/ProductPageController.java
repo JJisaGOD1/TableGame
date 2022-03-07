@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.member.MembersBean;
-import com.tablegame.model.bean.product.Orders;
+import com.tablegame.model.bean.product.ProductOrders;
 import com.tablegame.model.bean.product.Product;
-import com.tablegame.service.product.OrdersService;
+import com.tablegame.service.product.ProductOrdersService;
 import com.tablegame.service.product.ProductService;
 
 @Controller
@@ -26,7 +26,7 @@ public class ProductPageController {
 	private ProductService serviceP;
 
 	@Autowired
-	private OrdersService serviceOs;
+	private ProductOrdersService serviceOs;
 
 
 
@@ -81,7 +81,7 @@ public class ProductPageController {
 	public ModelAndView myorderspage(ModelAndView mav, @RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
 			HttpSession session) {
 		Integer userid = (Integer) session.getAttribute("userid");
-		Page<Orders> P = serviceOs.findmyorderPage(userid, pageNumber);
+		Page<ProductOrders> P = serviceOs.findmyorderPage(userid, pageNumber);
 		mav.addObject("P", P);
 		mav.setViewName("messages/myorders");
 		return mav;

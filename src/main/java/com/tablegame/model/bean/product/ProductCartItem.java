@@ -1,6 +1,6 @@
 package com.tablegame.model.bean.product;
 
-public class CartItem {
+public class ProductCartItem {
 	private Product product;
 	private Integer quantity;
 	private double price;// 該項目總價，productprice*quantity
