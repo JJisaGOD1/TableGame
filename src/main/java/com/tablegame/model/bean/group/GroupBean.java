@@ -25,6 +25,9 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.tablegame.model.bean.member.Member;
+import com.tablegame.model.bean.product.Product;
+
 @Entity
 @Table(name = "groups")
 @Component
@@ -70,11 +73,11 @@ public class GroupBean implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "launcherId")
-	private UserBean launcher;
+	private Member launcher;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //單向
 	@JoinColumn(name = "productId")
-	private ProductBean product;
+	private Product product;
 	
 //	@ManyToOne(fetch = FetchType.EAGER) //單向
 //	@JoinColumn(name = "daypartId")
@@ -148,22 +151,22 @@ public class GroupBean implements Serializable{
 	}
 
 
-	public UserBean getLauncher() {
+	public Member getLauncher() {
 		return launcher;
 	}
 
 
-	public void setLauncher(UserBean launcher) {
+	public void setLauncher(Member launcher) {
 		this.launcher = launcher;
 	}
 
 
-	public ProductBean getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
 
-	public void setProduct(ProductBean product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 

@@ -19,6 +19,8 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.tablegame.model.bean.member.Member;
+
 
 @Entity
 @Table(name = "participants")
@@ -37,7 +39,7 @@ public class ParticipantBean implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="participantId")
 	@MapsId("participantId")
-	private UserBean participant;
+	private Member participant;
 	
 
 	@Column(name = "participantNum")
@@ -65,11 +67,11 @@ public class ParticipantBean implements Serializable{
 		this.group = group;
 	}
 
-	public UserBean getParticipant() {
+	public Member getParticipant() {
 		return participant;
 	}
 
-	public void setParticipant(UserBean participant) {
+	public void setParticipant(Member participant) {
 		this.participant = participant;
 	}
 
