@@ -15,7 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tablegame.model.bean.member.MembersBean;
 
 @Entity
@@ -26,11 +29,14 @@ public class Orders {
 	@Column(name = "order_id")
 	private Integer orderId;
 
+	@JsonFormat(pattern = "yyyy/MM/dd HH.mm.ss.SS", timezone = "GMT+8")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "order_date")
 	private Date order_date;
 
 	private String Processingstatus;
 
-	private Integer totalprice;
+	private Double totalprice;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
@@ -59,12 +65,28 @@ public class Orders {
 		Processingstatus = processingstatus;
 	}
 
-	public Integer getTotalprice() {
+	public Double getTotalprice() {
 		return totalprice;
 	}
 
-	public void setTotalprice(Integer totalprice) {
+	public void setTotalprice(Double totalprice) {
 		this.totalprice = totalprice;
+	}
+
+	public MembersBean getMember() {
+		return member;
+	}
+
+	public void setMember(MembersBean member) {
+		this.member = member;
+	}
+
+	public Set<OrderList> getOrderList() {
+		return orderlist;
+	}
+
+	public void setOrderList(Set<OrderList> orderList) {
+		this.orderlist = orderList;
 	}
 
 }
