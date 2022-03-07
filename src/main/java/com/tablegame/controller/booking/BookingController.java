@@ -1,28 +1,25 @@
-package com.example.booking.controller;
+package com.tablegame.controller.booking;
 
-import java.util.Collection;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.booking.model.Booking;
-import com.example.booking.model.Login;
-import com.example.booking.service.BookingService;
-import com.example.booking.service.MailService;
+import com.tablegame.model.bean.booking.Booking;
+import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.service.booking.BookingService;
+
+
 
 
 
@@ -32,8 +29,6 @@ public class BookingController {
 	@Autowired
 	private BookingService service;
 	
-	 @Autowired
-	  private MailService mailService;
 	
 	@GetMapping("/")
 	public String home() {
@@ -43,14 +38,14 @@ public class BookingController {
 	@GetMapping("/addBooking")
 	public String addBooking() {
 		
-		return "messages/addBooking";
+		return "booking/addBooking";
 	}
 	
 
 	
 	@GetMapping("/about")
 	public String about() {
-		return "messages/about";
+		return "booking/about";
 	}
 	
 
@@ -68,7 +63,7 @@ public class BookingController {
 		
 //		mav.getModel().put("workMessage", msg);
 		
-		mav.setViewName("messages/addNew");
+		mav.setViewName("booking/addNew");
 		
 		return mav;
 		
@@ -80,7 +75,7 @@ public class BookingController {
 	       
 			 service.insert(msg);
 			 mav.getModel().put("booking", msg);
-			 mav.setViewName("messages/success2");
+			 mav.setViewName("booking/success2");
 			
 			return mav;
 	    }
@@ -90,7 +85,7 @@ public class BookingController {
 	 
 	 @GetMapping("/getAll")
 		public ModelAndView viewMessagePage(ModelAndView mav, @RequestParam(name="p",defaultValue = "1") Integer pageNumber) {
-			mav.setViewName("messages/getAll");
+			mav.setViewName("booking/getAll");
 			
 			Page<Booking> page =service.findByPage(pageNumber);
 			
@@ -102,15 +97,15 @@ public class BookingController {
 	 //查自己訂位
 	 @GetMapping("/lnquire")
 	 public ModelAndView findLoginid(ModelAndView mav,HttpSession hs) {
-		Login log =(Login) hs.getAttribute("login");
-		Integer logid = log.getCustomer_id();
+		 MembersBean log =(MembersBean) hs.getAttribute("login");
+		Integer logid = log.getId();
 		
 		List<Booking> msg =  service.findByLoginId(logid);
 		
 		mav.getModel().put("lnquire", msg);
 		
 		
-		mav.setViewName("messages/lnquire");
+		mav.setViewName("booking/lnquire");
 		 
 		 
 		 return mav; 
@@ -123,7 +118,7 @@ public class BookingController {
 			
 			mav.getModel().put("booking", msg);
 			
-			mav.setViewName("messages/editbooking");
+			mav.setViewName("booking/editbooking");
 			
 			return mav;
 			
@@ -133,7 +128,7 @@ public class BookingController {
 		@PostMapping("/editbooking")
 		public ModelAndView editMessage(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
-			mav.setViewName("messages/editbooking");
+			mav.setViewName("booking/editbooking");
 			
 			if(!result.hasErrors()) {
 				service.insert(msg);
@@ -149,7 +144,7 @@ public class BookingController {
 				
 				mav.getModel().put("booking", msg);
 				
-				mav.setViewName("messages/memberedit");
+				mav.setViewName("booking/memberedit");
 				
 				return mav;
 				
@@ -159,7 +154,7 @@ public class BookingController {
 		@PostMapping("/lnquires")
 		public ModelAndView lnquires1(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
-			mav.setViewName("messages/memberedit");
+			mav.setViewName("booking/memberedit");
 			
 			if(!result.hasErrors()) {
 				service.insert(msg);
