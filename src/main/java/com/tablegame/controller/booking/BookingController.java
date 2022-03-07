@@ -1,4 +1,4 @@
-package com.example.booking.controller;
+package com.tablegame.controller.booking;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.booking.model.Booking;
-import com.example.booking.model.Login;
-import com.example.booking.service.BookingService;
-import com.example.booking.service.MailService;
+import com.tablegame.model.bean.booking.Booking;
+import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.service.booking.BookingService;
+
+
 
 
 
@@ -32,8 +33,6 @@ public class BookingController {
 	@Autowired
 	private BookingService service;
 	
-	 @Autowired
-	  private MailService mailService;
 	
 	@GetMapping("/")
 	public String home() {
@@ -102,8 +101,8 @@ public class BookingController {
 	 //查自己訂位
 	 @GetMapping("/lnquire")
 	 public ModelAndView findLoginid(ModelAndView mav,HttpSession hs) {
-		Login log =(Login) hs.getAttribute("login");
-		Integer logid = log.getCustomer_id();
+		 MembersBean log =(MembersBean) hs.getAttribute("login");
+		Integer logid = log.getId();
 		
 		List<Booking> msg =  service.findByLoginId(logid);
 		
