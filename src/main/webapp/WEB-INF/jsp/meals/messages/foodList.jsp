@@ -28,23 +28,25 @@
 				<th scope="col"> </th>
 			</tr>
 		</thead>
-					<c:forEach items="${page.content}" var="food">
+		<tbody id="tablebody">
+					<!-- <c:forEach items="${page.content}" var="food">
 						<tr scope="row">
 							<td><c:out value="${food.foodId}" /></td>
 							<td><c:out value="${food.foodName}" /></td>
 							<td><c:out value="${food.foodPrice}" /></td>
 							<td><c:out value="${food.foodType}" /></td>
-							<td><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 300px"/></td>
+							<td><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 150px"/></td>
 							<td><c:out value="${food.foodState}" /></td>
 							<td>
 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><input type="button" value="刪除"></a>
-<!-- 							<input type="button" value="刪除"> -->
+
 							<a href="${contextRoot}/editFood?foodId=${food.foodId}"><input type="button" value="修改"></a>
 							
 							<a href="${contextRoot}/editPic?foodId=${food.foodId}"><input type="button" value="新增圖片"></a>
 						
 						</tr>
-					</c:forEach>
+					</c:forEach> -->
+				</tbody>
 		</table>
 
 		<script>
@@ -90,6 +92,29 @@
 		</div>
 </div>
 
+<script>
+	$.ajax({
+		url: "${contextRoot}/foodListAjax",
+		type: "POST",
+		success:function(data){
+			var a;
+			data.forEach(element => {
+				a+="<tr scope='row'>";
+					a+="<td>" + element.foodName + "</td>"
+					a+="<td>" + element.foodPrice + "</td>"
+					a+="<td>" + element.foodType + "</td>"
+					a+="<td>" + "<img src='${contextRoot}/uploaded/" + element.foodImage + "' style='width: 150px'/>" + "</td>"
+					// a+="<td>" + "<a href='${contextRoot}/deleteFood?foodId=" + element.foodId + " onclick='return confirm("確認刪除?")'"'><input type='button' value='刪除'>" + "</td>"
+					a+="<td>" + "<a href='${contextRoot}/editFood?foodId=" + element.foodId + "'><input type='button' value='修改'>" + "</td>"
+					a+="<td>" + "<a href='${contextRoot}/editPic?foodId=" + element.foodId + "'><input type='button' value='新增圖片'>" + "</td>"
+						a+="</tr>";
+					});
+			$('#tablebody').append(a);
+		}
+	})
+
+</script>
+						
 
 </body>
 </html>

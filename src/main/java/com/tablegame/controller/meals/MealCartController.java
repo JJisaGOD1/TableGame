@@ -58,7 +58,7 @@ public class MealCartController {
 		
 //		OrderCart cart = (OrderCart) session.getAttribute("cart");
 
-		mav.setViewName("redirect:/menu");
+		mav.setViewName("redirect:/meals/menu");
 
 		return mav;
 	}
@@ -71,7 +71,7 @@ public class MealCartController {
 
 		mav.addObject("newOrders", newOrders);
 		mav.addObject("C", cart);
-		mav.setViewName("messages/Cart");
+		mav.setViewName("meals/messages/Cart");
 		return mav;
 	}
 
@@ -80,7 +80,7 @@ public class MealCartController {
 		OrderCart cart = (OrderCart) session.getAttribute("cart");
 		MealOrders newOrders = (MealOrders) session.getAttribute("orders");
 		if(newOrders == null) {
-			mav.setViewName("messages/notExistOrder");
+			mav.setViewName("meals/messages/notExistOrder");
 			return mav;
 		}else {
 			Map<Integer, FoodItem> foodMap = cart.getFoodMap();
@@ -109,7 +109,7 @@ public class MealCartController {
 			foodMap.clear();
 
 //			newOrders.setTotalprice(cart.getTotalPrices());
-			mav.setViewName("redirect:/finishedOrder");
+			mav.setViewName("redirect:/meals/finishedOrder");
 
 			return mav;
 			

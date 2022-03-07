@@ -35,7 +35,7 @@ public class MealOrdersController {
 	@Autowired
 	private MealOrdersService service;
 
-	@PostMapping(value = "/addOrders") // @Valid 參考網址:http://www.mydlq.club/article/49/
+	@PostMapping(value = "/meals/addOrders") // @Valid 參考網址:http://www.mydlq.club/article/49/
 	public ModelAndView postNewOrder(ModelAndView mav, @Valid @ModelAttribute(name = "orders") MealOrders orders,
 			BindingResult rs, HttpSession session) {
 		
@@ -69,7 +69,7 @@ public class MealOrdersController {
 			mav.getModel().put("newOrders", newOrders);
 		}
 
-		mav.setViewName("redirect:/menu");
+		mav.setViewName("redirect:/meals/menu");
 
 		return mav;
 	}
