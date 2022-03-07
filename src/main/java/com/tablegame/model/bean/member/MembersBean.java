@@ -2,6 +2,8 @@ package com.tablegame.model.bean.member;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +13,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.tablegame.model.bean.group.GroupBean;
+import com.tablegame.model.bean.group.ParticipantBean;
 
 @Entity
 @Table(name = "member")
@@ -57,6 +63,12 @@ public class MembersBean implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_rating_id")
 	private RatingsBean ratingsBean;
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "launcher")
+	private Set<GroupBean> launchedGroups=new LinkedHashSet<GroupBean>();
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "participant")
+	private Set<ParticipantBean> participantedGroups=new LinkedHashSet<ParticipantBean>();
 
 	
 	@PrePersist
@@ -138,6 +150,23 @@ public class MembersBean implements Serializable{
 		this.ratingsBean = ratingsBean;
 	}
 
+	public Set<GroupBean> getLaunchedGroups() {
+		return launchedGroups;
+	}
+
+	public void setLaunchedGroups(Set<GroupBean> launchedGroups) {
+		this.launchedGroups = launchedGroups;
+	}
+
+	public Set<ParticipantBean> getParticipantedGroups() {
+		return participantedGroups;
+	}
+
+	public void setParticipantedGroups(Set<ParticipantBean> participantedGroups) {
+		this.participantedGroups = participantedGroups;
+	}
+
+	
 
 	
 }

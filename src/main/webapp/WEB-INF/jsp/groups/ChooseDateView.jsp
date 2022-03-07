@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link rel="stylesheet" href="${contextRoot}/jQuery/jquery-ui-1.13.1.custom/jquery-ui.min.css">
+	<link rel="stylesheet" href="${contextRoot}/JQuery/jquery-ui-1.13.1.custom/jquery-ui.min.css">
 <!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
-  <script src="${contextRoot}/jQuery/js/jquery-3.6.0.min.js"></script>
-  <script src="${contextRoot}/jQuery/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+  <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+  <script src="${contextRoot}/JQuery/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
   <script src="i18n/datepicker-zh-TW.js"></script>
   <script>
   
@@ -60,7 +60,7 @@
 <body>
 	<a href="${contextRoot}">回登入頁</a>
 	<div class="first" align="center">
-		<h1>Hi,${userBean.username}^^</h1>
+		<h1>Hi,${member.cusName}^^</h1>
 		<h2>選擇一天開團或入團吧!</h2><br>
 		
 		<div id="datepicker"></div>

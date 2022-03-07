@@ -30,7 +30,7 @@ public class ParticipantBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private ParticipantBeanPK id;
+	private ParticipantBeanPK id=new ParticipantBeanPK();
 	
 	@ManyToOne
 	@JoinColumn(name="groupId")

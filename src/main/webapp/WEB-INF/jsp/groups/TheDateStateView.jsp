@@ -13,7 +13,7 @@
 <a href="${contextRoot}">回登入頁</a>
 
 <div align="center">
-<h1>hi ${userBean.username}, I'm TheDateState.jsp</h1><br>
+<h1>hi ${member.cusName}, I'm TheDateState.jsp</h1><br>
 <h2>ur choosed date:${date}</h2><br>
 <c:choose>
 <c:when test="${groups[0]==null}">
@@ -29,7 +29,7 @@
 			<tr><td>簡介：</td><td>${group.introduction}</td></tr>
 			<tr><td>建團時間：</td><td>${group.createdTime}</td></tr>
 			<c:choose>
-			<c:when test="${userBean.userId==group.launcher.userId}">
+			<c:when test="${member.id==group.launcher.id}">
 			<%--<a href="servlet?變數1=111&變數2=222"><input type="button" value="修改"></a> --%>
 				<tr>
 					<td style="color: purple;">您是創團者</td>
@@ -67,7 +67,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:choose>
-					<c:when test="${perGroupNumMap[group.groupId]<group.product.maxPlayers}">
+					<c:when test="${perGroupNumMap[group.groupId]<group.product.maxplayer}">
 						<tr>
 							<td>
 								<a href=

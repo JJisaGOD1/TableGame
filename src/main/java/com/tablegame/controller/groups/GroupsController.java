@@ -32,7 +32,7 @@ public class GroupsController {
 
 	@GetMapping("/ChooseDate")
 	public String choose() {
-		return "ChooseDateView";
+		return "groups/ChooseDateView";
 	}
 
 	@RequestMapping(value = "/TheDateState/{intYear}/{intMonth}/{intDay}",method = { RequestMethod.POST, RequestMethod.GET })
@@ -46,7 +46,7 @@ public class GroupsController {
 		String date=intYear+"/"+intMonth+"/"+intDay;
 		hs.setAttribute("date", date);
 		date=(String)hs.getAttribute("date");
-		MembersBean user = (MembersBean)(hs.getAttribute("userBean"));
+		MembersBean user = (MembersBean)(hs.getAttribute("member"));
 		
 		List<GroupBean> groups = service.getGroupsByDate(date);
 		Map<Integer,Integer> perGroupNumMap=service.getPlayerNumMapByDate(date);
@@ -65,7 +65,7 @@ public class GroupsController {
 		//k:加入者 v:加入者帶之人數
 		mav.getModel().put("oneJoinedNumMap", oneJoinedNumMap);
 		
-		mav.setViewName("TheDateStateView");
+		mav.setViewName("groups/TheDateStateView");
 		return mav;
 	}
 
@@ -74,7 +74,7 @@ public class GroupsController {
 		List<Product> allProds = service.getAllProductBean();
 		mav.getModel().put("date", date);
 		mav.getModel().put("products", allProds);
-		mav.setViewName("FillNewGroupDataView");
+		mav.setViewName("groups/FillNewGroupDataView");
 		return mav;
 	}
 
@@ -83,7 +83,7 @@ public class GroupsController {
 			@RequestParam(name = "date") String date, @RequestParam(name = "product") String productId,
 			@RequestParam(name = "playersNumWithLauncher") String playersNumWithLauncher,
 			@RequestParam(name = "introduction") String introduction) {
-		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("member");
 		service.insertNewGroup(launcher, date, productId, playersNumWithLauncher, introduction);
 
 //		mav.getModel().put("date", date);
@@ -119,7 +119,7 @@ public class GroupsController {
 		mav.getModel().put("playersNumNow", playersNumNow);
 		mav.getModel().put("remainingNum", remainingNum);
 		mav.getModel().put("group", group);
-		mav.setViewName("ToJoinView");
+		mav.setViewName("groups/ToJoinView");
 		return mav;
 	}
 
