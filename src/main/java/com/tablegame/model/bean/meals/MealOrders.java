@@ -3,6 +3,7 @@ package com.tablegame.model.bean.meals;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -30,8 +31,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "Orderss")
-public class Orderss {
+@Table(name = "MealOrders")
+public class MealOrders {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,11 +60,14 @@ public class Orderss {
 	@Column(name = "payment_state")
 	private String paymentState;
 	
-	@OneToMany(mappedBy = "orders") 
-    private Set<MealList> mealList;
+	@Column(name = "totalprice")
+	private Double totalprice;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "orders")
+    private Set<MealList> mealList = new LinkedHashSet<MealList>();
 	
 	
-	public Orderss() {
+	public MealOrders() {
 	}
 
 	@PrePersist // 當 Entity 狀態要變成 Persistent 的時候，做以下方法
@@ -121,6 +125,14 @@ public class Orderss {
 		this.paymentState = paymentState;
 	}
 
+	public Double getTotalprice() {
+		return totalprice;
+	}
+
+	public void setTotalprice(Double totalprice) {
+		this.totalprice = totalprice;
+	}
+
 	public Set<MealList> getMealList() {
 		return mealList;
 	}
@@ -144,6 +156,8 @@ public class Orderss {
 		builder.append(processState);
 		builder.append(", paymentState=");
 		builder.append(paymentState);
+		builder.append(", totalprice=");
+		builder.append(totalprice);
 		builder.append(", mealList=");
 		builder.append(mealList);
 		builder.append("]");
@@ -151,6 +165,4 @@ public class Orderss {
 	}
 
 	
-	//
-
 }
