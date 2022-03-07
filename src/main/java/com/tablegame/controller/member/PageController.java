@@ -1,4 +1,4 @@
-package com.finalproject.tablegameMember.controller;
+package com.tablegame.controller.member;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.finalproject.tablegameMember.model.MembersBean;
-import com.finalproject.tablegameMember.model.RatingsBean;
-import com.finalproject.tablegameMember.service.MembersService;
+import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.model.bean.member.RatingsBean;
+import com.tablegame.service.member.MembersService;
 
 @Controller
 public class PageController {
