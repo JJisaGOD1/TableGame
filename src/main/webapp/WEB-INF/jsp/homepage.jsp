@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,6 +150,7 @@ h1 {
 		</a>
 
 		<nav class="navbar">
+
 			<a href="#home">首頁</a>
 			<a href="#about">最新消息</a>
 			<a href="#menu">會員招募</a>
@@ -156,10 +160,32 @@ h1 {
 			<a href="#blogs">開團</a>
 		</nav>
 
-		<div class="icons">
+
+		<div class="icons" style="display: flex">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
-			<!-- <div class="fas fa-bars" id="menu-btn"></div> -->
+
+			
+			<c:if test="${member.ratingsBean.id == null }">
+			<div style="display: flex">
+				<a class="nav-link" href="${contextRoot}/addCustomer">註冊
+				</a>
+			</div>
+			<div style="display: flex">
+				<a class="nav-link" href="${contextRoot}/login">登入
+				</a>
+			</div>
+			</c:if>
+			
+			<c:if test="${member.ratingsBean.id != null }">
+			<div style="display: flex">
+				<span>${member.cusName}，您好</span>
+				<a class="nav-link" href="${contextRoot}/logout">登出
+				</a>
+			</div>
+			</c:if>
+			
+
 		</div>
 
 		<div class="search-form">

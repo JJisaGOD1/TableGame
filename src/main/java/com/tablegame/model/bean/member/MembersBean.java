@@ -137,5 +137,7 @@ public class MembersBean implements Serializable{
 	public void setRatingsBean(RatingsBean ratingsBean) {
 		this.ratingsBean = ratingsBean;
 	}
+
+
 	
 }
