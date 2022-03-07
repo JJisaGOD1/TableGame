@@ -29,11 +29,7 @@ public class BookingController {
 	@Autowired
 	private BookingService service;
 	
-	
-	@GetMapping("/")
-	public String home() {
-		return "index";
-	}
+
 	
 	@GetMapping("/addBooking")
 	public String addBooking() {
@@ -42,27 +38,9 @@ public class BookingController {
 	}
 	
 
-	
-	@GetMapping("/about")
-	public String about() {
-		return "booking/about";
-	}
-	
-
-//	@GetMapping("/getAll")
-//	public ModelAndView getAll(ModelAndView mav) {
-//
-//		mav.setViewName("messages/getAll");
-//
-//		return mav;
-//	}
-	
 	@GetMapping("/addNew")
 	public ModelAndView addNew(ModelAndView mav) {
-//		WorkMessages msg = service.findById(name);
-		
-//		mav.getModel().put("workMessage", msg);
-		
+
 		mav.setViewName("booking/addNew");
 		
 		return mav;
