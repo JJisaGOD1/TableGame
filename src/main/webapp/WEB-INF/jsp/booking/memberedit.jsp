@@ -34,7 +34,7 @@
 <form action="${contextRoot}/lnquires" modelAttribute="lnquires" method="post">
 
 <tr style="display:none">
-					<td>ID :<input type="text" name="id" value="${booking.id}" >
+					<td>ID :<input type="text" name="id" value="${booking.orderId}" >
 
 <tr>
 					<td>人數 :<select name="several" >
@@ -67,7 +67,7 @@
 					</select></td></tr>
 <tr><td>備註：<input type="text" name="remark" value="${booking.remark}"  /></td></tr>
 
-<tr ><td>會員：<input type="text" name="user" value="${booking.user.customer_id}"  /></td></tr>		
+<tr  style="display:none"><td>會員：<input type="text" name="user" value="${booking.user.id}"  /></td></tr>		
 </table>
 <input type="submit" name="submit" />
 </form>

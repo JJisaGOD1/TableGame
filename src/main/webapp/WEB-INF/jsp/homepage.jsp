@@ -380,7 +380,7 @@ h1 {
 		<div class="links">
 			<a href="#">常見問題</a> <a href="#">全台門市</a> <a href="#">首次舉辦活動</a> <a
 				href="#">活動上架規範</a> <a href="#">活動人社群</a> <a href="#">帳號中心</a> <a
-				href="#">服務項目</a> <a href="#">聯絡我們</a> <a href="#">線上訂位</a>
+				href="#">服務項目</a> <a href="#">聯絡我們</a> <a href="addBooking">線上訂位</a>
 		</div>
 
 		<div class="credit">

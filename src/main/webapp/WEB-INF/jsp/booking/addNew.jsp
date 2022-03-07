@@ -55,7 +55,7 @@ fieldset {
 			modelAttribute="booking">
 			<fieldset>
 			<div style="display:none">
-				<label class="t1"></label><input type="text" name="user" value="${login.customer_id}" readonly="readonly" >
+				<label class="t1"></label><input type="text" name="user" value="${member.id}" readonly="readonly" >
 			</div>	
 				
 				<div>
