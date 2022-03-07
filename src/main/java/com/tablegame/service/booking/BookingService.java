@@ -11,9 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tablegame.model.bean.booking.Booking;
-import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.repository.booking.BookingRepostitory;
-import com.tablegame.model.repository.product.MemberRepository;
+import com.tablegame.model.repository.member.MembersRepository;
+
 
 
 
@@ -21,9 +21,9 @@ import com.tablegame.model.repository.product.MemberRepository;
 
 
 @Service
-public class BookingService {
+public class BookingService { 
 	@Autowired
-	 private MemberRepository loginDao;
+	 private MembersRepository loginDao;
 	
 	@Autowired
     private BookingRepostitory bookingDao;
