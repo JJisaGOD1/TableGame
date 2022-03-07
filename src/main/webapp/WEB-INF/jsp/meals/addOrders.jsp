@@ -204,7 +204,7 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 	<button style="width: 300px; height: 50px; border-radius: 50px; background-color: #EBA800; border: none; font-weight: bold;box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);">開始點餐</button></a>
 	<div style="width: 25vw; height: ; margin-left: 19vw; margin-top: 30vh;border-radius: 12px;" class="wrapper" id="fade-in">
 	<h1 style="font-weight: border;">歡迎光臨點餐系統</h1>
-	<form:form class="form" action="${contextRoot}/addOrders"
+	<form:form class="form" action="${contextRoot}/meals/addOrders"
 							modelAttribute="orders" method="post">
 							<form:errors ></form:errors>
 

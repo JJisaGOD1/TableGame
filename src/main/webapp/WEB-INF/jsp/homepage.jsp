@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+
 <meta charset="UTF-8">
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -143,15 +147,19 @@ h1 {
 		</a>
 
 		<nav class="navbar">
-			<a href="#home">首頁</a> <a href="#about">最新消息</a> <a href="#menu">會員招募</a>
-			<a href="#products">店鋪資訊</a> <a href="#review">商品</a> <a
-				href="#contact">點餐</a> <a href="#blogs">開團</a>
+			<a href="#home">首頁</a>
+			<a href="#about">最新消息</a>
+			<a href="#menu">會員招募</a>
+			<a href="#products">店鋪資訊</a>
+			<a href="#review">商品</a>
+			<a href="${contextRoot}/startOrder">點餐</a>
+			<a href="#blogs">開團</a>
 		</nav>
 
 		<div class="icons">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
-			<div class="fas fa-bars" id="menu-btn"></div>
+			<!-- <div class="fas fa-bars" id="menu-btn"></div> -->
 		</div>
 
 		<div class="search-form">
