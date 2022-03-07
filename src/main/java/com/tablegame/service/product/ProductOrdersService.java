@@ -12,21 +12,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tablegame.model.bean.member.MembersBean;
-import com.tablegame.model.bean.product.Orders;
-import com.tablegame.model.repository.product.OrdersRepository;
+import com.tablegame.model.bean.product.ProductOrders;
+import com.tablegame.model.repository.product.ProductOrdersRepository;
 
 @Service
-public class OrdersService {
+public class ProductOrdersService {
 
 	@Autowired
-	private OrdersRepository dao;
+	private ProductOrdersRepository dao;
 
-	public void insert(Orders orders) {
+	public void insert(ProductOrders orders) {
 		dao.save(orders);
 	}
 
-	public Orders createBean(String processingstatus, MembersBean member, Date date, Double price) {
-		Orders orders = new Orders();
+	public ProductOrders createBean(String processingstatus, MembersBean member, Date date, Double price) {
+		ProductOrders orders = new ProductOrders();
 		orders.setProcessingstatus(processingstatus);// "未處裡"
 		orders.setMember(member);// serviceM.findByName(username)
 		orders.setOrder_date(date);// date
@@ -34,27 +34,27 @@ public class OrdersService {
 		return orders;
 	}
 
-	public List<Orders> findAll() {
-		List<Orders> all = dao.findAll();
+	public List<ProductOrders> findAll() {
+		List<ProductOrders> all = dao.findAll();
 		return all;
 	}
 
-	public Page<Orders> findByPage(Integer pageNumber) {
+	public Page<ProductOrders> findByPage(Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "orderId");
 
 		return dao.findAll(pgb);
 	}
 
-	public Orders findById(Integer id) {
-		Optional<Orders> a = dao.findById(id);
+	public ProductOrders findById(Integer id) {
+		Optional<ProductOrders> a = dao.findById(id);
 		if (a.isPresent()) {
-			Orders aa = a.get();
+			ProductOrders aa = a.get();
 			return aa;
 		}
 		return null;
 	}
 
-	public Page<Orders> findmyorderPage(Integer id, Integer pageNumber) {
+	public Page<ProductOrders> findmyorderPage(Integer id, Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "customer_id");
 
 		return dao.findByCustomerId(id, pgb);

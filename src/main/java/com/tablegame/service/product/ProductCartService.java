@@ -5,19 +5,19 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 
-import com.tablegame.model.bean.product.CartItem;
+import com.tablegame.model.bean.product.ProductCartItem;
 import com.tablegame.model.bean.product.Product;
 
 @Service
-public class CartService {
+public class ProductCartService {
 
-	public void addProduct(Product product, Map<Integer, CartItem> productMap, Integer quantity) {
+	public void addProduct(Product product, Map<Integer, ProductCartItem> productMap, Integer quantity) {
 		// 獲取得到購物項
-		CartItem cartItem = productMap.get(product.getProduct_id());
+		ProductCartItem cartItem = productMap.get(product.getProduct_id());
 		// 判斷購物車是否存在該購物項，如果不存在
 		if (cartItem == null) {
 			// 建立這個購物項物件
-			cartItem = new CartItem();
+			cartItem = new ProductCartItem();
 			// 將使用者傳遞過來的商品作為購物項
 			cartItem.setProduct(product);
 			// 把該購物項的數量設定為1
@@ -30,8 +30,8 @@ public class CartService {
 		}
 	}
 
-	public void deleteProduct(Product product, Map<Integer, CartItem> productMap) {
-		CartItem cartItem = productMap.get(product.getProduct_id());
+	public void deleteProduct(Product product, Map<Integer, ProductCartItem> productMap) {
+		ProductCartItem cartItem = productMap.get(product.getProduct_id());
 		if (cartItem.getQuantity() > 1) {
 			cartItem.setQuantity(cartItem.getQuantity() - 1);
 		} else if (cartItem.getQuantity() == 1) {
@@ -39,7 +39,7 @@ public class CartService {
 		}
 	}
 
-	public void deleteOneProduct(Product product, Map<Integer, CartItem> productMap) {
+	public void deleteOneProduct(Product product, Map<Integer, ProductCartItem> productMap) {
 		productMap.remove(product.getProduct_id());
 	}
 }
