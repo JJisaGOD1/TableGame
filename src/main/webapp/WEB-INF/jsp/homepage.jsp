@@ -158,6 +158,7 @@ h1 {
 			<a href="#review">商品</a>
 			<a href="${contextRoot}/startOrder">點餐</a>
 			<a href="#blogs">開團</a>
+			<a href="${contextRoot}/addBooking">訂位</a>
 		</nav>
 
 
