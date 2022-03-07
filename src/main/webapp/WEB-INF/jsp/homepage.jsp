@@ -148,7 +148,7 @@ h1 {
 		<nav class="navbar">
 			<a href="#home">首頁</a> <a href="#about">最新消息</a> <a href="#menu">會員招募</a>
 			<a href="#products">店鋪資訊</a> <a href="#review">商品</a> <a
-				href="#contact">點餐</a> <a href="#blogs">開團</a>
+				href="#contact">點餐</a> <a href="${contextRoot}/groups/ChooseDate">開團</a>
 		</nav>	
 
 		<div class="icons" style="display: flex">
