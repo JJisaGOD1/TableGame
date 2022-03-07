@@ -51,12 +51,12 @@ public class PageController {
 			  session.setAttribute("member", memberBean);
 			  switch(level) {
 			  	case 1:
-				  mav.setViewName("membersPage/managerPage");
+				  mav.setViewName("redirect:/");
 				  break;
 			  	case 2:
 				  mav.setViewName("membersPage/employeePage");
 				  break;
-				default:mav.setViewName("membersPage/customerPage");
+				default:mav.setViewName("redirect:/");
 			  }
 			  return mav;
 		  }
