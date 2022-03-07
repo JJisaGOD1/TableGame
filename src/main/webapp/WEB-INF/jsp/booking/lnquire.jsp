@@ -35,9 +35,9 @@
  <p>桌號:${lnquires.number} </p>
 <p>備註:${lnquires.remark}</p>
  
-<p><a href="${contextRoot}/lnquires?id=${lnquires.id}"><input type="button" value="修改"> </a>	|  
+<p><a href="${contextRoot}/lnquires?id=${lnquires.orderId}"><input type="button" value="修改"> </a>	|  
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${lnquires.id}"><input type="button" value="刪除"></a>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${lnquires.orderId}"><input type="button" value="刪除"></a>
 	
 </p>
 

@@ -75,7 +75,7 @@ public class BookingController {
 	 //查自己訂位
 	 @GetMapping("/lnquire")
 	 public ModelAndView findLoginid(ModelAndView mav,HttpSession hs) {
-		 MembersBean log =(MembersBean) hs.getAttribute("login");
+		 MembersBean log =(MembersBean) hs.getAttribute("member");
 		Integer logid = log.getId();
 		
 		List<Booking> msg =  service.findByLoginId(logid);

@@ -29,8 +29,6 @@ import com.tablegame.model.bean.member.MembersBean;
 @Component
 public class Booking implements Serializable {
 
-	private static final Integer id = null;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
@@ -38,8 +36,7 @@ public class Booking implements Serializable {
 
 	@Column(name = "several")
 	private Integer several;
-	
-	
+
 	@Column(name = "reservation_date")
 	private Date reservation_date;
 
@@ -64,15 +61,14 @@ public class Booking implements Serializable {
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date added;
+
 //	
 	@PrePersist // 當 Entity 狀態要變成 Persistent 的時候，做以下方法
 	public void onCreate() {
-	if(added == null) {
+		if (added == null) {
 			added = new Date();
 		}
 	}
-
-	
 
 	public String getPeriod() {
 		return period;
@@ -82,8 +78,6 @@ public class Booking implements Serializable {
 		return user;
 	}
 
-
-
 	public void setUser(MembersBean user) {
 		this.user = user;
 	}
@@ -92,29 +86,17 @@ public class Booking implements Serializable {
 		return orderId;
 	}
 
-
-
 	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
-
-
 
 	public Integer getMember_customer_Id() {
 		return member_customer_Id;
 	}
 
-
-
 	public void setMember_customer_Id(Integer member_customer_Id) {
 		this.member_customer_Id = member_customer_Id;
 	}
-
-
-
-	
-
-
 
 	public void setPeriod(String period) {
 		this.period = period;
@@ -147,8 +129,6 @@ public class Booking implements Serializable {
 	public Booking() {
 	}
 
-	
-
 	public Integer getSeveral() {
 		return several;
 	}
@@ -169,7 +149,6 @@ public class Booking implements Serializable {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("booking [id=");
-		builder.append(id);
 		builder.append(", name=");
 		builder.append(", several=");
 		builder.append(several);
