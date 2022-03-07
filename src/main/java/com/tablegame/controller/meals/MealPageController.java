@@ -104,23 +104,14 @@ public class MealPageController {
 		return mav;
 	}
 
-	@GetMapping("/")
-	public ModelAndView addOrdersPage(HttpSession session, ModelAndView mav) {
-//		Orders orders = (Orders) session.getAttribute("orders");
-//		session.setAttribute("orders", orders);
-//		mav.getModel().put("orders", orders);
-		
-//		if(orders == null) {
-
-		MealOrders newOrder = new MealOrders();
-			session.setAttribute("orders", newOrder);
-			mav.getModel().put("orders", newOrder);
-//		}
-		
-		mav.setViewName("addOrders");
-
-		return mav;
-	}
+//	@GetMapping("/")
+//	public ModelAndView addOrdersPage(HttpSession session, ModelAndView mav) {
+//		MealOrders newOrder = new MealOrders();
+//			session.setAttribute("orders", newOrder);
+//			mav.getModel().put("orders", newOrder);
+//		mav.setViewName("addOrders");
+//		return mav;
+//	}
 
 	@ResponseBody
 	@GetMapping("/menu")
