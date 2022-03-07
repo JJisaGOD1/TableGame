@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -26,23 +27,36 @@
 .top_food_banner_bg {
 	background-image: url(uploaded/food_banner.png);
 	background-repeat: no-repeat;
-/* 	background-attachment: fixed; */
-/* 	background-size: 100% 100%; */
-	width:100vw;
+	/* 	background-attachment: fixed; */
+	/* 	background-size: 100% 100%; */
+	width: 100vw;
 }
+
+.finished_order_icon{
+  	position: fixed; 
+  	right: 31px; 
+  	bottom: 31px;
+  	width:8%;
+  }
 
 /* body { */
 /* 	background-image: url(uploaded/food_banner.png); */
 /* 	background-repeat: no-repeat; */
 /*  	background-size: 100%; */
-	
+
 /* } */
 </style>
 </head>
 <body>
-<%-- <img src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" /> --%>
-<div class="top_food_banner_bg"></div>
-<div style="background-image:url(uploaded/food_banner.png);background-size: cover;width:100vw;height:500px;"></div>
+
+	<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" /> </a>
+
+
+
+	<img src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" />
+	<div class="top_food_banner_bg"></div>
+	<div
+		style="background-image: url(uploaded/food_banner.png); background-size: cover; width: 100vw; height: 500px;"></div>
 	<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
 	<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
 
@@ -60,28 +74,28 @@
                 <li class="other-items"><a href="#">新品上市 (12)</a></li>
             </ul>
         </div> -->
-       
-        
-<!-- 		<div class="content"> -->
-<%-- 			<c:forEach items="${page.content}" var="food"> --%>
-<!-- 				<div class="item"> -->
-<%-- 					<img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width:300px" alt="picture of food" /> --%>
-						
-<!-- 					<div class="item-name"> -->
-<%-- 						<span class="name"><c:out value="${food.foodName}" /></span> <span --%>
-<%-- 							class="price">NT$ <c:out value="${food.foodPrice}" /></span> --%>
-<!-- 					</div> -->
-<%-- 					<a href="${contextRoot}/addToCart?foodId=${food.foodId}" style="text-decoration:none;">加入訂單</a> --%>
-					
-<!-- 				</div> -->
-<%-- 			</c:forEach> --%>
-<!-- 			<p> -->
-<!-- 		</div> -->
+
+
+		<!-- 		<div class="content"> -->
+		<%-- 			<c:forEach items="${page.content}" var="food"> --%>
+		<!-- 				<div class="item"> -->
+		<%-- 					<img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width:300px" alt="picture of food" /> --%>
+
+		<!-- 					<div class="item-name"> -->
+		<%-- 						<span class="name"><c:out value="${food.foodName}" /></span> <span --%>
+		<%-- 							class="price">NT$ <c:out value="${food.foodPrice}" /></span> --%>
+		<!-- 					</div> -->
+		<%-- 					<a href="${contextRoot}/addToCart?foodId=${food.foodId}" style="text-decoration:none;">加入訂單</a> --%>
+
+		<!-- 				</div> -->
+		<%-- 			</c:forEach> --%>
+		<!-- 			<p> -->
+		<!-- 		</div> -->
 
 
 		<div class="content">
 			<c:forEach items="${page.content}" var="food">
-				<div class="card"  style="margin: 10px 5px;">
+				<div class="card" style="margin: 10px 5px;">
 					<img src="<c:url value="/uploaded/${food.foodImage}"/>"
 						style="width: 250px" alt="picture of food" class="card-img-top" />
 					<div class="card-body">
@@ -92,98 +106,99 @@
 							NT$
 							<c:out value="${food.foodPrice}" />
 						</p>
-						<a onclick="alert('已加入訂單')" href="${contextRoot}/addToCart?foodId=${food.foodId}"
+						<a onclick="alert('已加入訂單')"
+							href="${contextRoot}/addToCart?foodId=${food.foodId}"
 							class="btn btn-primary">加入訂單</a>
-<%-- 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteMessage?id=${workMessages.id}">刪除</a> --%>
+						<%-- 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteMessage?id=${workMessages.id}">刪除</a> --%>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 
 		<!-- 			<div class="item"> -->
-			<!-- 				<img src="" alt="picture of food"> -->
-			<!-- 				<div class="item-name"> -->
-			<!-- 					<span class="name">拿鐵咖啡</span> <span class="price">NT$ 100</span> -->
-			<!-- 				</div> -->
-			<!-- 				<a href="#">加入購物車</a> -->
-			<!-- 			</div> -->
-			<!-- 			<div class="item"> -->
-			<!-- 				<img src="" alt="picture of food"> -->
-			<!-- 				<div class="item-name"> -->
-			<!-- 					<span class="name">美式咖啡</span> <span class="price">NT$ 80</span> -->
-			<!-- 				</div> -->
-			<!-- 				<a href="#">加入購物車</a> -->
-			<!-- 			</div> -->
-			<!-- 			<div class="item"> -->
-			<!-- 				<img src="" alt="picture of food"> -->
-			<!-- 				<div class="item-name"> -->
-			<!-- 					<span class="name">可可鬆餅</span> <span class="price">NT$ 100</span> -->
-			<!-- 				</div> -->
-			<!-- 				<a href="#">加入購物車</a> -->
-			<!-- 			</div> -->
-		
-		
-<!-- 	===================訂單明細(之後加入)===================	 -->
-<!-- <table class="table"> -->
-  <!-- Product #1 -->
-<!--  <p>11111111111111111111</p> -->
+		<!-- 				<img src="" alt="picture of food"> -->
+		<!-- 				<div class="item-name"> -->
+		<!-- 					<span class="name">拿鐵咖啡</span> <span class="price">NT$ 100</span> -->
+		<!-- 				</div> -->
+		<!-- 				<a href="#">加入購物車</a> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="item"> -->
+		<!-- 				<img src="" alt="picture of food"> -->
+		<!-- 				<div class="item-name"> -->
+		<!-- 					<span class="name">美式咖啡</span> <span class="price">NT$ 80</span> -->
+		<!-- 				</div> -->
+		<!-- 				<a href="#">加入購物車</a> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="item"> -->
+		<!-- 				<img src="" alt="picture of food"> -->
+		<!-- 				<div class="item-name"> -->
+		<!-- 					<span class="name">可可鬆餅</span> <span class="price">NT$ 100</span> -->
+		<!-- 				</div> -->
+		<!-- 				<a href="#">加入購物車</a> -->
+		<!-- 			</div> -->
 
-<%--  <c:forEach items="${C.foodMap}" var="cart"> --%>
-<!--  <tr scope="row"> -->
-<!--  <td> -->
-<!--   <div class="item"> -->
-<!--     <div class="buttons"> -->
-<!--       <span class="delete-btn"></span> -->
-<!--       <span class="like-btn"></span> -->
-<!--     </div> -->
-<!--  </td> -->
-<!--  <td> -->
-<!--     <div class="buttons"> -->
 
-<%--       <a href="${contextRoot}/deleteOneFoodItem"> --%>
-<%--       <img src="<c:url value="/uploaded/delete.svg"/>" style="15px" /> --%>
-<!--       </a> -->
+		<!-- 	===================訂單明細(之後加入)===================	 -->
+		<table class="table">
+			Product #1
+			<p>11111111111111111111</p>
 
-<!--     </div> -->
-<!--  </td> -->
+			<c:forEach items="${cart.foodMap}" var="cart">
+				<tr scope="row">
 
-<!--  <td> -->
-<!--     <div class="image"> -->
-<%--       <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 150px"/> --%>
-<!--     </div> -->
-<!--  </td> -->
- 
-<!--  <td> -->
-<!--     <div class="description"> -->
-<%--       <span><c:out value="${cart.value.food.foodName}" /></span> --%>
-<%--       <span>單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span> --%>
-<%--       <span><c:out value="${cart.value.food.foodType}" /></span> --%>
-<!--     </div> -->
-<!--  </td> -->
- 
-<!--  <td> -->
-<!--     <div class="quantity"> -->
-<!--       <button class="plus-btn" type="button" name="button"> -->
-<%--         <img src="<c:url value="/uploaded/plus.svg"/>" alt="" /> --%>
-<!--       </button> -->
-<%--       <input type="text" name="name" value="<c:out value='${cart.value.quantity}' />"> --%>
-<!--       <button class="minus-btn" type="button" name="button"> -->
-<%--         <img src="<c:url value="/uploaded/minus.svg"/>" alt="" /> --%>
-<!--       </button> -->
-<!--     </div> -->
-<!--  </td> -->
-<!--   <td> -->
-<%--     <div class=""> 小計 NT$: <c:out value="${cart.value.price}" /></div> --%>
-<!--   </td> -->
-<!--     </tr> -->
-<%--     </c:forEach> --%>
-<!--   </div> -->
-  
-<!-- </table> -->
-<!-- 	===================訂單明細(之後加入)以上===================	 -->
-		
-		
-<!-- 	===================頁碼===================	 -->		
+					<td>
+						<div class="buttons">
+
+							<a href="${contextRoot}/deleteOneFoodItem"> <img
+								src="<c:url value="/uploaded/delete.svg"/>" style="" />
+							</a>
+
+						</div>
+					</td>
+
+					<td>
+						<div class="image">
+							<img
+								src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>"
+								style="width: 150px" />
+						</div>
+					</td>
+
+					<td>
+						<div class="description">
+							<span><c:out value="${cart.value.food.foodName}" /></span> <span>單價:NT$<c:out
+									value="${cart.value.food.foodPrice}" /></span> <span><c:out
+									value="${cart.value.food.foodType}" /></span>
+						</div>
+					</td>
+
+					<td>
+						<div class="quantity">
+							<button class="plus-btn" type="button" name="button">
+								<img src="<c:url value="/uploaded/plus.svg"/>" alt="" />
+							</button>
+							<input type="text" name="name"
+								value="<c:out value='${cart.value.quantity}' />">
+							<button class="minus-btn" type="button" name="button">
+								<img src="<c:url value="/uploaded/minus.svg"/>" alt="" />
+							</button>
+						</div>
+					</td>
+					<td>
+						<div class="">
+							小計 NT$:
+							<c:out value="${cart.value.price}" />
+						</div>
+					</td>
+				</tr>
+			</c:forEach>
+			</div>
+
+		</table>
+		<!-- 	===================訂單明細(之後加入)以上===================	 -->
+
+
+		<!-- 	===================頁碼===================	 -->
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-9">
@@ -208,17 +223,12 @@
 			</c:forEach>
 		</div>
 	</div>
-<!-- 	===================頁碼()以上===================	 -->	
+	<!-- 	===================頁碼()以上===================	 -->
 
 	<script>
-	function addFoodAlert() {
-		Swal.fire(
-				  'Good job!',
-				  'You clicked the button!',
-				  'success'
-				)
-        }
-	
+		function addFoodAlert() {
+			Swal.fire('Good job!', 'You clicked the button!', 'success')
+		}
 	</script>
 
 
