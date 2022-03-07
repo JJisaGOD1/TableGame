@@ -3,10 +3,13 @@ package com.tablegame.model.bean.meals;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,8 +47,8 @@ public class FoodList implements Serializable {
 	@Column(name = "food_state")
 	private String foodState;
 	
-	@OneToMany(mappedBy = "foodList") 
-    private Set<MealList> mealList;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "foodList")
+    private Set<MealList> mealList = new LinkedHashSet<MealList>();
 	
 	@Transient
 	private MultipartFile file;
