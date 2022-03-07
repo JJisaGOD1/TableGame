@@ -17,20 +17,20 @@
 <h2>管理者</h2>
 <table border="1"  class="table table-striped">
 <tr style="background-color:a8fefa">
-<th>ID<th>人數<th>訂位日期<th>桌號<th>備註<th>電話<th>會員<th>工具
+<th>人數<th>訂位日期<th>桌號<th>備註<th>電話<th>會員<th>工具
 <c:forEach items="${page.content}" var="bookings">
 
-   <tr><td>${bookings.id}
+   <tr>
    <td>${bookings.several} 
    <td><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
    <td>${bookings.number} 
    <td>${bookings.remark} 
    <td>${bookings.user.phone} 
-   <td>${bookings.user.customer_id} 
+   <td>${bookings.user.cusName }
 
-  <td> <a href="${contextRoot}/editbooking?id=${bookings.id}"> 編輯</a>	|  
+  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}"> 編輯</a>	|  
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.id}">刪除</a>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a>
    </c:forEach>
 </table>
 

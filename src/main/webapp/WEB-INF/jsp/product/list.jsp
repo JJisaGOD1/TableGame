@@ -14,6 +14,7 @@
 
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
+<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet" />
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,18 +26,37 @@
 </style>
 </head>
 <body>
-
-	<div class="wrap" style="width: 1500px; padding: 3%;">
-		<div class="content" style="width: 1000px; padding: 3%;">
+	<aside style="position: fixed; right: 30px; top: 120px">
+		<table class="table" style="width: 200px; background-color: white;">
+			<thead class="table table-dark" style="width: 100px">
+				<tr>
+					<th>商品名稱</th>
+					<th>購買量</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${cart.productMap}" var='C'>
+					<tr>
+						<td style="width: 100px"><c:out
+								value="${C.value.product.product_name}" /></td>
+						<td style="width: 100px"><c:out value="${C.value.quantity}" /></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</aside>
+	<div class="wrap" style="width: 1200px;">
+		<div class="content" style="width: 1200px; padding: 5%">
 			<c:forEach items="${P.content}" var="P">
 				<c:choose>
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
-						<div class="card" style="width: 450px;">
+						<div class="card" style="width: 350px; padding: auto">
 							<div
-								style="width: 450px; height: 350px; display: flex; justify-content: center;">
+								style="max-width: 350px; height: 350px; display: flex; justify-content: center;">
 								<a href="${contextRoot}/showImformation?id=${P.product_id}">
-									<img src="<c:url value='/Photo/${P.photourl}'/>"
-									style="width: 250px" alt="picture of food" class="card-img-top" />
+									<img src="<c:url value='/Photo/${P.photourl}' />"
+									style="width: 250px" alt="picture of food" class="card-img-top"
+									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
 							</div>
 							<div class="card-body">
@@ -55,31 +75,13 @@
 				</c:choose>
 			</c:forEach>
 		</div>
-		<aside>
-			<table class="table" style="width: 200px">
-				<thead class="table table-dark" style="width: 100px">
-					<tr>
-						<th>商品名稱</th>
-						<th>購買量</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${cart.productMap}" var='C'>
-						<tr>
-							<td style="width: 100px"><c:out
-									value="${C.value.product.product_name}" /></td>
-							<td style="width: 100px"><c:out value="${C.value.quantity}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</aside>
+
 
 	</div>
-	<div class="row justify-content-center">
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col">
+	<div>
+
+
+		<div style="display: flex; justify-content: center;">
 			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
 				<c:choose>
@@ -100,10 +102,10 @@
 					</c:if>
 			</c:forEach>
 		</div>
-		<div class="col"></div>
-		<div class="col"></div>
+
+
 	</div>
-	<div class="row justify-content-center">
+	<div style="display: flex; justify-content: center;">
 		<a href="${contextRoot}/goToCart"><input type="button"
 			value="查看購物車"></a>
 	</div>

@@ -22,9 +22,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="${contextRoot}/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextRoot}/about">關於我們</a>
-      </li>
      
        <li class="nav-item">
         <a class="nav-link" href="${contextRoot}/addBooking">訂位</a>
