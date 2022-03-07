@@ -18,8 +18,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 //建table
-@Entity
-@Table(name = "member")
+//@Entity
+//@Table(name = "member")
 public class Member implements Serializable {
 
 	@Id
