@@ -26,27 +26,23 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link"
-					href="${contextRoot}/viewProductsnologin">我們提供的商品</a></li>
-					
-				<c:if test="${username != null}">
-				
-					<c:if test="${username.equals('admin')}">
-					
-						<li class="nav-item"><a class="nav-link"
-							href="${contextRoot}/viewProducts">查看商品</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${contextRoot}/addProduct">新增商品</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${contextRoot}/checkOrders">訂單處理</a></li>
-					</c:if>
-					
-					<li class="nav-item"><a class="nav-link"
-						href="${contextRoot}/list">購物區</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${contextRoot}/myorders">我的訂單</a></li>
-				</c:if>
-				
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">商品</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="${contextRoot}/viewProductsnologin">我們提供的商品</a>
+						<c:if test="${username != null}">
+							<c:if test="${username.equals('admin')}">
+								<a class="dropdown-item" href="${contextRoot}/viewProducts">查看商品</a>
+								<a class="dropdown-item" href="${contextRoot}/addProduct">新增商品</a>
+								<a class="dropdown-item" href="${contextRoot}/checkOrders">訂單處理</a>
+							</c:if>
+							<a class="dropdown-item" href="${contextRoot}/list">購物區</a>
+							<a class="dropdown-item" href="${contextRoot}/myorders">我的訂單</a>
+						</c:if>
+					</div></li>
 			</ul>
 			<c:if test="${username != null}">
 				<form class="form-inline my-2 my-lg-0"
@@ -55,8 +51,6 @@
 						placeholder="Search" aria-label="Search" name="search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
-
-
 				<a class="nav-link" href="${contextRoot}/logout">登出 </a>
 			</c:if>
 

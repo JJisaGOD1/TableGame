@@ -32,13 +32,13 @@ public class ProductPageController {
 
 	@GetMapping("/about")
 	public String aboutPage() {
-		return "messages/about";
+		return "product/about";
 	}
 
 	@GetMapping("/viewProducts")
 	public ModelAndView viewMessagePage1(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		mav.setViewName("messages/viewProducts");
+		mav.setViewName("product/viewProducts");
 
 		Page<Product> P = serviceP.findByPage(pageNumber);
 
@@ -53,7 +53,7 @@ public class ProductPageController {
 	@GetMapping("/addProduct")
 	public ModelAndView addProductPage(ModelAndView mav) {
 
-		mav.setViewName("messages/addProduct");
+		mav.setViewName("product/addProduct");
 
 		Product product = new Product();
 
@@ -65,7 +65,7 @@ public class ProductPageController {
 	@GetMapping("/list")
 	public ModelAndView viewlistPage1(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		mav.setViewName("messages/list");
+		mav.setViewName("product/list");
 
 		Page<Product> P = serviceP.findByPage(pageNumber);
 
@@ -83,7 +83,7 @@ public class ProductPageController {
 		Integer userid = (Integer) session.getAttribute("userid");
 		Page<ProductOrders> P = serviceOs.findmyorderPage(userid, pageNumber);
 		mav.addObject("P", P);
-		mav.setViewName("messages/myorders");
+		mav.setViewName("product/myorders");
 		return mav;
 //		return null;
 	}
@@ -93,7 +93,7 @@ public class ProductPageController {
 	@GetMapping("/viewProductsnologin")
 	public ModelAndView viewProductsnologin(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		mav.setViewName("messages/viewProductsnologin");
+		mav.setViewName("product/viewProductsnologin");
 
 		Page<Product> P = serviceP.findByPage(pageNumber);
 
@@ -111,7 +111,7 @@ public class ProductPageController {
 		Product p = serviceP.findById(id);
 		mav.addObject("P", p);
 
-		mav.setViewName("messages/showImformationnologin");
+		mav.setViewName("product/showImformationnologin");
 		return mav;
 
 	}
@@ -122,7 +122,7 @@ public class ProductPageController {
 		System.out.println("搜尋商品:" + search);
 		List<Product> a = serviceP.findsearchPage(search);
 		Page<Product> P = serviceP.listConvertToPage(a, pageable);
-		mav.setViewName("messages/list");
+		mav.setViewName("product/list");
 		mav.addObject("P", P);
 		return mav;
 	}
