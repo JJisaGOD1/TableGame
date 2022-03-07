@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Order_list")
-public class OrderList {
+public class ProductOrderList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_list_id")
@@ -24,7 +24,7 @@ public class OrderList {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_id")
-	private Orders orders;
+	private ProductOrders orders;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id")
@@ -54,11 +54,11 @@ public class OrderList {
 		this.price = price;
 	}
 
-	public Orders getOrders() {
+	public ProductOrders getOrders() {
 		return orders;
 	}
 
-	public void setOrders(Orders orders) {
+	public void setOrders(ProductOrders orders) {
 		this.orders = orders;
 	}
 

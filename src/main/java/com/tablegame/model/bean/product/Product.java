@@ -87,7 +87,7 @@ public class Product implements Serializable {
 	private MultipartFile photo;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
-	private Set<OrderList> orderList = new LinkedHashSet<OrderList>();
+	private Set<ProductOrderList> orderList = new LinkedHashSet<ProductOrderList>();
 
 	public Product() {
 

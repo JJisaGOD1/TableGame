@@ -6,19 +6,19 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.tablegame.model.bean.product.CartItem;
+import com.tablegame.model.bean.product.ProductCartItem;
 
-public class Cart implements Serializable {
+public class ProductCart implements Serializable {
 
-	private Map<Integer, CartItem> productMap = new LinkedHashMap<Integer, CartItem>();
+	private Map<Integer, ProductCartItem> productMap = new LinkedHashMap<Integer, ProductCartItem>();
 
 	private double price;// 代表著購物車的總價
 
-	public Map<Integer, CartItem> getProductMap() {
+	public Map<Integer, ProductCartItem> getProductMap() {
 		return productMap;
 	}
 
-	public void setProductMap(Map<Integer, CartItem> productMap) {
+	public void setProductMap(Map<Integer, ProductCartItem> productMap) {
 		this.productMap = productMap;
 	}
 
@@ -28,9 +28,9 @@ public class Cart implements Serializable {
 
 	public double getPrice() {
 		double totalPrice = 0;
-		for (Entry<Integer, CartItem> me : productMap.entrySet()) {
+		for (Entry<Integer, ProductCartItem> me : productMap.entrySet()) {
 			// 得到每個購物項
-			CartItem cartItem = me.getValue();
+			ProductCartItem cartItem = me.getValue();
 			// 將每個購物項的錢加起來，就是購物車的總價了！
 			totalPrice = cartItem.getPrice() + totalPrice;
 		}
