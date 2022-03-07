@@ -17,6 +17,14 @@ public class ParticipantBeanPK implements Serializable{
 	
 	
 	private int participantId;
+	
+	public ParticipantBeanPK() {}
+	
+	public ParticipantBeanPK(int groupId, int participantId) {
+		super();
+		this.groupId = groupId;
+		this.participantId = participantId;
+	}
 
 	
 
