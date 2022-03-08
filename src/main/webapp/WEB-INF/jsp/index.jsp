@@ -4,14 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="membersPage/layout/navbar.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
+
+<jsp:include page="layout/dashboard.jsp"></jsp:include>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>後臺管理系統</title>
 </head>
 <body>
-<h1>HELLO</h1>
+
+<h1>這是後臺管理系統</h1>
+
 </body>
 </html>
