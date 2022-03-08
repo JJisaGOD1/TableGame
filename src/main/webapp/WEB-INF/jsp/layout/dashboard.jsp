@@ -29,16 +29,18 @@
 			<i class='bx bxs-dice-5'></i> <span class="logo_name">瘋桌遊</span>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#"> <i class='bx bx-user'></i> <span
-					class="link_name">會員管理</span>
-			</a>
-				<ul class="sub-menu blank">
-        <li><a class="link_name" >會員管理</a></li>
-          <li><a href="${contextRoot}/viewCustomer/1">查看會員</a></li>
-          <li><a href="${contextRoot}/viewMembers/1">查看員工</a></li>
-          <li><a href="${contextRoot}/addManager">新增員工</a></li>
-        </ul>
-      </li>
+			<li>
+				<div class="iocn-link">
+					<a href="#"> <i class='bx bx-box'></i> <span class="link_name">會員管理</span>
+					</a> <i class='bx bxs-chevron-down arrow'></i>
+				</div>
+				<ul class="sub-menu">
+					<li><a class="link_name" href="#">會員管理</a></li>
+					<li><a href="${contextRoot}/viewMembers/1">查看會員</a></li>
+					<li><a href="${contextRoot}/viewCustomer/1">查看員工</a></li>
+					<li><a href="${contextRoot}/addManager">新增員工</a></li>
+				</ul>
+			</li>
 			<li>
 				<div class="iocn-link">
 					<a href="#"> <i class='bx bx-box'></i> <span class="link_name">商品管理</span>
