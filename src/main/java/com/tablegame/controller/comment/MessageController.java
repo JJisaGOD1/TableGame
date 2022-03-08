@@ -14,12 +14,15 @@ import com.tablegame.dto.ResponseMessage;
 @Controller
 public class MessageController {
 	
+	//會員訊息傳輸
 	@MessageMapping(value = "/customerMessage")
 	@SendTo("/topic/messages")
 	public ResponseMessage getCustomerMessage(Message message) throws InterruptedException {
-		return new ResponseMessage(HtmlUtils.htmlEscape("User : "+message.getMessageContent()));
+		return new ResponseMessage(HtmlUtils.htmlEscape(message.getUserId()+" : "+message.getMessageContent()));
 		
 	}
+	
+	//Server訊息傳輸
 	@MessageMapping(value = "/serverMessage")
 	@SendTo("/topic/messages")
 	public ResponseMessage getServerMessage(Message message) throws InterruptedException {	
@@ -27,6 +30,7 @@ public class MessageController {
 		
 	}
 	
+	//私人訊息，尚未用到
 	@MessageMapping(value = "/private/message")
 	@SendToUser("/topic/private-messages")
 	public ResponseMessage getPrivateMessage(Message message, Principal principal) throws InterruptedException {

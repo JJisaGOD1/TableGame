@@ -15,11 +15,13 @@ public class WSController {
 	@Autowired
 	private WSService service;
 	
+	//Postman送方法
 	@PostMapping(value = "/send-message")
 	public void sendMessage(@RequestBody Message message) {
 		service.notifyFront(message.getMessageContent());
 	}
 	
+	//Postman送方法
 	@PostMapping(value = "/send-private-message/{id}")
 	public void sendPrivateMessage(@PathVariable String id, 
 								@RequestBody Message message) {
