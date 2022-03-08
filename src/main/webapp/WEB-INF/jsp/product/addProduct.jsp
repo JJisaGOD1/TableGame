@@ -4,10 +4,11 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:include page="layout/navbar.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../layout/dashboard.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
