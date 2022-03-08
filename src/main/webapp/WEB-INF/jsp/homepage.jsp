@@ -159,7 +159,14 @@ h1 {
 			<a href="${contextRoot}/startOrder">點餐</a>
 			<a href="${contextRoot}/groups/ChooseDate">開團</a>
 			<a href="${contextRoot}/addBooking">訂位</a>
-			<a href="${contextRoot}/customerService">線上客服</a>
+			
+			<c:if test="${member.ratingsBean.id == 3 }">
+				<a href="${contextRoot}/customerService">線上客服</a>
+			</c:if>
+			
+			<c:if test="${member.ratingsBean.id == 1 }">
+				<a href="${contextRoot}/backController">後台管理</a>
+			</c:if>
 		</nav>
 
 
