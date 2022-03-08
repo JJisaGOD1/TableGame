@@ -71,7 +71,7 @@
 		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
 
 		<div class="row justify-content-center">
-			<a href="${contextRoot}/goToCart">查看訂單</a>
+			<a href="${contextRoot}/goToProductCart">查看訂單</a>
 		</div>
 
 	<div class="wrap">

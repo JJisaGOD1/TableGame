@@ -38,7 +38,8 @@
 							<td><c:out value="${P.value.gametype}" />
 							<td><img src="<c:url value='/Photo/${P.value.photourl}'/>"
 								style="height: 100px" name="${P.value.photourl}"
-								id="${P.value.photourl}" />
+								id="${P.value.photourl}"
+								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 							<td><c:out value="${P.value.stock}" />
 						</tr>
 

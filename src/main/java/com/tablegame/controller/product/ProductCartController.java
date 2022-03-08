@@ -57,9 +57,10 @@ public class ProductCartController {
 
 	}
 
-	@RequestMapping(value = "/addToCart")
-	public ModelAndView addToCart(ModelAndView mav, @RequestParam(name = "id") Integer id,
-			@RequestParam(value = "quantity") Integer quantity, BindingResult rs, HttpSession session, ProductCart cart) {
+	@RequestMapping(value = "/addToProductCart")
+	public ModelAndView addToProductCart(ModelAndView mav, @RequestParam(name = "id") Integer id,
+			@RequestParam(value = "quantity") Integer quantity, BindingResult rs, HttpSession session,
+			ProductCart cart) {
 		ProductCart c = (ProductCart) session.getAttribute("cart");
 		if (c == null) {
 			session.setAttribute("cart", cart);
@@ -164,19 +165,19 @@ public class ProductCartController {
 			servicePI.insert(insert);
 		}
 
-//		Date date = new Date();
-//
-//		ProductOrders orders = serviceOs.createBean("未處理", serviceM.findByName(membersession.getCusName()), date,
-//				cart.getPrice());
-//		serviceOs.insert(orders);
-//
-//		for (Entry<Integer, ProductCartItem> entry : productMap.entrySet()) {
-//			ProductCartItem item = entry.getValue();
-//			ProductOrderList orderlist = serviceOL.createbean(item.getQuantity(), item.getPrice(), orders, item.getProduct());
-//			serviceOL.insert(orderlist);
-//		}
+		Date date = new Date();
+
+		ProductOrders orders = serviceOs.createBean("未處理", membersession, date, cart.getPrice());
+		serviceOs.insert(orders);
+
+		for (Entry<Integer, ProductCartItem> entry : productMap.entrySet()) {
+			ProductCartItem item = entry.getValue();
+			ProductOrderList orderlist = serviceOL.createbean(item.getQuantity(), item.getPrice(), orders,
+					item.getProduct());
+			serviceOL.insert(orderlist);
+		}
 		session.removeAttribute("cart");
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/myorders");
 		return mav;
 	}
 

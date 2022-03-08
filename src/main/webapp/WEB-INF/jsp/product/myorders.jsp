@@ -32,8 +32,8 @@
 					<c:forEach var="P" items="${P.content}">
 						<tr>
 							<th scope="row"><c:out value="${P.orderId}" />
-							<td><c:out value="${P.member.customerId}" />
-							<td><c:out value="${P.member.customerName}" />
+							<td><c:out value="${P.member.id}" />
+							<td><c:out value="${P.member.cusName}" />
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
 							<td><a

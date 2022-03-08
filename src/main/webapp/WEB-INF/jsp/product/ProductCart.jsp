@@ -46,7 +46,8 @@
 							<td><img
 								src="<c:url value='/Photo/${C.value.product.photourl}'/>"
 								style="height: 100px" name="${C.value.product.photourl}"
-								id="${C.value.product.photourl}" />
+								id="${C.value.product.photourl}"
+								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 							<td><c:out value="${C.value.quantity}" />
 							<td><c:out value="${C.value.price}" />
 							<td><a

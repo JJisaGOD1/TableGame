@@ -28,8 +28,6 @@ public class ProductPageController {
 	@Autowired
 	private ProductOrdersService serviceOs;
 
-
-
 	@GetMapping("/about")
 	public String aboutPage() {
 		return "product/about";
@@ -80,15 +78,13 @@ public class ProductPageController {
 	@GetMapping("/myorders")
 	public ModelAndView myorderspage(ModelAndView mav, @RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
 			HttpSession session) {
-		Integer userid = (Integer) session.getAttribute("userid");
-		Page<ProductOrders> P = serviceOs.findmyorderPage(userid, pageNumber);
+		MembersBean member = (MembersBean) session.getAttribute("member");
+		Page<ProductOrders> P = serviceOs.findmyorderPage(member.getId(), pageNumber);
 		mav.addObject("P", P);
 		mav.setViewName("product/myorders");
 		return mav;
 //		return null;
 	}
-
-
 
 	@GetMapping("/viewProductsnologin")
 	public ModelAndView viewProductsnologin(ModelAndView mav,
