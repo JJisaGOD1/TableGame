@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebFilter(urlPatterns = {"/addManager", "/viewMembers/*", "/viewCustomer/*", 
-		"/admin","/admin/deleteCustomer","/products/*"})
+		"/admin","/admin/deleteCustomer","/products/*","/addNew","/lnquire ","/backController"})
 public class CheckLogin implements Filter {
 
     public CheckLogin() {
@@ -33,8 +33,10 @@ public class CheckLogin implements Filter {
     	    response.sendRedirect("/homepage/");
 	    	
 	    }
-
-		chain.doFilter(request, response);
+	    else {
+	    	chain.doFilter(request, response);
+	    }
+		
 
 	}
 
