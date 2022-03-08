@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <title>FillNewGroupDataView</title>
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
@@ -12,41 +15,42 @@
 
 </head>
 <body>
-<div align="center">
-	<h1>hi ${member.cusName}</h1>
-	<h2>您選擇的揪團日期：${date}</h2>
-	<form action="InsertNewGroup" method="post" >
-		<table>
-			<tr><td><input type="text" style='display:none' value="${date}" name="date"></td></tr>
-			<tr><td>發起人：</td><td><input type="text" readonly="readonly" value="${member.cusName}"></td></tr>
-			<tr><td>
-			<tr>
-				<td>遊戲：</td>
-				<td>
-					<select id="selectGame" name="product" onchange="changeMaxNums()">
-						<c:forEach items="${products}" var="product">
-							<option value="${product.product_id}">${product.product_name}</option>
-						</c:forEach>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>目前人數(含自己)：</td>
-				<td>
-					<select id="selectPlayerNum" name="playersNumWithLauncher" >
-						<c:forEach begin="1" end="${products[0].maxplayer-1}" varStatus="loop">
-				 			<option>${loop.count}</option>
-				 		</c:forEach>
-					</select>
-				</td>
-			</tr>
 
-		</table>
-		<label >揪團簡介：</label>
-		<textarea cols="50" rows="5" id="introduction" name="introduction" ></textarea>
-		<input type="submit" value="開團!">
-	</form> 
+<div align="center">
+<h1>hi ${member.cusName}</h1> 	
+<h2>您選擇的揪團日期：${date}</h2>
+<form action="InsertNewGroup" method="post">
+	<div class="card text-left border-dark mb-3" style="width: 22rem;" >
+		
+			<ul class="list-group list-group-flush"
+				style="display: inline-block;">
+				<li class="list-group-item">發起人：${member.cusName}</li>
+				<li class="list-group-item">遊戲：
+					<select id="selectGame"name="product" onchange="changeMaxNums()">
+							<c:forEach items="${products}" var="product">
+								<option value="${product.product_id}">${product.product_name}</option>
+							</c:forEach>
+					</select>
+				</li>
+	
+				<li class="list-group-item">目前人數(含自己): 
+					<select id="selectPlayerNum" name="playersNumWithLauncher">
+							<c:forEach begin="1" end="${products[0].maxplayer-1}" varStatus="loop">
+								<option>${loop.count}</option>
+							</c:forEach>
+					</select>
+				</li>
+				<li class="list-group-item">揪團簡介：
+				<textarea cols="40" rows="5" id="introduction" name="introduction" ></textarea>
+				</li>
+			</ul>
+			
+		
+	</div>
+	<input class="btn btn-primary" type="submit" value="開團!" >
+</form>
 </div>
+
 <script>
 	function changeMaxNums() {
 		$.ajax({
@@ -76,6 +80,42 @@
 </body>
 
 </html>
+
+<!-- <div align="center" > -->
+<%-- 	<h1>hi ${member.cusName}</h1> --%>
+<%-- 	<h2>您選擇的揪團日期：${date}</h2> --%>
+<!-- 	<form action="InsertNewGroup" method="post" > -->
+<!-- 		<table> -->
+<%-- 			<tr><td><input type="text" style='display:none' value="${date}" name="date"></td></tr> --%>
+<%-- 			<tr><td>發起人：</td><td><input type="text" readonly="readonly" value="${member.cusName}"></td></tr> --%>
+<!-- 			<tr><td> -->
+<!-- 			<tr> -->
+<!-- 				<td>遊戲：</td> -->
+<!-- 				<td> -->
+<!-- 					<select id="selectGame" name="product" onchange="changeMaxNums()"> -->
+<%-- 						<c:forEach items="${products}" var="product"> --%>
+<%-- 							<option value="${product.product_id}">${product.product_name}</option> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</select> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>目前人數(含自己)：</td> -->
+<!-- 				<td> -->
+<!-- 					<select id="selectPlayerNum" name="playersNumWithLauncher" > -->
+<%-- 						<c:forEach begin="1" end="${products[0].maxplayer-1}" varStatus="loop"> --%>
+<%-- 				 			<option>${loop.count}</option> --%>
+<%-- 				 		</c:forEach> --%>
+<!-- 					</select> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+
+<!-- 		</table> -->
+<!-- 		<label >揪團簡介：</label> -->
+<!-- 		<textarea cols="50" rows="5" id="introduction" name="introduction" ></textarea> -->
+<!-- 		<input type="submit" value="開團!"> -->
+<!-- 	</form>  -->
+<!-- </div> -->
 
 <!-- 		console.log($('#selectGame').val()) -->
 <!-- 		let data1=JSON.stringify({ -->

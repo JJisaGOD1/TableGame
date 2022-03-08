@@ -10,15 +10,15 @@
 </head>
 <body>
 	<div  align="center" >
-	<h1>hi ${userBean.username},I'm ToJoin.jsp</h1>
+	<h1>hi ${member.cusName},I'm ToJoin.jsp</h1>
 	<h2>ur choosed date:${date}</h2>
 	
 		<table>
 			
 			<tr><td>團編號：</td><td>${group.groupId}</td></tr>
-			<tr><td>發起人：</td><td>${group.launcher.username}</td></tr>
-			<tr><td>遊戲：</td><td>${group.product.productName}</td></tr>
-			<tr><td>此遊戲最大人數：</td><td>${group.product.maxPlayers}</td></tr>
+			<tr><td>發起人：</td><td>${group.launcher.cusName}</td></tr>
+			<tr><td>遊戲：</td><td>${group.product.product_name}</td></tr>
+			<tr><td>此遊戲最大人數：</td><td>${group.product.maxplayer}</td></tr>
 			<tr><td>目前人數：</td><td>${playersNumNow}</td></tr>
 		</table>
 		<form action="${contextRoot }/groups/Join" method="post">

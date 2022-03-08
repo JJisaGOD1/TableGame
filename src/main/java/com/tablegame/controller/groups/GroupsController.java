@@ -70,8 +70,13 @@ public class GroupsController {
 	}
 
 	@RequestMapping("/FillNewGroupData")
-	public ModelAndView fillNewGroupData(ModelAndView mav, @RequestParam(name = "date") String date) {
+	public ModelAndView fillNewGroupData(
+			ModelAndView mav, 
+//			@RequestParam(name = "date") String date,
+			HttpSession hs
+			) {
 		List<Product> allProds = service.getAllProductBean();
+		String date = (String) hs.getAttribute("date");
 		mav.getModel().put("date", date);
 		mav.getModel().put("products", allProds);
 		mav.setViewName("groups/FillNewGroupDataView");
@@ -80,12 +85,15 @@ public class GroupsController {
 
 	@PostMapping("/InsertNewGroup")
 	public ModelAndView insertNewGroup(ModelAndView mav, RedirectAttributes attr, HttpSession hs,
-			@RequestParam(name = "date") String date, @RequestParam(name = "product") String productId,
+//			@RequestParam(name = "date") String date, 
+			@RequestParam(name = "product") String productId,
 			@RequestParam(name = "playersNumWithLauncher") String playersNumWithLauncher,
 			@RequestParam(name = "introduction") String introduction) {
 		MembersBean launcher = (MembersBean) hs.getAttribute("member");
+		String date = (String) hs.getAttribute("date");
 		service.insertNewGroup(launcher, date, productId, playersNumWithLauncher, introduction);
-
+		
+		
 //		mav.getModel().put("date", date);
 		System.out.println(date);
 		attr.addFlashAttribute("date", date);
@@ -97,7 +105,7 @@ public class GroupsController {
 	@GetMapping("/DeleteGroup/{groupId}")
 	public ModelAndView deleteGroup(ModelAndView mav, RedirectAttributes attr, HttpSession hs,
 			@PathVariable int groupId) {
-		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("member");
 		service.delectGroupById(groupId, launcher);
 		String date = (String) hs.getAttribute("date");
 		attr.addFlashAttribute("date", date);
@@ -109,7 +117,7 @@ public class GroupsController {
 
 	@GetMapping("/ToJoin/{groupId}")
 	public ModelAndView toJoin(ModelAndView mav, HttpSession hs, RedirectAttributes attr, @PathVariable int groupId) {
-		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("member");
 		GroupBean group = service.getGroupsById(groupId);
 
 		int[] theGroupNum = service.getTheGroupNum(groupId);
@@ -126,7 +134,7 @@ public class GroupsController {
 	@PostMapping("/Join")
 	public ModelAndView join(ModelAndView mav, HttpSession hs, @RequestParam int groupId,
 			@RequestParam int joinPlayersNum) {
-		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("member");
 		service.insertNewParticipant(participant, groupId, joinPlayersNum);
 		String date = (String) hs.getAttribute("date");
 
@@ -136,7 +144,7 @@ public class GroupsController {
 	
 	@GetMapping("/Quit/{groupId}")
 	public ModelAndView quit(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		MembersBean participant = (MembersBean) hs.getAttribute("userBean");
+		MembersBean participant = (MembersBean) hs.getAttribute("member");
 		service.quitTheGroup(participant,groupId);
 		String date = (String) hs.getAttribute("date");
 		mav.setViewName("redirect:/groups/TheDateState/" + date);
@@ -145,7 +153,7 @@ public class GroupsController {
 	
 	@GetMapping("/ToUpdateParticipantData/{groupId}")
 	public ModelAndView toUpdateParticipantData(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		MembersBean joiner = (MembersBean) hs.getAttribute("userBean");
+		MembersBean joiner = (MembersBean) hs.getAttribute("member");
 		
 		GroupBean group = service.getGroupsById(groupId);
 		int[] theGroupNum = service.getTheGroupNum(groupId);
@@ -158,7 +166,7 @@ public class GroupsController {
 		mav.getModel().put("group", group);
 		mav.getModel().put("participantNumNow", participantNumNow);
 		mav.getModel().put("remainingNum", remainingNum);
-		mav.setViewName("ToUpdateParticipantDataView");
+		mav.setViewName("groups/ToUpdateParticipantDataView");
 		return mav;
 	}
 	
@@ -166,7 +174,7 @@ public class GroupsController {
 	public ModelAndView updateParticipant(ModelAndView mav, HttpSession hs,
 			@PathVariable int groupId,
 			@RequestParam int updateNum) {
-		MembersBean joiner = (MembersBean) hs.getAttribute("userBean");
+		MembersBean joiner = (MembersBean) hs.getAttribute("member");
 		String date = (String) hs.getAttribute("date");
 		
 		service.updateParticipantNum(joiner,groupId,updateNum);
@@ -177,7 +185,7 @@ public class GroupsController {
 	
 	@GetMapping("/ToUpdateGroupData/{groupId}")
 	public ModelAndView toUpdateGroupData(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
-		MembersBean launcher = (MembersBean) hs.getAttribute("userBean");
+		MembersBean launcher = (MembersBean) hs.getAttribute("member");
 		GroupBean group = service.getGroupsById(groupId);
 		List<Product> allProds = service.getAllProductBean();
 		
@@ -197,7 +205,7 @@ public class GroupsController {
 		mav.getModel().put("group", group);
 		mav.getModel().put("products", allProds);
 
-		mav.setViewName("ToUpdateGroupDataView");
+		mav.setViewName("groups/ToUpdateGroupDataView");
 		return mav;
 	}
 	

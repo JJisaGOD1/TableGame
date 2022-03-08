@@ -16,13 +16,13 @@
 </c:forEach> 
 --%>
 	<div  align="center" >
-	<h1>hi ${userBean.username},I'm ToUpdateParticipantData.jsp</h1>
+	<h1>hi ${member.cusName},I'm ToUpdateParticipantData.jsp</h1>
 	<h2>ur choosed date:${date}</h2>
 	<form action="${contextRoot }/groups/UpdateParticipant/${group.groupId}">
 		<table> 
 			<tr><td>團編號：</td><td>${group.groupId}</td></tr>
-			<tr><td>發起人：</td><td>${group.launcher.username}</td></tr>
-			<tr><td>遊戲：<td>${group.product.productName}</td></tr>
+			<tr><td>發起人：</td><td>${group.launcher.cusName}</td></tr>
+			<tr><td>遊戲：<td>${group.product.product_name}</td></tr>
 			<tr>
 				<td>更改加入人數(含自己)：</td>
 				<td>
