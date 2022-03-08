@@ -30,7 +30,7 @@ public class CheckLogin implements Filter {
 
 	    if (request.getSession().getAttribute("member")==null) { 
 //	    	request.getRequestDispatcher("/").forward(request, response);
-    	    response.sendRedirect("/homepage/");
+    	    response.sendRedirect("/homepage/login");
 	    	
 	    }
 	    else {

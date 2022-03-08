@@ -23,6 +23,7 @@
 </head>
 <body>
 
+
 	<div class="sidebar close">
 		<div class="logo-details">
 			<i class='bx bxs-dice-5'></i> <span class="logo_name">瘋桌遊</span>
@@ -32,8 +33,12 @@
 					class="link_name">會員管理</span>
 			</a>
 				<ul class="sub-menu blank">
-					<li><a class="link_name" href="#">會員管理</a></li>
-				</ul></li>
+        <li><a class="link_name" >會員管理</a></li>
+          <li><a href="${contextRoot}/viewCustomer/1">查看會員</a></li>
+          <li><a href="${contextRoot}/viewMembers/1">查看員工</a></li>
+          <li><a href="${contextRoot}/addManager">新增員工</a></li>
+        </ul>
+      </li>
 			<li>
 				<div class="iocn-link">
 					<a href="#"> <i class='bx bx-box'></i> <span class="link_name">商品管理</span>
@@ -58,6 +63,7 @@
           <li><a href="${contextRoot}/foodList">查看餐點</a></li>
           <li><a href="${contextRoot}/addFood">新增餐點</a></li>
         </ul>
+
 			</li>
 			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
 					class="link_name">開團管理</span>
@@ -78,13 +84,13 @@
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">留言管理</a></li>
-					<li><a href="#">新增留言</a></li>
-					<li><a href="#">功能</a></li>
-					<li><a href="#">功能</a></li>
-				</ul>
+          <li><a class="link_name" >留言管理</a></li>
+          <li><a href="${contextRoot}/viewComments">留言查看</a></li>
+          <li><a href="${contextRoot}/serverService">線上客服</a></li>
+        </ul>
 			</li>
 			<!-- <li>
+
         <a href="#">
           <i class='bx bx-compass' ></i>
           <span class="link_name">Explore</span>
