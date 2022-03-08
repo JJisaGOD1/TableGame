@@ -28,12 +28,15 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
+        <a>
           <i class='bx bx-user' ></i>
           <span class="link_name">會員管理</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">會員管理</a></li>
+        <li><a class="link_name" >會員管理</a></li>
+          <li><a href="${contextRoot}/viewCustomer/1">查看會員</a></li>
+          <li><a href="${contextRoot}/viewMembers/1">查看員工</a></li>
+          <li><a href="${contextRoot}/addManager">新增員工</a></li>
         </ul>
       </li>
       <li>
@@ -94,10 +97,9 @@
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">留言管理</a></li>
-          <li><a href="#">新增留言</a></li>
-          <li><a href="#">功能</a></li>
-          <li><a href="#">功能</a></li>
+          <li><a class="link_name" >留言管理</a></li>
+          <li><a href="${contextRoot}/viewComments">留言查看</a></li>
+          <li><a href="${contextRoot}/serverService">線上客服</a></li>
         </ul>
       </li>
       <!-- <li>
