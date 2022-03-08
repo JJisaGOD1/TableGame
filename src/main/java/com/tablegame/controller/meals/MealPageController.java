@@ -69,7 +69,7 @@ public class MealPageController {
 	@GetMapping("/addFood")
 	public ModelAndView addFood(ModelAndView mav) {
 
-		mav.setViewName("messages/addFood");
+		mav.setViewName("meals/messages/addFood");
 
 		FoodList newFood = new FoodList();
 

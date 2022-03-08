@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
+
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+
 <meta charset="UTF-8">
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -143,15 +150,44 @@ h1 {
 		</a>
 
 		<nav class="navbar">
-			<a href="#home">首頁</a> <a href="#about">最新消息</a> <a href="#menu">會員招募</a>
-			<a href="#products">店鋪資訊</a> <a href="#review">商品</a> <a
-				href="#contact">點餐</a> <a href="#blogs">開團</a>
+
+			<a href="#home">首頁</a>
+			<a href="#about">最新消息</a>
+			<a href="#menu">會員招募</a>
+			<a href="#products">店鋪資訊</a>
+			<a href="#review">商品</a>
+			<a href="${contextRoot}/startOrder">點餐</a>
+			<a href="${contextRoot}/groups/ChooseDate">開團</a>
+			<a href="${contextRoot}/addBooking">訂位</a>
 		</nav>
 
-		<div class="icons">
+
+
+		<div class="icons" style="display: flex">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
-			<div class="fas fa-bars" id="menu-btn"></div>
+
+			
+			<c:if test="${member.ratingsBean.id == null }">
+			<div style="display: flex">
+				<a class="nav-link" href="${contextRoot}/addCustomer">註冊
+				</a>
+			</div>
+			<div style="display: flex">
+				<a class="nav-link" href="${contextRoot}/login">登入
+				</a>
+			</div>
+			</c:if>
+			
+			<c:if test="${member.ratingsBean.id != null }">
+			<div style="display: flex">
+				<span>${member.cusName}，您好</span>
+				<a class="nav-link" href="${contextRoot}/logout">登出
+				</a>
+			</div>
+			</c:if>
+			
+
 		</div>
 
 		<div class="search-form">
@@ -346,7 +382,7 @@ h1 {
 		<div class="links">
 			<a href="#">常見問題</a> <a href="#">全台門市</a> <a href="#">首次舉辦活動</a> <a
 				href="#">活動上架規範</a> <a href="#">活動人社群</a> <a href="#">帳號中心</a> <a
-				href="#">服務項目</a> <a href="#">聯絡我們</a> <a href="#">線上訂位</a>
+				href="#">服務項目</a> <a href="#">聯絡我們</a> <a href="addBooking">線上訂位</a>
 		</div>
 
 		<div class="credit">

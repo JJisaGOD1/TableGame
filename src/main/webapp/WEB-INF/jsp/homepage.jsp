@@ -144,11 +144,9 @@ h1 {
 
 	<header class="header">
 
-		<a href="#" class="logo"> <img
-			src="images/ugchess-logos-black-small-chess-logo-text-game-alphabet-stencil-transparent-png-922719.png"
-			alt="">
-		</a>
-
+		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt=""> </a>
+			
+			
 		<nav class="navbar">
 
 			<a href="#home">首頁</a>

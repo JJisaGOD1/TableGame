@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+  text-decoration: none;
+}
+
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 2px;
+    display: flex;
+}
+
+.menu{
+    width: 299px;
+    text-align: center;
+}
+.menu h3{
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background-color: #37523d;
+    padding: 20px;
+}
+.menu ul{
+    background-color: #e7eeea;
+}
+.menu li{
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #37523d;
+}
+.all-items{
+    padding: 20px;
+    background-color: #e7eeea;
+}
+.other-items{
+    background-color: white;
+    border: 2px solid #e7eeea;
+    /* margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px; */
+}
+
+.content{
+    margin-left: 23px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item{
+    width: 300px;
+    margin-right: 21px;
+    margin-bottom: 18px;
+}
+
+.item-name{
+    /* padding: 22px; */
+    border-left: 1px solid #e7eeea;
+    border-right: 1px solid #e7eeea;
+    display: flex;
+    justify-content: space-around;
+}
+
+.name{
+    /* width: 185px; */
+    font-size: 18px;
+    font-weight: bold;
+    color: #9eaba1;
+    /* background-color: aqua; */
+    padding: 22px;
+}
+
+.price{
+    /* width: 115px; */
+    font-size: 18px;
+    font-weight: bold;
+    color: #37523d;
+    border-left: 1px solid #e7eeea;
+    /* background-color: aqua; */
+    padding: 22px;
+}
+
+.item a{
+    display: block;
+    padding: 31px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #37523d;
+    background-color: #e7eeea;
+    text-align: center;
+}

@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>Responsiive Admin Dashboard | CodingLab</title>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet" />
-
+<%-- <link href="${contextRoot}/css/dashboard2.css" rel="stylesheet" /> --%>
 <!-- Boxicons CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -25,9 +25,11 @@
 
 
 	<div class="sidebar close">
-		<div class="logo-details">
-			<i class='bx bxs-dice-5'></i> <span class="logo_name">瘋桌遊</span>
-		</div>
+		<a href="${contextRoot}" style="text-decoration: none;">
+			<div class="logo-details">
+				<i class='bx bxs-dice-5'></i> <span class="logo_name">瘋桌遊</span>
+			</div>
+		</a>
 		<ul class="nav-links">
 			<li>
 				<div class="iocn-link">
@@ -122,11 +124,11 @@
 			<li>
 				<div class="profile-details">
 					<div class="profile-content">
-						<img src="image/profile.jpg" alt="profileImg">
+						<img src="uploaded/loginicon.jpg" alt="profileImg">
 					</div>
 					<div class="name-job">
-						<div class="profile_name">Prem Shahi</div>
-						<div class="job">Web Desginer</div>
+						<div class="profile_name"><c:out value="${member.cusName}"/></div>
+						<div class="job"><c:out value="${member.id}"/></div>
 					</div>
 					<i class='bx bx-log-out'></i>
 				</div>
@@ -139,6 +141,24 @@
 				Sidebar</span>
 		</div>
 	</section>
+	
+<!-- 	<section class="home-section"> -->
+<!--     <nav> -->
+<!--       <div class="sidebar-button"> -->
+<!--         <i class='bx bx-menu sidebarBtn'></i> -->
+<!--         <span class="dashboard">Dashboard</span> -->
+<!--       </div> -->
+<!--       <div class="search-box"> -->
+<!--         <input type="text" placeholder="Search..."> -->
+<!--         <i class='bx bx-search' ></i> -->
+<!--       </div> -->
+<!--       <div class="profile-details"> -->
+<!--         <img src="images/profile.jpg" alt=""> -->
+<%--         <span class="admin_name" ><c:out value="${member.cusName}"/></span> --%>
+<!--         <i class='bx bx-chevron-down' ></i> -->
+<!--       </div> -->
+<!--     </nav> -->
+<!--     </section> -->
 
 	<script>
   let arrow = document.querySelectorAll(".arrow");
