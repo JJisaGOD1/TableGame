@@ -76,11 +76,19 @@
 							<form:input type="hidden" path="orderDate" />
 
 							<p>
+								<form:input value="${order.orderId}" type="hidden" path="orderId" name="orderId" class="form-control"  />
+							<p>
 								桌號 :
 								<form:input value="${order.tableNum}" type="text" path="tableNum" name="food_name" class="form-control" />
 							<p>
 								人數 :
 								<form:input value="${order.peopleNum}" type="text" path="peopleNum" name="food_price" class="form-control" />
+							<p>
+								總金額 :
+								<form:input value="${order.totalprice}" type="text" path="totalprice" name="totalprice" class="form-control" />
+							<p>
+								訂餐日期 :
+								<form:input value="${order.orderDate}" type="text" path="orderDate" name="orderDate" class="form-control" />
 							<p>
 								訂單狀態 : 
 								<form:select value="${order.processState}" path="processState" class="form-select" aria-label="Default select example">
@@ -104,8 +112,6 @@
 							
 								<input type="submit" name="submit" id="btnSubmit" class="btn btn-secondary btn-sm" />
 						</form:form>
-						
-									
 						
 						
 					</div>

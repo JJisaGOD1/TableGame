@@ -17,9 +17,6 @@ import com.tablegame.model.repository.member.MembersRepository;
 
 
 
-
-
-
 @Service
 public class BookingService { 
 	@Autowired
