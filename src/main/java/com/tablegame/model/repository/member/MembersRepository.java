@@ -22,4 +22,6 @@ public interface MembersRepository extends JpaRepository<MembersBean, Integer> {
 	
 	@Query(value = "select * from member where fk_rating_id = :rating3", nativeQuery = true)
 	public Page<MembersBean> findByRatingCustomer(@Param(value = "rating3" ) Integer rating3, Pageable pgb);
+	
+	public Optional<MembersBean> findByCusName(String name);
 }
