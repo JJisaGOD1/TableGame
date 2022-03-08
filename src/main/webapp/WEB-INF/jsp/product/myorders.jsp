@@ -37,7 +37,7 @@
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
 							<td><a
-								href="${contextRoot}/coustomercheckPackage?id=${P.orderId}"><input
+								href="${contextRoot}/products/coustomercheckPackage?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a>
 						</tr>
 					</c:forEach>
@@ -54,7 +54,7 @@
 							<c:out value="${pageNumber}" />
 						</c:when>
 						<c:otherwise>
-							<a href="${contextRoot}/myorders?p=${pageNumber}"><c:out
+							<a href="${contextRoot}/products/myorders?p=${pageNumber}"><c:out
 									value="${pageNumber}" /> </a>
 						</c:otherwise>
 					</c:choose>

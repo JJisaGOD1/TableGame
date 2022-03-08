@@ -20,7 +20,7 @@
 				<div class="card">
 					<div class="card-header">請新增訊息</div>
 					<div class="card-body">
-						<form:form class="form" action="${contextRoot}/deleteMessage"
+						<form:form class="form" action="${contextRoot}/products/deleteMessage"
 							modelAttribute="workMessages" method="post">
 
 							<form:input path="id" readonly="true" class="form-control" />
@@ -29,7 +29,7 @@
 							<form:input path="text" readonly="true" class="form-control" />
 							<p>確認要刪除這筆資料嗎?</p>
 							<input type="submit" name="submit"></input>
-							<a 	 href="${contextRoot}/viewMessage?p=1"><input
+							<a 	 href="${contextRoot}/products/viewMessage?p=1"><input
 								type="button" value="No" style="left:0px"></a>
 						</form:form>
 					</div>

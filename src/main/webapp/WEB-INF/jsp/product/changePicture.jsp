@@ -18,7 +18,7 @@
 		<div class="p-2 bd-highlight">
 			<h3>請上傳新圖片</h3>
 
-			<form:form class="form" action="${contextRoot}/changePicture"
+			<form:form class="form" action="${contextRoot}/products/changePicture"
 				modelAttribute="P" method="post" enctype="multipart/form-data">
 				<table class="table">
 					<thead class="table table-light	">

@@ -16,7 +16,7 @@
 		<p />
 		<div class="row justify-content-center">
 
-			<form:form class="form" action="${contextRoot}/addProduct"
+			<form:form class="form" action="${contextRoot}/products/addProduct"
 				modelAttribute="P" method="post">
 				<table class="table">
 					<thead class="table table-light	">

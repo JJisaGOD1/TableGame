@@ -45,18 +45,19 @@
 							<td><c:out value="${P.low_age}" />
 							<td><img src="<c:url value='/Photo/${P.photourl}'/>"
 								style="height: 100px" name="${P.photourl}" id="${P.photourl}"
-								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />s
+								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 							<td><c:out value="${P.stock}" />
 							<td><c:out value="${P.sellstatus}" />
-							<td><a href="${contextRoot}/editProduct?id=${P.product_id}"><input
+							<td><a
+								href="${contextRoot}/products/editProduct?id=${P.product_id}"><input
 									type="button" value="編輯第${P.product_id}筆"></a> <a
-								href="${contextRoot}/deleteProduct?id=${P.product_id}"><input
+								href="${contextRoot}/products/deleteProduct?id=${P.product_id}"><input
 									type="button"
 									onclick="return confirm('確認刪除第${P.product_id}筆資料?')"
 									value="刪除第${P.product_id}筆"></a> <a
-								href="${contextRoot}/changePicture?id=${P.product_id}"><input
+								href="${contextRoot}/products/changePicture?id=${P.product_id}"><input
 									type="button" value="更改圖片"></a> <a
-								href="${contextRoot}/checkHistory?id=${P.product_id}"><input
+								href="${contextRoot}/products/checkHistory?id=${P.product_id}"><input
 									type="button" value="檢查庫存"></a>
 						</tr>
 					</c:forEach>
@@ -73,7 +74,7 @@
 							<c:out value="${pageNumber}" />
 						</c:when>
 						<c:otherwise>
-							<a href="${contextRoot}/viewProducts?p=${pageNumber}"><c:out
+							<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
 									value="${pageNumber}" /> </a>
 						</c:otherwise>
 					</c:choose>

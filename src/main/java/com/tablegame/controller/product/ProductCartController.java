@@ -46,7 +46,7 @@ public class ProductCartController {
 	@Autowired
 	private ProductOrderListService serviceOL;
 
-	@GetMapping("/showImformation")
+	@GetMapping("/products/showImformation")
 	public ModelAndView showImformation(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		Product p = serviceP.findById(id);
@@ -57,7 +57,7 @@ public class ProductCartController {
 
 	}
 
-	@RequestMapping(value = "/addToProductCart")
+	@RequestMapping(value = "/products/addToProductCart")
 	public ModelAndView addToProductCart(ModelAndView mav, @RequestParam(name = "id") Integer id,
 			@RequestParam(value = "quantity") Integer quantity, BindingResult rs, HttpSession session,
 			ProductCart cart) {
@@ -71,34 +71,34 @@ public class ProductCartController {
 
 		serviceC.addProduct(product, Map, quantity);
 
-		mav.setViewName("redirect:/list");
+		mav.setViewName("redirect:/products/list");
 
 		return mav;
 	}
 
-	@GetMapping(value = "/deleteCartItem")
+	@GetMapping(value = "/products/deleteCartItem")
 	public ModelAndView deleteCartItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
 			HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("cart");
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteProduct(product, Map);
-		mav.setViewName("redirect:/goToProductCart");
+		mav.setViewName("redirect:/products/goToProductCart");
 		return mav;
 	}
 
-	@GetMapping(value = "/deleteOneCartItem")
+	@GetMapping(value = "/products/deleteOneCartItem")
 	public ModelAndView deleteOneCartItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
 			HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("cart");
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteOneProduct(product, Map);
-		mav.setViewName("redirect:/goToProductCart");
+		mav.setViewName("redirect:/products/goToProductCart");
 		return mav;
 	}
 
-	@GetMapping(value = "/goToProductCart")
+	@GetMapping(value = "/products/goToProductCart")
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("cart");
 		mav.addObject("C", cart);
@@ -106,7 +106,7 @@ public class ProductCartController {
 		return mav;
 	}
 
-	@GetMapping(value = "/Pay")
+	@GetMapping(value = "/products/Pay")
 	public ModelAndView Pay(ModelAndView mav, HttpSession session) {
 		boolean flag = false;
 		Map<Integer, Product> a = new LinkedHashMap<Integer, Product>();
@@ -115,12 +115,12 @@ public class ProductCartController {
 		MembersBean membersession = (MembersBean) session.getAttribute("member");
 
 		if (cart == null) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/products/list");
 			return mav;
 		}
 
 		if (cart.getProductMap() == null) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/products/list");
 			return mav;
 		}
 
@@ -177,7 +177,7 @@ public class ProductCartController {
 			serviceOL.insert(orderlist);
 		}
 		session.removeAttribute("cart");
-		mav.setViewName("redirect:/myorders");
+		mav.setViewName("redirect:/products/myorders");
 		return mav;
 	}
 
