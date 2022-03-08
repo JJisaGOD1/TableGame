@@ -33,8 +33,8 @@
 					aria-haspopup="true" aria-expanded="false">商品</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="${contextRoot}/viewProductsnologin">我們提供的商品</a>
-						<c:if test="${username != null}">
-							<c:if test="${username.equals('admin')}">
+						<c:if test="${member != null}">
+							<c:if test="${member.ratingsBean.id<=2}">
 								<a class="dropdown-item" href="${contextRoot}/viewProducts">查看商品</a>
 								<a class="dropdown-item" href="${contextRoot}/addProduct">新增商品</a>
 								<a class="dropdown-item" href="${contextRoot}/checkOrders">訂單處理</a>

@@ -17,7 +17,7 @@
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<form action="${contextRoot}/addToCart" method="get">
+			<form action="${contextRoot}/addToProductCart" method="get">
 				<table class="table">
 					<thead class="table table-dark">
 						<tr>
@@ -55,7 +55,8 @@
 						<tr>
 							<th>圖片</th>
 							<td><img src="<c:url value='/Photo/${P.photourl}'/>"
-								style="height: 100px" name="${P.photourl}" id="${P.photourl}" />
+								style="height: 100px" name="${P.photourl}" id="${P.photourl}"
+								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 						</tr>
 
 						<tr>

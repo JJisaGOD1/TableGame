@@ -155,7 +155,7 @@ h1 {
 			<a href="#about">最新消息</a>
 			<a href="#menu">會員招募</a>
 			<a href="#products">店鋪資訊</a>
-			<a href="#review">商品</a>
+			<a href="${contextRoot}/viewProductsnologin">商品</a>
 			<a href="${contextRoot}/startOrder">點餐</a>
 			<a href="${contextRoot}/groups/ChooseDate">開團</a>
 			<a href="${contextRoot}/addBooking">訂位</a>

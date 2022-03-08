@@ -67,7 +67,7 @@
 									NT$
 									<c:out value="${P.price}" />
 								</p>
-								<a href="${contextRoot}/addToCart?id=${P.product_id}&quantity=1"
+								<a href="${contextRoot}/addToProductCart?id=${P.product_id}&quantity=1"
 									class="btn btn-primary" onclick="return confirm('是否加入購物車?')">加入一個到購物車</a>
 							</div>
 						</div>
@@ -106,7 +106,7 @@
 
 	</div>
 	<div style="display: flex; justify-content: center;">
-		<a href="${contextRoot}/goToCart"><input type="button"
+		<a href="${contextRoot}/goToProductCart"><input type="button"
 			value="查看購物車"></a>
 	</div>
 </body>

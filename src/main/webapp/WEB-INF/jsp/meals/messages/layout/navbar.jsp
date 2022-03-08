@@ -42,7 +42,7 @@
         <a class="nav-link" href="${contextRoot}/menu">菜單</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${contextRoot}/goToCart">我的訂單</a>
+        <a class="nav-link" href="${contextRoot}/goToProductCart">我的訂單</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${contextRoot}/finishedOrder">確認訂單</a>
