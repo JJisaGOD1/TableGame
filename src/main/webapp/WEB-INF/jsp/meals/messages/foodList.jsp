@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp"></jsp:include>
+<%-- <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
+<jsp:include page="layout/dashboard.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <div class="container" align="center">
 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1>
-		<table class="table">
+		<table class="table" style="background-color: white;">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">食物編號</th>
@@ -28,14 +28,15 @@
 				<th scope="col"> </th>
 			</tr>
 		</thead>
-		<tbody id="tablebody">
-					<!-- <c:forEach items="${page.content}" var="food">
+<!-- 		<tbody id="tablebody"> -->
+				<tbody>
+					 <c:forEach items="${page.content}" var="food">
 						<tr scope="row">
 							<td><c:out value="${food.foodId}" /></td>
 							<td><c:out value="${food.foodName}" /></td>
 							<td><c:out value="${food.foodPrice}" /></td>
 							<td><c:out value="${food.foodType}" /></td>
-							<td><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 150px"/></td>
+							<td><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"/></td>
 							<td><c:out value="${food.foodState}" /></td>
 							<td>
 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><input type="button" value="刪除"></a>
@@ -45,7 +46,7 @@
 							<a href="${contextRoot}/editPic?foodId=${food.foodId}"><input type="button" value="新增圖片"></a>
 						
 						</tr>
-					</c:forEach> -->
+					</c:forEach>
 				</tbody>
 		</table>
 
