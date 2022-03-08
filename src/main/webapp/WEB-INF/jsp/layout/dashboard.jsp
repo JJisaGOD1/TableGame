@@ -62,9 +62,9 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">餐點管理</a></li>
-          <li><a href="#">查看訂單</a></li>
-          <li><a href="#">查看餐點</a></li>
-          <li><a href="#">新增餐點</a></li>
+          <li><a href="${contextRoot}/orderList">查看訂單</a></li>
+          <li><a href="${contextRoot}/foodList">查看餐點</a></li>
+          <li><a href="${contextRoot}/addFood">新增餐點</a></li>
         </ul>
       </li>
       <li>

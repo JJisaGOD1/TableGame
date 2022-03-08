@@ -6,7 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <%-- <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
-<jsp:include page="layout/dashboard.jsp"></jsp:include>
+<jsp:include page="../../layout/dashboard.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
