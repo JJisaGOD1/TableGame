@@ -53,11 +53,11 @@
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-					<li><a class="link_name" href="#">餐點管理</a></li>
-					<li><a href="#">查看訂單</a></li>
-					<li><a href="#">查看餐點</a></li>
-					<li><a href="#">新增餐點</a></li>
-				</ul>
+          <li><a class="link_name" href="#">餐點管理</a></li>
+          <li><a href="${contextRoot}/orderList">查看訂單</a></li>
+          <li><a href="${contextRoot}/foodList">查看餐點</a></li>
+          <li><a href="${contextRoot}/addFood">新增餐點</a></li>
+        </ul>
 			</li>
 			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
 					class="link_name">開團管理</span>

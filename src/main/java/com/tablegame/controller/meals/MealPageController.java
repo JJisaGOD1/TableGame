@@ -212,7 +212,7 @@ public class MealPageController {
 	@GetMapping("/orderList")
 	public ModelAndView viewOrderListPage(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
-		mav.setViewName("messages/orderList");
+		mav.setViewName("meals/messages/orderList");
 		Page<MealOrders> orderPage = ordersService.findByPage(pageNumber);
 //				List<FoodList> text = page.getContent();
 		mav.getModel().put("orderPage", orderPage);
@@ -226,7 +226,7 @@ public class MealPageController {
 
 		mav.getModel().put("order", order);
 
-		mav.setViewName("messages/editOrder");
+		mav.setViewName("meals/messages/editOrder");
 
 		return mav;
 	}
