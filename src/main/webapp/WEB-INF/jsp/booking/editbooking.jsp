@@ -39,9 +39,9 @@
 			<form action="${contextRoot}/editbooking"
 				modelAttribute="editbooking" method="post">
 
-				<tr style="display: none">
-					<td>ID :<input type="text" name="order_id"
-						value="${booking.orderId}">
+				<tr>
+					<td>ID :<input type="text" name="orderId"
+						value="${booking.orderId}"  readonly="readonly">
 				<tr>
 					<td>人數 :<select name="several">
 							<option>${booking.several}</option>
@@ -85,6 +85,7 @@
 					<td>會員：<input type="text" name="user"
 						value="${booking.user.id}" readonly="readonly"/></td>
 				</tr>
+				<input type="text" hidden="true" name="added" value="${booking.added}">
 		</table>
 		<input type="submit" name="submit" />
 		</form>
