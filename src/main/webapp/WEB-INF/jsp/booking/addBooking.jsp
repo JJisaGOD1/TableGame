@@ -12,20 +12,30 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
 
 }
 
+.button{
+border-radius: 12px;
+background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button:hover {background-color: #e7e7e7;}
 
 </style>
 </head>
 <body>
 <div class="container">
 
+
+
 </p>
 <div class="row justify-content-center">
-<a href="addNew"><input type="button" name="booking" value="訂位" style="width:300px;height:150px"/></a>
+<a href="addNew"><input type="button" class="button" name="booking" value="訂位" style="width:300px;height:150px"/></a>
 
 </div>
 </p>
 <div class="row justify-content-center">
-<a href="lnquire"><input type="button" name="inquire" value="查詢訂位" style="width:300px;height:150px"/></a>
+<a href="lnquire"><input type="button" class="button" name="inquire" value="查詢訂位" style="width:300px;height:150px"/></a>
 </div>
 </div>
 </body>

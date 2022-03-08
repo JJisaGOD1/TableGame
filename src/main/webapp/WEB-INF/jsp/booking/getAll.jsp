@@ -11,18 +11,30 @@
 <head>
 <meta charset="UTF-8">
 <title>員工資料</title>
+
 </head>
 <body>
+
+<script language="javascript"> 
+    function delcfm() { 
+        if (!confirm("確認要删除？")) { 
+            window.event.returnValue = false; 
+            alert("已經取消了刪除操作");
+        } else
+        	alert("已經刪除");
+    } 
+</script>
 <div align="center">
 <h2>管理者</h2>
 <table border="1"  class="table table-striped">
 <tr style="background-color:a8fefa">
-<th>人數<th>訂位日期<th>桌號<th>備註<th>電話<th>會員<th>工具
+<th>人數<th>訂位日期<th>時段<th>桌號<th>備註<th>電話<th>會員<th>工具
 <c:forEach items="${page.content}" var="bookings">
 
    <tr>
    <td>${bookings.several} 
    <td><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
+   <td>${bookings.period}
    <td>${bookings.number} 
    <td>${bookings.remark} 
    <td>${bookings.user.phone} 
@@ -30,7 +42,7 @@
 
   <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}"> 編輯</a>	|  
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a>
+			<a onclick="delcfm()" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a>
    </c:forEach>
 </table>
 
