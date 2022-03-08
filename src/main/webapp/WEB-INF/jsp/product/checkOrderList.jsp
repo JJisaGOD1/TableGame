@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/dashboard.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -54,6 +54,8 @@
 				</tbody>
 			</table>
 			<h3>總計${orders.totalprice}元</h3>
+			<a
+				href="${contextRoot}/products/checkOrders"><input type="button" value="回到訂單處理"> </a> 
 		</div>
 	</div>
 </body>

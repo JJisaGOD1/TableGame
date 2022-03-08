@@ -34,24 +34,19 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="${contextRoot}/viewProductsnologin">我們提供的商品</a>
 						<c:if test="${member != null}">
-							<c:if test="${member.ratingsBean.id<=2}">
-								<a class="dropdown-item" href="${contextRoot}/products/viewProducts">查看商品</a>
-								<a class="dropdown-item" href="${contextRoot}/products/addProduct">新增商品</a>
-								<a class="dropdown-item" href="${contextRoot}/products/checkOrders">訂單處理</a>
-							</c:if>
 							<a class="dropdown-item" href="${contextRoot}/products/list">購物區</a>
 							<a class="dropdown-item" href="${contextRoot}/products/myorders">我的訂單</a>
 						</c:if>
 					</div></li>
 			</ul>
-			<c:if test="${username != null}">
+			<c:if test="${member != null}">
 				<form class="form-inline my-2 my-lg-0"
 					action="${contextRoot}/products/searchProduct">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search" name="search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
-				<a class="nav-link" href="${contextRoot}/products/logout">登出 </a>
+				<a class="nav-link" href="${contextRoot}/logout">登出 </a>
 			</c:if>
 
 		</div>
