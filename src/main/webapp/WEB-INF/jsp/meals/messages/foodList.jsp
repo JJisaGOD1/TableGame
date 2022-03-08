@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color: #E3E6E6">
 <div class="container" align="center">
 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1>
 		<table class="table" style="background-color: white;">
@@ -36,7 +36,7 @@
 							<td><c:out value="${food.foodName}" /></td>
 							<td><c:out value="${food.foodPrice}" /></td>
 							<td><c:out value="${food.foodType}" /></td>
-							<td><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"/></td>
+							<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"   onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
 							<td><c:out value="${food.foodState}" /></td>
 							<td>
 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><input type="button" value="刪除"></a>

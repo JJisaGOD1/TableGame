@@ -108,7 +108,7 @@ public class MealPageController {
 
 		mav.getModel().put("food", food);
 
-		mav.setViewName("messages/editFood");
+		mav.setViewName("meals/messages/editFood");
 
 		return mav;
 	}
@@ -155,7 +155,7 @@ public class MealPageController {
 	// 因為uploadPage.jsp 在WEB-INF下，不能直接從瀏覽器訪問，所以要在這裡加一個uploadPage跳轉，這樣就可以通過
 	@RequestMapping("/uploadPage")
 	public String uploadPage() {
-		return "messages/uploadPage"; // 過度跳轉頁
+		return "meals/messages/uploadPage"; // 過度跳轉頁
 	}
 	
 	
@@ -165,7 +165,7 @@ public class MealPageController {
 
 		mav.getModel().put("food", food);
 
-		mav.setViewName("messages/editPic");
+		mav.setViewName("meals/messages/editPic");
 
 		return mav;
 	}
