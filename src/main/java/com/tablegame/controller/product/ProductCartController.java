@@ -23,7 +23,6 @@ import com.tablegame.model.bean.product.ProductOrders;
 import com.tablegame.model.bean.product.Product;
 import com.tablegame.model.bean.product.ProductImformation;
 import com.tablegame.service.product.ProductCartService;
-import com.tablegame.service.product.ProductMemberService;
 import com.tablegame.service.product.ProductOrderListService;
 import com.tablegame.service.product.ProductOrdersService;
 import com.tablegame.service.product.PIService;
@@ -40,9 +39,6 @@ public class ProductCartController {
 
 	@Autowired
 	private PIService servicePI;
-
-	@Autowired
-	private ProductMemberService serviceM;
 
 	@Autowired
 	private ProductOrdersService serviceOs;
@@ -168,17 +164,17 @@ public class ProductCartController {
 			servicePI.insert(insert);
 		}
 
-		Date date = new Date();
-
-		ProductOrders orders = serviceOs.createBean("未處理", serviceM.findByName(membersession.getCusName()), date,
-				cart.getPrice());
-		serviceOs.insert(orders);
-
-		for (Entry<Integer, ProductCartItem> entry : productMap.entrySet()) {
-			ProductCartItem item = entry.getValue();
-			ProductOrderList orderlist = serviceOL.createbean(item.getQuantity(), item.getPrice(), orders, item.getProduct());
-			serviceOL.insert(orderlist);
-		}
+//		Date date = new Date();
+//
+//		ProductOrders orders = serviceOs.createBean("未處理", serviceM.findByName(membersession.getCusName()), date,
+//				cart.getPrice());
+//		serviceOs.insert(orders);
+//
+//		for (Entry<Integer, ProductCartItem> entry : productMap.entrySet()) {
+//			ProductCartItem item = entry.getValue();
+//			ProductOrderList orderlist = serviceOL.createbean(item.getQuantity(), item.getPrice(), orders, item.getProduct());
+//			serviceOL.insert(orderlist);
+//		}
 		session.removeAttribute("cart");
 		mav.setViewName("redirect:/");
 		return mav;
