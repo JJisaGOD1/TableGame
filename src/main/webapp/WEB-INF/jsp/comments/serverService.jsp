@@ -14,19 +14,19 @@
 </head>
 <body>
 <h1>Server服務</h1>
-    <div class="container" style="margin-top: 50px">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="container" style="margin-left: 25vw; width:70vw;">
+        <div class="row" style="width: 50vw;">
+            <div class="col-md-8">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <input type="text" id="message" class="form-control" placeholder="Enter your message here...">
+                        <label for="message">Message 輸入</label>
+                        <input type="text" id="message" class="form-control" placeholder="Enter message here...">
                     </div>
-                    <button id="send" class="btn btn-default" type="button">Send</button>
+                    <button id="send" class="btn btn-primary" type="button">Send</button>
                 </form>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px">
+        <!-- <div class="row" style="margin-top: 10px">
             <div class="col-md-12">
                 <form class="form-inline">
                     <div class="form-group">
@@ -36,13 +36,13 @@
                     <button id="send-private" class="btn btn-default" type="button">Send Private Message</button>
                 </form>
             </div>
-        </div>
+        </div> -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <table id="message-history" class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Messages</th>
+                        <th>訊息欄位</th>
                     </tr>
                     </thead>
                     <tbody id="messages">
@@ -61,11 +61,14 @@ var stompClient = null;
 var notificationCount = 0;
 var contextRoot = "${contextRoot}"
 console.log(contextRoot)
+
 $(document).ready(function() {
     console.log("Index page is ready");
     connect();
 
     $("#send").click(function() {   //傳送訊息
+        message=$("#message").val();
+        console.log(message);
         sendMessage();
     });
 

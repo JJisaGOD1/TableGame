@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tablegame.model.bean.comment.CategorysBean;
 import com.tablegame.model.bean.comment.CommentsBean;
 import com.tablegame.model.bean.comment.ConditionsBean;
+import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.service.comment.CommentsService;
 
 @Controller
@@ -25,6 +26,7 @@ public class CommentPageController {
 	@Autowired
 	private CommentsService service;
 	
+	//後台看所有留言
 	@GetMapping(value = "/viewComments")
 	public ModelAndView viewMessagePage(ModelAndView mav, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
@@ -32,11 +34,9 @@ public class CommentPageController {
 		 mav.setViewName("comments/viewComments");
 		 mav.getModel().put("pages", page);
 		 return mav;
-//		 List<CommentsBean> res = page.getContent();
-//		 String name = res.get(0).getMembersBean().getCusName();
-//		 System.out.println(name);
 	}
 	
+	//前台新增留言
 	@GetMapping(value = "/addComment")
 	public ModelAndView addComment(ModelAndView mav) {
 		mav.setViewName("comments/addComment");
@@ -46,6 +46,7 @@ public class CommentPageController {
 		return mav;
 	}
 	
+	//後台編輯回覆
 	@GetMapping(value = "/editComment")
 	public ModelAndView editComment(ModelAndView mav, 
 				@RequestParam(name = "id") Integer id) {
@@ -56,6 +57,7 @@ public class CommentPageController {
 		return mav;
 	}
 	
+	//前台客戶訊息編輯
 	@GetMapping(value = "/editComment/{id}")
 	public ModelAndView editNameComment(ModelAndView mav, 
 				@PathVariable(name = "id") Integer id) {
@@ -65,12 +67,15 @@ public class CommentPageController {
 		mav.setViewName("comments/editNameComment");
 		return mav;
 	}
+	
+	//前台客戶瀏覽自身留言
 	@GetMapping(value = "/nameComments/{pageNumber}")
 	public ModelAndView nameComments(ModelAndView mav, 
 			@PathVariable Integer pageNumber, 
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String name = (String)session.getAttribute("name");
+		MembersBean member = (MembersBean)session.getAttribute("member");
+		String name = member.getCusName();
 		Integer memberId = service.findMemberIdByName(name);
 		Page<CommentsBean> pageComments = service.findByMembersId(memberId, pageNumber);
 		
@@ -80,11 +85,13 @@ public class CommentPageController {
 		return mav;
 	}
 	
+	//線上客服-Customer
 	@GetMapping(value = "/customerService")
 	public String customerService() {
 		return "comments/customerService";
 	}
 	
+	//線上客服-Server
 	@GetMapping(value = "/serverService")
 	public String serverService () {
 		return "comments/serverService";
