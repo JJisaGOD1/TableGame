@@ -37,6 +37,8 @@ public class Booking implements Serializable {
 	@Column(name = "several")
 	private Integer several;
 
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "reservation_date")
 	private Date reservation_date;
 
@@ -149,6 +151,7 @@ public class Booking implements Serializable {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("booking [id=");
+		builder.append(orderId);
 		builder.append(", name=");
 		builder.append(", several=");
 		builder.append(several);

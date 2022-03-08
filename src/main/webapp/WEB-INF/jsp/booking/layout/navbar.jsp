@@ -27,10 +27,6 @@
         <a class="nav-link" href="${contextRoot}/addBooking">訂位</a>
       </li>
       
-        <li class="nav-item">
-        <a class="nav-link" href="${contextRoot}/login">登入</a>
-      </li>
-      
        <li class="nav-item">
         <a class="nav-link" href="${contextRoot}/getAll">管理者</a>
       </li>

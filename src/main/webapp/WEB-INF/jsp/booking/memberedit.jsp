@@ -34,7 +34,7 @@
 <form action="${contextRoot}/lnquires" modelAttribute="lnquires" method="post">
 
 <tr style="display:none">
-					<td>ID :<input type="text" name="id" value="${booking.orderId}" >
+					<td>ID :<input type="text" name="orderId" value="${booking.orderId}" >
 
 <tr>
 					<td>人數 :<select name="several" >
