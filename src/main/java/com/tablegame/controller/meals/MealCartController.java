@@ -162,16 +162,5 @@ public class MealCartController {
 	
 	
 	
-//	@GetMapping(value = "/deleteOneCartItem")
-//	public ModelAndView deleteOneCartItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
-//			HttpSession session) {
-//		Cart cart = (Cart) session.getAttribute("cart");
-//		Map<Integer, CartItem> Map = cart.getProductMap();
-//		Product product = serviceP.findById(id);
-//		serviceC.deleteOneProduct(product, Map);
-//		mav.setViewName("redirect:/goToCart");
-//		return mav;
-//	}
-//	
 
 }

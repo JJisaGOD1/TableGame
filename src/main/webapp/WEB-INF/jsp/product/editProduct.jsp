@@ -18,7 +18,7 @@
 		<div class="row justify-content-center">
 			<h3>請修改資料</h3>
 
-			<form:form class="form" action="${contextRoot}/editProduct"
+			<form:form class="form" action="${contextRoot}/products/editProduct"
 				modelAttribute="P" method="post">
 				<table class="table">
 					<thead class="table table-light	">

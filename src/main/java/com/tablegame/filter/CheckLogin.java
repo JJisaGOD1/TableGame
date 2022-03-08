@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebFilter(urlPatterns = {"/addManager", "/viewMembers/*", "/viewCustomer/*", 
-		"/admin","/admin/deleteCustomer","/products"})
+		"/admin","/admin/deleteCustomer","/products/*"})
 public class CheckLogin implements Filter {
 
     public CheckLogin() {

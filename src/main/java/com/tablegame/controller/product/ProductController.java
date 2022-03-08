@@ -36,7 +36,7 @@ public class ProductController {
 	@Autowired
 	private PIService servicePI;
 
-	@PostMapping(value = "/addProduct")
+	@PostMapping(value = "/products/addProduct")
 	public ModelAndView postNewMessage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product product,
 			BindingResult rs) {
 
@@ -62,12 +62,12 @@ public class ProductController {
 			servicePI.insert(PI);
 		}
 
-		mav.setViewName("redirect:/viewProducts");
+		mav.setViewName("redirect:/products/viewProducts");
 
 		return mav;
 	}
 
-	@GetMapping("/editProduct")
+	@GetMapping("/products/editProduct")
 	public ModelAndView editMessagePage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		Product msg = serviceP.findById(id);
@@ -85,7 +85,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@PostMapping("/editProduct")
+	@PostMapping("/products/editProduct")
 	public ModelAndView editMessagePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product msg,
 			BindingResult result) {
 
@@ -138,23 +138,23 @@ public class ProductController {
 				msg.setProblem_count(0);
 				serviceP.insert(msg);
 			}
-			mav.setViewName("redirect:/viewProducts");
+			mav.setViewName("redirect:/products/viewProducts");
 		}
 
 		return mav;
 	}
 
-	@GetMapping("/deleteProduct")
+	@GetMapping("/products/deleteProduct")
 	public ModelAndView deleteMessagePage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		serviceP.delete(id);
 
-		mav.setViewName("redirect:/viewProducts");
+		mav.setViewName("redirect:/products/viewProducts");
 
 		return mav;
 	}
 
-	@GetMapping("/changePicture")
+	@GetMapping("/products/changePicture")
 	public ModelAndView changePicturePage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		Product msg = serviceP.findById(id);
@@ -168,7 +168,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@PostMapping("/changePicture")
+	@PostMapping("/products/changePicture")
 	public ModelAndView changePicturePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product product,
 			BindingResult result) {
 
@@ -218,12 +218,12 @@ public class ProductController {
 
 			product.setPhotourl(a);
 			serviceP.insert(product);
-			mav.setViewName("redirect:/viewProducts");
+			mav.setViewName("redirect:/products/viewProducts");
 		}
 		return mav;
 	}
 
-	@GetMapping("/checkHistory")
+	@GetMapping("/products/checkHistory")
 	public ModelAndView checkHistoryPage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		List<ProductImformation> listPI = servicePI.findById(id);

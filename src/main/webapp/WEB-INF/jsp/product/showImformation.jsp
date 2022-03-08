@@ -17,7 +17,7 @@
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<form action="${contextRoot}/addToProductCart" method="get">
+			<form action="${contextRoot}/products/addToProductCart" method="get">
 				<table class="table">
 					<thead class="table table-dark">
 						<tr>

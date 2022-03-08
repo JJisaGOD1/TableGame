@@ -32,13 +32,14 @@
 					<c:forEach var="P" items="${P.content}">
 						<tr>
 							<th scope="row"><c:out value="${P.orderId}" />
-							<td><c:out value="${P.member.customerId}" />
-							<td><c:out value="${P.member.customerName}" />
+							<td><c:out value="${P.member.id}" />
+							<td><c:out value="${P.member.cusName}" />
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
-							<td><a href="${contextRoot}/checkPackage?id=${P.orderId}"><input
+							<td><a
+								href="${contextRoot}/products/checkPackage?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a> <a
-								href="${contextRoot}/sendPackage?id=${P.orderId}"><input
+								href="${contextRoot}/products/sendPackage?id=${P.orderId}"><input
 									type="button" onclick="return confirm('請確認商品是否已送出?')"
 									value="確認送貨"></a></td>
 						</tr>

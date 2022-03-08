@@ -28,12 +28,12 @@ public class ProductPageController {
 	@Autowired
 	private ProductOrdersService serviceOs;
 
-	@GetMapping("/about")
+	@GetMapping("/products/about")
 	public String aboutPage() {
 		return "product/about";
 	}
 
-	@GetMapping("/viewProducts")
+	@GetMapping("/products/viewProducts")
 	public ModelAndView viewMessagePage1(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		mav.setViewName("product/viewProducts");
@@ -48,7 +48,7 @@ public class ProductPageController {
 //		return null;
 	}
 
-	@GetMapping("/addProduct")
+	@GetMapping("/products/addProduct")
 	public ModelAndView addProductPage(ModelAndView mav) {
 
 		mav.setViewName("product/addProduct");
@@ -60,7 +60,7 @@ public class ProductPageController {
 		return mav;
 	}
 
-	@GetMapping("/list")
+	@GetMapping("/products/list")
 	public ModelAndView viewlistPage1(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		mav.setViewName("product/list");
@@ -75,7 +75,7 @@ public class ProductPageController {
 //		return null;
 	}
 
-	@GetMapping("/myorders")
+	@GetMapping("/products/myorders")
 	public ModelAndView myorderspage(ModelAndView mav, @RequestParam(name = "p", defaultValue = "1") Integer pageNumber,
 			HttpSession session) {
 		MembersBean member = (MembersBean) session.getAttribute("member");
@@ -112,7 +112,7 @@ public class ProductPageController {
 
 	}
 
-	@RequestMapping(value = "/searchProduct")
+	@RequestMapping(value = "/products/searchProduct")
 	public ModelAndView searchProduct(ModelAndView mav, @RequestParam(name = "search") String search,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Pageable pageable) {
 		System.out.println("搜尋商品:" + search);

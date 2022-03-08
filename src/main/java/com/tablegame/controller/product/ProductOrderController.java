@@ -12,15 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tablegame.model.bean.product.ProductOrders;
 import com.tablegame.service.product.ProductOrdersService;
 
-
-
 @Controller
 public class ProductOrderController {
 
 	@Autowired
 	private ProductOrdersService serviceOs;
 
-	@GetMapping("/checkOrders")
+	@GetMapping("/products/checkOrders")
 	public ModelAndView showAllOrders(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 
@@ -32,7 +30,7 @@ public class ProductOrderController {
 		return mav;
 	}
 
-	@GetMapping("/checkPackage")
+	@GetMapping("/products/checkPackage")
 	public ModelAndView checkPackage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 		ProductOrders orders = serviceOs.findById(id);
 
@@ -45,18 +43,18 @@ public class ProductOrderController {
 		return mav;
 	}
 
-	@GetMapping("/sendPackage")
+	@GetMapping("/products/sendPackage")
 	public ModelAndView sendPackage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 		ProductOrders orders = serviceOs.findById(id);
 
 		orders.setProcessingstatus("已送貨");
 		mav.addObject("orders", orders);
-		mav.setViewName("redirect:/checkOrders");
+		mav.setViewName("redirect:/products/checkOrders");
 		serviceOs.insert(orders);
 		return mav;
 	}
 
-	@GetMapping("/coustomercheckPackage")
+	@GetMapping("/products/coustomercheckPackage")
 	public ModelAndView coustomercheckPackage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 		ProductOrders orders = serviceOs.findById(id);
 
