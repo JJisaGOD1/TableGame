@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -50,6 +51,12 @@ public class ParticipantBean implements Serializable{
 	@Column(name = "joinedTime") //java.util.Date;
 	private Date joinedTime;
 	
+	@PrePersist // 當 Entity 狀態要變成 Persistent 前，做以下方法
+	public void onJoined() {
+		if(joinedTime==null) {
+			joinedTime=new Date();
+		}
+	}
 	
 
 	public ParticipantBeanPK getId() {

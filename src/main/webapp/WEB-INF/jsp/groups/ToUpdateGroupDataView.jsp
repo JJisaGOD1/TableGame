@@ -7,16 +7,16 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<script src="${contextRoot}/jQuery/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div align="center">
-		<h1>hi 創團團長 ${userBean.username},您想更改甚麼資訊?</h1>
+		<h1>hi 創團團長 ${member.cusName},您想更改甚麼資訊?</h1>
 		<form action="${contextRoot}/groups/UpdateGroupData/${group.groupId}" method="post">
 			<table>
 				<tr>
 					<td>發起人：</td>
-					<td>${userBean.username}</td>
+					<td>${member.cusName}</td>
 				</tr>
 				<tr>
 					<td>目前人數：</td><td><span id="playersNumNow">${playersNumNow}</span></td>
@@ -27,11 +27,11 @@
 						<select id="selectGame" name="updateProduct"  onchange="changeMaxNums()" >
 							<c:forEach items="${products}" var="product" >
 								<c:choose>
-								<c:when test="${product.productId==group.product.productId}">
-									<option id="o${product.productId}" value="${product.productId}" selected="">${product.productName}</option>
+								<c:when test="${product.product_id==group.product.product_id}">
+									<option id="o${product.product_id}" value="${product.product_id}" selected="selected">${product.product_name}</option>
 								</c:when>
 								<c:otherwise>
-									<option id="o${product.productId}" value="${product.productId}" >${product.productName}</option>
+									<option id="o${product.product_id}" value="${product.product_id}" >${product.product_name}</option>
 								</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -89,16 +89,16 @@
 				let changeGameId= $('#selectGame').val()
 				
 								
-				if(respData.maxPlayers<playersNumNow){
+				if(respData.maxplayer<playersNumNow){
 					console.log("set回:"+originGameId)
 					$("#selectGame").val(originGameId)
 					$('#warning').css('color','red')
-					$('#warning').text('人數超過所選遊戲之最大遊玩人數')
+					$('#warning').text('人數超過所選遊戲:'+respData.product_name+' 之最大遊玩人數')
 					
 				}else{
 					$('#warning').text('')
 					$('#selectPlayerNum option').remove()
-					for(let i=1;i<=respData.maxPlayers-playersNumNow+launcherPlayerNow;i++){
+					for(let i=1;i<=respData.maxplayer-playersNumNow+launcherPlayerNow;i++){
 						let op=document.createElement('option')
 						op.value=i
 						op.innerHTML=i

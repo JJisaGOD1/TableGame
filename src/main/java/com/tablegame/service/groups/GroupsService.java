@@ -83,8 +83,12 @@ public class GroupsService {
 	}
 
 	public List<GroupBean> getGroupsByDate(String date) {
-		Date gameDate = stringToDate(date);
-		return groupsDao.findByGameDate(gameDate);
+//		Date gameDate = stringToDate(date);
+		System.out.println("Ssssssssssssssssssssssssssss");
+		System.out.println("date="+date);
+//		System.out.println("gameDate="+gameDate);
+		System.out.println(groupsDao.getByGameDate2(date));
+		return groupsDao.getByGameDate2(date);
 	}
 	
 	public void delectGroupById(int groupId, MembersBean launcher) {
