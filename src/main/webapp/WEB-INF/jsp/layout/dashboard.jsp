@@ -33,7 +33,7 @@
 		<ul class="nav-links">
 			<li>
 				<div class="iocn-link">
-					<a href="#"> <i class='bx bx-box'></i> <span class="link_name">會員管理</span>
+					<a href="#"> <i class='bx bx-user'></i> <span class="link_name">會員管理</span>
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
