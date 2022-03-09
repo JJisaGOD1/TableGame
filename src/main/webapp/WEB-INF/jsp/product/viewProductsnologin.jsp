@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -38,7 +39,8 @@
 									<td><c:out value="${P.price}" />
 									<td><c:out value="${P.gametype}" />
 									<td><img src="<c:url value='/Photo/${P.photourl}'/>"
-										style="height: 100px" name="${P.photourl}" id="${P.photourl}" 	onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/>
+										style="height: 100px" name="${P.photourl}" id="${P.photourl}"
+										onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 									<td><a
 										href="${contextRoot}/showImformationnologin?id=${P.product_id}"><input
 											type="button" value="檢視相關資料"></a>

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -17,7 +18,7 @@
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<table class="table">
+			<table class="table" style="background-color: white">
 				<thead class="table table-dark">
 					<tr>
 						<th>編號</th>

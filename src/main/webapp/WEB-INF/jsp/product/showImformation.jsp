@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>View Messages Page</title>
 </head>
@@ -88,7 +89,7 @@
 					</tbody>
 				</table>
 			</form>
-			<a href="${contextRoot}/list"><input type="button" value="回購物列表"></a>
+			<a href="${contextRoot}/products/list"><input type="button" value="回購物列表"></a>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-9"></div>
