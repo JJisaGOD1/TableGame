@@ -5,19 +5,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp"></jsp:include>
+<jsp:include page="../../layout/dashboard.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color: #E3E6E6">
 
 <div class="container" align="center">
-		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">點餐列表</h1>
-		<table class="table">
-		<thead class="thead-dark">
+<br><br>
+<!-- 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">點餐列表</h1> -->
+		
+		
+		
+		
+		
+		
+		<div style="border-radius: 10px;background-color: white; overflow:hidden; width: 70vw; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+		<table class="table" style="background-color: white;">
+		<thead class="thead-dark"><h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">點餐列表</h1></thead>
+		<thead class="thead-dark" style="height: 2rem">
 			<tr>
 				<th scope="col">點餐編號</th>
 				<th scope="col">桌號</th>
@@ -27,13 +36,12 @@
 				<th scope="col">訂單狀態</th>
 				<th scope="col">付款狀態</th>
 				<th scope="col"></th>
-<!-- 				<th scope="col"> </th> -->
 			</tr>
 		</thead>
-					<c:forEach items="${orderPage.content}" var="order">
-					
+<!-- 		<tbody id="tablebody"> -->
+				<tbody>
+					 <c:forEach items="${orderPage.content}" var="order">
 						<tr scope="row">
-<%-- 						<td><fmt:formatDate value="${order.orderDate} pattern="yyyy-MM-dd HH:mm:ss" var="date"></fmt:formatDate></td> --%>
 							<td><c:out value="${order.orderId}" /></td>
 							<td><c:out value="${order.tableNum}" /></td>
 							<td><c:out value="${order.peopleNum}" /></td>
@@ -41,18 +49,19 @@
 							<td><c:out value="${order.totalprice}" /></td>
 							<td><c:out value="${order.processState}" /></td>
 							<td><c:out value="${order.paymentState}" /></td>
-							
 							<td>
-							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteOrder?orderId=${order.orderId}"><input type="button" value="刪除"></a>
+							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteOrder?orderId=${order.orderId}"><button type="button" class="btn btn-danger">刪除</button></a>
 
-							<a href="${contextRoot}/editOrder?orderId=${order.orderId}"><input type="button" value="修改"></a>
-							
-							</td>
-						
+							<a href="${contextRoot}/editOrder?orderId=${order.orderId}"><button type="button" class="btn btn-success">修改</button></a>
+													
 						</tr>
-						
 					</c:forEach>
+				</tbody>
 		</table>
+</div>
+		
+		
+		
 
 		<script>
 			function del() {
@@ -68,7 +77,7 @@
 <%-- 		<h3>共${page.size()}筆食物資料</h3> --%>
 <!-- 				size():Collection Object (ArrayList, Set, etc) — 取得集合物件相關大小 -->
 
-<a href="m10/HomePage.html"><input type="button" value="回首頁" class="myButton"></a> 
+
 			<!--新增按鈕 -->
 			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			
 <!-- ==========================================顯示頁數========================================== -->
@@ -98,6 +107,8 @@
 			</div>
 		</div>
 		
+
+		
 <nav aria-label="Page navigation" class="text-center">
 
     <ul class="pagination" id="page">
@@ -106,6 +117,7 @@
 
 </nav>
 
+<!-- ==========================================顯示頁數(以上)========================================== -->
 		
 
 

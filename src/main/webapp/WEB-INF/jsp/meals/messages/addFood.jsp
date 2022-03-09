@@ -71,7 +71,7 @@
 					<div class="card-body">
 
 						<form:form class="form" action="${contextRoot}/addFood"
-							modelAttribute="newFood" method="post" enctype="multipart/form-data">
+							modelAttribute="newFood" method="post">
 
 							<p>
 								輸入餐點名稱 :
