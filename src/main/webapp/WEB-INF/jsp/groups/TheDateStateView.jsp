@@ -17,17 +17,30 @@
 	<a href="${contextRoot}">回登入頁</a>
 	
 	<div align="center">
-		<h1>hi ${member.cusName}, I'm TheDateState.jsp</h1>
+		<h1>hi ${member.cusName}</h1>
 		<br>
-		<h2>ur choosed date:${date}</h2>
+		<h2>您選擇的遊玩日期:${date}</h2>
 		<br>
 		<c:choose>
 			<c:when test="${groups[0]==null}">
 				<h3>目前這天還沒有人揪團~~</h3>
 			</c:when>
 			<c:otherwise>
+				<div class="row row-cols-1 row-cols-md-4">
 				<c:forEach items="${groups}" var="group">
-					<div class="card text-left border-success mb-3" style="max-width: 18rem;">
+					<div class="col mb-1">
+					<c:choose>
+					<c:when test="${member.id!=group.launcher.id&& 
+  						oneJoinedGroups[group.groupId]==null&&
+  						perGroupNumMap[group.groupId]>=group.product.maxplayer}">  
+						<div  class="card text-left border-danger mb-3" style="max-width: 18rem;">
+					</c:when>
+					<c:otherwise>
+						<div  class="card text-left border-success mb-3" style="max-width: 18rem;">
+					</c:otherwise>
+					</c:choose>	 
+
+<!-- 					<div  class="card text-left border-success mb-3" style="max-width: 18rem;">							  -->
 						<div class="card-header text-center">團編號：${group.groupId}</div>
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item">發起者：${group.launcher.cusName}</li>
@@ -42,7 +55,7 @@
 									<c:when test="${member.id==group.launcher.id}">
 										<%--<a href="servlet?變數1=111&變數2=222"><input type="button" value="修改"></a> --%>
 										<span style="color:purple;">您是創團者 </span>
-										<span>您的人數：${oneJoinedNumMap[group.groupId]}</span>
+										<span style="color: blue;">您的人數：${oneJoinedNumMap[group.groupId]}</span>
 										<p>
 											<a class="btn btn-warning"
 												href="${contextRoot }/groups/ToUpdateGroupData/${group.groupId}"
@@ -86,9 +99,11 @@
 										</c:choose>
 									</c:otherwise>
 								</c:choose>
-								</div>
+							</div>
+					</div>
 					</div>
 				</c:forEach>
+				</div>
 			</c:otherwise>
 		</c:choose>
 		<%-- <a href="${contextRoot}/groups/FillNewGroupData">開新團!</a> --%>
@@ -100,25 +115,31 @@
 
 	
 
-	<script>
-		function del() {
-			var msg = "是否解散此團?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
+<script>
+	function del() {
+		var msg = "是否解散此團?";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
 		}
+	}
 
-		function quit() {
-			var msg = "是否退出此團?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
+	function quit() {
+		var msg = "是否退出此團?";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
 		}
-	</script>
+	}
+
+	function changeBodyColor(){
+		if()
+	}
+	
+	
+</script>
 </body>
 </html>
 
