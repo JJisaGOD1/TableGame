@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
