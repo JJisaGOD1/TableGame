@@ -22,6 +22,8 @@ import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "Foods")
@@ -47,6 +49,7 @@ public class FoodList implements Serializable {
 	@Column(name = "food_state")
 	private String foodState;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "foodList")
     private Set<MealList> mealList = new LinkedHashSet<MealList>();
 	

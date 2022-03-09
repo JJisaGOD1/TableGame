@@ -1,5 +1,7 @@
 package com.tablegame.service.meals;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +50,12 @@ public class MealOrdersService {
 		return dao.findAll(pgb);
 	}
 	
+	public List<MealOrders> selectFoodTypeCountbyFoodName() {
+		return dao.selectFoodTypeCountbyFoodName();
+	}
 
+	public List<Date> selectSamedate() {
+		return dao.selectSamedate();
+	}
 
 }

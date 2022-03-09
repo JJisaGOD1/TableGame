@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp"></jsp:include>
+<jsp:include page="../../layout/dashboard.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +61,7 @@
 	crossorigin="anonymous">
 
 </head>
-<body style="background-color: #fdf5e6">
+<body  style="background-color: #E3E6E6">
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
