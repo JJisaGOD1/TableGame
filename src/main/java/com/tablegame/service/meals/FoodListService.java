@@ -51,7 +51,7 @@ public class FoodListService {
 	
 	
 	public Page<FoodList> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber -1, 10, Sort.Direction.ASC,"foodId");
+		Pageable pgb = PageRequest.of(pageNumber -1, 5, Sort.Direction.ASC,"foodId");
 
 		return dao.findAll(pgb);
 	}

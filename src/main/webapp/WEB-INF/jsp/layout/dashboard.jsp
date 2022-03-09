@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>Responsiive Admin Dashboard | CodingLab</title>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet" />
-<%-- <link href="${contextRoot}/css/dashboard2.css" rel="stylesheet" /> --%>
+
 <!-- Boxicons CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -75,7 +75,7 @@
 				<ul class="sub-menu blank">
 					<li><a class="link_name" href="#">開團管理</a></li>
 				</ul></li>
-			<li><a href="#"> <i class='bx bx-book-alt'></i> <span
+			<li><a href="${contextRoot}/getAll"> <i class='bx bx-book-alt'></i> <span
 					class="link_name">訂位管理</span>
 			</a>
 				<ul class="sub-menu blank">
@@ -128,9 +128,9 @@
 					</div>
 					<div class="name-job">
 						<div class="profile_name"><c:out value="${member.cusName}"/></div>
-						<div class="job"><c:out value="${member.id}"/></div>
+						<div class="job">TBC250<c:out value="${member.id}"/></div>
 					</div>
-					<i class='bx bx-log-out'></i>
+					<a href="${contextRoot}/logout"><i class='bx bx-log-out'></i></a>
 				</div>
 			</li>
 		</ul>

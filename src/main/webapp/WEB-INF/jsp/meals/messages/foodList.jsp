@@ -14,16 +14,23 @@
 <title>Insert title here</title>
 </head>
 <body style="background-color: #E3E6E6">
-<div class="container" align="center">
-		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1>
+
+<a href="${contextRoot}/addFood"><img alt="" src="${contextRoot}/uploaded/pngwing.com.png" style="width: 4vw;position: fixed;right: 60px;bottom: 40px"></a>	
+
+<div class="container" style="">
+<!-- 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1> -->
+<br><br>
+
+<div style="border-radius: 10px;background-color: white; overflow:hidden; width: 70vw; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 		<table class="table" style="background-color: white;">
-		<thead class="thead-dark">
+		<thead class="thead-dark"><h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1></thead>
+		<thead class="thead-dark" style="height: 2rem">
 			<tr>
+				<th scope="col">圖片</th>
 				<th scope="col">食物編號</th>
 				<th scope="col">食物名稱</th>
 				<th scope="col">價格</th>
 				<th scope="col">分類</th>
-				<th scope="col">圖片</th>
 				<th scope="col">狀態 </th>
 				<th scope="col"> </th>
 			</tr>
@@ -32,23 +39,24 @@
 				<tbody>
 					 <c:forEach items="${page.content}" var="food">
 						<tr scope="row">
+							<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"   onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
 							<td><c:out value="${food.foodId}" /></td>
 							<td><c:out value="${food.foodName}" /></td>
 							<td><c:out value="${food.foodPrice}" /></td>
 							<td><c:out value="${food.foodType}" /></td>
-							<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"   onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
 							<td><c:out value="${food.foodState}" /></td>
 							<td>
-							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><input type="button" value="刪除"></a>
+							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><button type="button" class="btn btn-danger">刪除</button></a>
 
-							<a href="${contextRoot}/editFood?foodId=${food.foodId}"><input type="button" value="修改"></a>
+							<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>
 							
-							<a href="${contextRoot}/editPic?foodId=${food.foodId}"><input type="button" value="新增圖片"></a>
+							<a href="${contextRoot}/editPic?foodId=${food.foodId}"><button type="button" class="btn btn-secondary">新增圖片</button></a>
 						
 						</tr>
 					</c:forEach>
 				</tbody>
 		</table>
+</div>
 
 		<script>
 			function del() {
@@ -64,11 +72,11 @@
 <%-- 		<h3>共${page.size()}筆食物資料</h3> --%>
 		<!-- 		size():Collection Object (ArrayList, Set, etc) — 取得集合物件相關大小 -->
 
-		<a href="m10/HomePage.html"><input type="button" value="回首頁" class="myButton"></a> 
+<!-- 		<a href="m10/HomePage.html"><input type="button" value="回首頁" class="myButton"></a>  -->
 			<!-- 			新增按鈕 -->
-			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			
-			
-			<div class="row justify-content-center">
+<%-- 			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			 --%>
+			<br>
+			<div class="row justify-content-center" style="align:center">
 			<div class="col-9">
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 
