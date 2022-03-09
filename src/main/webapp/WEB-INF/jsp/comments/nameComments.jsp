@@ -11,41 +11,56 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	span{
+		font-size: larger;
+    	font-weight: 600;
+	}
+	body{
+        background-image: url("${contextRoot}/uploaded/talkBackground.jpg");
+        background-repeat: none;
+        background-size: 100%;
+    }
+	.sty1{
+		border: 2px solid;
+    	border-radius: 10px;
+	}
+</style>
 <body>
 
 <div class="container">
-<h1>Name Comments for前端</h1>
-<c:forEach items="${pageComments.content}" var="comment">
+	<br>
+<h2><span style="font-weight: 600;">${pageComments.content[0].membersBean.cusName}</span> &nbsp;&nbsp;留言查看</h2>
+		<c:forEach items="${pageComments.content}" var="comment">
 			<div class="row justify-content-center">
 				<div class="col-9">
-					<div class="card">
+					<div class="card sty1">
+						
 						<div class="card-header">
-							留言時間:
+							<span>留言時間:&nbsp;&nbsp;</span>
 							<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE"
 								value="${comment.createdTime}" /> 
 						</div>
 						<div class="card-body">
-							<div>
-								留言:<c:out value="${comment.comment}" />
-							</div>
-							<div>
-								回覆:<c:out value="${comment.response}" />
-							</div>
-							<div>
-							狀態:<c:out value="${comment.conditionsBean.conName}" />
-							</div>
-							<div>
-							會員姓名:<c:out value="${comment.membersBean.cusName}" />
-							</div>
-							<div>
-							<a href="${contextRoot}/editComment/${comment.id}">編輯</a>
-							<a href="${contextRoot}/deleteComment/${comment.id}" onclick="return confirm('是否刪除?')">刪除</a>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><span>回覆狀態&nbsp;:&nbsp;</span><c:out value="${comment.conditionsBean.conName}" /></li>
+								<li class="list-group-item"><span>留言&nbsp;:&nbsp;</span><c:out value="${comment.comment}"/></li>
+								<li class="list-group-item"><span>回覆&nbsp;:&nbsp;</span><c:out value="${comment.response}" /></li>
+								<li class="list-group-item"><span>問題類別&nbsp;:&nbsp;</span><c:out value="${comment.categorysBean.cateName}" /></li>
+								<c:if test="${comment.categorysBean.id==6}">
+									<li class="list-group-item"><span>產品名&nbsp;:&nbsp;</span><c:out value="${comment.productsBean.product_name}" /></li>
+								</c:if>	
+							</ul>
+							
+							<div style="text-align: end;">
+								<a class="btn btn-primary" href="${contextRoot}/editComment/${comment.id}">編輯</a>
+								<a class="btn btn-danger" href="${contextRoot}/deleteComment/${comment.id}" onclick="return confirm('是否刪除?')">刪除</a>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
+			<br>
 		</c:forEach>
 		<div class="row justify-content-center" style="text-align: right">
 			<div class="col-9">

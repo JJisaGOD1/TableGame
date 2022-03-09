@@ -87,8 +87,10 @@ body {
 				method : "POST",
 				dataType : "json",
 				contentType : "application/json; charset=UTF-8",
-				success : function(result) {
-					window.location.href = "/homepage/"
+				success : function(result) {setTimeout(function(){
+						window.location.href = "/homepage/"
+					},1500)
+					
 				},
 			})
 		})
