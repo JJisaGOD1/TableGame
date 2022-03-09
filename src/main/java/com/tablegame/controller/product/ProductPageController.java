@@ -1,5 +1,7 @@
 package com.tablegame.controller.product;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,10 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.ProductOrders;
+import com.tablegame.model.bean.product.Item;
 import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.product.ProductOrdersService;
 import com.tablegame.service.product.ProductService;
@@ -128,5 +132,34 @@ public class ProductPageController {
 		mav.setViewName("product/list");
 		mav.addObject("P", P);
 		return mav;
+	}
+
+	@GetMapping(value = "/products/Problem")
+	public ModelAndView Problem(ModelAndView mav) {
+		mav.setViewName("product/Problem");
+		return mav;
+	}
+
+	@RequestMapping("getChart")
+	@ResponseBody
+	public Item getChart() {
+		List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		List<String> names = new ArrayList<String>();
+		List<Product> plist = serviceP.findAllProducts();
+		for (Product p : plist) {
+			names.add(p.getProduct_name());
+		}
+
+		for (String name : names) {
+			HashMap<String, Object> vals = new HashMap<String, Object>();
+			vals.put("name", name);
+			vals.put("value", serviceP.selectproblemCountbyproductName(name));
+			list.add(vals);
+		}
+
+		Item item = new Item();
+		item.setNumber(list);
+		item.setTitle(names);
+		return item;
 	}
 }

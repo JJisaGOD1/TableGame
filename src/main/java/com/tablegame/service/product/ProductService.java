@@ -61,4 +61,7 @@ public class ProductService {
 		return new PageImpl<Product>(list.subList(start, end), pageable, list.size());
 	}
 
+	public String selectproblemCountbyproductName(String Name) {
+		return dao.selectproblemCountbyproductName(Name);
+	}
 }
