@@ -10,22 +10,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello WS</title>
-
+<style>
+    body{
+        background-image: url("${contextRoot}/uploaded/talkBackground.jpg");
+        background-repeat: none;
+        background-size: 100%;
+    }
+    .text1{
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bolder;
+    }    
+</style>
 </head>
 <body>
-<h1>Customer服務</h1>
+    <br>
     <div class="container" style="margin-left: 25vw; width:70vw;">
-        <div class="row " style="width: 50vw;" >
-            <div class="col-md-8" >
+        
+        <div class="row" style="width: 50vw; font-size: x-large; margin: 0px auto; font-weight: 500;" >
+            <div class="col-md-9" >
                 <form class="form-inline">
                     <div class="form-group">
                     	<div class="form-group">
                     	<input type="hidden" id="name" class="form-control" value="${member.cusName}">
                     	</div>
-                        <label for="message">Message 輸入</label>
+                        <label for="message">訊息輸入:&nbsp;&nbsp;</label>
                         <input type="text" id="message" class="form-control" placeholder="訊息輸入">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <button id="send" class="btn btn-secondary" type="button">送出</button>
+                    <button id="send" class="btn btn-success" type="button">送出</button>
                 </form>
             </div>
         </div>
@@ -41,11 +54,11 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-md-8" >
-                <table id="message-history" class="table table-striped">
+            <div class="col-md-9" >
+                <table id="message-history" class="table table-striped" style="background-color: white;">
                     <thead>
                     <tr>
-                        <th>訊息欄位</th>
+                        <th class="text1">對話信息</th>
                     </tr>
                     </thead>
                     <tbody id="messages">

@@ -10,17 +10,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello WS</title>
-
+<style>
+    .text1{
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bolder;
+    }
+    
+</style>
 </head>
 <body>
-<h1>Server服務</h1>
+    <br><br>
     <div class="container" style="margin-left: 25vw; width:70vw;">
-        <div class="row" style="width: 50vw;">
-            <div class="col-md-8">
+        <div class="row" style="width: 50vw; font-size: x-large; margin: 0px auto; font-weight: 500;">
+            <div class="col-md-9">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="message">Message 輸入</label>
+                        <label for="message">訊息輸入:&nbsp;&nbsp;</label>
                         <input type="text" id="message" class="form-control" placeholder="Enter message here...">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <button id="send" class="btn btn-primary" type="button">Send</button>
                 </form>
@@ -38,11 +46,11 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <table id="message-history" class="table table-striped">
                     <thead>
                     <tr>
-                        <th>訊息欄位</th>
+                        <th class="text1">訊息欄</th>
                     </tr>
                     </thead>
                     <tbody id="messages">
