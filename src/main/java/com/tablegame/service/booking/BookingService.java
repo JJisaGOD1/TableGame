@@ -69,4 +69,9 @@ public class BookingService {
 	public void delete(Integer order_id) {
 		bookingDao.deleteById(order_id);
 	}
+	
+	public List<Booking> findBytime(String date,String period) {
+		List<Booking> time=bookingDao.findBytime(date, period);
+		return time;
+	}
 }

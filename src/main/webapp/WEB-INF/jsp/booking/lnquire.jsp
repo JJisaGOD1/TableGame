@@ -12,8 +12,9 @@
 <style>
 body{
 background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH864uN6s-km_2Yee7loq_RddECwY6pgUQEKAYS7XFCpUYXNMueQsBF3vOcKk6YprLLfPILAKpHCyb6OyinkOuWP8U2UCfSigq8QbUYBisr7xWYUYYEh7OnxvUI8hdRmKxSCeEAO5ePzyfEhYARhkqmttDvw_v8QsqCBpyDu-1dE6C1h0vqSEMX6ozNPKgcg3ObfbeNPOAeWcVCkq45pd0fC4rGTqtPZP9kwpyakdUzCrqImTtlxtWfo4xn0tsFuU95eVr8gL-f4DZStvFf9MqmYuGKT9asBLKerM7lomRxacBQYid-QmjW4_LaVxGjTR8SP-GJKJE92INS3fuBXI--Lmv9E6NOEprSbqtxj_0R-1xn-soRAypzH5qqR9M7wzEEmMeJpGRO46OoWqm8QTHFrhafETptL8l8KCQHMFQOnEVlm8XVqLpOqCQr-1cFC49Fd35SYKY82jfioVxDm9mnd_IaYLQNHnuUyvDaUMe5HJ52cfYKeg2bBTgLdoaYJZZ8EO45sUTQENDOJpUuliXtuCMvAS7x6YUiuhWM-VAKgKDTpus-9x_e8_QhlAg44AhwY2OthSrwVamKcnQc8KUp9HoxDDqmZStQXFLRMEDt5jlfiwEnAofbzMOFU3qUferqBdjLZnikCbmrfqPvZMdcj5slUgKKgFmcjRu19EaDXFZDg3KHnkz2U8BohH1sCo=w1200-h800-no?authuser=0');
-
 }
+
+
 </style>
 
 
@@ -23,7 +24,7 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
 <title>訂位查詢</title>
 </head>
 <body>
- <div align="center">
+ <div id="allpage" align="center">
 <h2>訂位/更改/刪除-查詢</h2>
 
 <a href="<c:url value='addBooking' />">回前頁</a>
@@ -36,8 +37,8 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
         <div class="row">
 
 <c:forEach items="${lnquire}" var="lnquires" >
-<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
-                <div class="thumbnail" style="width: 320px; height: 340px">
+<div class="col-sm-6 col-md-4" style="width: 360px; height: 360px">
+                <div class="thumbnail" style="width: 280px; height: 280px">
 
 <div class="caption">
 <p>訂位資料</p>
@@ -49,7 +50,7 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
 <p>備註:${lnquires.remark}</p>
 <p><a href="${contextRoot}/lnquires?id=${lnquires.orderId}"><input type="button" value="修改"> </a>	|  
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${lnquires.orderId}"><input type="button" value="刪除"></a>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input type="button" value="刪除"></a>
 	
 </p>
 

@@ -35,7 +35,7 @@ public class Booking implements Serializable {
 	private Integer orderId;
 
 	@Column(name = "several")
-	private Integer several;
+	private String several;
 
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -43,7 +43,7 @@ public class Booking implements Serializable {
 	private Date reservation_date;
 
 	@Column(name = "number")
-	private Integer number;
+	private String number;
 
 	@Column(name = "remark")
 	private String remark;
@@ -104,11 +104,11 @@ public class Booking implements Serializable {
 		this.period = period;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
@@ -131,11 +131,11 @@ public class Booking implements Serializable {
 	public Booking() {
 	}
 
-	public Integer getSeveral() {
+	public String getSeveral() {
 		return several;
 	}
 
-	public void setSeveral(Integer several) {
+	public void setSeveral(String several) {
 		this.several = several;
 	}
 

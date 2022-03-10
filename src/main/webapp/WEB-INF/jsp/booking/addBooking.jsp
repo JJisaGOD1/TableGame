@@ -38,5 +38,9 @@ background-color: white;
 <a href="lnquire"><input type="button" class="button" name="inquire" value="查詢訂位" style="width:300px;height:150px"/></a>
 </div>
 </div>
+
+
+
+                  
 </body>
 </html>
