@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello WS</title>
+    <title>Server WS</title>
 <style>
     .text1{
         text-align: center;

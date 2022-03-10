@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.model.bean.comment.CategorysBean;
 import com.tablegame.model.bean.comment.CommentsBean;
+import com.tablegame.model.bean.comment.ConditionsBean;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.comment.CommentsService;
@@ -145,6 +147,16 @@ public class CommentController {
 			@PathVariable Integer conditionId, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		 Page<CommentsBean> page = service.findByConditionsId(conditionId, pageNumber);
+		 
+		 CommentsBean e =new CommentsBean();
+		 mav.getModel().put("editComment", e);
+		 
+		 List<CategorysBean> category = service.getCategoryList();
+		 mav.getModel().put("cates", category);
+		 
+		 List<ConditionsBean> condition = service.getConditionList();
+		 mav.getModel().put("conditions", condition);
+		 
 		 mav.setViewName("comments/viewComments");
 		 mav.getModel().put("pages", page);
 		 return mav;
