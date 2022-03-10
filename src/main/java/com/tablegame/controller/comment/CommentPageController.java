@@ -1,6 +1,7 @@
 package com.tablegame.controller.comment;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -95,6 +96,12 @@ public class CommentPageController {
 	@GetMapping(value = "/serverService")
 	public String serverService () {
 		return "comments/serverService";
+	}
+	//問題回復分析
+	@GetMapping(value = "/category")
+	public void findCategorysCount() {
+		LinkedHashMap<String, Integer> res = service.findByCategorysId();
+//		System.out.println(res);
 	}
 	
 	@ModelAttribute(name = "categoryMap")
