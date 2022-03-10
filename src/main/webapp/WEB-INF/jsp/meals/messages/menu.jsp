@@ -11,6 +11,8 @@
 <html>
 <head>
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <link href="${contextRoot}/js/sweetalert2.all.min.js" rel="stylesheet" />
 
@@ -35,9 +37,9 @@
 
 .finished_order_icon{
   	position: fixed; 
-  	right: 31px; 
-  	bottom: 31px;
-  	width:8%;
+  	right: 6vw; 
+  	top: 12vh;
+  	width:5vw;
   }
 
 /* body { */
@@ -53,6 +55,180 @@
 	z-index: -5;
 	width: 100vw;
 }
+
+
+$main-color: #6394F8;
+$light-text: #ABB0BE;
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/22px "Lato", Arial, sans-serif;
+  background: #6394F8;
+}
+
+.lighter-text {
+  color: #ABB0BE;
+}
+
+.main-color-text {
+  color: $main-color;
+}
+
+.cart-nav {
+  padding: 20px 0 40px 0;
+  background: #F8F8F8;
+  font-size: 16px;
+  
+  .navbar-left {
+    float: left;
+  }
+  
+  .navbar-right {
+    float: right;
+  }
+  ul {
+    
+    li {
+      display: inline;
+      padding-left: 20px;
+      a {
+        color: #777777;
+        text-decoration: none;
+        
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: 80%;
+}
+
+.badge {
+    background-color: #6394F8;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.shopping-cart {
+  margin: 20px 0;
+  float: right;
+  background: white;
+  width: 22vw;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+  
+  
+  position: fixed;
+  top: 18vh;
+  right: 6.4vw;
+  
+  
+  
+  .shopping-cart-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+    
+    .shopping-cart-total {
+      float: right;
+    }
+  }
+  
+  .shopping-cart-items {
+    
+    padding-top: 20px;
+
+      li {
+        margin-bottom: 18px;
+      }
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+    
+    .item-name-cart {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+    
+    .item-price {
+      color: $main-color;
+      margin-right: 8px;
+    }
+    
+    .item-quantity {
+      color: $light-text;
+    }
+  }
+   
+}
+
+.shopping-cart:after {
+	bottom: 100%;
+	left: 89%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: white;
+	border-width: 8px;
+	margin-left: -8px;
+}
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left;
+}
+
+.button {
+  background: $main-color;
+  color:white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 25px 0 15px 0;
+  
+  &:hover {
+    background: lighten($main-color, 3%);
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
 </style>
 </head>
 <body >
@@ -64,11 +240,13 @@
 	
 
 
-	<div style="background: cover url(uploaded/food_banner.png); background-size: cover; width: 100vw;">
-		<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" /> </a>
+<!-- 	<div style="background: cover url(uploaded/food_banner.png); background-size: cover; width: 100vw;"> -->
+<%-- 		<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon"  /> </a> --%>
+		<div style="background: cover url(uploaded/food_banner.png); background-size: cover; width: 100vw;">
+		 <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" id="cart" />
 		
-		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
-		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
+		
+		
 
 		<div class="row justify-content-center">
 			<a href="${contextRoot}/goToCart">查看訂單</a>
@@ -149,62 +327,74 @@
 
 
 		<!-- 	===================訂單明細(之後加入)===================	 -->
-		<table class="table">
-			Product #1
-			<p>11111111111111111111</p>
+		
+<!-- 		<nav class="cart-nav"> -->
+<!--   <div class="container"> -->
+<!--     <ul class="navbar-left"> -->
+<!--       <li><a href="#">Home</a></li> -->
+<!--       <li><a href="#about">About</a></li> -->
+<!--     </ul> end navbar-left -->
 
-			<c:forEach items="${cart.foodMap}" var="cart">
-				<tr scope="row">
+<!--     <ul class="navbar-right"> -->
+<!--       <li><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a></li> -->
+<!--     </ul> end navbar-right -->
+<!--   </div> end container -->
+<!-- </nav> -->
 
-					<td>
-						<div class="buttons">
 
-							<a href="${contextRoot}/deleteOneFoodItem"> <img
-								src="<c:url value="/uploaded/delete.svg"/>" style="" />
-							</a>
+<div class="container">
+  <div class="shopping-cart">
+    <div class="shopping-cart-header">
+    
+<!--       <i class="fa fa-shopping-cart cart-icon"></i> -->
+<div class="shopping-cart-total">
+	<div style="position: inherit;height: 4vh">
+		
+		<div style="">
+      		<i class='bx bxs-cart bx-tada bx-sm' ></i>
+      		<span class="badge"><c:out value="${cart.foodMap.size()} "></c:out></span>
+        </div>
+        
+        <div style="position: relative;top: -1.5vw;right: -12vw;display: flex;">
+      		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
+	  		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
+	    </div>
+	</div>
+	
+	<div style="display: flex; justify-content: flex-end;">
+<!--         <span class="lighter-text"></span> -->
+        <span class="main-color-text" style="font-size: 1.5rem;color: cornflowerblue;">Total: $<c:out value="${cart.totalPrices}"/></span>
+    
+    
+		
+      	
+		
+	</div>
+</div>
+    </div> <!--end shopping-cart-header -->
+    <hr>
 
-						</div>
-					</td>
+<div style="overflow-y: auto; height: 50vh;">
 
-					<td>
-						<div class="image">
-							<img
-								src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>"
-								style="width: 150px" />
-						</div>
-					</td>
+<c:forEach items="${cart.foodMap}" var="cart">
+    <ul class="shopping-cart-items">
+      <li class="clearfix">
+        <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 50px" alt="item1" />
+        <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span>
+        <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span>
+        <span class="lighter-text">數量:<c:out value='${cart.value.quantity}' /></span>
+      </li>
+	</ul>
+</c:forEach>
+</div>
 
-					<td>
-						<div class="description">
-							<span><c:out value="${cart.value.food.foodName}" /></span> <span>單價:NT$<c:out
-									value="${cart.value.food.foodPrice}" /></span> <span><c:out
-									value="${cart.value.food.foodType}" /></span>
-						</div>
-					</td>
-
-					<td>
-						<div class="quantity">
-							<button class="plus-btn" type="button" name="button">
-								<img src="<c:url value="/uploaded/plus.svg"/>" alt="" />
-							</button>
-							<input type="text" name="name"
-								value="<c:out value='${cart.value.quantity}' />">
-							<button class="minus-btn" type="button" name="button">
-								<img src="<c:url value="/uploaded/minus.svg"/>" alt="" />
-							</button>
-						</div>
-					</td>
-					<td>
-						<div class="">
-							小計 NT$:
-							<c:out value="${cart.value.price}" />
-						</div>
-					</td>
-				</tr>
-			</c:forEach>
-			</div>
-
-		</table>
+    <a href="${contextRoot}/goToCart" class="btn btn-primary btn-lg btn-block" style="background-color: #6394F8" >確認訂單</a>
+  </div> <!--end shopping-cart -->
+</div> <!--end container -->
+		
+		
+		
+		
 		<!-- 	===================訂單明細(之後加入)以上===================	 -->
 
 
@@ -244,6 +434,15 @@
 		function addFoodAlert() {
 			Swal.fire('Good job!', 'You clicked the button!', 'success')
 		}
+		
+		(function(){
+			 
+			  $("#cart").on("click", function() {
+			    $(".shopping-cart").fadeToggle( "fast");
+			  });
+			  
+			})();
+		
 	</script>
 
 
