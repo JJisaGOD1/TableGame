@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello WS</title>
+    <title>Customer WS</title>
 <style>
     body{
         background-image: url("${contextRoot}/uploaded/talkBackground.jpg");

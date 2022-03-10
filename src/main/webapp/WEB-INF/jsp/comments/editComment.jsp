@@ -5,15 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/dashboard.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>editComment</title>
 </head>
 <body>
-	<h1>edit Comment</h1>
-
 	<div class="container">
 		<p />
 
@@ -26,19 +25,15 @@
 
 							<form:hidden path="id" />
 
-							<form:label path="" class="card-header" style="display:block;">姓名</form:label>
+							<label for="name" class="card-header" style="display:block;">會員姓名</label>
 							<input type="text" class="form-control" name="name" value="${editComment.membersBean.cusName}" readonly />
 							<p></p>
 							
-<%-- 							<form:label path="" class="card-header" style="display:block;">zzz</form:label> --%>
-<%-- 							<form:input path="membersBean.cusName" class="form-control" /> --%>
-<!-- 							<p></p> -->
-
-							<form:label path="" class="card-header" style="display:block;">會員意見</form:label>
+							<form:label path="comment" class="card-header" style="display:block;">會員意見</form:label>
 							<form:textarea path="comment" class="form-control"  readonly="true"/>
 							<p></p>
 
-							<form:label path="" class="card-header" style="display:block;">回覆</form:label>
+							<form:label path="response" class="card-header" style="display:block;">回覆</form:label>
 							<form:textarea path="response" class="form-control" />
 							<p></p>
 
@@ -97,6 +92,7 @@
 					$("#product").remove();
 							}
 		})
+
 	</script>
 </body>
 </html>

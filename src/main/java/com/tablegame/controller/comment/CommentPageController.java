@@ -12,13 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.comment.CategorysBean;
 import com.tablegame.model.bean.comment.CommentsBean;
 import com.tablegame.model.bean.comment.ConditionsBean;
 import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.model.bean.product.Item;
 import com.tablegame.service.comment.CommentsService;
 
 @Controller
@@ -32,8 +35,18 @@ public class CommentPageController {
 	public ModelAndView viewMessagePage(ModelAndView mav, 
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		 Page<CommentsBean> page = service.findByPage(pageNumber);
-		 mav.setViewName("comments/viewComments");
+		 
+		 CommentsBean e =new CommentsBean();
+		 mav.getModel().put("editComment", e);
+		 
+		 List<CategorysBean> category = service.getCategoryList();
+		 mav.getModel().put("cates", category);
+		 
+		 List<ConditionsBean> condition = service.getConditionList();
+		 mav.getModel().put("conditions", condition);
+		 
 		 mav.getModel().put("pages", page);
+		 mav.setViewName("comments/viewComments");
 		 return mav;
 	}
 	
@@ -58,6 +71,13 @@ public class CommentPageController {
 		return mav;
 	}
 	
+	//彈跳視窗編輯
+	@ResponseBody
+	@GetMapping(value = "/editAjax")
+	public CommentsBean editComment(@RequestParam(name = "id") Integer id) {
+		CommentsBean editComment = service.findById(id);
+		return editComment;
+	}
 	//前台客戶訊息編輯
 	@GetMapping(value = "/editComment/{id}")
 	public ModelAndView editNameComment(ModelAndView mav, 
@@ -97,11 +117,25 @@ public class CommentPageController {
 	public String serverService () {
 		return "comments/serverService";
 	}
-	//問題回復分析
-	@GetMapping(value = "/category")
-	public void findCategorysCount() {
-		LinkedHashMap<String, Integer> res = service.findByCategorysId();
-//		System.out.println(res);
+	
+	//問題回復轉頁
+	@GetMapping(value = "/categoryProblem")
+	public ModelAndView categoryProblem(ModelAndView mav) {
+		mav.setViewName("comments/categoryProblem");
+		return mav;
+	}
+	
+	//問題回復資料整理送出
+	@ResponseBody
+	@PostMapping(value = "/category")
+	public Item getCategorysChart() {
+		List<HashMap<String,Object>> categoryMap = service.findByCategoryMap();
+		
+		List<String> cateNames = service.getCategorysName();
+		Item item = new Item();
+		item.setTitle(cateNames);
+		item.setNumber(categoryMap);
+		return item;
 	}
 	
 	@ModelAttribute(name = "categoryMap")
