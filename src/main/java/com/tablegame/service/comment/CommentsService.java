@@ -1,6 +1,8 @@
 package com.tablegame.service.comment;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,5 +147,25 @@ public class CommentsService {
 		Pageable pgb = PageRequest.of(pageNumber-1, 5, Sort.Direction.DESC, "created_time");
 		Page<CommentsBean> comments = comDao.findByConditionsId(conditionId, pgb);
 		return comments;
+	}
+	
+	public LinkedHashMap <String, Integer> findByCategorysId(){
+		 Map<Integer,String> findCate = new LinkedHashMap<Integer,String>();
+		 LinkedHashMap<String, Integer> categoryMap = new LinkedHashMap<String,Integer>();
+		 List<CategorysBean> list = cateDao.findAll();
+		 int first_count = 0;
+		 for(CategorysBean cate : list ) {
+			 findCate.put(cate.getId(), cate.getCateName());
+		 }
+		 for(int i=1; i<=6; i++) {
+			 List<CommentsBean> res = comDao.findByCategorysId(i);
+			 if(res.size() != 0) {			 
+				 categoryMap.put(findCate.get(i), res.size());
+			 }
+			 else {
+				 categoryMap.put(findCate.get(i), first_count);
+			 }
+		 }
+		 return categoryMap;
 	}
 }
