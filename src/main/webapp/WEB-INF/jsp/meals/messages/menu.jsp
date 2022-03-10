@@ -70,7 +70,7 @@ $light-text: #ABB0BE;
 
 body {
   font: 14px/22px "Lato", Arial, sans-serif;
-  background: #6394F8;
+/*   background: #6394F8; */
 }
 
 .lighter-text {
@@ -139,8 +139,9 @@ body {
   
   
   position: fixed;
-  top: 18vh;
-  right: 6.4vw;
+  top: 20vh;
+  right: 6vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
   
   
@@ -248,11 +249,9 @@ body {
 		
 		
 
-		<div class="row justify-content-center">
-			<a href="${contextRoot}/goToCart">查看訂單</a>
-		</div> 
-
-	<div class="wrap">
+		
+	<div class="" >
+<!-- 	<div class="wrap"> -->
 		<!-- <div class="menu">
           <h3>甜點類別</h3>  
             <ul>
@@ -281,9 +280,9 @@ body {
 		<!-- 		</div> -->
 
 
-		<div class="content">
+		<div class="content" style="width: 73vw;">
 			<c:forEach items="${page.content}" var="food">
-				<div class="card" style="margin: 10px 5px;">
+				<div class="card" style="margin: 20px 15px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 					<img src="<c:url value="/uploaded/${food.foodImage}"/>"
 						style="width: 250px" alt="picture of food" class="card-img-top" />
 					<div class="card-body">
@@ -342,7 +341,7 @@ body {
 <!-- </nav> -->
 
 
-<div class="container">
+<!-- <div class="container"> -->
   <div class="shopping-cart">
     <div class="shopping-cart-header">
     
@@ -390,7 +389,8 @@ body {
 
     <a href="${contextRoot}/goToCart" class="btn btn-primary btn-lg btn-block" style="background-color: #6394F8" >確認訂單</a>
   </div> <!--end shopping-cart -->
-</div> <!--end container -->
+<!-- </div>  -->
+<!--end container -->
 		
 		
 		
