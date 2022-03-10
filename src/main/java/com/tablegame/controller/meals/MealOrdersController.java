@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tablegame.model.bean.meals.FoodList;
 import com.tablegame.model.bean.meals.MealOrders;
 import com.tablegame.model.bean.meals.MealOrdersRepository;
+import com.tablegame.model.bean.meals.OrderCart;
 import com.tablegame.service.meals.MealOrdersService;
 
 @Controller
@@ -45,7 +46,8 @@ public class MealOrdersController {
 //		newOrders.getOrderId();
 
 //		Integer orderId = newOrders.getOrderId();
-  
+		session.removeAttribute("cart");
+		
 		if (!rs.hasErrors()) {
 			service.insert(orders);
 			System.out.println(orders.getOrderId());
@@ -67,6 +69,7 @@ public class MealOrdersController {
 			
 			System.out.println(newOrders);
 			mav.getModel().put("newOrders", newOrders);
+			
 		}
 
 		mav.setViewName("redirect:/meals/menu");
