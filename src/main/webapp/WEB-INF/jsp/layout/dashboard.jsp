@@ -69,7 +69,7 @@
         </ul>
 
 			</li>
-			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
+			<li><a href="${contextRoot}/backstage/groups"> <i class='bx bx-grid-alt'></i> <span
 					class="link_name">開團管理</span>
 			</a>
 				<ul class="sub-menu blank">
