@@ -103,12 +103,10 @@ public class GroupsController {
 	}
 
 	@GetMapping("/DeleteGroup/{groupId}")
-	public ModelAndView deleteGroup(ModelAndView mav, RedirectAttributes attr, HttpSession hs,
+	public ModelAndView deleteGroup(ModelAndView mav, HttpSession hs,
 			@PathVariable int groupId) {
-		MembersBean launcher = (MembersBean) hs.getAttribute("member");
-		service.delectGroupById(groupId, launcher);
+		service.delectGroupById(groupId);
 		String date = (String) hs.getAttribute("date");
-		attr.addFlashAttribute("date", date);
 		mav.setViewName("redirect:/groups/TheDateState/" + date);
 		return mav;
 	}
@@ -116,7 +114,7 @@ public class GroupsController {
 
 
 	@GetMapping("/ToJoin/{groupId}")
-	public ModelAndView toJoin(ModelAndView mav, HttpSession hs, RedirectAttributes attr, @PathVariable int groupId) {
+	public ModelAndView toJoin(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
 		MembersBean participant = (MembersBean) hs.getAttribute("member");
 		GroupBean group = service.getGroupsById(groupId);
 

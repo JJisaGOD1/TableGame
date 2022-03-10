@@ -48,7 +48,7 @@ public class GroupBean implements Serializable{
 	
 //	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")//給json看
 	@DateTimeFormat(pattern = "yyyy/MM/dd") //給java看 jsp的EL
-	@Temporal(TemporalType.TIMESTAMP)//給db看
+	@Temporal(TemporalType.DATE)//給db看
 	@Column(name = "gameDate")
 	private Date gameDate; //java.util.Date;
 	
