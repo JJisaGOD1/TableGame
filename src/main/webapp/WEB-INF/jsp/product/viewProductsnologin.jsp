@@ -25,18 +25,19 @@
 </style>
 </head>
 <body>
-	<div class="wrap" style="width: 1200px;">
-		<div class="content" style="width: 1200px; padding: 5%">
+	<div class="wrap" style="width: 60vw; margin: 0 auto">
+		<div class="content" style="width: 60vw; padding: 5%">
 			<c:forEach items="${P.content}" var="P">
 				<c:choose>
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
-						<div class="card" style="width: 350px; padding: auto">
+						<div class="card" style="width: 15vw; padding: auto">
 							<div
-								style="max-width: 350px; height: 350px; display: flex; justify-content: center;">
+								style="max-width: 15vw; height: 20vw; display: flex; justify-content: center;">
 								<a
-									href="${contextRoot}/showImformationnologin?id=${P.product_id}">
+									href="${contextRoot}/products/showImformation?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
-									style="width: 250px" alt="picture of food" class="card-img-top"
+									style="width: 15vw; max-height: 18vw" alt="picture of food"
+									class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
 							</div>
@@ -57,33 +58,31 @@
 				</c:choose>
 			</c:forEach>
 
-
-			<div class="row justify-content-center"
-				style="position: relative; padding-top: 20px;">
-				<div class="col-9">
-					<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
-
-						<c:choose>
-							<c:when test="${pageNumber-1==P.number}">
-								<!--page.number:取的當前頁面的頁碼-->
-								<c:out value="${pageNumber}" />
-							</c:when>
-							<c:otherwise>
-								<a href="${contextRoot}/viewProductsnologin?p=${pageNumber}"><c:out
-										value="${pageNumber}" /> </a>
-							</c:otherwise>
-						</c:choose>
-
-						<c:if test="${pageNumber != P.totalPages}">
-							<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
-						|
-					</c:if>
-					</c:forEach>
-				</div>
-			</div>
-
 		</div>
 
+	</div>
+	<div style="position: relative; padding-top: 20px; display:"
+		align="center">
+		<div class="col-9">
+			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+
+				<c:choose>
+					<c:when test="${pageNumber-1==P.number}">
+						<!--page.number:取的當前頁面的頁碼-->
+						<c:out value="${pageNumber}" />
+					</c:when>
+					<c:otherwise>
+						<a href="${contextRoot}/viewProductsnologin?p=${pageNumber}"><c:out
+								value="${pageNumber}" /> </a>
+					</c:otherwise>
+				</c:choose>
+
+				<c:if test="${pageNumber != P.totalPages}">
+					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+						|
+					</c:if>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 <script>
