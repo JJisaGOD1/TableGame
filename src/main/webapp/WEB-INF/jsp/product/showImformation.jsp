@@ -17,9 +17,17 @@
 <body>
 	<div class="container">
 		<p />
-		<div class="row justify-content-center">
+		<div
+			style="display: inline-block; position: fixed; left: 10vw; top: 10vw;">
+			<img src="<c:url value='/Photo/${P.photourl}'/>"
+				style="max-width: 20vw;" name="${P.photourl}" id="${P.photourl}"
+				onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
+		</div>
+		<div
+			style="position: fixed; left: 40vw; width: auto; top: 10vw; display: inline-block; right: 5vw; max-height: 50vw">
+
 			<form action="${contextRoot}/products/addToProductCart" method="get">
-				<table class="table">
+				<table class="table" style="background-color: white">
 					<thead class="table table-dark">
 						<tr>
 							<th>編號</th>
@@ -53,34 +61,26 @@
 							<th>最適年齡</th>
 							<td><c:out value="${P.low_age}" />
 						</tr>
-						<tr>
-							<th>圖片</th>
-							<td><img src="<c:url value='/Photo/${P.photourl}'/>"
-								style="height: 100px" name="${P.photourl}" id="${P.photourl}"
-								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
-						</tr>
-						<tr>
-							<th>庫存</th>
-							<td><c:out value="${P.stock}" />
-						</tr>
+
+
 						<tr>
 							<th>介紹</th>
 							<td><c:out value="${P.productintroduce}" />
 						</tr>
-						<tr>
-							<th>欲購買數量</th>
-							<td><select name="quantity">
-									<option value="1">1
-									<option value="2">2
-									<option value="3">3
-									<option value="4">4
-									<option value="5">5
-									<option value="6">6
-									<option value="7">7
-									<option value="8">8
-									<option value="9">9
-									<option value="10">10
-							</select>
+
+						<th>欲購買數量</th>
+						<td><select name="quantity">
+								<option value="1">1
+								<option value="2">2
+								<option value="3">3
+								<option value="4">4
+								<option value="5">5
+								<option value="6">6
+								<option value="7">7
+								<option value="8">8
+								<option value="9">9
+								<option value="10">10
+						</select>
 						</tr>
 						<tr>
 							<th>操作</th>
@@ -89,7 +89,8 @@
 					</tbody>
 				</table>
 			</form>
-			<a href="${contextRoot}/products/list"><input type="button" value="回購物列表"></a>
+			<a href="${contextRoot}/products/list"><input type="button"
+				value="回購物列表"></a>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-9"></div>

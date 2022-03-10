@@ -23,7 +23,7 @@
 <body>
 
 	<!-- 為 ECharts 準備一個具備大小（寬高）的 DOM -->
-	<div id="main" style="width: 50vw; height: 50vw;left: 10vw"></div>
+	<div id="main" style="width: 50vw; height: 50vw; left: 10vw"></div>
 
 </body>
 <script type="text/javascript">
@@ -37,8 +37,10 @@
 			text : '商品問題回報統計',
 			x : 'center',
 			textStyle : {
-				fontSize : 24
+				fontSize : 24,
+				color : "rgba(204, 62, 62, 1)"
 			}
+
 		},
 		tooltip : {
 			trigger : 'item',
@@ -50,7 +52,7 @@
 			left : 'left',
 			data : [],
 			textStyle : {
-				fontSize : 16
+				fontSize :16
 			}
 
 		//待填充資料項1

@@ -10,6 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+th	{
+	width:50px
+}
+</style>
 <link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>View Messages Page</title>
@@ -17,9 +22,16 @@
 <body>
 	<div class="container">
 		<p />
-		<div class="row justify-content-center">
+		<div
+			style="display: inline-block; position: fixed; left: 10vw; top: 10vw;">
+			<img src="<c:url value='/Photo/${P.photourl}'/>"
+				style="max-width: 20vw;" name="${P.photourl}" id="${P.photourl}"
+				onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
+		</div>
+		<div
+			style="position: fixed; left: 40vw; width: auto; top: 10vw; display: inline-block; right: 5vw; max-height: 50vw">
 			<form action="${contextRoot}/addToProductCart" method="get">
-				<table class="table">
+				<table class="table" style="background-color: white">
 					<thead class="table table-dark">
 						<tr>
 							<th>編號</th>
@@ -53,12 +65,7 @@
 							<th>最適年齡</th>
 							<td><c:out value="${P.low_age}" />
 						</tr>
-						<tr>
-							<th>圖片</th>
-							<td><img src="<c:url value='/Photo/${P.photourl}'/>"
-								style="height: 100px" name="${P.photourl}" id="${P.photourl}"
-								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
-						</tr>
+
 
 						<tr>
 							<th>介紹</th>
