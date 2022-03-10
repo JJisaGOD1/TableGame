@@ -1,5 +1,6 @@
 package com.tablegame.service.groups;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tablegame.dto.ParticipantsDto;
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
 import com.tablegame.model.bean.group.ParticipantBeanPK;
@@ -91,7 +93,7 @@ public class GroupsService {
 		return groupsDao.getByGameDate2(date);
 	}
 	
-	public void delectGroupById(int groupId, MembersBean launcher) {
+	public void delectGroupById(int groupId) {
 		
 //		var participantId=new ParticipantBeanPK(groupId,launcher.getUserId());
 		GroupBean group = groupsDao.getById(groupId);
@@ -102,6 +104,21 @@ public class GroupsService {
 	public Map<Integer, Integer> getPlayerNumMapByDate(String date) {
 		Map<Integer, Integer> perGroupNumMap = new LinkedHashMap<Integer, Integer>();
 		List<GroupBean> groups = this.getGroupsByDate(date);
+		
+		for(GroupBean g:groups) {
+			int playerNumInTheGroup=0;
+			List<ParticipantBean> participants = g.getParticipants();
+			for(ParticipantBean p:participants) {
+				playerNumInTheGroup+=p.getParticipantNum();
+			}
+			perGroupNumMap.put(g.getGroupId(),playerNumInTheGroup);
+		}
+		return perGroupNumMap;
+	}
+	
+	public Map<Integer, Integer> getAllPlayerNumMap() {
+		Map<Integer, Integer> perGroupNumMap = new LinkedHashMap<Integer, Integer>();
+		List<GroupBean> groups = groupsDao.findAll();
 		
 		for(GroupBean g:groups) {
 			int playerNumInTheGroup=0;
@@ -193,6 +210,25 @@ public class GroupsService {
 		groupsDao.save(group);
 	}
 	
+	public List<GroupBean> getAllGroups(){
+		return groupsDao.findAll();
+	}
+	
+	public List<ParticipantBean> getParticipantByGroupId(int groupId) {
+		return participantDao.getByGroup(groupsDao.getById(groupId));
+	}
+	
+	public List<ParticipantsDto> getParticipantsDtoByGroupId(int groupId){
+		List<ParticipantBean> participants = participantDao.getByGroup(groupsDao.getById(groupId));
+		List<ParticipantsDto> participantsInfo=new ArrayList<ParticipantsDto>();
+		for(ParticipantBean p:participants) {
+			MembersBean mem=userDao.getById(p.getId().getParticipantId());
+			ParticipantsDto pdto=new ParticipantsDto(p, mem);
+		}
+		return participantsInfo;
+	}
+	
+	
 	//static
 	private static Date stringToDate(String stringDate) {
 		String[] ymd = stringDate.split("/");
@@ -206,15 +242,5 @@ public class GroupsService {
 		Date dateDate=c.getTime();
 		return dateDate;
 	}
-
-
-
-
-
-
-
-
-
-
 
 }

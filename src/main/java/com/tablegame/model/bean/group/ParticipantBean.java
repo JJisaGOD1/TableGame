@@ -20,6 +20,7 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tablegame.model.bean.member.Member;
 import com.tablegame.model.bean.member.MembersBean;
 
@@ -33,12 +34,16 @@ public class ParticipantBean implements Serializable{
 	@EmbeddedId
 	private ParticipantBeanPK id=new ParticipantBeanPK();
 	
+	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="groupId")
     @MapsId("groupId")
     private GroupBean group;
 	
+	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="participantId")
 	@MapsId("participantId")
 	private MembersBean participant;
