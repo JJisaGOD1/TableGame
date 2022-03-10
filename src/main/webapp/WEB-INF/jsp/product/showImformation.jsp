@@ -10,6 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+th	{
+	width:50px
+}
+</style>
 <link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>View Messages Page</title>
@@ -27,7 +32,7 @@
 			style="position: fixed; left: 40vw; width: auto; top: 10vw; display: inline-block; right: 5vw; max-height: 50vw">
 
 			<form action="${contextRoot}/products/addToProductCart" method="get">
-				<table class="table" style="background-color: white">
+				<table class="table" style="background-color: white ">
 					<thead class="table table-dark">
 						<tr>
 							<th>編號</th>

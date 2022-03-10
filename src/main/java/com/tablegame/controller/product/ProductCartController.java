@@ -61,11 +61,11 @@ public class ProductCartController {
 	public ModelAndView addToProductCart(ModelAndView mav, @RequestParam(name = "id") Integer id,
 			@RequestParam(value = "quantity") Integer quantity, BindingResult rs, HttpSession session,
 			ProductCart cart) {
-		ProductCart c = (ProductCart) session.getAttribute("cart");
+		ProductCart c = (ProductCart) session.getAttribute("productcart");
 		if (c == null) {
-			session.setAttribute("cart", cart);
+			session.setAttribute("productcart", cart);
 		}
-		ProductCart cxcart = (ProductCart) session.getAttribute("cart");
+		ProductCart cxcart = (ProductCart) session.getAttribute("productcart");
 		Map<Integer, ProductCartItem> Map = cxcart.getProductMap();
 		Product product = serviceP.findById(id);
 
@@ -79,7 +79,7 @@ public class ProductCartController {
 	@GetMapping(value = "/products/deleteCartItem")
 	public ModelAndView deleteCartItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
 			HttpSession session) {
-		ProductCart cart = (ProductCart) session.getAttribute("cart");
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteProduct(product, Map);
@@ -90,7 +90,7 @@ public class ProductCartController {
 	@GetMapping(value = "/products/deleteOneCartItem")
 	public ModelAndView deleteOneCartItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
 			HttpSession session) {
-		ProductCart cart = (ProductCart) session.getAttribute("cart");
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
 		Map<Integer, ProductCartItem> Map = cart.getProductMap();
 		Product product = serviceP.findById(id);
 		serviceC.deleteOneProduct(product, Map);
@@ -100,7 +100,7 @@ public class ProductCartController {
 
 	@GetMapping(value = "/products/goToProductCart")
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
-		ProductCart cart = (ProductCart) session.getAttribute("cart");
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
 		mav.addObject("C", cart);
 		mav.setViewName("product/ProductCart");
 		return mav;
@@ -111,7 +111,7 @@ public class ProductCartController {
 		boolean flag = false;
 		Map<Integer, Product> a = new LinkedHashMap<Integer, Product>();
 
-		ProductCart cart = (ProductCart) session.getAttribute("cart");
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
 		MembersBean membersession = (MembersBean) session.getAttribute("member");
 
 		if (cart == null) {
