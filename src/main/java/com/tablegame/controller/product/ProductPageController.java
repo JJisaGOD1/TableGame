@@ -94,19 +94,10 @@ public class ProductPageController {
 	public ModelAndView viewProductsnologin(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, HttpSession session) {
 		MembersBean member = (MembersBean) session.getAttribute("member");
-		if (member == null) {
-			mav.setViewName("product/viewProductsnologin");
-			Page<Product> P = serviceP.findByPage(pageNumber);
-			mav.addObject("P", P);
-		} else if (member.getRatingsBean().getId() <= 2) {
-			mav.setViewName("product/viewProducts");
-			Page<Product> P = serviceP.findByPage(pageNumber);
-			mav.addObject("P", P);
-		} else {
-			mav.setViewName("product/viewProductsnologin");
-			Page<Product> P = serviceP.findByPage(pageNumber);
-			mav.addObject("P", P);
-		}
+
+		mav.setViewName("product/viewProductsnologin");
+		Page<Product> P = serviceP.findByPage(pageNumber);
+		mav.addObject("P", P);
 
 		return mav;
 

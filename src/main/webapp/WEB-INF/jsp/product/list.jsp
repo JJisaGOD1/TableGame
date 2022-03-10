@@ -53,7 +53,8 @@
 						<div class="card" style="width: 350px; padding: auto">
 							<div
 								style="max-width: 350px; height: 350px; display: flex; justify-content: center;">
-								<a href="${contextRoot}/products/showImformation?id=${P.product_id}">
+								<a
+									href="${contextRoot}/products/showImformation?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
 									style="width: 250px" alt="picture of food" class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
@@ -67,47 +68,41 @@
 									NT$
 									<c:out value="${P.price}" />
 								</p>
-								<a href="${contextRoot}/products/addToProductCart?id=${P.product_id}&quantity=1"
+								<a
+									href="${contextRoot}/products/addToProductCart?id=${P.product_id}&quantity=1"
 									class="btn btn-primary" onclick="return confirm('是否加入購物車?')">加入一個到購物車</a>
 							</div>
 						</div>
 					</c:when>
 				</c:choose>
 			</c:forEach>
-		</div>
+			<div style="display: flex; justify-content: center;">
+				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+
+					<c:choose>
+						<c:when test="${pageNumber-1==P.number}">
+							<!--page.number:取的當前頁面的頁碼-->
+							<c:out value="${pageNumber}" />
+						</c:when>
+						<c:otherwise>
+							<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
+									value="${pageNumber}" /> </a>
+						</c:otherwise>
+					</c:choose>
 
 
-	</div>
-	<div>
-
-
-		<div style="display: flex; justify-content: center;">
-			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
-
-				<c:choose>
-					<c:when test="${pageNumber-1==P.number}">
-						<!--page.number:取的當前頁面的頁碼-->
-						<c:out value="${pageNumber}" />
-					</c:when>
-					<c:otherwise>
-						<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
-								value="${pageNumber}" /> </a>
-					</c:otherwise>
-				</c:choose>
-
-
-				<c:if test="${pageNumber != P.totalPages}">
-					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+					<c:if test="${pageNumber != P.totalPages}">
+						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
-
-
 	</div>
+	<div></div>
 	<div style="display: flex; justify-content: center;">
-		<a href="${contextRoot}/products/goToProductCart"><input type="button"
-			value="查看購物車"></a>
+		<a href="${contextRoot}/products/goToProductCart"><input
+			type="button" value="查看購物車"></a>
 	</div>
 </body>
 <script>
