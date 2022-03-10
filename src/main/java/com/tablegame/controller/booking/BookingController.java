@@ -3,6 +3,7 @@ package com.tablegame.controller.booking;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.dto.BookingDto;
+import com.tablegame.dto.ProductIdDto;
 import com.tablegame.model.bean.booking.Booking;
 import com.tablegame.model.bean.member.MembersBean;
+import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.booking.BookingService;
+import com.tablegame.service.booking.EmailService;
 
 
 
@@ -28,7 +35,8 @@ import com.tablegame.service.booking.BookingService;
 public class BookingController {
 	@Autowired
 	private BookingService service;
-	
+	@Autowired
+	private EmailService serviceE;
 
 	
 	@GetMapping("/addBooking")
@@ -49,9 +57,17 @@ public class BookingController {
 	//新增
 	 @PostMapping("/users")
 	    public ModelAndView add(ModelAndView mav,@Valid 
-	    		@ModelAttribute(name = "booking") Booking msg) {
-	       
+	    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session) throws MessagingException {
+
 			 service.insert(msg);
+			 //寄送文字訊息
+//			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
+			 
+			 //寄送圖片訊息
+//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
+			 
+			 //直接輸入email
+//			 serviceE.sendEmailText("chrayray@gmail.com");
 			 mav.getModel().put("booking", msg);
 			 mav.setViewName("booking/success2");
 			
@@ -154,5 +170,27 @@ public class BookingController {
 			return mav;
 		}
 	 
+	 @GetMapping("deletbookings")
+	    public ModelAndView deletbookings(ModelAndView mav,@RequestParam("id") Integer id) {
+			
+			service.delete(id);
+			
+			mav.setViewName("redirect:/lnquire");
+			
+			return mav;
+		}
+	 
+	 @ResponseBody
+	 @PostMapping("time")
+		public List<Booking> getProd(@RequestBody BookingDto json) {
+			System.out.println(json.getDate()+" "+json.getPeriod());
+			List<Booking> time = service.findBytime(json.getDate(),json.getPeriod());
+		 
+			return time;
+		}
+	 
+	 
 	 }
+
+
 

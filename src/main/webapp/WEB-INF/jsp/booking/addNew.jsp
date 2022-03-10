@@ -24,8 +24,8 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
  } 
 
 fieldset {
-	width:600px;
-	height:350px;
+	width:500px;
+	height:450px;
 	margin: 0px auto;
 	border-radius: 15px;
 	box-shadow: 5px 5px 5px 5px
@@ -39,6 +39,7 @@ fieldset {
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://tony1966.xyz/test/jquery/jquery.ui.datepicker-zh-TW.js"></script>
+ 
 <script>
 	$(function() {
 		$("#datepicker").datepicker({
@@ -48,6 +49,9 @@ fieldset {
 		});
 
 	});
+	
+
+	
 </script>
 
 </head>
@@ -63,46 +67,104 @@ fieldset {
 				<label class="t1"></label><input type="text" name="user" value="${member.id}" readonly="readonly" >
 			</div>	
 				
-				<div>
-				<label class="t1">人數 :</label><select name="several" required>
-							
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>
-							<option>8</option>
+				<div class="dropdown-container" style="vertical-align: top">
+				<label class="t1">人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
+							<option value="" disabled selected>預約人數</option>
+							<option value="1">1 人</option>
+							<option value="2">2 人</option>
+							<option value="3">3 人</option>
+							<option value="4">4 人</option>
+							<option value="5">5 人</option>
+							<option value="6">6 人</option>
+							<option value="7">7 人</option>
+							<option value="8">8 人</option>
 					</select></div>
 				<div><label class="t1">訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required>
+						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px">
 				</div>		
-						<div><label class="t1">時間:</label> <select name="period" required>
-							<option>時段</option>
+						<div><label class="t1">時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
+							<option value="" disabled selected>預約時段</option>
 							<option>上午</option>
 							<option>下午</option>
 							<option>晚上</option>	
 							</select>
 					</div>		
 			
-			<div><label class="t1">桌號 :</label> <select name="number" required>
+			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white" style="padding-top: 0px">
+							<option value="" disabled selected>預約桌號</option>
 							<option>5</option>
 							<option>6</option>
 							<option>7</option>	
 							<option>8</option>
 					</select>
 				</div>	
-				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark"></textarea>
+				</p>
+				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark"></textarea>
 				</div>
 				
 				<div>
 							 <input type="submit" class="btn btn-info" value="確定" />
 							 <input type="reset"class="btn btn-info" value="清除">
+							 <button  class="btn btn-info" id="button" >一鍵輸入</button>
 							 </div>
 			</fieldset>
 		</form>
-	
+<script type="text/javascript">
+
+$("#button").click(function() {
+	$("#several").prop("3",true)
+	$("#datepicker").val('2022/03/20')
+})
+
+
+function time() {
+		$.ajax({
+			url:"http://localhost:8080/homepage/time",
+			type:"post",
+			contentType : 'application/json; charset=UTF-8',//送出格式
+			dataType:"JSON",
+			data:JSON.stringify({
+					"date":$('#datepicker').val(),
+					"period":$('#period').val()
+				}),
+				
+			success: function(data) {
+				$('#number option').r
+				
+				
+				
+				
+				
+				
+				let playersNumNow=parseInt(${playersNumNow})
+				let launcherPlayerNow=parseInt(${launcherPlayerNow})
+				let changeGameId= $('#selectGame').val()
+				
+				
+				if(respData.maxplayer<playersNumNow){
+					console.log("set回:"+originGameId)
+					$("#selectGame").val(originGameId)
+					$('#warning').css('color','red')
+					$('#warning').text('人數超過所選遊戲:'+respData.product_name+' 之最大遊玩人數')
+					
+				}else{
+					$('#warning').text('')
+					$('#selectPlayerNum option').remove()
+					for(let i=1;i<=respData.maxplayer-playersNumNow+launcherPlayerNow;i++){
+						let op=document.createElement('option')
+						op.value=i
+						op.innerHTML=i
+						$('#selectPlayerNum').append(op)
+					}	
+					originGameId=$('#selectGame').val()
+					console.log(originGameId)
+				}
+				
+				
+			}
+	    });
+	}
+</script>
 
 
 </body>

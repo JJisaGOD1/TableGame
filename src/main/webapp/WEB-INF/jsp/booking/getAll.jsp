@@ -12,8 +12,8 @@
 <meta charset="UTF-8">
 <title>員工資料</title>
 
-</head>
-<body>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<%-- <link href="${contextRoot}/DataTables/datatables.min.css" rel="stylesheet" type="text/css" /> --%>
 
 <script language="javascript"> 
     function delcfm() { 
@@ -23,53 +23,83 @@
         } else
         	alert("已經刪除");
     } 
+    
+  
 </script>
+
+
+</head>
+<body>
+
+<!-- <div class="col-sm-10 justify-content-center row" id="bsdiv" -->
+<!--   style="margin: 0; padding: 0"> -->
 <div align="center">
 <h2>管理者</h2>
-<table border="1"  class="table table-striped">
-<tr style="background-color:a8fefa">
-<th>人數<th>訂位日期<th>時段<th>桌號<th>備註<th>電話<th>會員<th>工具
+<table style="width: 90%;"  id="table_id"  class="display">
+ <thead>
+<tr>
+<th style="width: 7%;">會員</th>
+<th style="width: 12%;">電話</th>
+<th style="width: 6%;">人數</th>
+<th style="width: 15%;">訂位日期</th>
+<th style="width: 7%;">時段</th>
+<th style="width: 7%;">桌號</th>
+<th>備註</th>
+<th style="width: 10%;">工具</th>
+</tr>
+ </thead>
 <c:forEach items="${page.content}" var="bookings">
 
    <tr>
+   <td>${bookings.user.cusName }
+   <td>${bookings.user.phone} 
    <td>${bookings.several} 
    <td><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
    <td>${bookings.period}
    <td>${bookings.number} 
    <td>${bookings.remark} 
-   <td>${bookings.user.phone} 
-   <td>${bookings.user.cusName }
+   
+  
 
-  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}"> 編輯</a>	|  
+  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}" ><button  type="button" class="updateBtn chcolor">編輯</button> </a>	|  
 				 
 			<a onclick="delcfm()" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a>
    </c:forEach>
 </table>
 
 
-<div class="row justify-content-center">
-       <div class="col-9">
+<!-- <div class="row justify-content-center"> -->
+<!--        <div class="col-9"> -->
        
-       <c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+<%--        <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
        
-       <c:choose>
+<%--        <c:choose> --%>
        
-       <c:when test="${page.number !=pageNumber -1 }">
-       <a href="${contextRoot}/getAll?p=${pageNumber}"><c:out value="${pageNumber}"/> </a>
-      </c:when>
+<%--        <c:when test="${page.number !=pageNumber -1 }"> --%>
+<%--        <a href="${contextRoot}/getAll?p=${pageNumber}"><c:out value="${pageNumber}"/> </a> --%>
+<%--       </c:when> --%>
       
-      <c:otherwise>
-      <c:out value="${pageNumber}"/>
-      </c:otherwise>
+<%--       <c:otherwise> --%>
+<%--       <c:out value="${pageNumber}"/> --%>
+<%--       </c:otherwise> --%>
       
-       </c:choose>
-       <c:if test="${pageNumber != page.totalPages}"> | </c:if>
+<%--        </c:choose> --%>
+<%--        <c:if test="${pageNumber != page.totalPages}"> | </c:if> --%>
        
-       </c:forEach>
+<%--        </c:forEach> --%>
        
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
 </div>
 
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<%-- <script src="${contextRoot}/DataTables/datatables.min.js" type="text/javascript"></script> --%>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+</script>
 </body>
 </html>
