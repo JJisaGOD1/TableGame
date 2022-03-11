@@ -13,13 +13,16 @@
 <title>View all Comment</title>
 <style>
 span {
-	font-size: larger;
+	font-size: x-large;
 	font-weight: 600;
 }
 
 body {
 	background-repeat: none;
 	background-size: 100%;
+}
+li{
+	font-size: 1.3rem;
 }
 
 .sty1 {
@@ -32,6 +35,9 @@ body {
     font-weight: 600;
     font-size: larger;
 }
+.button1{
+	font-size: larger;
+}
 </style>
 </head>
 <body>
@@ -42,7 +48,7 @@ body {
 
 
 		<div>
-			<div class="row justify-content-end" style="width: 65vw;">
+			<div class="row justify-content-end" style="width: 52vw;">
 				<div class="col-2">
 					<select name="category" class="form-control" id="category"
 						onchange="javascript:location.href = this.value;">
@@ -62,9 +68,9 @@ body {
 					<div class="col-9">
 						<div class="card sty1">
 							<div class="card-header">
-								<span>留言時間:&nbsp;&nbsp;</span>
+								<span>留言時間:&nbsp;&nbsp;
 								<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE"
-									value="${page.createdTime}" />
+									value="${page.createdTime}"  /></span>
 							</div>
 							<div class="card-body">
 								<ul class="list-group list-group-flush">
@@ -87,9 +93,9 @@ body {
 								<p></p>
 								<div style="text-align: end;">
 									<c:if test="${page.categorysBean.id==6}">
-										<a class="btn btn-info" href="${contextRoot}/products/Problem">產品問題圖</a>
+										<a  href="${contextRoot}/products/Problem"><button class="btn btn-info button1">產品問題圖</button></a>
 									</c:if>
-									<button class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" >編輯</button>
+									<button class="btn btn-primary edit button1" data-toggle="modal" data-target="#exampleModal" >編輯</button>
 
 									<div class="modal fade" id="exampleModal" tabindex="-1"
 										aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,8 +156,8 @@ body {
 														
 													
 												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-													<input type="submit" class="btn btn-primary" id="check" value="更動">
+													<button type="button" class="btn btn-secondary button1" data-dismiss="modal">關閉</button>
+													<input type="submit" class="btn btn-primary button1" id="check" value="更動">
 												</div>
 											</form:form>
 												</div>
@@ -160,8 +166,8 @@ body {
 										</div>
 									</div>
 
-									<a class="btn btn-danger"
-										href="${contextRoot}/deleteComment?id=${page.id}" onclick="return confirm('是否刪除?')">刪除
+									<a href="${contextRoot}/deleteComment?id=${page.id}" >
+										<button class="btn btn-danger button1" onclick="return confirm('是否刪除?')">刪除</button>
 									</a>
 								</div>
 							</div>
