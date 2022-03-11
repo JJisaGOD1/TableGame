@@ -43,11 +43,12 @@ public class BookingService {
 		return allbooking;
 	}
 	
-	public Page<Booking> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber -1, 8, Sort.Direction.DESC,"added");
-		
-		return bookingDao.findAll(pgb);
-	}
+	//分頁 controller也要開 
+//	public Page<Booking> findByPage(Integer pageNumber){
+//		Pageable pgb = PageRequest.of(pageNumber -1, 8, Sort.Direction.DESC,"added");
+//		
+//		return bookingDao.findAll(pgb);
+//	}
 	
 	public List<Booking> findByLoginId(Integer loginId) {
 		List<Booking> allbooking=bookingDao.findByLoginId(loginId);

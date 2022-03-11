@@ -75,17 +75,28 @@ public class BookingController {
 	    }
 	 
 	 //查全部
-
-	 
 	 @GetMapping("/getAll")
-		public ModelAndView viewMessagePage(ModelAndView mav, @RequestParam(name="p",defaultValue = "1") Integer pageNumber) {
+		public ModelAndView viewMessagePage(ModelAndView mav) {
 			mav.setViewName("booking/getAll");
 			
-			Page<Booking> page =service.findByPage(pageNumber);
+			List<Booking> page =service.findAllbooking();
 			
 			mav.getModel().put("page",page);
 			return mav;
-		}
+		}	
+	 
+	 
+	 
+	 //有分頁
+//	 @GetMapping("/getAll")
+//		public ModelAndView viewMessagePage(ModelAndView mav, @RequestParam(name="p",defaultValue = "1") Integer pageNumber) {
+//			mav.setViewName("booking/getAll");
+//			
+//			Page<Booking> page =service.findByPage(pageNumber);
+//			
+//			mav.getModel().put("page",page);
+//			return mav;
+//		}
 	 
 	 
 	 //查自己訂位
