@@ -10,7 +10,7 @@ import com.tablegame.model.bean.product.ProductImformation;
 
 public interface PIRepository extends JpaRepository<ProductImformation, Integer> {
 
-	@Query(value = "select * from Product_information where productid_id = :productid_id", nativeQuery = true)
+	@Query(value = "select * from Product_information where productid_id = :productid_id ORDER BY changedate DESC", nativeQuery = true)
 	public List<ProductImformation> findIById(@Param(value = "productid_id") Integer id);
 
 	@Query(value = "select top 1 *  from Product_information where productid_id = :productid_id  ORDER By productinformation_id desc", nativeQuery = true)
