@@ -228,7 +228,7 @@
 
 								</tr>
 							</thead>
-							<tbody class="checkHistory">
+							<tbody class="checkHistorytable">
 
 							</tbody>
 						</table>
@@ -330,7 +330,7 @@
 				url : "${contextRoot}/products/checkHistoryoAjax?id=" + id,
 				method : "get",
 				success : function(data) {
-					$(".checkHistory").empty();
+					$(".checkHistorytable").empty();
 				console.log(data)
 					data.forEach(element => {
 						let a = "";
@@ -341,7 +341,7 @@
 						a+="<td>"+element.changedate+"</td>";
 						a+="<td>"+element.history+"</td>";
 						a+="</tr>";
-						$(".checkHistory").append(a)
+						$(".checkHistorytable").append(a)
 					});
 				},
 			})
