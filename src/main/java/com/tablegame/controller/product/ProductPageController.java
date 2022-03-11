@@ -45,9 +45,7 @@ public class ProductPageController {
 		Page<Product> P = serviceP.findByPage(pageNumber);
 
 		Product a = new Product();
-
 //		mav.getModel().put("page", page);
-
 		mav.addObject("P", P);
 		mav.addObject("Product", a);
 

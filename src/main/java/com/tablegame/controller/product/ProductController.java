@@ -159,19 +159,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@GetMapping("/products/changePicture")
-	public ModelAndView changePicturePage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
-		Product msg = serviceP.findById(id);
-
-		mav.getModel().put("P", msg);
-
-//		mav.addObject("page", page);
-
-		mav.setViewName("product/changePicture");
-
-		return mav;
-	}
 
 	@PostMapping("/products/changePicture")
 	public ModelAndView changePicturePage(ModelAndView mav, @Valid @ModelAttribute(name = "Product") Product product,
@@ -230,21 +218,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@GetMapping("/products/checkHistory")
-	public ModelAndView checkHistoryPage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-
-		List<ProductImformation> listPI = servicePI.findById(id);
-
-		System.out.println(listPI);
-
-		mav.getModel().put("listPI", listPI);
-
-//		mav.addObject("page", page);
-
-		mav.setViewName("product/checkHistory");
-
-		return mav;
-	}
+	
 
 	@ResponseBody
 	@GetMapping(value = "/products/editproductAjax")
