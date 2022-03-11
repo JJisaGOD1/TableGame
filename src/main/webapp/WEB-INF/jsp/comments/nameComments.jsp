@@ -13,7 +13,7 @@
 </head>
 <style>
 	span{
-		font-size: larger;
+		font-size: x-large;
     	font-weight: 600;
 	}
 	body{
@@ -21,25 +21,32 @@
         background-repeat: none;
         background-size: 100%;
     }
+	li{
+		font-size: 1.3rem;
+	}
 	.sty1{
 		border: 2px solid;
     	border-radius: 10px;
+	}
+	.button1{
+		font-size: larger;
 	}
 </style>
 <body>
 
 <div class="container">
 	<br>
-<h2><span style="font-weight: 600;">${pageComments.content[0].membersBean.cusName}</span> &nbsp;&nbsp;留言查看</h2>
+
+<h1 style="font-weight: 600;">${pageComments.content[0].membersBean.cusName}&nbsp;&nbsp;<span style="font-size: xx-large;">留言查看</span></h1>
 		<c:forEach items="${pageComments.content}" var="comment">
 			<div class="row justify-content-center">
 				<div class="col-9">
 					<div class="card sty1">
 						
 						<div class="card-header">
-							<span>留言時間:&nbsp;&nbsp;</span>
+							<span>留言時間:&nbsp;&nbsp;
 							<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE"
-								value="${comment.createdTime}" /> 
+								value="${comment.createdTime}" /> </span>
 						</div>
 						<div class="card-body">
 							<ul class="list-group list-group-flush">
@@ -53,8 +60,10 @@
 							</ul>
 							
 							<div style="text-align: end;">
-								<a class="btn btn-primary" href="${contextRoot}/editComment/${comment.id}">編輯</a>
-								<a class="btn btn-danger" href="${contextRoot}/deleteComment/${comment.id}" onclick="return confirm('是否刪除?')">刪除</a>
+								<c:if test="${comment.conditionsBean.id == 1}">
+									<a  href="${contextRoot}/editComment/${comment.id}"><button class="btn btn-primary button1">編輯</button></a>
+								</c:if>
+								<a href="${contextRoot}/deleteComment/${comment.id}" ><button class="btn btn-danger button1" onclick="return confirm('是否刪除?')">刪除</button></a>
 							</div>
 						</div>
 					</div>
@@ -63,7 +72,7 @@
 			<br>
 		</c:forEach>
 		<div class="row justify-content-center" style="text-align: right">
-			<div class="col-9">
+			<div class="col-9" style="font-size: x-large;">
 				<c:forEach var="pageNumber" begin="1" end="${pageComments.totalPages}">
 					<c:choose>
 						<c:when test="${pageComments.number != pageNumber -1}">

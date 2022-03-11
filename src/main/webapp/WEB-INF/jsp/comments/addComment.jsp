@@ -33,14 +33,15 @@
 		font-weight: bolder;
 	}
 	.block1{
+		top: 10vh;
 		border: 1px solid;
 		border-radius: 10px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	}
 	.block2{
 		position: fixed;
-		right: 80px;
-		top: 79px;
+		top: 15vh;
+		left: 50vw;
 		width: 45vw;
 		z-index: 5;
 		border: 1px solid;
@@ -50,8 +51,8 @@
 	.block3{
 		position: fixed;
 		width: 45vw;
-		right: 80px;
-		bottom: 28px;
+		right: 5vw;
+		bottom: 10vh;
 		border: 1px solid;
 		border-radius: 15px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -59,12 +60,12 @@
 </style>
 <body>
 	<br>
-	<div style="padding-left: 20px;" >
-	<h1 style="font-weight: 600;">意見回覆</h1>
+	<div style="padding-left: 20px; margin-top: 5vh;" >
+		<h1 style="font-weight: 600;">意見回覆</h1>
     <br>
 
        <div class="col-5">
-		<div class="card block1">
+		<div class="card" style="top: 5vh;" >
 			<div class="card-header text1" >回報內容</div>
 			<div class="card-body">
 				<form:form class="form"  action="${contextRoot}/addComment" modelAttribute="Comments" method="POST"> 
