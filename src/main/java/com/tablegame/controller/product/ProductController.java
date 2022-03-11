@@ -1,5 +1,6 @@
 package com.tablegame.controller.product;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,10 +8,14 @@ import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,7 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.product.Product;
@@ -86,7 +91,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/products/editProduct")
-	public ModelAndView editMessagePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product msg,
+	public ModelAndView editMessagePage(ModelAndView mav, @Valid @ModelAttribute(name = "Product") Product msg,
 			BindingResult result) {
 
 		mav.setViewName("product/editProduct");
@@ -169,8 +174,9 @@ public class ProductController {
 	}
 
 	@PostMapping("/products/changePicture")
-	public ModelAndView changePicturePage(ModelAndView mav, @Valid @ModelAttribute(name = "P") Product product,
+	public ModelAndView changePicturePage(ModelAndView mav, @Valid @ModelAttribute(name = "Product") Product product,
 			BindingResult result) {
+		System.out.println(product.toString());
 
 		mav.setViewName("product/changePicture");
 
@@ -206,6 +212,7 @@ public class ProductController {
 		}
 
 		ProductImformation insert = new ProductImformation();
+
 		insert.setProductid_id(product.getProduct_id());
 		Date d = new Date();
 
@@ -238,4 +245,31 @@ public class ProductController {
 
 		return mav;
 	}
+
+	@ResponseBody
+	@GetMapping(value = "/products/editproductAjax")
+	public Product editproductAjax(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+		Product p = serviceP.findById(id);
+
+		return p;
+
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/products/changephotoAjax")
+	public Product changephotoAjax(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+		Product p = serviceP.findById(id);
+
+		return p;
+
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/products/checkHistoryoAjax")
+	public List<ProductImformation> checkHistoryoAjax(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+		List<ProductImformation> listPI = servicePI.findById(id);
+
+		return listPI;
+	}
+
 }

@@ -181,4 +181,13 @@ public class Product implements Serializable {
 		this.photo = photo;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price + ", gametype="
+				+ gametype + ", minplayer=" + minplayer + ", maxplayer=" + maxplayer + ", low_age=" + low_age
+				+ ", photourl=" + photourl + ", sellstatus=" + sellstatus + ", Stock=" + Stock + ", productintroduce="
+				+ productintroduce + ", problem_count=" + problem_count + ", photo=" + photo + ", orderList="
+				+ orderList + "]";
+	}
+
 }
