@@ -80,7 +80,7 @@
 				<p></p>			
 				
 <!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
-				<button class="login100-form-btn">登入</button>
+				<button class="login100-form-btn">送出</button>
 				</form:form>
 				<button id="button" class="btn btn-danger button1">一鍵輸入</button>
 			</div>

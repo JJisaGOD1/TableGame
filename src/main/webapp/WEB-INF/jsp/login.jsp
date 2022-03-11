@@ -8,6 +8,7 @@
 <head>
 <title>登入</title>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -38,6 +39,9 @@
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<meta name="google-signin-client_id"
+	content="533537045577-jdn4qt2elj0o2g51ufi47igj254rpm7v.apps.googleusercontent.com">
+	<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -63,7 +67,9 @@
 						<div class="text-right p-t-8 p-b-31">
 							<a href="${contextRoot}/pwd"> 忘記密碼? </a>
 						</div>
-
+						<div id="googleInSite" class="g-signin2" data-onsuccess="onSignIn"
+								style="display: inline-block; left:300px; position: relative; top: 5px;">
+						</div>
 						<div class="mb-3"></div>
 						<div class="container-login100-form-btn">
 							<div class="wrap-login100-form-btn">
