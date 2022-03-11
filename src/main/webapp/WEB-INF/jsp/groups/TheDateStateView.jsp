@@ -134,11 +134,6 @@
 		}
 	}
 
-	function changeBodyColor(){
-		if()
-	}
-	
-	
 </script>
 </body>
 </html>

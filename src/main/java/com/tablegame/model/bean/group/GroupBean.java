@@ -23,6 +23,8 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 
@@ -55,7 +57,7 @@ public class GroupBean implements Serializable{
 	@Column(name = "introduction")
 	private String introduction;
 
-//	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")//給json看
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")//給json看
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss") //給java看 jsp的EL
 	@Temporal(TemporalType.TIMESTAMP)//給db看
 	@Column(name = "createdTime")
@@ -70,10 +72,12 @@ public class GroupBean implements Serializable{
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
 	@JoinColumn(name = "launcherId")
 	private MembersBean launcher;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //單向
+	@JsonIgnore
 	@JoinColumn(name = "productId")
 	private Product product;
 	
