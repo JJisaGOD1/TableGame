@@ -36,11 +36,14 @@
 							<td><c:out value="${P.member.customerName}" />
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
-							<td><a href="${contextRoot}/checkPackage?id=${P.orderId}"><input
+							<td><a
+								href="${contextRoot}/products/checkPackage?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a> <a
-								href="${contextRoot}/sendPackage?id=${P.orderId}"><input
+								href="${contextRoot}/products/sendPackage?id=${P.orderId}"><input
 									type="button" onclick="return confirm('請確認商品是否已送出?')"
-									value="確認送貨"></a></td>
+									value="確認送貨"><a
+									href="${contextRoot}/products/cancelPackage?id=${P.orderId}"><input
+										type="button" onclick="return confirm('確認此單作廢?')" value="刪除此單"></a></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

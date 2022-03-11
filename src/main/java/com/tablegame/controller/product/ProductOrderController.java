@@ -63,4 +63,14 @@ public class ProductOrderController {
 		return mav;
 	}
 
+	@GetMapping("/products/cancelPackage")
+	public ModelAndView cancelPackage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+		ProductOrders orders = serviceOs.findById(id);
+		orders.setProcessingstatus("作廢");
+		mav.addObject("orders", orders);
+		mav.setViewName("product/checkOrderList");
+		serviceOs.insert(orders);
+		return mav;
+	}
+
 }
