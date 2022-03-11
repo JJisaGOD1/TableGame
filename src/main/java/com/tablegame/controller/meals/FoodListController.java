@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.meals.FoodList;
 import com.tablegame.model.bean.meals.FoodListRepository;
+import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.meals.FoodListService;
 
 @Controller
@@ -101,6 +102,16 @@ public class FoodListController {
 		return mav;
 		
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/meals/editFoodAjax")
+	public FoodList editFoodAjax(@RequestParam(name = "foodId") Integer id) {
+		FoodList f = service.findById(id);
+
+		return f;
+
+	}
+
 	
 	
 	
