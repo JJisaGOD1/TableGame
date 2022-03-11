@@ -38,8 +38,11 @@
 </style>
 </head>
 <body>
-<div class="container">
-    <p/>
+ <div class="container-login100"
+			style="background-image: url('images/bg-01.jpg');" />
+<div class="container" >
+    
+   
     <div class="row justify-content-center">
        <div class="col-8">
 		<div class="card block1">
@@ -76,8 +79,8 @@
 				</select>
 				<p></p>			
 				
-				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" />
-				
+<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
+				<button class="login100-form-btn">登入</button>
 				</form:form>
 				<button id="button" class="btn btn-danger button1">一鍵輸入</button>
 			</div>
@@ -85,6 +88,7 @@
      </div>
 	</div>
 	</div>
+	
 <script>
 	$('#button').click(function(){
 		$('#cusName').val('Nick');
