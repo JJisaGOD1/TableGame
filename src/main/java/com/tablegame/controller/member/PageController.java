@@ -9,16 +9,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.dto.googleLoginDto;
+import com.tablegame.form.pwdForm;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.member.RatingsBean;
 import com.tablegame.service.member.MembersService;
@@ -149,4 +152,12 @@ public class PageController {
 		return ratingMap;
 	}
 
+	
+	@RequestMapping("/pwd")
+	public String pwd(Model model, HttpServletRequest req) {
+		pwdForm pwdForm = new pwdForm();
+		model.addAttribute("pwdForm", pwdForm);
+		model.addAttribute("loginErrorMsg", req.getAttribute("loginErrorMsg"));
+		return "pwd";
+	}
 }
