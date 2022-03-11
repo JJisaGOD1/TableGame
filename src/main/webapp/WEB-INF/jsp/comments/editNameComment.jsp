@@ -10,6 +10,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	body{
+		background-color: #dedede;
+	}
+	.block1{
+		border: 1px solid;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	}
+	.text1{
+		text-align: center;
+		font-size: xx-large;
+		font-weight: bolder;
+	}
+	.row1{
+		display: block;
+		border-radius: 10px 10px 0 0;
+		font-size: larger;
+		font-weight: bolder;
+	}
+
+</style>
 </head>
 <body>
 	<h1>edit NameComment  for前端</h1>

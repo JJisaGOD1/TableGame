@@ -87,7 +87,7 @@ body {
 								<p></p>
 								<div style="text-align: end;">
 									<c:if test="${page.categorysBean.id==6}">
-										<a class="btn btn-info" href="#">產品問題圖</a>
+										<a class="btn btn-info" href="${contextRoot}/products/Problem">產品問題圖</a>
 									</c:if>
 									<button class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" >編輯</button>
 
@@ -107,7 +107,7 @@ body {
 													<form:form class="form" action="${contextRoot}/editComment"
 														modelAttribute="editComment" method="POST" id="editform">
 
-														<form:hidden path="id" />
+														<form:input path="id" style="display: none;"/>
 
 														<label for="name" class="card-header text1"
 															style="display: block;">會員姓名</label>
@@ -126,7 +126,7 @@ body {
 														<form:textarea path="response" class="form-control" />
 														<p></p>
 
-														<form:hidden path="createdTime" />
+														<form:input path="createdTime" style="display: none;"/>
 
 														<form:label path="" class="card-header text1"
 															style="display:block;">問題類別</form:label>
@@ -206,15 +206,19 @@ body {
 		// 		})
 		// 	})
 		$(".edit").click(function() {
+			console.log($(this).parent().parent())
 			let id = $(this).parent().parent().find("p").html();
 			$.ajax({
 				url : "${contextRoot}/editAjax?id=" + id,
 				method : "get",
 				success : function(data) {
 					console.log(data)
+					console.log(data.id)
+					$("#id").val(data.id)
 					$("#name").val(data.membersBean.cusName);
 					$("#comment").val(data.comment);
 					$("#response").val(data.response)
+					$("#createdTime").val(data.createdTime)
 					$("#categorysBean").val(data.categorysBean.id)
 					$("#conditionsBean").val(data.conditionsBean.id)
 				},

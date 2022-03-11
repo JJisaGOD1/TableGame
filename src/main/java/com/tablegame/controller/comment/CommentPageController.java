@@ -60,7 +60,7 @@ public class CommentPageController {
 		return mav;
 	}
 	
-	//後台編輯回覆
+	//後台編輯回覆，有下面Ajax應該不需使用
 	@GetMapping(value = "/editComment")
 	public ModelAndView editComment(ModelAndView mav, 
 				@RequestParam(name = "id") Integer id) {
