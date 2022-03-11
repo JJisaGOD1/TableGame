@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
@@ -63,7 +62,29 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="row justify-content-center">
+			<div class="col-9">
+				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
+					<c:choose>
+						<c:when test="${pageNumber-1==P.number}">
+							<!--page.number:取的當前頁面的頁碼-->
+							<c:out value="${pageNumber}" />
+						</c:when>
+						<c:otherwise>
+							<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
+									value="${pageNumber}" /> </a>
+						</c:otherwise>
+					</c:choose>
+
+
+					<c:if test="${pageNumber != P.totalPages}">
+						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+						|
+					</c:if>
+				</c:forEach>
+			</div>
+		</div>
 		<div class="modal fade" id="editModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -242,31 +263,7 @@
 				</div>
 			</div>
 
-			<div class="row justify-content-center">
-				<div class="col-9">
-					<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-						<c:choose>
-							<c:when test="${pageNumber-1==P.number}">
-								<!--page.number:取的當前頁面的頁碼-->
-								<c:out value="${pageNumber}" />
-							</c:when>
-							<c:otherwise>
-								<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
-										value="${pageNumber}" /> </a>
-							</c:otherwise>
-						</c:choose>
-
-
-						<c:if test="${pageNumber != P.totalPages}">
-							<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
-						|
-					</c:if>
-
-
-					</c:forEach>
-				</div>
-			</div>
 		</div>
 
 	</div>
