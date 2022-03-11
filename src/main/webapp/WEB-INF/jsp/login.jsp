@@ -6,98 +6,117 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>登入</title>
 <meta charset="UTF-8">
-<meta name="google-signin-client_id"
-	content="533537045577-jdn4qt2elj0o2g51ufi47igj254rpm7v.apps.googleusercontent.com">
-<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
-<style>
-body {
-	background-color: #dedede;
-}
-
-.block {
-	width: 500px;
-	margin: 0 auto;
-}
-
-.backtype {
-	width: 35vw;
-	height: 40vh;
-	border-radius: 1rem;
-	background-color: white;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	margin: 0 auto;
-	margin-top: 20vh;
-}
-</style>
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
 
-	<div class="backtype">
-		<div class="cotainer block"
-			style="padding-top: 4vh; position: absolute;">
-			<form class="px-4 py-3" action="${contextRoot}/login" method="POST">
-				<div class="mb-3">
-					<label for="exampleDropdownFormEmail1" class="form-label">輸入Email</label>
-					<input type="text" class="form-control"
-						id="exampleDropdownFormEmail1" placeholder="email" name="email" autocomplete="off">
-				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">密碼</label>
-					<input type="password" class="form-control"
-						id="exampleDropdownFormPassword1" placeholder="Password"
-						name="pwd">
+	<div class="limiter">
+		<div class="container-login100"
+			style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form class="login100-form validate-form"
+					action="${contextRoot}/login" method="POST">
+					<div class="mb-3">
+						<div class="wrap-input100 validate-input m-b-23"
+							data-validate="請輸入帳號">
+							<span class="label-input100">帳號</span> <input type="text"
+								class="form-control" id="exampleDropdownFormEmail1"
+								placeholder="email" name="email" autocomplete="off">
+						</div>
 
-					<div class="mb-3"></div>
-					<button type="submit" class="btn btn-primary">登入</button>
-					<a href="${contextRoot}/addCustomer">
-						<input type="button" class="btn btn-info" value="加入會員">
-					</a>
-						<div id="googleInSite" class="g-signin2" data-onsuccess="onSignIn"
-					style="display: inline-block; left: 180px; position: relative; top: 12px;">
-				</div>
-				</div>	
-			</form>
-		</div>
-	</div>
+						<div class="wrap-input100 validate-input" data-validate="請輸入密碼">
+							<span class="label-input100">密碼</span> <input type="password"
+								class="form-control" id="exampleDropdownFormPassword1"
+								placeholder="Password" name="pwd">
+						</div>
+						<div class="text-right p-t-8 p-b-31">
+							<a href="${contextRoot}/pwd"> 忘記密碼? </a>
+						</div>
 
+						<div class="mb-3"></div>
+						<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn">登入</button>
+							</div>
+							<div class="flex-col-c p-t-20">
 
+								<a href="${contextRoot}/addCustomer" class="txt2"> 加入會員 </a>
+							</div>
+						</div>
 
+					</div>
+				</form>
 
-	<script>
-		function onSignIn(googleUser) {
-			var profile = googleUser.getBasicProfile();
-			email = profile.getEmail()
-			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			console.log('Name: ' + profile.getName());
-			console.log('Image URL: ' + profile.getImageUrl());
-			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		}
-		$("#googleInSite").click(function() {
-			emailObject = {
-				"loginEmail" : email
-			};
-			emailJsonStr = JSON.stringify(emailObject);
-			console.log(email)
-			$.ajax({
-				url : "http://localhost:8080/homepage/ajax/googlelogin",
-				data : emailJsonStr,
-				method : "POST",
-				dataType : "json",
-				contentType : "application/json; charset=UTF-8",
-				success : function(result) {setTimeout(function(){
-						window.location.href = "/homepage/"
-					},1500)
-					
-				},
-			})
-		})
-	</script>
+				<script>
+					function onSignIn(googleUser) {
+						var profile = googleUser.getBasicProfile();
+						email = profile.getEmail()
+						console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+						console.log('Name: ' + profile.getName());
+						console.log('Image URL: ' + profile.getImageUrl());
+						console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+					}
+					$("#googleInSite")
+							.click(
+									function() {
+										emailObject = {
+											"loginEmail" : email
+										};
+										emailJsonStr = JSON
+												.stringify(emailObject);
+										console.log(email)
+										$
+												.ajax({
+													url : "http://localhost:8080/homepage/ajax/googlelogin",
+													data : emailJsonStr,
+													method : "POST",
+													dataType : "json",
+													contentType : "application/json; charset=UTF-8",
+													success : function(result) {
+														setTimeout(
+																function() {
+																	window.location.href = "/homepage/"
+																}, 1500)
 
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+													},
+												})
+									})
+				</script>
+
+				<script src="https://apis.google.com/js/platform.js" async defer></script>
+				<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+				<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
