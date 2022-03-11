@@ -48,7 +48,7 @@
 <th style="width: 10%;">工具</th>
 </tr>
  </thead>
-<c:forEach items="${page.content}" var="bookings">
+<c:forEach items="${page}" var="bookings">
 
    <tr>
    <td>${bookings.user.cusName }

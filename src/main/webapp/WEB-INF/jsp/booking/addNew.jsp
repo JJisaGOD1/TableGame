@@ -79,8 +79,8 @@ fieldset {
 							<option value="7">7 人</option>
 							<option value="8">8 人</option>
 					</select></div>
-				<div><label class="t1">訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px">
+				<div><p><label class="t1">訂位日期:</label> <input type="text" id="datepicker"
+						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
 				</div>		
 						<div><label class="t1">時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
@@ -92,10 +92,10 @@ fieldset {
 			
 			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white" style="padding-top: 0px">
 							<option value="" disabled selected>預約桌號</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>	
-							<option>8</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>	
+							<option value="8">8</option>
 					</select>
 				</div>	
 				</p>
@@ -112,8 +112,12 @@ fieldset {
 <script type="text/javascript">
 
 $("#button").click(function() {
-	$("#several").prop("3",true)
-	$("#datepicker").val('2022/03/20')
+	$("#several").val('7');
+// 	$("#datepicker").val('2022/03/25');
+	$("#period").val('下午');
+	$("#number").val('7');
+	$("#remark").val('我要多一張椅子');
+	
 })
 
 
