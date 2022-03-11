@@ -11,7 +11,9 @@
 <html>
 <head>
 
-<link href="${contextRoot}/js/jquery-3.6.0.min.js">
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -48,7 +50,7 @@
 										 <c:forEach items="${page.content}" var="food">
 											<tr scope="row">
 												<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"   onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
-												<td><c:out value="${food.foodId}" /></td>
+												<td><p>${food.foodId}</p></td>
 												<td><c:out value="${food.foodName}" /></td>
 												<td><c:out value="${food.foodPrice}" /></td>
 												<td><c:out value="${food.foodType}" /></td>
@@ -56,10 +58,14 @@
 												<td>
 												<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><button type="button" class="btn btn-danger">刪除</button></a>
 
-												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>
+<%-- 												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a> --%>
 
+												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>												
 												<a href="${contextRoot}/editPic?foodId=${food.foodId}"><button type="button" class="btn btn-secondary">新增圖片</button></a>
-
+												
+												<input type="button" class="edit" value="修改" data-toggle="modal" data-target="#editFood">
+								
+												
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -98,6 +104,95 @@
 					</div>
 				</div>
 	</div>
+	
+	
+	
+	
+	
+<!-- 	==================================編輯餐點================================== -->
+
+
+<div class="modal fade" id="editFood" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel"
+							style="font-weight: 600;">編輯</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!--彈窗內部-->
+						<form:form class="form"
+							action="${contextRoot}/editFood"
+							modelAttribute="Food" method="POST" id="editform">
+
+							<table class="table">
+								<thead class="table table-light	">
+									<tr>
+										<th>編號</th>
+										<td><form:input path="foodId" readonly="true" /></td>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<th>名稱</th>
+										<td><form:input path="foodName" /></td>
+									</tr>
+									<tr>
+										<th>價錢</th>
+										<td><form:input path="foodPrice" /></td>
+									</tr>
+									
+									<tr>
+										<th>類型 :</th>
+										<td><form:select path="foodType">類型
+												<form:option value="研磨咖啡">研磨咖啡</form:option>
+												<form:option value="吐司類">吐司類</form:option>
+												<form:option value="麵類">麵類</form:option>
+												<form:option value="經典炸物">經典炸物</form:option>
+												<form:option value="鬆餅類">鬆餅類</form:option>
+												<form:option value="飲品">飲品</form:option>
+											</form:select></td>
+										
+									</tr>
+									
+									<tr>
+										<th>輸入狀態 :</th>
+										<td><form:select path="foodState">狀態
+												<form:option value="供應中">供應中</form:option>
+												<form:option value="未供應">未供應</form:option>
+											</form:select></td>
+										<form:input path="foodImage" type="hidden" />
+									</tr>
+									
+								</tbody>
+							</table>
+							<p></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">關閉</button>
+								<input type="submit" class="btn btn-primary" id="check"
+									value="更動">
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>	
+	
+	
+	
+<!-- 	==================================編輯餐點(以上)================================== -->
+	
+	
+	
+	
+	
 <script src="${contextRoot}/js/jquery-3.6.0.min.js" type="text/javascript"></script>
 	<script>
 	$.ajax({
@@ -128,6 +223,28 @@
 				}
 
 			}
+	
+	
+	
+	
+// ============================檢視餐點資料========================================
+	$(".edit").click(function() {
+			let id = $(this).parent().parent().find("p").html();
+			console.log(id)
+			$.ajax({
+				url : "${contextRoot}/meals/editFoodAjax?foodId=" + id,
+				method : "get",
+				success : function(data) {
+					console.log(data)
+					$("#foodId").val(data.foodId);
+					$("#foodName").val(data.foodName);
+					$("#foodPrice").val(data.foodPrice);
+					$("#foodType").val(data.foodType);
+					$("#foodImage").val(data.foodImage);
+					$("#foodState").val(data.foodState);
+				},
+			})
+		})
 </script>
 
 

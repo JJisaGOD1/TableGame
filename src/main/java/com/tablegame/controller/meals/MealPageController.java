@@ -96,8 +96,11 @@ public class MealPageController {
 		mav.setViewName("meals/messages/foodList");
 		Page<FoodList> page = foodService.findByPage(pageNumber);
 //		List<FoodList> text = page.getContent();
+		
+		FoodList f = new FoodList();
+		
 		mav.getModel().put("page", page);
-//		mav.addObject("page", page);
+		mav.addObject("Food", f);
 		return mav;
 	}
 
