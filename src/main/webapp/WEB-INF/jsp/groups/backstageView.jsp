@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<jsp:include page="../layout/dashboard.jsp"></jsp:include>
+
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 
 <%-- <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet"> --%>
@@ -23,6 +26,14 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+	.popup_table_th th{
+		width: 200px;
+	}
+
+</style>
+
 </head>
 <body>
 <div style="width: 1000px ;display: flex ;margin: auto">
@@ -76,7 +87,39 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div id='popupWindow' class="modal-body">
+		  <h3 id='popupGroupId'></h3>
+		<table id="popup_table" class="table">
+			<thead class="thead-dark">
+				<tr class="popup_table_th">
+					<th>參加者</th>
+					<th>攜帶人數</th>
+					<th>加入時間</th>
+					<th>查刪</th>
+				</tr>
+			</thead>
+			<tbody id="popup_table_tbody">
+
+				<!-- <tr>
+					<td>亞當</td>
+					<td>8</td>
+					<td>0000/03/03</td>
+					<td>
+						<a>查</a>
+						<a>刪</a>
+					</td>
+				</tr>
+				<tr>
+					<td>亞當</td>
+					<td>8</td>
+					<td>0000/03/03</td>
+					<td>
+						<a>查</a>
+						<a>刪</a>
+					</td>
+				</tr> -->
+			</tbody>
+		</table>
 
       </div>
       <div class="modal-footer">
@@ -100,8 +143,33 @@ $('.checkTheGroup').click(function(){
 			dataType:"JSON",
 			success: function(respData) {
 				console.log(respData)
-				console.log(respData[0].joinedTime)
-				respData
+				// array.forEach(function(currentValue, index, arr), thisValue)
+				$('#popupGroupId').innerHTML=''
+				console.log(respData[0].participant.id.groupId)
+				$('#popupGroupId').innerHTML='團編號：'+respData[0].participant.id.groupId
+				$('#popup_table_tbody *').remove()
+				respData.forEach(function(dto, index, arr){
+					// console.log(dto.participant.id.groupId)
+					if(index==0){
+						
+					}
+					
+					let row=document.createElement('tr')
+					let name=document.createElement('td')
+					name.innerHTML=dto.member.cusName
+					let num=document.createElement('td')
+					num.innerHTML=dto.participant.participantNum
+					let joinedTime=document.createElement('td')
+					joinedTime.innerHTML=dto.participant.joinedTime
+
+					console.log(dto.participant.joinedTime)
+
+					row.append(name)
+					row.append(num)
+					row.append(joinedTime)
+					$('#popup_table_tbody').append(row)
+				})	
+				
 			},
 			error: function(){
 				console.log('something wrong')
@@ -115,7 +183,28 @@ $('.checkTheGroup').click(function(){
 
 $(document).ready( function () {
     $('#table_id').DataTable({
-    	"lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ]
+    	"lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ],
+    	"language": {
+            "processing": "處理中...",
+            "loadingRecords": "載入中...",
+            "lengthMenu": "顯示 _MENU_ 項結果",
+            "zeroRecords": "沒有符合的結果",
+            "info": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+            "infoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+            "infoFiltered": "(從 _MAX_ 項結果中過濾)",
+            "infoPostFix": "",
+            "search": "搜尋:",
+            "paginate": {
+                "first": "第一頁",
+                "previous": "上一頁",
+                "next": "下一頁",
+                "last": "最後一頁"
+            },
+            "aria": {
+                "sortAscending": ": 升冪排列",
+                "sortDescending": ": 降冪排列"
+            }
+        }
     }
     );
 } );

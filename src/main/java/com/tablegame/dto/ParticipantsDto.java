@@ -7,15 +7,15 @@ import com.tablegame.model.bean.member.MembersBean;
 public class ParticipantsDto {
 	
 	@JsonProperty(value = "participant")
-	private ParticipantBean p;
+	private ParticipantBean participant;
 	
 	@JsonProperty(value = "member")
-	private MembersBean m;
+	private MembersBean member;
 	
-	public ParticipantsDto(ParticipantBean p, MembersBean m) {
+	public ParticipantsDto(ParticipantBean participant, MembersBean member) {
 		super();
-		this.p = p;
-		this.m = m;
+		this.participant = participant;
+		this.member = member;
 	}
 	
 }

@@ -224,6 +224,7 @@ public class GroupsService {
 		for(ParticipantBean p:participants) {
 			MembersBean mem=userDao.getById(p.getId().getParticipantId());
 			ParticipantsDto pdto=new ParticipantsDto(p, mem);
+			participantsInfo.add(pdto);
 		}
 		return participantsInfo;
 	}

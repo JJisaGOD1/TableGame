@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.dto.ParticipantsDto;
 import com.tablegame.dto.ProductIdDto;
 import com.tablegame.model.bean.group.ParticipantBean;
 import com.tablegame.model.bean.product.Product;
@@ -36,10 +37,9 @@ public class GroupsAjaxController {
 	
 	
 	@GetMapping("/backstage/groups/Participants/{groupId}")
-	public List<ParticipantBean> getParticipants(ModelAndView mav,@PathVariable int groupId) {
-		System.out.println("99999999999999999");
-		List<ParticipantBean> participants = service.getParticipantByGroupId(groupId);
+	public List<ParticipantsDto> getParticipants(@PathVariable int groupId) {
+		List<ParticipantsDto> psdto = service.getParticipantsDtoByGroupId(groupId);
 //		System.out.println(participants.get(0).getJoinedTime());
-		return participants;
+		return psdto;
 	}
 }
