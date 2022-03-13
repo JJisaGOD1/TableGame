@@ -24,12 +24,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 
 @Entity
 @Table(name = "groups")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "groupId")
 @Component
 public class GroupBean implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -48,7 +51,7 @@ public class GroupBean implements Serializable{
 	@Transient
 	private int productId;
 	
-//	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")//給json看
+	@JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")//給json看
 	@DateTimeFormat(pattern = "yyyy/MM/dd") //給java看 jsp的EL
 	@Temporal(TemporalType.DATE)//給db看
 	@Column(name = "gameDate")
@@ -72,12 +75,11 @@ public class GroupBean implements Serializable{
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
+//	@JsonIgnore
 	@JoinColumn(name = "launcherId")
 	private MembersBean launcher;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //單向
-	@JsonIgnore
 	@JoinColumn(name = "productId")
 	private Product product;
 	
@@ -140,6 +142,7 @@ public class GroupBean implements Serializable{
 		this.createdTime = createdTime;
 	}
 
+	
 	public MembersBean getLauncher() {
 		return launcher;
 	}

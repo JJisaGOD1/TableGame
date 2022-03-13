@@ -16,10 +16,14 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tablegame.model.bean.member.Member;
 import com.tablegame.model.bean.member.MembersBean;
@@ -52,7 +56,9 @@ public class ParticipantBean implements Serializable{
 	@Column(name = "participantNum")
 	private int participantNum;
 	
-	
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")//給json看
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss") //給java看 jsp的EL
+	@Temporal(TemporalType.TIMESTAMP)//給db看
 	@Column(name = "joinedTime") //java.util.Date;
 	private Date joinedTime;
 	
