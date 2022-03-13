@@ -60,4 +60,6 @@ public class MemberController {
 		mav.setViewName("insertSuccessView");
 		return mav;
 	}
+	
+	
 }

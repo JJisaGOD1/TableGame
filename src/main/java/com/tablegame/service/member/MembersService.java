@@ -19,7 +19,7 @@ import com.tablegame.model.repository.member.RatingsRepository;
 public class MembersService {
 	
 	@Autowired
-	private MembersRepository memDao;
+	private  MembersRepository memDao;
 	
 	@Autowired
 	private RatingsRepository rateDao;
@@ -79,4 +79,17 @@ public class MembersService {
 	public void deleteMemberById(Integer id) {
 		memDao.deleteById(id);
 	}
+	
+	//忘記密碼
+	public void  pwd(String email, String newpwd) {
+		Optional<MembersBean> op = memDao.findByEmail(email);
+
+		if (op.isPresent()) {
+			MembersBean member = op.get();
+
+			member.setPwd(newpwd);
+			
+			memDao.save(member);
+		}
+}
 }
