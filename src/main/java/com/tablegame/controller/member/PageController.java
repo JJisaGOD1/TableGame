@@ -6,10 +6,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.hibernate.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -160,4 +164,14 @@ public class PageController {
 		model.addAttribute("loginErrorMsg", req.getAttribute("loginErrorMsg"));
 		return "pwd";
 	}
+	
+	@PostMapping("/pwdSubmit")
+	public  String pwdSubmit(@Valid @ModelAttribute(name = "pwdForm") pwdForm pwdForm, BindingResult rs,
+
+			Model model, HttpSession hs) {
+//		System.out.println("00000000000000000"+pwdForm.getEmail());
+
+          service.pwd(pwdForm.getEmail(), pwdForm.getPwd());
+		return "forward:/pwd";
+}
 }
