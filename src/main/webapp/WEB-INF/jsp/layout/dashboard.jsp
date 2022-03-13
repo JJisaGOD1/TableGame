@@ -24,7 +24,7 @@
 <body>
 
 
-	<div class="sidebar close">
+	<div class="sidebar ">
 		<a href="${contextRoot}" style="text-decoration: none;">
 			<div class="logo-details">
 				<i class='bx bxs-dice-5'></i> <span class="logo_name">瘋桌遊</span>

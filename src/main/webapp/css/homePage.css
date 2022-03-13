@@ -31,12 +31,12 @@
       /* border: 1px solid black; */
   }
   
-  .slide {
+  .slide2 {
       position: absolute;
       left: -600px;
       width: 544px;
       height: 544px;
-      /* background: blue; */
+      background: blue;
       -webkit-animation: slide 0.5s forwards;
       -webkit-animation-delay: 2s;
       animation: slide 3s forwards;

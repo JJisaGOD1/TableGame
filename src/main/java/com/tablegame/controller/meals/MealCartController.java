@@ -161,6 +161,20 @@ public class MealCartController {
 	}
 	
 	
+	@GetMapping(value = "/deleteOneFoodItemInCart")
+	public ModelAndView deleteOneFoodItemInCart(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
+			BindingResult rs, HttpSession session) {
+		OrderCart cart = (OrderCart) session.getAttribute("cart");
+		MealOrders newOrders = (MealOrders) session.getAttribute("orders");
+		Map<Integer, FoodItem> Map = cart.getFoodMap();
+		FoodList food = foodService.findById(foodId);
+		cartService.deleteOneFoodItem(food, Map);
+		mav.addObject("newOrders", newOrders);
+		mav.setViewName("redirect:/addToCart");
+		return mav;
+	}
+	
+	
 	
 
 }

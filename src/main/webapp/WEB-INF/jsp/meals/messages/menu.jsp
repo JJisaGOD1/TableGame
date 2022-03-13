@@ -12,9 +12,11 @@
 <head>
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-	
+	<link href="${contextRoot}/js/jquery-3.6.0.min.js" rel="stylesheet" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
-<link href="${contextRoot}/js/sweetalert2.all.min.js" rel="stylesheet" />
+<%-- <link href="${contextRoot}/js/sweetalert2.all.min.js" rel="stylesheet" /> --%>
+
+
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -293,9 +295,12 @@ body {
 							NT$
 							<c:out value="${food.foodPrice}" />
 						</p>
-						<a onclick="alert('已加入訂單')"
-							href="${contextRoot}/addToCart?foodId=${food.foodId}"
-							class="btn btn-primary">加入訂單</a>
+						 
+<%-- 						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" class="btn btn-primary" id="addFoodAlert"><button type="button" class="btn btn-primary" id="addFoodAlert" value="加入訂單"></button></a> --%>
+							
+						 
+						<a href="${contextRoot}/addToCart?foodId=${food.foodId}">
+							<button type="button" id="addFoodAlert" value="加入訂單" class="btn btn-primary">加入訂單</button></a>
 						<%-- 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteMessage?id=${workMessages.id}">刪除</a> --%>
 					</div>
 				</div>
@@ -378,10 +383,16 @@ body {
 <c:forEach items="${cart.foodMap}" var="cart">
     <ul class="shopping-cart-items">
       <li class="clearfix">
+      
+<%--       <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}"> --%>
+<%--       <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 1rem; opacity: 80%"/></a> --%>
+      
         <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 50px" alt="item1" />
-        <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span>
-        <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span>
+<!--         <div> -->
+        <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span> |
+        <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span> |
         <span class="lighter-text">數量:<c:out value='${cart.value.quantity}' /></span>
+<!--         </div> -->
       </li>
 	</ul>
 </c:forEach>
@@ -408,7 +419,7 @@ body {
 				<c:choose>
 					<c:when test="${page.number != pageNumber -1}">
 
-						<a href="${contextRoot}/menu?p=${pageNumber}"><c:out
+						<a href="${contextRoot}/meals/menu?p=${pageNumber}"><c:out
 								value="${pageNumber}" /> </a>
 					</c:when>
 
@@ -444,9 +455,20 @@ body {
 			  
 			})();
 		
+		
+		document.getElementById("addFoodAlert").onclick = function() {
+			Swal.fire({
+				  position: 'top-end',
+				  icon: 'success',
+				  title: 'Your work has been saved',
+				  showConfirmButton: false,
+				  timer: 1500
+				})
+		}
+		
 	</script>
-
-
+	
+	<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 
 
 

@@ -8,6 +8,12 @@
 <html>
 <head>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
 
 <meta charset="UTF-8">
@@ -133,6 +139,12 @@ h1 {
 	font-size: 20px;
 	font-weight: bold;
 }
+
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 90%;
+    height: 80%;
+  }
 </style>
 
 
@@ -247,47 +259,81 @@ h1 {
 
 	<!-- <h1>廣告輪播</h1> -->
 
-	<div id="screenBox">
-		<div id="list" style="left: 0px">
-			<a href="https://www.drawnow.com.tw/course/content/9"><img
-				src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg"
-				alt="兒童桌遊得來速" /></a> <a href="https://boardgamer.org/"><img
-				src="https://boardgamer.org/wp-content/uploads/DBG_BANNER_1920x750px_202111292.jpg"
-				alt="桌遊好時光" /></a> <a
-				href="https://www.huashan1914.com/w/huashan1914/exhibition_20102013202243385"><img
-				src="https://media.huashan1914.com/WebUPD/huashan1914/exhibition/%E6%A1%8C%E9%81%8A%E5%AE%98%E7%B6%B2BN_20102013345694117.jpg"
-				alt="桌遊1+1" /></a> <a
-				href="https://www.accupass.com/event/1503301314201047087895"><img
-				src="https://static.accupass.com/userupload/18f1067aa7344189ae33384ea382d9b6.jpg"
-				alt="桌遊同樂遊" /></a> <a
-				href="http://idachdora.cheerydachshund.com/archives/189"><img
-				src="https://idachdora.cheerydachshund.com/wp-content/uploads/2015/01/850banner.jpg"
-				alt="幫助孩子左右腦發展" /></a>
+<!-- 	<div id="screenBox"> -->
+<!-- 		<div id="list" style="left: 0px"> -->
+<!-- 			<a href="https://www.drawnow.com.tw/course/content/9"><img -->
+<!-- 				src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg" -->
+<!-- 				alt="兒童桌遊得來速" /></a> <a href="https://boardgamer.org/"><img -->
+<!-- 				src="https://boardgamer.org/wp-content/uploads/DBG_BANNER_1920x750px_202111292.jpg" -->
+<!-- 				alt="桌遊好時光" /></a> <a -->
+<!-- 				href="https://www.huashan1914.com/w/huashan1914/exhibition_20102013202243385"><img -->
+<!-- 				src="https://media.huashan1914.com/WebUPD/huashan1914/exhibition/%E6%A1%8C%E9%81%8A%E5%AE%98%E7%B6%B2BN_20102013345694117.jpg" -->
+<!-- 				alt="桌遊1+1" /></a> <a -->
+<!-- 				href="https://www.accupass.com/event/1503301314201047087895"><img -->
+<!-- 				src="https://static.accupass.com/userupload/18f1067aa7344189ae33384ea382d9b6.jpg" -->
+<!-- 				alt="桌遊同樂遊" /></a> <a -->
+<!-- 				href="http://idachdora.cheerydachshund.com/archives/189"><img -->
+<!-- 				src="https://idachdora.cheerydachshund.com/wp-content/uploads/2015/01/850banner.jpg" -->
+<!-- 				alt="幫助孩子左右腦發展" /></a> -->
 
-		</div>
-
-
+<!-- 		</div> -->
 
 
 
-		<a href="javascript:;" class="arrow" id="prev" style="left: 20px;">
-			<img
-			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg "
-			style="height: 40px; color: white; transform: rotateY(180deg);" />
-		</a> <a href="javascript:;" class="arrow" id="next" style="right: 20px;">
-			<img
-			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg "
-			style="height: 40px;" />
-		</a>
-	</div>
-	<div id="movedot">
-		<div id="buttons">
-			<span index="1" class="on"></span> <span index="2"></span> <span
-				index="3"></span> <span index="4"></span> <span index="5"></span>
-		</div>
-	</div>
+
+
+<!-- 		<a href="javascript:;" class="arrow" id="prev" style="left: 20px;"> -->
+<!-- 			<img -->
+<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
+<!-- 			style="height: 40px; color: white; transform: rotateY(180deg);" /> -->
+<!-- 		</a> <a href="javascript:;" class="arrow" id="next" style="right: 20px;"> -->
+<!-- 			<img -->
+<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
+<!-- 			style="height: 40px;" /> -->
+<!-- 		</a> -->
+<!-- 	</div> -->
+<!-- 	<div id="movedot"> -->
+<!-- 		<div id="buttons"> -->
+<!-- 			<span index="1" class="on"></span> <span index="2"></span> <span -->
+<!-- 				index="3"></span> <span index="4"></span> <span index="5"></span> -->
+<!-- 		</div> -->
+<!-- 	</div>A -->
 	<!-- 廣告輪播 end -->
+	
+	<!-- 廣告輪播2 -->
 
+	<div id="demo" class="carousel slide" data-ride="carousel" align="center">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <a href="https://www.drawnow.com.tw/course/content/9">
+      <img src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg" alt="Los Angeles" width="1100" height="500"></a>
+    </div>
+    <div class="carousel-item">
+      <img src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="Chicago" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="New York" width="1100" height="500">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+<!-- 廣告輪播2-end -->
 	<!-- 最新消息 -->
 	<!-- <div align="center">
         <div class="card text-center" style="width: 80vw;">
