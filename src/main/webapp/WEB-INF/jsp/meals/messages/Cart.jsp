@@ -298,8 +298,8 @@ input:focus {
 </table>
  <hr>
  <div style="display: flex; flex-direction: row; justify-content: flex-end;">
-      <div style="margin-right: 20px;"><div style="display: flex; flex-direction: row-reverse;">合計: </div><p style="font-size: 30px; display: flex; flex-direction: row-reverse;">NT$<c:out value="${C.totalPrices}"/></p>
-      <a href="${contextRoot}/checkOrder"><button style="background-color: #EBBF75; border: none; width: 150px;height: 30px; border-radius: 30px">送出訂單</button></a></div>
+      <div style="margin-right: 2rem;"><div style="display: flex; flex-direction: row-reverse;">合計: </div><p style="font-size: 30px; display: flex; flex-direction: row-reverse;">NT$<c:out value="${C.totalPrices}"/></p>
+      <a href="${contextRoot}/checkOrder"><button style="background-color: #EBBF75; border: none; width: 150px;height: 30px; border-top-left-radius: 10rem; border-top-right-radius: 3rem">送出訂單</button></a></div>
 <%--       <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a> --%>
     </div>
  

@@ -167,14 +167,7 @@ h1 {
 					<a href="${contextRoot}/backController">後台管理</a>
 				</c:if>
 		</nav>
-
-
-
-		<div class="icons" style="display: flex">
-			<div class="fas fa-search" id="search-btn"></div>
-			<div class="fas fa-shopping-cart" id="cart-btn"></div>
-
-
+<nav class="navbar">
 			<c:if test="${member.ratingsBean.id == null }">
 				<div style="display: flex">
 					<a class="" href="${contextRoot}/addCustomer">註冊 </a>
@@ -190,9 +183,16 @@ h1 {
 						href="${contextRoot}/logout">登出 </a>
 				</div>
 			</c:if>
+</nav>
 
+
+		<div class="icons" style="display: flex">
+			<div class="fas fa-search" id="search-btn"></div>
+			<div class="fas fa-shopping-cart" id="cart-btn"></div>
 
 		</div>
+
+
 
 		<div class="search-form">
 			<input type="search" id="search-box" placeholder="search here...">

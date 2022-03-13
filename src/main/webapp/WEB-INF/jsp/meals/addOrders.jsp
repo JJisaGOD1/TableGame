@@ -14,6 +14,7 @@
 <title>員工資料</title>
 
 <style>
+
 #slide {
     position: absolute;
     left: -100px;
@@ -179,6 +180,8 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 <!-- style="background-color: #fdf5e6" -->
 </head>
 <body>
+<div style="width: 100vw;height: 25vh;background-color: red; "></div>
+
 <!-- 	<div class="container" id="container"> -->
 <!-- 		<p /> -->
 <!-- 		<div class="row justify-content-center"> -->
@@ -201,7 +204,7 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 
 <!-- 		</div> -->
 <!-- 	</div> -->
-	<a class="slide" href="#" id="a">
+	<a class="slide2" href="#" id="a">
 	<button style="width: 300px; height: 50px; border-radius: 50px; background-color: #EBA800; border: none; font-weight: bold;box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);">開始點餐</button></a>
 	<div style="width: 25vw; height: ; margin-left: 19vw; margin-top: 30vh;border-radius: 12px;" class="wrapper" id="fade-in">
 	<h1 style="font-weight: border;">歡迎光臨點餐系統</h1>
@@ -242,8 +245,8 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 							<p>
 								<input type="submit" name="submit" id="btnSubmit" class="btn btn-secondary btn-sm" />
 						</form:form>
-	
-</div>
+	</div>
+
 <script>
 $('.slide').on('click', function(){
     $('#fade-in').toggleClass('show');

@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
@@ -23,7 +23,7 @@
 		src="${contextRoot}/uploaded/pngwing.com.png"
 		style="width: 4vw; position: fixed; right: 60px; bottom: 40px"></a>
 
-	<div class="container" style="">
+	<div class="container" style="margin-left: auto;margin-right: auto;">
 		<!-- 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1> -->
 		<br>
 		<br>
@@ -56,14 +56,16 @@
 												<td><c:out value="${food.foodType}" /></td>
 												<td><c:out value="${food.foodState}" /></td>
 												<td>
-												<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteFood?foodId=${food.foodId}"><button type="button" class="btn btn-danger">刪除</button></a>
+												<a href="${contextRoot}/deleteFood?foodId=${food.foodId}"><button type="button" class="btn btn-danger" id="confirmedDelete">刪除</button></a>
 
 <%-- 												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a> --%>
 
 												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>												
 												<a href="${contextRoot}/editPic?foodId=${food.foodId}"><button type="button" class="btn btn-secondary">新增圖片</button></a>
 												
-												<input type="button" class="edit" value="修改" data-toggle="modal" data-target="#editFood">
+												<input type="button" class="edit btn btn-success" value="修改" data-toggle="modal" data-target="#editFood">
+												
+<!-- 												<button type="button" class="btn btn-success" class="edit" value="修改" data-toggle="modal" data-target="#editFood">修改</button> -->
 								
 												
 											</tr>
@@ -245,6 +247,29 @@
 				},
 			})
 		})
+		
+		
+
+
+	document.getElementById("confirmedDelete").onclick = function() {
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			    Swal.fire(
+			      'Deleted!',
+			      'Your file has been deleted.',
+			      'success'
+			    )
+			  }
+			})
+		}
 </script>
 
 
