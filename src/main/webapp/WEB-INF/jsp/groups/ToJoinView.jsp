@@ -44,7 +44,7 @@
 				</td>
 			</tr>
 			</table>
-			<input type="submit" value="報團!">
+			<input type="submit" value="報團!" class="btn btn-primary">
 		</form>
 </div>
 </body>

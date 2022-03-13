@@ -78,57 +78,56 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id='popupWindow' class="modal-body">
-		  <h3 id='popupGroupId'></h3>
-		<table id="popup_table" class="table">
-			<thead class="thead-dark">
-				<tr class="popup_table_th">
-					<th>參加者</th>
-					<th>攜帶人數</th>
-					<th>加入時間</th>
-					<th>查刪</th>
-				</tr>
-			</thead>
-			<tbody id="popup_table_tbody">
-
-				<!-- <tr>
-					<td>亞當</td>
-					<td>8</td>
-					<td>0000/03/03</td>
-					<td>
-						<a>查</a>
-						<a>刪</a>
-					</td>
-				</tr>
-				<tr>
-					<td>亞當</td>
-					<td>8</td>
-					<td>0000/03/03</td>
-					<td>
-						<a>查</a>
-						<a>刪</a>
-					</td>
-				</tr> -->
-			</tbody>
-		</table>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="popupGroupId">popupGroupId</h3>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div id='popupWindow' class="modal-body">
+			<table id="popup_table" class="table">
+				<thead class="thead-dark">
+					<tr class="popup_table_th">
+						<th>參加者</th>
+						<th>攜帶人數</th>
+						<th>加入時間</th>
+						<th class="">查刪</th>
+					</tr>
+				</thead>
+				<tbody id="popup_table_tbody">
+	
+					<!-- <tr>
+						<td>亞當</td>
+						<td>8</td>
+						<td>0000/03/03</td>
+						<td>
+							<a>查</a>
+							<a>刪</a>
+						</td>
+					</tr>
+					<tr>
+						<td>亞當</td>
+						<td>8</td>
+						<td>0000/03/03</td>
+						<td>
+							<a>查</a>
+							<a>刪</a>
+						</td>
+					</tr> -->
+				</tbody>
+			</table>
+	
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+	        <button type="button" class="btn btn-primary">儲存</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 
 <script >
@@ -142,23 +141,37 @@ $('.checkTheGroup').click(function(){
 			type:"get",
 			dataType:"JSON",
 			success: function(respData) {
-				console.log(respData)
 				// array.forEach(function(currentValue, index, arr), thisValue)
-				$('#popupGroupId').innerHTML=''
-				console.log(respData[0].participant.id.groupId)
-				$('#popupGroupId').innerHTML='團編號：'+respData[0].participant.id.groupId
+				console.log(respData)
+				
+				
+				// console.log(respData[0].participant.id.groupId)
+				
+				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
-				respData.forEach(function(dto, index, arr){
+				// respData.participants.forEach(function(participant, index, arr){
+				// 	console.log(participant.participant)
+				// })
+
+				
+				//dto作法
+				respData.participants.forEach(function(dto, index, arr){
 					// console.log(dto.participant.id.groupId)
-					if(index==0){
-						
-					}
-					
 					let row=document.createElement('tr')
 					let name=document.createElement('td')
-					name.innerHTML=dto.member.cusName
+					if(respData.group.launcher.id==dto.member.id){
+						name.innerHTML=dto.member.cusName+'(團長)'
+					}else{
+						name.innerHTML=dto.member.cusName
+					}
+					
 					let num=document.createElement('td')
-					num.innerHTML=dto.participant.participantNum
+					let numInput=document.createElement('input')
+					numInput.type='number'
+					numInput.value=dto.participant.participantNum
+					numInput.min=1;numInput.max=10
+					numInput.style.width='3em'
+					num.append(numInput)
 					let joinedTime=document.createElement('td')
 					joinedTime.innerHTML=dto.participant.joinedTime
 
