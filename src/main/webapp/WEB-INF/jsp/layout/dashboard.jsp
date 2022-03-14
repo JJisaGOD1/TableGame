@@ -92,6 +92,7 @@
           <li><a class="link_name" >留言管理</a></li>
           <li><a href="${contextRoot}/viewComments">留言查看</a></li>
           <li><a href="${contextRoot}/serverService">線上客服</a></li>
+          <li><a href="${contextRoot}/categoryProblem">留言分析</a></li>
         </ul>
 			</li>
 			<!-- <li>

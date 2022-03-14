@@ -22,7 +22,7 @@
 <body>
 
 	<!-- 為 ECharts 準備一個具備大小（寬高）的 DOM -->
-	<div>
+	<div style="position: fixed; left: 20vw;">
 		<div id="category" style="width: 50vw; height: 50vw;left: 10vw"></div>
 	</div>
 </body>
@@ -42,7 +42,8 @@
 		},
 		tooltip : {
 			trigger : 'item',
-			formatter : "{a} <br/>{b} : {c} ({d}%)"
+			formatter : "{a} <br/>{b} : {c} ({d}%)",
+			textStyle:{fontSize:20}
 		},
 		/* 顏色和選項的對應關係 */
 		legend : {
@@ -50,7 +51,7 @@
 			left : 'left',
 			data : [],
 			textStyle : {
-				fontSize : 16
+				fontSize : 22
 			}
 
 		//待填充資料項1
@@ -62,6 +63,7 @@
 			radius : '55%',
 			center : [ '50%', '60%' ],
 			data : [], //待填充資料項2
+			textStyle : {fontSize:28},
 			/* 陰影區域設定 */
 			itemStyle : {
 				emphasis : {
@@ -70,9 +72,7 @@
 					shadowColor : 'rgba(0, 0, 0, 0.5)'
 				}
 			},
-			textStyle : {
-				fontSize : 24
-			}
+
 		} ]
 	};
 	/* 傳送ajax請求 */

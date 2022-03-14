@@ -4,11 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <title>Insert title here</title>
 <style>
 	body{
@@ -32,20 +33,34 @@
 		font-size: x-large;
 	}
 	.row1{
-		font-size: larger;
+		font-size: 2rem;
 	}
 	.button1{
-		font-size: larger;
+		font-size: 2rem;
 	}
 
 </style>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+<!-- 各自的navbar -->
+<div class="navbar-wrap">
+    <nav class="navbar-meals">
+    <img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+    
+    <a href="${contextRoot}/addComment" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-comment-detail bx-lg' style="display: flex; justify-content: center; color: black;"></i>意見回復</button></a>
+    
+    
+    <a href="${contextRoot}/nameComments/1" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-book-content bx-lg' style="display: flex; justify-content: center; color: black;"></i>查詢留言</button></a>
+    <a href="${contextRoot}/customerService" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-chat bx-lg' style="display: flex; justify-content: center; color: black;"></i>線上交流</button></a>
+    </nav>
+</div>
+<!-- 各自的navbar(end) -->
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<div class="col-6">
+			<div class="col-6" style="margin-top: 3vh;">
 				<div class="card block1">
 					<div class="card-header text1" style="text-align: center">意見編輯</div>
 					<div class="card-body">
@@ -89,7 +104,7 @@
 				console.log(res);
 				if (res == 6) {
 					var str = "<br><label id='product1' class='card-header text2' style='display:block;'>產品</label>"
-					+"<select class='form-control' id='product' name='product'>"
+					+"<select class='form-control row1' id='product' name='product'>"
 					$.ajax({
 						url : "http://localhost:8080/homepage/ajax/product",
 						dataType : "JSON",
