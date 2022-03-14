@@ -210,7 +210,7 @@ position: relative;
 <body>
 
 <!-- 各自的navbar -->
-<div style="width: 100vw;height: 10vh;background-color: white; position: fixed;top: 9rem; font-size: 1.5rem;">
+<div style="width: 100vw;height: 10vh;background-color: white; position: fixed;top: 5vw; font-size: 1.5rem;">
 <nav class="navbar-meals">
 <img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
 
@@ -247,7 +247,7 @@ position: relative;
 <!-- 	</div> -->
 	<a class="slide2" href="#" id="a">
 	<button style="width: 300px; height: 50px; border-radius: 50px; background-color: #EBA800; border: none; font-weight: bold;box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);">開始點餐</button></a>
-	<div style="width: 25vw; height: ; margin-left: 19vw; margin-top: 30vh;border-radius: 12px;" class="wrapper" id="fade-in">
+	<div style="width: 25vw; height: 16vw ; margin-left: 19vw; margin-top: 30vh;border-radius: 12px;" class="wrapper" id="fade-in">
 	<h1 style="font-weight: border;">歡迎光臨點餐系統</h1>
 	<form:form class="form" action="${contextRoot}/meals/addOrders"
 							modelAttribute="orders" method="post">

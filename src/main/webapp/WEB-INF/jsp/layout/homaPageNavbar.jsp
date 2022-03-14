@@ -170,7 +170,7 @@ h1 {
 
 
 
-		<div class="icons" style="position: relative; left: 21rem;">
+		<div class="icons" style="position: relative; left: 13rem;">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
 
