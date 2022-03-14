@@ -5,12 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
 
 <!DOCTYPE html>
 <html>
 <head>
-
+<style type="text/css">
+html {
+	font-size: xx-small;
+}
+</style>
 
 <link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
@@ -22,6 +26,10 @@
 	margin: 0;
 	padding: 0;
 }
+
+img {
+	object-fit: scale-down
+}
 </style>
 </head>
 <body>
@@ -30,18 +38,19 @@
 			<c:forEach items="${P.content}" var="P">
 				<c:choose>
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
-						<div class="card" style="width: 15vw; padding: auto">
+						<div class="card"
+							style="width: 15vw; padding: auto; margin-bottom: 0">
 							<div
 								style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
 								<a
 									href="${contextRoot}/showImformationnologin?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
-									style="width: 15vw; max-height: 18vw" alt="picture of product"
-									class="card-img-top"
+									style="width: 15vw; max-height: 18vw; margin-bottom: 0"
+									"  alt="picture of product" class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
 							</div>
-							<div class="card-body">
+							<div class="card-body" style="padding: 0 1vw 0.5vw 1vw">
 								<h5 class="card-title">
 									<c:out value="${P.product_name}" />
 								</h5>
