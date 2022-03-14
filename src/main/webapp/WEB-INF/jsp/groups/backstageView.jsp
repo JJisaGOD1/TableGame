@@ -64,7 +64,7 @@
 					查看
 					</button>
 	            	<a	class="btn btn-danger"
-						href="${contextRoot }/backstage/groups/DeleteGroup/${group.groupId}"
+						href="${contextRoot}/backstage/groups/DeleteGroup/${group.groupId}"
 						onclick="return del()">
 					刪除
 					</a>
@@ -78,11 +78,17 @@
 
 
 <!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog" >
+	    <div id="modal-content" class="modal-content" style="width: 700px;">
 	      <div class="modal-header">
-	        <h3 class="modal-title" id="popupGroupId">popupGroupId</h3>
+	        <h3 class="modal-title" id="popupGroupId" style="width: 250px;">popupGroupId</h3>
+			<span style='margin: 0,auto'></span>遊戲：</span>
+
+		<form id="saveChange" action="${contextRoot}/backstage/groups/saveGameAndNumChange" >
+			<input id="inputGroupId" type="text" style="display: none;" value="" name="groupId">
+			<select id="selectGame" name="updateProduct" > 
+			</select>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -94,7 +100,8 @@
 						<th>參加者</th>
 						<th>攜帶人數</th>
 						<th>加入時間</th>
-						<th class="">查刪</th>
+						<th class="">刪除</th>
+						<th style="display: none;">參加者id</th>
 					</tr>
 				</thead>
 				<tbody id="popup_table_tbody">
@@ -104,7 +111,6 @@
 						<td>8</td>
 						<td>0000/03/03</td>
 						<td>
-							<a>查</a>
 							<a>刪</a>
 						</td>
 					</tr>
@@ -113,7 +119,6 @@
 						<td>8</td>
 						<td>0000/03/03</td>
 						<td>
-							<a>查</a>
 							<a>刪</a>
 						</td>
 					</tr> -->
@@ -123,8 +128,9 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-	        <button type="button" class="btn btn-primary">儲存</button>
+	        <input type="submit" class="btn btn-primary" value="儲存" onclick="check()"></button>
 	      </div>
+		</form>
 	    </div>
 	  </div>
 	</div>
@@ -135,28 +141,131 @@
 $('.checkTheGroup').click(function(){
 
 	let groupId=parseInt($(this).parent().parent().children()[0].innerHTML)
-
+	$('#inputGroupId').val(groupId)
+	
 	$.ajax({
-			url:"http://localhost:8080/homepage/backstage/groups/Participants/"+groupId,
+		url:"http://localhost:8080/homepage/backstage/groups/Participants/"+groupId,
+		type:"get",
+		dataType:"JSON",
+		success: function(respData) {
+			// array.forEach(function(currentValue, index, arr), thisValue)
+			console.log(respData)
+			
+			
+			// console.log(respData[0].participant.id.groupId)
+			// <input type="text" style="display: none;" value="" name="groupId">
+			
+			
+
+			$('#popupGroupId').html('團編號：'+groupId)
+			
+			// respData.participants.forEach(function(participant, index, arr){
+			// console.log(participant.participant)
+			// })
+
+			//遊戲option "${product.product_id==group.product.product_id}"
+				$('#selectGame *').remove()
+				respData.prods.forEach(function(prod, index, arr){
+				let op=document.createElement('option')
+				op.id='o'+prod.product_id
+				op.value=prod.product_id
+				op.innerHTML=prod.product_name
+				if(prod.product_id==respData.group.product.product_id){
+					op.selected="selected"
+				}
+				$('#selectGame').append(op)
+			})
+
+			$('#popup_table_tbody *').remove()
+			$('#saveChange .numOfparticipant').remove()
+			//ul dto作法
+			respData.participants.forEach(function(dto, index, arr){
+				// console.log(dto.participant.id.groupId)
+				let row=document.createElement('tr')
+				let name=document.createElement('td')
+				if(respData.group.launcher.id==dto.member.id){
+					name.innerHTML=dto.member.cusName+'(團長)'
+				}else{
+					name.innerHTML=dto.member.cusName
+				}
+				let num=document.createElement('td')
+				let numInput=document.createElement('input')
+				numInput.type='number'
+				numInput.name='numOf'+dto.member.id
+				numInput.className='numOfparticipant'
+				numInput.value=dto.participant.participantNum
+				numInput.min=1;numInput.max=10
+				numInput.style.width='3em'
+
+				$('#saveChange').append(numInput)//加到form表單上
+				num.append(numInput)
+				
+				
+				let joinedTime=document.createElement('td')
+				joinedTime.innerHTML=dto.participant.joinedTime
+				let tdBtn=document.createElement('td')
+
+				let hiddenParticipantId=document.createElement('td')
+					hiddenParticipantId.id='hiddenParticipantId'
+					hiddenParticipantId.innerHTML=dto.member.id
+					hiddenParticipantId.value=dto.member.id
+					hiddenParticipantId.style.display="none"
+					console.log(hiddenParticipantId.innerHTML)
+				
+				
+				if(respData.group.launcher.id==dto.member.id){
+					tdBtn.innerHTML='團長不可移除'
+				}else{
+					let deleteBtn=document.createElement('input')
+					// deleteBtn.href='${contextRoot }/backstage/groups/DeleteJoiner/'+groupId+'/'+dto.member.id
+					deleteBtn.type='button'
+					deleteBtn.onclick='return del()'
+					deleteBtn.value='刪除'
+					deleteBtn.className='btn btn-danger deleteParticipant'
+					deleteBtn.id='deleteParticipant'
+					tdBtn.append(deleteBtn)
+
+				}
+				
+				console.log(dto.participant.joinedTime)
+
+				row.append(name)
+				row.append(num)
+				row.append(joinedTime)
+				row.append(tdBtn)
+				row.append(hiddenParticipantId)
+			
+				$('#popup_table_tbody').append(row)
+			})
+			
+			
+		},
+		error: function(){
+			console.log('something wrong')
+		}
+	});
+});
+
+//動態生成按鈕需從其父元素以上開始繫結
+$(document).on('click','#deleteParticipant',function(){
+	if(confirm('確定刪除此參加者?')){
+		let groupId=parseInt($(this).parent().parent().parent().parent().parent().
+					prev().children()[0].innerHTML.substring(4))
+		console.log(groupId)
+		let hiddenParticipantId=parseInt($(this).parent().siblings('#hiddenParticipantId').text())
+		console.log(hiddenParticipantId)
+		$.ajax({
+			url:'${contextRoot }/backstage/groups/DeleteJoiner/'+groupId+'/'+hiddenParticipantId,
 			type:"get",
 			dataType:"JSON",
 			success: function(respData) {
-				// array.forEach(function(currentValue, index, arr), thisValue)
 				console.log(respData)
-				
-				
-				// console.log(respData[0].participant.id.groupId)
 				
 				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
-				// respData.participants.forEach(function(participant, index, arr){
-				// 	console.log(participant.participant)
-				// })
-
-				
+				$('#saveChange .numOfparticipant').remove()
 				//dto作法
 				respData.participants.forEach(function(dto, index, arr){
-					// console.log(dto.participant.id.groupId)
 					let row=document.createElement('tr')
 					let name=document.createElement('td')
 					if(respData.group.launcher.id==dto.member.id){
@@ -164,31 +273,53 @@ $('.checkTheGroup').click(function(){
 					}else{
 						name.innerHTML=dto.member.cusName
 					}
-					
 					let num=document.createElement('td')
 					let numInput=document.createElement('input')
 					numInput.type='number'
+					numInput.name='numOf'+dto.member.id
+					
 					numInput.value=dto.participant.participantNum
 					numInput.min=1;numInput.max=10
 					numInput.style.width='3em'
 					num.append(numInput)
+					// $('#saveChange').append(numInput)
+
 					let joinedTime=document.createElement('td')
 					joinedTime.innerHTML=dto.participant.joinedTime
-
+					let tdBtn=document.createElement('td')
+					
+					if(respData.group.launcher.id==dto.member.id){
+						tdBtn.innerHTML='團長不可移除'
+					}else{
+						let deleteBtn=document.createElement('input')
+						deleteBtn.href='${contextRoot }/backstage/groups/DeleteJoiner/'+groupId+'/'+dto.member.id
+						deleteBtn.type='button'
+						deleteBtn.onclick='return del()'
+						deleteBtn.value='刪除'
+						deleteBtn.className='btn btn-danger deleteParticipant'
+						deleteBtn.id='deleteParticipant'
+						tdBtn.append(deleteBtn)
+					}
 					console.log(dto.participant.joinedTime)
 
 					row.append(name)
 					row.append(num)
 					row.append(joinedTime)
+					row.append(tdBtn)
 					$('#popup_table_tbody').append(row)
 				})	
-				
 			},
 			error: function(){
 				console.log('something wrong')
-        	}
-	    });
-});
+			}
+		});
+	}
+})
+
+function check(){
+
+}
+
 	
 
 

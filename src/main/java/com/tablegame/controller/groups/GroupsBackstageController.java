@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.group.GroupBean;
-
+import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.groups.GroupsService;
 
 @Controller
@@ -23,12 +23,16 @@ public class GroupsBackstageController {
 	@Autowired
 	GroupsService service;
 	
+	
+	
 	@GetMapping("")
 	public ModelAndView getProd(ModelAndView mav) {
 		List<GroupBean> groups = service.getAllGroups();
 		Map<Integer, Integer> playerNumPerGroup = service.getAllPlayerNumMap();
+		List<Product> prods = service.getAllProductBean();
 		mav.getModel().put("groups", groups);
 		mav.getModel().put("playerNumPerGroup", playerNumPerGroup);
+		mav.getModel().put("products", prods);
 		mav.setViewName("/groups/backstageView");
 		return mav;
 	}

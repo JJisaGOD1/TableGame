@@ -27,7 +27,10 @@ public interface ParticipantRepository extends JpaRepository<ParticipantBean, Pa
 	List<ParticipantBean> getOneJoinedNumByDate(@Param("participantId") int participantId,@Param("gameDate") String date);
 
 
+//	ByOrderByJoinedTimeAsc
 	List<ParticipantBean> getByGroup(GroupBean group);
+	
+	
 	
 	
 }
