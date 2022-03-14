@@ -20,7 +20,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <!-- custom css file link  -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${contextRoot}/css/style.css">
 
 <link href="${contextRoot}/css/homePage.css" rel="stylesheet">
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
@@ -37,80 +37,80 @@ h1 {
 	text-align: center;
 }
 
-#screenBox {
-	margin: 20px auto;
-	width: 1745px;
-	height: 70rem;
-	/* border1: 3px solid grey; */
-	overflow: hidden;
-	position: relative;
-	background-color: blue;
-}
+/* #screenBox { */
+/* 	margin: 20px auto; */
+/* 	width: 1745px; */
+/* 	height: 70rem; */
+/* 	/* border1: 3px solid grey; */ */
+/* 	overflow: hidden; */
+/* 	position: relative; */
+/* 	background-color: blue; */
+/* } */
 
-#movedot {
-	margin: 0px auto;
-	width: 1200px;
-	height: 30px;
-	/* border: 3px solid grey; */
-	/* overflow: hidden; */
-	position: relative;
-}
+/* #movedot { */
+/* 	margin: 0px auto; */
+/* 	width: 1200px; */
+/* 	height: 30px; */
+/* 	/* border: 3px solid grey; */ */
+/* 	/* overflow: hidden; */ */
+/* 	position: relative; */
+/* } */
 
-#list {
-	width: 8725px;
-	height: 550px;
-	position: absolute;
-	z-index: 1;
-}
+/* #list { */
+/* 	width: 8725px; */
+/* 	height: 550px; */
+/* 	position: absolute; */
+/* 	z-index: 1; */
+/* } */
 
-#list img {
-	float: left;
-	width: 1745px;
-	height: 70rem;
-}
+/* #list img { */
+/* 	float: left; */
+/* 	width: 1745px; */
+/* 	height: 70rem; */
+/* } */
 
-#buttons {
-	position: absolute;
-	height: 10px;
-	width: 100px;
-	z-index: 2;
-	bottom: 20px;
-	right: 540px;
-}
+/* #buttons { */
+/* 	position: absolute; */
+/* 	height: 10px; */
+/* 	width: 100px; */
+/* 	z-index: 2; */
+/* 	bottom: 20px; */
+/* 	right: 540px; */
+/* } */
 
-#buttons span {
-	float: left;
-	border: 1px solid white;
-	border-radius: 50%;
-	height: 10px;
-	width: 10px;
-	margin-right: 5px;
-	background: rgba(128, 128, 128, 0.5);
-}
+/* #buttons span { */
+/* 	float: left; */
+/* 	border: 1px solid white; */
+/* 	border-radius: 50%; */
+/* 	height: 10px; */
+/* 	width: 10px; */
+/* 	margin-right: 5px; */
+/* 	background: rgba(128, 128, 128, 0.5); */
+/* } */
 
-#buttons .on {
-	background: black;
-	opacity: 60%;
-}
+/* #buttons .on { */
+/* 	background: black; */
+/* 	opacity: 60%; */
+/* } */
 
-.arrow {
-	margin-top: 100px;
-	display: none;
-	line-height: 40px;
-	text-align: center;
-	font-size: 30px;
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	z-index: 2;
-	top: 140px;
-	color: white;
-	background: rgba(255, 255, 255, 0.5);
-}
+/* .arrow { */
+/* 	margin-top: 100px; */
+/* 	display: none; */
+/* 	line-height: 40px; */
+/* 	text-align: center; */
+/* 	font-size: 30px; */
+/* 	width: 40px; */
+/* 	height: 40px; */
+/* 	position: absolute; */
+/* 	z-index: 2; */
+/* 	top: 140px; */
+/* 	color: white; */
+/* 	background: rgba(255, 255, 255, 0.5); */
+/* } */
 
-#screenBox:hover .arrow {
-	display: block;
-}
+/* #screenBox:hover .arrow { */
+/* 	display: block; */
+/* } */
 
 #header {
 	background-color: black;
@@ -172,13 +172,13 @@ position: relative;
 
 	<header class="header">
 
-		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt="">
+		<a href="#" class="logo"> <img src="${contextRoot}/uploaded/dice_logo.png" alt="">
 		</a>
 
 
 		<nav class="navbar" style="left: 11.5vw;">
 
-			<a href="../homepage">首頁</a> 
+			<a href="${contextRoot}/">首頁</a> 
 			<a href="#about">最新消息</a>
 			<a href="#menu">會員招募</a>
 			<a href="#products">店鋪資訊</a> 
