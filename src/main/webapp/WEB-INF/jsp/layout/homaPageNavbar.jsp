@@ -192,7 +192,7 @@ position: relative;
 			<c:if test="${member.ratingsBean.id == 3 }">
 			
 			
-					<a href="${contextRoot}/customerService">留言</a>
+					<a href="${contextRoot}/addComment">留言</a>
 				</c:if> <c:if test="${member.ratingsBean.id == 1 }">
 					<a href="${contextRoot}/backController">後台管理</a>
 				</c:if>
