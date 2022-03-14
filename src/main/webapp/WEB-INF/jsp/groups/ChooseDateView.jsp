@@ -3,10 +3,46 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<!-- ------導入黑色navbar--------- -->
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+
+
+<!-- ------導入Boxicons--------- -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
+
+
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+/* <!-- ------導入css到<header>裡面--------- --> */
+	.navbar-meals{
+	position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 0.5rem;
+		padding-top: 2.5rem;
+		width: 18vw;
+		margin: 0 auto;
+	}
+	.navbarlogo:hover{
+			opacity: 0.5; 
+	/* background-color: blue; */
+	}
+	body{
+		
+		background-color: rgba(255, 255, 255, .9);
+		background-blend-mode: multiply;
+		background-image: url('${contextRoot}/Photo/2022030417062669.jpg');
+		opacity:0.95;
+	}
+</style>
 
 	<link rel="stylesheet" href="${contextRoot}/JQuery/jquery-ui-1.13.1.custom/jquery-ui.min.css">
 <!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
@@ -59,10 +95,8 @@
 </head>
 <body>
 	<a href="${contextRoot}">回登入頁</a>
-	<div class="first" align="center">
-		<h1>Hi,${member.cusName}^^</h1>
+	<div class="first" align="center" style="margin-top: 7rem;">
 		<h2>選擇一天開團或入團吧!</h2><br>
-		
 		<div id="datepicker"></div>
 		
 	</div>
