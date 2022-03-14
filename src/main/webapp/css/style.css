@@ -24,7 +24,7 @@
 }
 
 html{
-    font-size: 62.5%;
+    font-size: 70%;
     overflow-x: hidden;
     scroll-padding-top: 9rem;
     scroll-behavior: smooth;
@@ -91,7 +91,7 @@ section{
 }
 
 .header .logo img{
-    height: 3.5vw;
+    height: 4rem;
 }
 
 .header .navbar a{
