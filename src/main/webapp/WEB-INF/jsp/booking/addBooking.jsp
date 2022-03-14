@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 <style>
 body{
-background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH864uN6s-km_2Yee7loq_RddECwY6pgUQEKAYS7XFCpUYXNMueQsBF3vOcKk6YprLLfPILAKpHCyb6OyinkOuWP8U2UCfSigq8QbUYBisr7xWYUYYEh7OnxvUI8hdRmKxSCeEAO5ePzyfEhYARhkqmttDvw_v8QsqCBpyDu-1dE6C1h0vqSEMX6ozNPKgcg3ObfbeNPOAeWcVCkq45pd0fC4rGTqtPZP9kwpyakdUzCrqImTtlxtWfo4xn0tsFuU95eVr8gL-f4DZStvFf9MqmYuGKT9asBLKerM7lomRxacBQYid-QmjW4_LaVxGjTR8SP-GJKJE92INS3fuBXI--Lmv9E6NOEprSbqtxj_0R-1xn-soRAypzH5qqR9M7wzEEmMeJpGRO46OoWqm8QTHFrhafETptL8l8KCQHMFQOnEVlm8XVqLpOqCQr-1cFC49Fd35SYKY82jfioVxDm9mnd_IaYLQNHnuUyvDaUMe5HJ52cfYKeg2bBTgLdoaYJZZ8EO45sUTQENDOJpUuliXtuCMvAS7x6YUiuhWM-VAKgKDTpus-9x_e8_QhlAg44AhwY2OthSrwVamKcnQc8KUp9HoxDDqmZStQXFLRMEDt5jlfiwEnAofbzMOFU3qUferqBdjLZnikCbmrfqPvZMdcj5slUgKKgFmcjRu19EaDXFZDg3KHnkz2U8BohH1sCo=w1200-h800-no?authuser=0');
-
+background-image:url(BookingPhoto/body.jpg);
+background-repeat: no-repeat;
+background-size: 100%;
 }
 
 .button{
@@ -25,8 +26,18 @@ background-color: white;
 </head>
 <body>
 <div class="container">
-
-
+<h2>店家資訊</h2>
+<div class="google-maps" style="float:left; margin-right:10px">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0045591582784!2d121.54122331400265!3d25.033919344450858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xedc006d25a9e35df!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1647221432570!5m2!1szh-TW!2stw" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<div>
+<p>位置</p>
+<p>台北市內湖區金湖路57號</p>
+<p>聯絡電話</p>
+<p>02-27949094</p>
+<p>營業時間</p>
+<p>營業至 18:00</p>
+</div>
 
 </p>
 <div class="row justify-content-center">
@@ -34,9 +45,7 @@ background-color: white;
 
 </div>
 </p>
-<div class="row justify-content-center">
-<a href="lnquire"><input type="button" class="button" name="inquire" value="查詢訂位" style="width:300px;height:150px"/></a>
-</div>
+
 </div>
 
 
