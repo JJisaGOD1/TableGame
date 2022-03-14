@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />  
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,21 @@ background-size: 100%;
 <title>訂位查詢</title>
 </head>
 <body>
+
+<!-- 各自的navbar -->
+<div class="navbar-wrap">
+<nav class="navbar-meals">
+<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+
+<a href="addNew" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>立即訂位</button></a>
+
+
+<a href="lnquire" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂位查詢</button></a>
+
+</nav>
+</div>
+<!-- 各自的navbar(end) -->
+
  <div id="allpage" align="center">
 <h2>訂位/更改/刪除-查詢</h2>
 

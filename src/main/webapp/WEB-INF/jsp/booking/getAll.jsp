@@ -61,7 +61,7 @@
    
   
 
-  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}" ><button  type="button" class="updateBtn chcolor">編輯</button> </a>	|  
+  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}" ><button  type="button" class="updateBtn chcolor" >編輯</button> </a>	|  
 				 
 			<a onclick="delcfm()" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a>
    </c:forEach>
