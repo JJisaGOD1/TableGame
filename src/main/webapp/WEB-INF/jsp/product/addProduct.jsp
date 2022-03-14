@@ -35,7 +35,8 @@
 						</tr>
 						<tr>
 							<th>價錢</th>
-							<td><form:input path="price" /></td>
+							<td><form:input path="price"
+									oninput="value=value.replace(/[^\d]/g,'')" /></td>
 						</tr>
 						<tr>
 							<th>類型</th>
@@ -43,19 +44,23 @@
 						</tr>
 						<tr>
 							<th>最小遊玩人數</th>
-							<td><form:input path="minplayer" /></td>
+							<td><form:input path="minplayer"
+									oninput="value=value.replace(/[^\d]/g,'')" /></td>
 						</tr>
 						<tr>
 							<th>最大遊玩人數</th>
-							<td><form:input path="maxplayer" /></td>
+							<td><form:input path="maxplayer"
+									oninput="value=value.replace(/[^\d]/g,'')" /></td>
 						</tr>
 						<tr>
 							<th>最適年齡</th>
-							<td><form:input path="low_age" /></td>
+							<td><form:input path="low_age"
+									oninput="value=value.replace(/[^\d]/g,'')" /></td>
 						</tr>
 						<tr>
 							<th>庫存</th>
-							<td><form:input path="stock" /></td>
+							<td><form:input path="stock"
+									oninput="value=value.replace(/[^\d]/g,'')" /></td>
 						</tr>
 						<tr>
 							<th>上下架</th>
@@ -78,6 +83,14 @@
 	</div>
 </body>
 <script>
-	
+	$("form").submit(function() {
+		let maxplayer = $(this).parent().parent().find('#maxplayer').val();
+		let minplayer = $(this).parent().parent().find('#minplayer').val();
+		if (minplayer >= maxplayer) {
+			window.alert('最大人數須大於最小人數');
+			return false;
+		}
+		return true;
+	});
 </script>
 </html>

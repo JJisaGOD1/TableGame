@@ -14,15 +14,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="nav-link" href="${contextRoot}/">Home <span
-			class="sr-only">(current)</span></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
+	
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 			<ul class="navbar-nav mr-auto">
@@ -46,7 +38,7 @@
 						placeholder="Search" aria-label="Search" name="search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
-				<a class="nav-link" href="${contextRoot}/logout">登出 </a>
+			
 			</c:if>
 
 		</div>
