@@ -5,12 +5,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
 
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
+
+
+<style>
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
