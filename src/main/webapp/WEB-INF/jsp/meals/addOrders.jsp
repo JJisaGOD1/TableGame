@@ -170,7 +170,15 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
   
 }
 
-
+.navbar-wrap{
+	width: 100vw;
+    height: 18vh;
+    background-color: white;
+    position: relative;
+    top: 0vw;
+    font-size: 1.5rem;
+    min-height: 17rem;
+}
 
 
 .navbar-meals{
@@ -183,6 +191,8 @@ position: relative;
     padding-top: 2.5rem;
     width: 18vw;
     margin: 0 auto;
+    top: 5vw;
+    width: 19vw;
 }
 
 .navbarlogo:hover{
@@ -210,7 +220,7 @@ position: relative;
 <body>
 
 <!-- 各自的navbar -->
-<div style="width: 100vw;height: 10vh;background-color: white; position: fixed;top: 5vw; font-size: 1.5rem;">
+<div class="navbar-wrap">
 <nav class="navbar-meals">
 <img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
 
