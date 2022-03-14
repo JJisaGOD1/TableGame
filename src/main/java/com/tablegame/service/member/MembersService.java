@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.tablegame.dto.QueryForm;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.member.RatingsBean;
 import com.tablegame.model.repository.member.MembersRepository;
@@ -100,25 +101,25 @@ public class MembersService {
 	
 	
 //	修改
-//	public void query(QueryForm queryForm) {
-//		Optional<Member> op = dao.findByEmail(queryForm.getEmail());
-//
-//		if (op.isPresent()) {
-//			Member member = op.get();
-//	
-//			member.setCustomerName(queryForm.getCustomerName());
-//			member.setPwd(queryForm.getPwd());
-//			
-//			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//			try {
-//				member.setBirthday(sdf.parse(queryForm.getBirthday()));
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//			member.setStreet(queryForm.getStreet());
-//			member.setPhone(queryForm.getPhone());
-//
-//			dao.save(member);
-//		}
-//	}
+	public void query(QueryForm queryForm) {
+		Optional<MembersBean> op = memDao.findByEmail(queryForm.getEmail());
+
+		if (op.isPresent()) {
+			MembersBean member = op.get();
+	
+			member.setCusName(queryForm.getCustomerName());
+			member.setPwd(queryForm.getPwd());
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try {
+				member.setBirthday(sdf.parse(queryForm.getBirthday()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			member.setAddress(queryForm.getStreet());
+			member.setPhone(queryForm.getPhone());
+
+			memDao.save(member);
+		}
+	}
 }
