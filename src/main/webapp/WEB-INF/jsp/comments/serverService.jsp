@@ -4,25 +4,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
 <jsp:include page="../layout/dashboard.jsp" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Server WS</title>
+    <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <style>
     .text1{
         text-align: center;
         font-size: xx-large;
         font-weight: bolder;
     }
-    
+    .button1{
+	    font-size: large;
+    }
 </style>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <br><br>
-    <div class="container" style="margin-left: 25vw; width:70vw;">
+    <div class="container" style="margin-left: 29vw; width:70vw;">
         <div class="row" style="width: 65vw; font-size: x-large;  font-weight: 500;">
             <div class="col-md-9">
                 <form class="form-inline">
@@ -31,7 +35,7 @@
                         <input type="text" id="message" class="form-control" placeholder="Public message ">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <button id="send" class="btn btn-primary" type="button">Send</button>
+                    <button id="send" class="btn btn-primary button1" type="button">Send</button>
                 </form>
             </div>
         </div>
@@ -46,7 +50,7 @@
                         <input type="text" id="id" class="form-control" placeholder="Client-Id">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
                     </div>
-                    <button id="send-private" class="btn btn-warning" type="button">Private</button>
+                    <button id="send-private" class="btn btn-warning button1" type="button">Private</button>
                 </form>
             </div>
         </div>

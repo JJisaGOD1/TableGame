@@ -4,12 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
 <jsp:include page="../layout/dashboard.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <title>View all Comment</title>
 <style>
 span {
@@ -39,6 +39,8 @@ li{
 	font-size: larger;
 }
 </style>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<br>
