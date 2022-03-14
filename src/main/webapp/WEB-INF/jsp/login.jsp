@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="membersPage/layout/navbar.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>

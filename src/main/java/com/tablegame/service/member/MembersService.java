@@ -1,5 +1,7 @@
 package com.tablegame.service.member;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,4 +94,31 @@ public class MembersService {
 			memDao.save(member);
 		}
 }
+	
+	
+	
+	
+	
+//	修改
+//	public void query(QueryForm queryForm) {
+//		Optional<Member> op = dao.findByEmail(queryForm.getEmail());
+//
+//		if (op.isPresent()) {
+//			Member member = op.get();
+//	
+//			member.setCustomerName(queryForm.getCustomerName());
+//			member.setPwd(queryForm.getPwd());
+//			
+//			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//			try {
+//				member.setBirthday(sdf.parse(queryForm.getBirthday()));
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			member.setStreet(queryForm.getStreet());
+//			member.setPhone(queryForm.getPhone());
+//
+//			dao.save(member);
+//		}
+//	}
 }

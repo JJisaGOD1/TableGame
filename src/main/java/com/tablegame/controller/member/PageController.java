@@ -24,8 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.dto.PwdForm;
 import com.tablegame.dto.googleLoginDto;
-import com.tablegame.form.pwdForm;
+import com.tablegame.model.bean.member.Member;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.member.RatingsBean;
 import com.tablegame.service.member.MembersService;
@@ -33,6 +34,7 @@ import com.tablegame.service.member.MembersService;
 @Controller
 public class PageController {
 	
+	private static final Object PwdForm = null;
 	@Autowired
 	private MembersService service;
 	
@@ -159,14 +161,14 @@ public class PageController {
 	
 	@RequestMapping("/pwd")
 	public String pwd(Model model, HttpServletRequest req) {
-		pwdForm pwdForm = new pwdForm();
-		model.addAttribute("pwdForm", pwdForm);
+		PwdForm pwdForm = new PwdForm();
+		model.addAttribute("PwdForm", PwdForm);
 		model.addAttribute("loginErrorMsg", req.getAttribute("loginErrorMsg"));
 		return "pwd";
 	}
 	
 	@PostMapping("/pwdSubmit")
-	public  String pwdSubmit(@Valid @ModelAttribute(name = "pwdForm") pwdForm pwdForm, BindingResult rs,
+	public  String pwdSubmit(@Valid @ModelAttribute(name = "PwdForm") PwdForm pwdForm, BindingResult rs,
 
 			Model model, HttpSession hs) {
 //		System.out.println("00000000000000000"+pwdForm.getEmail());
@@ -174,4 +176,33 @@ public class PageController {
           service.pwd(pwdForm.getEmail(), pwdForm.getPwd());
 		return "forward:/pwd";
 }
+	
+	
+
+	@RequestMapping("/query")
+	public String registration(Model model, HttpServletRequest req, HttpSession hs, Object String) {
+
+		String Email = (String) hs.getAttribute("cusName");
+		System.out.println(Email);
+
+		MembersBean memberBean = service.findByEmail(Email);
+
+		model.addAttribute("queryForm", query());
+		return "membersPage/query";
+	}
+	
+	
+	
+	
+	
+	@GetMapping("/query")
+	public String query() {
+//		PwdForm pwdForm = new PwdForm();
+//		model.addAttribute("PwdForm", PwdForm);
+//		model.addAttribute("loginErrorMsg", req.getAttribute("loginErrorMsg"));
+		return "membersPage/query";
+	}
+	
+	
+	
 }

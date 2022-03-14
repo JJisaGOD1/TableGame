@@ -43,7 +43,9 @@
 								<td><c:out value="${member.createdTime}"/></td>
 								<td><c:out value="${member.ratingsBean.rateName}"/></td>
 							<td style="text-align: center">
-								<button type="button" class="btn btn-primary">編輯</button>
+								
+								<button a href="${contextRoot}/query" type="button" class="btn btn-primary">編輯</button>
+							
 								<a href="${contextRoot}/admin/deleteMember/${member.id}">
 									<button type="button" class="btn btn-danger" onclick="return confirm('是否刪除?')">刪除</button>
 								</a>
