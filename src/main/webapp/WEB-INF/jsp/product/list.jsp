@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -61,8 +61,45 @@ style>.top_food_banner {
 	width: 100vw;
 }
 
-$main-color:;
-$light-text:#ABB0BE;
+$
+main-color
+
+
+
+
+
+
+:
+
+
+
+
+
+
+;
+$
+light-text
+
+
+
+
+
+
+:
+
+
+
+
+
+
+#ABB0BE
+
+
+
+
+
+
+;
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -225,6 +262,14 @@ img {
 	:
 	lighten(
 	$
+	
+	
+	
+	
+	
+	
+	
+	
 	main-color
 	,
 	3%
@@ -272,8 +317,8 @@ img {
 				<c:forEach items="${productcart.productMap}" var="C">
 					<ul class="shopping-cart-items">
 						<li class="clearfix"><img
-							src="<c:url value="/Photo/${C.value.product.photourl}"/>" style="width: 50px"
-							alt="item1" /> <span class="item-name-cart"><c:out
+							src="<c:url value="/Photo/${C.value.product.photourl}"/>"
+							style="width: 50px" alt="item1" /> <span class="item-name-cart"><c:out
 									value="${C.value.product.product_name}" /></span> <span
 							class="item-price">單價:NT$<c:out value="${C.value.price}" /></span>
 							<span class="lighter-text">數量:<c:out
@@ -286,42 +331,24 @@ img {
 	</div>
 	<!--end container -->
 
-
-	<!-- 	<aside style="position: fixed; right: 30px; top: 120px"> -->
-	<!-- 		<table class="table" style="width: 200px; background-color: white;"> -->
-	<!-- 			<thead class="table table-dark" style="width: 100px"> -->
-	<!-- 				<tr> -->
-	<!-- 					<th>商品名稱</th> -->
-	<!-- 					<th>購買量</th> -->
-	<!-- 				</tr> -->
-	<!-- 			</thead> -->
-	<!-- 			<tbody> -->
-	<%-- 				<c:forEach items="${cart.productMap}" var='C'> --%>
-	<!-- 					<tr> -->
-	<%-- 						<td style="width: 100px"><c:out --%>
-	<%-- 								value="${C.value.product.product_name}" /></td> --%>
-	<%-- 						<td style="width: 100px"><c:out value="${C.value.quantity}" /></td> --%>
-	<!-- 					</tr> -->
-	<%-- 				</c:forEach> --%>
-	<!-- 			</tbody> -->
-	<!-- 		</table> -->
-	<!-- 	</aside> -->
-	<div class="wrap" style="width: 60vw;margin-left: 5vw">
+	<div class="wrap" style="width: 60vw; margin-left: 5vw">
 		<div class="content" style="width: 60vw; padding: 5%">
 			<c:forEach items="${P.content}" var="P">
 				<c:choose>
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
-						<div class="card" style="width: 15vw; padding: auto">
+						<div class="card"
+							style="width: 15vw; padding: auto; margin-bottom: 0">
 							<div
-								style="max-width: 15vw; height: 20vw; display: flex; justify-content: center;">
+								style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
 								<a
 									href="${contextRoot}/products/showImformation?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
-									style="width: 15vw;max-height: 18vw"  alt="picture of food" class="card-img-top"
+									style="width: 15vw; max-height: 18vw; margin-bottom: 0"
+									alt="picture of food" class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
 							</div>
-							<div class="card-body">
+							<div class="card-body" style="padding: 0 1vw 0.5vw 1vw">
 								<h5 class="card-title">
 									<c:out value="${P.product_name}" />
 								</h5>
@@ -337,28 +364,29 @@ img {
 					</c:when>
 				</c:choose>
 			</c:forEach>
-			<div style="display: flex; justify-content: center;">
-				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-					<c:choose>
-						<c:when test="${pageNumber-1==P.number}">
-							<!--page.number:取的當前頁面的頁碼-->
-							<c:out value="${pageNumber}" />
-						</c:when>
-						<c:otherwise>
-							<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
-									value="${pageNumber}" /> </a>
-						</c:otherwise>
-					</c:choose>
+		</div>
+	</div>
+	<div style="display: flex; justify-content: center;">
+		<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+
+			<c:choose>
+				<c:when test="${pageNumber-1==P.number}">
+					<!--page.number:取的當前頁面的頁碼-->
+					<c:out value="${pageNumber}" />
+				</c:when>
+				<c:otherwise>
+					<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
+							value="${pageNumber}" /> </a>
+				</c:otherwise>
+			</c:choose>
 
 
-					<c:if test="${pageNumber != P.totalPages}">
-						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+			<c:if test="${pageNumber != P.totalPages}">
+				<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-				</c:forEach>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 	<div></div>
 	<div style="display: flex; justify-content: center;">
@@ -367,16 +395,16 @@ img {
 	</div>
 </body>
 <script>
-function addFoodAlert() {
-	Swal.fire('Good job!', 'You clicked the button!', 'success')
-}
+	function addFoodAlert() {
+		Swal.fire('Good job!', 'You clicked the button!', 'success')
+	}
 
-(function(){
-	 
-	  $("#cart").on("click", function() {
-	    $(".shopping-cart").fadeToggle( "fast");
-	  });
-	  
+	(function() {
+
+		$("#cart").on("click", function() {
+			$(".shopping-cart").fadeToggle("fast");
+		});
+
 	})();
 </script>
 

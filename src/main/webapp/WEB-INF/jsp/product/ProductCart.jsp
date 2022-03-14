@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<p />
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" style="margin-top: 5rem">
 			<table class="table" style="background-color: white">
 				<thead class="table table-dark">
 					<tr>
