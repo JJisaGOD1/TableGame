@@ -4,16 +4,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <style>
 	p{
 		padding-left: 20px;
+		font-size: 1.5rem;
 	}
 	body{
         background-image: url("${contextRoot}/uploaded/talkBackground.jpg");
@@ -23,10 +25,12 @@
 	.row1{
 		display: block;
 		border-radius: 10px 10px 0 0;
-		font-size: larger;
+		font-size: x-large;
 		font-weight: bolder;
 	}
-
+	.coulmn{
+		font-size: x-large;
+	}
 	.text1{
 		text-align: center;
 		font-size: xx-large;
@@ -40,8 +44,8 @@
 	}
 	.block2{
 		position: fixed;
-		top: 15vh;
-		left: 50vw;
+		top: 25vh;
+		left: 47vw;
 		width: 45vw;
 		z-index: 5;
 		border: 1px solid;
@@ -51,17 +55,35 @@
 	.block3{
 		position: fixed;
 		width: 45vw;
-		right: 5vw;
+		right: 8vw;
 		bottom: 10vh;
 		border: 1px solid;
 		border-radius: 15px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	}
+	.button1{
+	    font-size: x-large;
+    }  
 </style>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <body>
+<!-- 各自的navbar -->
+<div class="navbar-wrap">
+    <nav class="navbar-meals">
+    <img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+    
+    <a href="${contextRoot}/addComment" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>意見回復</button></a>
+    
+    
+    <a href="${contextRoot}/nameComments/1" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>查詢留言</button></a>
+    <a href="${contextRoot}/customerService" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>線上交流</button></a>
+    </nav>
+</div>
+<!-- 各自的navbar(end) -->
 	<br>
-	<div style="padding-left: 20px; margin-top: 5vh;" >
-		<h1 style="font-weight: 600;">意見回覆</h1>
+	<div style="padding-left: 20px;" >
+		<h1 style="font-weight: 600; text-align: left ; font-size: 5rem;">意見回覆</h1>
     <br>
 
        <div class="col-5">
@@ -71,10 +93,10 @@
 				<form:form class="form"  action="${contextRoot}/addComment" modelAttribute="Comments" method="POST"> 
 				
 				<form:label path="comment" class="card-header row1" style="display:block;">留言信息</form:label>
-				<form:textarea path="comment" class="form-control" style="display: block;"/>
+				<form:textarea path="comment" class="form-control coulmn" style="display: block;"/>
 				<br>
 				<form:label path="categorysBean" class="card-header row1" style="display:block;">問題類別</form:label>
-				<form:select path="categorysBean" class="form-control" id="category" >
+				<form:select path="categorysBean" class="form-control coulmn" id="category" >
 				<form:options items="${categoryMap}" />
 				</form:select>
 			
@@ -82,7 +104,7 @@
 				<form:options items="${firstCondition}"  />
 				</form:select>
 				<br>
-				<input class="btn btn-info" type="submit" name="submit"/>
+				<input class="btn btn-info button1" type="submit" name="submit"/>
 				</form:form>
 			</div>
 		</div>
@@ -101,14 +123,14 @@
 </div>
 <div class="block3"> 
 <h2 style="font-weight: 600; color: red; padding-left: 20px ;padding-top: 10px;">遊戲瑕疵退換貨</h2>
-<h5 style="padding-left: 20px; font-weight: 600;" >一、請在您購買的門市進行退換貨
-退換貨原則如下：</h5>
+<h3 style="padding-left: 20px; font-weight: 600;" >一、請在您購買的門市進行退換貨
+退換貨原則如下：</h3>
 <p>1. 須憑購買發票(免開發票門市除外)</p>
 <p>2.遊戲購買後一經拆封，除非內容物有短少，瑕疵，否則一律不予退還或是更換其他商品。</p>
 <p>3.遊戲請在購買後七天內拆封，若有短少，瑕疵請與購買日起算七天內拿回店家更換相同產品，超過期限恕不進行更換。</p>
 
-<h5 style="padding-left: 20px ; font-weight: 600;">
-二、如您在活動展覽中所購買的遊戲</h5>
+<h3 style="padding-left: 20px ; font-weight: 600;">
+二、如您在活動展覽中所購買的遊戲</h3>
 <p>請與購買日起算七天內來電到您所購買的主辦門市電話，如不清楚電話可透過客服中心解決您的問題。</p>
 
 </div>
