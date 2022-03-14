@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+ <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html >
 <head>
@@ -29,7 +29,9 @@ fieldset {
 	height:450px;
 	margin: 0px auto;
 	border-radius: 15px;
-	box-shadow: 5px 5px 5px 5px
+	box-shadow: 5px 5px 5px 5px;
+	background-color:white;
+	font-size: 1.5rem;
 }
 
 </style>
@@ -58,9 +60,25 @@ fieldset {
 </head>
 <body>
  
-      <div align="center">
+ <!-- 各自的navbar -->
+<div class="navbar-wrap">
+<nav class="navbar-meals">
+<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+
+<a href="addNew" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>立即訂位</button></a>
+
+
+<a href="lnquire" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂位查詢</button></a>
+
+</nav>
+</div>
+<!-- 各自的navbar(end) -->
+ 
+ 
+ 
+      <div align="center" >
 		<legend>訂位系統<legend>
-		</div>
+		</div >
 		<form class="form" method="post" action="${contextRoot}/users"
 			modelAttribute="booking">
 			<fieldset>
@@ -69,7 +87,7 @@ fieldset {
 			</div>	
 				
 				<div class="dropdown-container" style="vertical-align: top">
-				<label class="t1">人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
+				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
 							<option value="" disabled selected>預約人數</option>
 							<option value="1">1 人</option>
 							<option value="2">2 人</option>
@@ -80,10 +98,10 @@ fieldset {
 							<option value="7">7 人</option>
 							<option value="8">8 人</option>
 					</select></div>
-				<div><p><label class="t1">訂位日期:</label> <input type="text" id="datepicker"
+				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
 						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
 				</div>		
-						<div><label class="t1">時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
+						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
 							<option>上午</option>
 							<option>下午</option>
@@ -106,7 +124,7 @@ fieldset {
 				<div>
 							 <input type="submit" class="btn btn-info" value="確定" />
 							 <input type="reset"class="btn btn-info" value="清除">
-							 <button  class="btn btn-info" id="button" >一鍵輸入</button>
+							 <button  type="button"class="btn btn-info" id="button" >一鍵輸入</button>
 							 </div>
 			</fieldset>
 		</form>
