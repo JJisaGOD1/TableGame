@@ -24,4 +24,11 @@ public interface MembersRepository extends JpaRepository<MembersBean, Integer> {
 	public Page<MembersBean> findByRatingCustomer(@Param(value = "rating3" ) Integer rating3, Pageable pgb);
 	
 	public Optional<MembersBean> findByCusName(String name);
+	
+	
+	@Query(value="select * from Member where email=:email",nativeQuery = true)
+	public MembersBean findByMail(@Param(value="email")String email);
+
+	@Query(value="select * from Member ",nativeQuery = true)
+	public MembersBean findAllMember(@Param(value="email")String email);
 }

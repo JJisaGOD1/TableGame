@@ -1,9 +1,6 @@
-package com.tablegame.form;
+package com.tablegame.dto;
 
-
-import javax.persistence.Column;
-
-public class pwdForm {
+public class PwdForm {
 
 	private String email;
 	

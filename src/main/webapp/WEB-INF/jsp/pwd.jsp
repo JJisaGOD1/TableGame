@@ -33,7 +33,7 @@
 				<%-- 			<form:form action="pwdSubmit" method="post" --%>
 				<%-- 					class="login100-form validate-form" modelAttribute="pwdForm" />  --%>
 				<form action="${contextRoot}/pwdSubmit" id="pwdSubmit" method="Post"
-					modelAttribute="pwdForm">
+					modelAttribute="PwdForm">
 					<div id="errorMessge" ></div>
 					<div class="form-group">
 						<input type="text" name="email" class="form-control"
@@ -50,7 +50,7 @@
 <!-- 					</div>  --%>
 					<div class="form-group">
 
-						<button class="login100-form-btn"a onclick="delcfm()" href="${contextRoot}/pwd=${bookings.orderId}">送出</button>
+						<button class="login100-form-btn"a onclick="delcfm()" href="${contextRoot}/pwd">送出</button>
 					
 					</div>
 						
