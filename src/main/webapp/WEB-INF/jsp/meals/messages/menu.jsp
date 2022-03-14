@@ -67,51 +67,51 @@ $light-text: #ABB0BE;
 
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+/* *, *:before, *:after { */
+/*   box-sizing: border-box; */
+/* } */
 
-body {
-  font: 14px/22px "Lato", Arial, sans-serif;
-/*   background: #6394F8; */
-}
+/* body { */
+/*   font: 14px/22px "Lato", Arial, sans-serif; */
+/* /*   background: #6394F8; */ */
+/* } */
 
-.lighter-text {
-  color: #ABB0BE;
-}
+/* .lighter-text { */
+/*   color: #ABB0BE; */
+/* } */
 
-.main-color-text {
-  color: $main-color;
-}
+/* .main-color-text { */
+/*   color: $main-color; */
+/* } */
 
-.cart-nav {
-  padding: 20px 0 40px 0;
-  background: #F8F8F8;
-  font-size: 16px;
+/* .cart-nav { */
+/*   padding: 20px 0 40px 0; */
+/*   background: #F8F8F8; */
+/*   font-size: 16px; */
   
-  .navbar-left {
-    float: left;
-  }
+/*   .navbar-left { */
+/*     float: left; */
+/*   } */
   
-  .navbar-right {
-    float: right;
-  }
-  ul {
+/*   .navbar-right { */
+/*     float: right; */
+/*   } */
+/*   ul { */
     
-    li {
-      display: inline;
-      padding-left: 20px;
-      a {
-        color: #777777;
-        text-decoration: none;
+/*     li { */
+/*       display: inline; */
+/*       padding-left: 20px; */
+/*       a { */
+/*         color: #777777; */
+/*         text-decoration: none; */
         
-        &:hover {
-          color: black;
-        }
-      }
-    }
-  }
-}
+/*         &:hover { */
+/*           color: black; */
+/*         } */
+/*       } */
+/*     } */
+/*   } */
+/* } */
 
 .container {
   margin: auto;
@@ -188,48 +188,48 @@ body {
    
 }
 
-.shopping-cart:after {
-	bottom: 100%;
-	left: 89%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: white;
-	border-width: 8px;
-	margin-left: -8px;
-}
+/* .shopping-cart:after { */
+/* 	bottom: 100%; */
+/* 	left: 89%; */
+/* 	border: solid transparent; */
+/* 	content: " "; */
+/* 	height: 0; */
+/* 	width: 0; */
+/* 	position: absolute; */
+/* 	pointer-events: none; */
+/* 	border-bottom-color: white; */
+/* 	border-width: 8px; */
+/* 	margin-left: -8px; */
+/* } */
 
-.cart-icon {
-  color: #515783;
-  font-size: 24px;
-  margin-right: 7px;
-  float: left;
-}
+/* .cart-icon { */
+/*   color: #515783; */
+/*   font-size: 24px; */
+/*   margin-right: 7px; */
+/*   float: left; */
+/* } */
 
-.button {
-  background: $main-color;
-  color:white;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  display: block;
-  border-radius: 3px;
-  font-size: 16px;
-  margin: 25px 0 15px 0;
+/* .button { */
+/*   background: $main-color; */
+/*   color:white; */
+/*   text-align: center; */
+/*   padding: 12px; */
+/*   text-decoration: none; */
+/*   display: block; */
+/*   border-radius: 3px; */
+/*   font-size: 16px; */
+/*   margin: 25px 0 15px 0; */
   
-  &:hover {
-    background: lighten($main-color, 3%);
-  }
-}
+/*   &:hover { */
+/*     background: lighten($main-color, 3%); */
+/*   } */
+/* } */
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+/* .clearfix:after { */
+/*   content: ""; */
+/*   display: table; */
+/*   clear: both; */
+/* } */
 
 
 
@@ -397,7 +397,7 @@ body {
 
 <c:forEach items="${cart.foodMap}" var="cart">
     <ul class="shopping-cart-items">
-      <li class="clearfix">
+      <li class="clearfix" style="margin-bottom: 1rem">
       
 <%--       <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}"> --%>
 <%--       <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 1rem; opacity: 80%"/></a> --%>

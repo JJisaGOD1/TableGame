@@ -16,6 +16,7 @@ import com.tablegame.model.bean.meals.MealList;
 import com.tablegame.model.bean.meals.MealListRepository;
 import com.tablegame.model.bean.meals.MealOrders;
 import com.tablegame.model.bean.meals.MealOrdersRepository;
+import com.tablegame.model.bean.product.ProductImformation;
 
 @Service
 public class MealListService {
@@ -83,5 +84,10 @@ public class MealListService {
 		  return null;
 	}
 	
+//	public MealList findByIdList(Integer Id) {
+//		List<MealList> mealList = dao.findById(Id);
+//
+//		return mealList;
+//	}
 
 }
