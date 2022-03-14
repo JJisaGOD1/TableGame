@@ -169,8 +169,36 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
   opacity: 1;
   
 }
+
+
+
+
+.navbar-meals{
+position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    padding-top: 2.5rem;
+    width: 18vw;
+    margin: 0 auto;
+}
+
+.navbarlogo:hover{
+ 	opacity: 0.5; 
+/* background-color: blue; */
+
+}
+
 </style>
 
+<!-- Boxicons CDN Link -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
+	
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -180,7 +208,20 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 <!-- style="background-color: #fdf5e6" -->
 </head>
 <body>
-<div style="width: 100vw;height: 25vh;background-color: red; "></div>
+
+<!-- 各自的navbar -->
+<div style="width: 100vw;height: 10vh;background-color: white; position: fixed;top: 9rem; font-size: 1.5rem;">
+<nav class="navbar-meals">
+<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>開始點餐</button></a>
+
+
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂單明細</button></a>
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>確認訂單</button></a>
+</nav>
+</div>
+<!-- 各自的navbar(end) -->
 
 <!-- 	<div class="container" id="container"> -->
 <!-- 		<p /> -->
@@ -248,7 +289,7 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 	</div>
 
 <script>
-$('.slide').on('click', function(){
+$('.slide2').on('click', function(){
     $('#fade-in').toggleClass('show');
 });
 

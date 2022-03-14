@@ -139,7 +139,7 @@ h1 {
 		</a>
 
 
-		<nav class="navbar">
+		<nav class="navbar" style="left: 11.5vw;">
 
 			<a href="../homepage">首頁</a> 
 			<a href="#about">最新消息</a>
@@ -152,13 +152,6 @@ h1 {
 			<a href="${contextRoot}/addBooking">訂位</a>
 			
 			
-			
-
-		
-			
-
-
-
 			<li class="nav-item"><c:if test="${member.ratingsBean.id == 3 }">
 			
 			
@@ -167,26 +160,17 @@ h1 {
 					<a href="${contextRoot}/backController">後台管理</a>
 				</c:if>
 		</nav>
-<nav class="navbar">
-			<c:if test="${member.ratingsBean.id == null }">
-				<div style="display: flex">
-					<a class="" href="${contextRoot}/addCustomer">註冊 </a>
-				</div>
-				<div style="display: flex">
-					<a class="" href="${contextRoot}/login">登入 </a>
-				</div>
-			</c:if>
 
-			<c:if test="${member.ratingsBean.id != null }">
-				<div style="display: flex">
-					<span>${member.cusName}，您好</span> <a class="nav-link"
-						href="${contextRoot}/logout">登出 </a>
-				</div>
-			</c:if>
-</nav>
+		
+			
 
 
-		<div class="icons" style="display: flex">
+
+			
+
+
+
+		<div class="icons" style="position: relative; left: 21rem;">
 			<div class="fas fa-search" id="search-btn"></div>
 			<div class="fas fa-shopping-cart" id="cart-btn"></div>
 
@@ -234,10 +218,28 @@ h1 {
 			</div>
 			<a href="#" class="btn">checkout now</a>
 		</div>
+		
+		<nav class="navbar" style="left: 8rem;">
+			<c:if test="${member.ratingsBean.id == null }">
+				<div style="display: flex">
+					<a class="" href="${contextRoot}/addCustomer">註冊 </a>
+				</div>
+				<div style="display: flex">
+					<a class="" href="${contextRoot}/login">登入 </a>
+				</div>
+			</c:if>
 
+			<c:if test="${member.ratingsBean.id != null }">
+				<div style="display: flex">
+					<span>${member.cusName}，您好</span> <a class="nav-link"
+						href="${contextRoot}/logout">登出 </a>
+				</div>
+			</c:if>
+</nav>
 	</header>
 	
 	
+
 	
 	
 	
