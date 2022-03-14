@@ -14,28 +14,46 @@ import com.tablegame.dto.ResponseMessage;
 @Controller
 public class MessageController {
 	
-	//會員訊息傳輸
+	//client端送全服
 	@MessageMapping(value = "/customerMessage")
 	@SendTo("/topic/messages")
 	public ResponseMessage getCustomerMessage(Message message) throws InterruptedException {
-		return new ResponseMessage(HtmlUtils.htmlEscape(message.getUserId()+" : "+message.getMessageContent()));
+		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+" : "+message.getMessageContent()));
 		
 	}
 	
-	//Server訊息傳輸
+	//server端送全服
 	@MessageMapping(value = "/serverMessage")
 	@SendTo("/topic/messages")
 	public ResponseMessage getServerMessage(Message message) throws InterruptedException {	
-		return new ResponseMessage(HtmlUtils.htmlEscape("Server : "+message.getMessageContent()));
+		return new ResponseMessage(HtmlUtils.htmlEscape("Server (公頻): "+message.getMessageContent()));
 		
 	}
 	
-	//私人訊息，尚未用到
-	@MessageMapping(value = "/private/message")
+	//client端私訊server
+		@MessageMapping(value = "/private/server/message")
+		@SendTo("/topic/server/messages")
+		public ResponseMessage getPrivateMessage(Message message, Principal principal) throws InterruptedException {
+			Thread.sleep(1000);
+			return new ResponseMessage(HtmlUtils.htmlEscape(
+					message.getClientName()+" 私訊 : " + message.getMessageContent() 
+					+ " (Client-Id : " + principal.getName() + ")"));
+	}
+	
+	
+	//client端私訊自端
+	@MessageMapping(value = "/private/customer/message")
 	@SendToUser("/topic/private-messages")
-	public ResponseMessage getPrivateMessage(Message message, Principal principal) throws InterruptedException {
-		Thread.sleep(1000);
-		return new ResponseMessage(HtmlUtils.htmlEscape(
-				"Sending private message to user " + principal.getName() + ":" + message.getMessageContent()));
+	public ResponseMessage getPrivateMessageCus(Message message, Principal principal) throws InterruptedException {
+		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+ " 私訊 : " + message.getMessageContent()));
+	}
+	
+	//server端ajax傳給client 且server顯示
+		@MessageMapping(value = "server/private/message")
+		@SendToUser("/topic/private-messages")
+		public ResponseMessage getServerPrivateMessage(Message message) throws InterruptedException {
+			return new ResponseMessage(HtmlUtils.htmlEscape(
+					"Server 私訊 : " + message.getMessageContent() 
+					+ "  (To Client-Id : " + message.getClientId()+")"));
 	}
 }

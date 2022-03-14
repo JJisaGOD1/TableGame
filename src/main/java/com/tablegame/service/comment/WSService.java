@@ -19,7 +19,9 @@ public class WSService {
 	}
 	
 	public void notifyUser(String id, String message) {
-		ResponseMessage response = new ResponseMessage(message);
+		String newMessage = "Server 私訊 : "+message;
+		
+		ResponseMessage response = new ResponseMessage(newMessage);
 		
 		messagingTemplate.convertAndSendToUser(id,"/topic/private-messages", response);
 	}

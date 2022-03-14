@@ -23,29 +23,33 @@
 <body>
     <br><br>
     <div class="container" style="margin-left: 25vw; width:70vw;">
-        <div class="row" style="width: 50vw; font-size: x-large; margin: 0px auto; font-weight: 500;">
+        <div class="row" style="width: 65vw; font-size: x-large;  font-weight: 500;">
             <div class="col-md-9">
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="message">訊息輸入:&nbsp;&nbsp;</label>
-                        <input type="text" id="message" class="form-control" placeholder="Enter message here...">
+                        <input type="text" id="message" class="form-control" placeholder="Public message ">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <button id="send" class="btn btn-primary" type="button">Send</button>
                 </form>
             </div>
         </div>
-        <!-- <div class="row" style="margin-top: 10px">
-            <div class="col-md-12">
+         <div class="row" style="width: 65vw; font-size: x-large;  font-weight: 500;">
+            <div class="col-md-9">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="private-message">Private Message</label>
-                        <input type="text" id="private-message" class="form-control" placeholder="Enter your message here...">
+                        <label for="private-message">私訊輸入:&nbsp;&nbsp;</label>
+                        <input type="text" id="private-message" class="form-control" placeholder="Private message ">
+ 						&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="id">Client-Id:&nbsp;&nbsp;</label>
+                        <input type="text" id="id" class="form-control" placeholder="Client-Id">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
                     </div>
-                    <button id="send-private" class="btn btn-default" type="button">Send Private Message</button>
+                    <button id="send-private" class="btn btn-warning" type="button">Private</button>
                 </form>
             </div>
-        </div> -->
+        </div>
         <div class="row">
             <div class="col-md-9">
                 <table id="message-history" class="table table-striped">
@@ -69,6 +73,7 @@
 var stompClient = null;
 var notificationCount = 0;
 var contextRoot = "${contextRoot}"
+var clientId = null;
 console.log(contextRoot)
 
 $(document).ready(function() {
@@ -82,7 +87,17 @@ $(document).ready(function() {
     });
 
     $("#send-private").click(function() {
-        sendPrivateMessage();
+        clientId = $("#id").val()
+        console.log(clientId)
+        $.ajax({
+            url:"http://localhost:8080/homepage/send-private-message/"+clientId,
+            method:"Post",
+            contentType:"application/JSON; chartset=UTF-8",
+            dataType:"JSON",
+            data:JSON.stringify({'messageContent': $("#private-message").val()}),
+           
+        })
+        sendServerPrivateMessage();
     });
 });
 function connect() {
@@ -90,11 +105,14 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息
+        stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息 (全域)
             showMessage(JSON.parse(message.body).content);     
         });
 
         stompClient.subscribe('/user/topic/private-messages', function (message) {
+            showMessage(JSON.parse(message.body).content);
+        });
+        stompClient.subscribe('/topic/server/messages', function (message) { //client端私訊server
             showMessage(JSON.parse(message.body).content);
         });
     });
@@ -109,9 +127,9 @@ function sendMessage() {                                            //傳送訊�
     stompClient.send("/ws/serverMessage", {}, JSON.stringify({'messageContent': $("#message").val()}));
 }
 
-function sendPrivateMessage() {
-    console.log("sending private message");
-    stompClient.send("/ws/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val()}));
+function sendServerPrivateMessage() {
+    console.log("sending Server private message");
+    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientId': clientId}));
 }
 
 </script>

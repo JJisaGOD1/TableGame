@@ -32,7 +32,7 @@
                 <form class="form-inline">
                     <div class="form-group">
                     	<div class="form-group">
-                    	<input type="hidden" id="name" class="form-control" value="${member.cusName}">
+                    	<input type="hidden" id="clientName" class="form-control" value="${member.cusName}">
                     	</div>
                         <label for="message">訊息輸入:&nbsp;&nbsp;</label>
                         <input type="text" id="message" class="form-control" placeholder="訊息輸入">
@@ -42,17 +42,18 @@
                 </form>
             </div>
         </div>
-        <!-- <div class="row" style="margin-top: 10px">
-            <div class="col-md-12">
+         <div class="row" style="width: 50vw; font-size: x-large; margin: 0px auto; font-weight: 500;">
+            <div class="col-md-9">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="private-message">Private Message</label>
-                        <input type="text" id="private-message" class="form-control" placeholder="Enter your message here...">
+                        <label for="private-message">Server私訊:&nbsp;&nbsp;</label>
+                        <input type="text" id="private-message" class="form-control" placeholder="Server 私訊">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <button id="send-private" class="btn btn-default" type="button">Send Private Message</button>
+                    <button id="send-private" class="btn btn-warning" type="button">私訊送出</button>
                 </form>
             </div>
-        </div> -->
+        </div>
         <div class="row">
             <div class="col-md-9" >
                 <table id="message-history" class="table table-striped" style="background-color: white;">
@@ -76,7 +77,9 @@
 var stompClient = null;
 var notificationCount = 0;
 var contextRoot = "${contextRoot}"
+var clientName = $("#clientName").val();
 console.log(contextRoot)
+console.log(clientName)
 $(document).ready(function() {
     console.log("Index page is ready");
     connect();
@@ -94,12 +97,12 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息
+        stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息(全域)
             console.log(message)
         	showMessage(JSON.parse(message.body).content);     
         });
 
-        stompClient.subscribe('/user/topic/private-messages', function (message) {
+        stompClient.subscribe('/user/topic/private-messages', function (message) { //client端私訊自端
             showMessage(JSON.parse(message.body).content);
         });
     });
@@ -111,12 +114,13 @@ function showMessage(message) {                                     //接收訊�
 
 function sendMessage() {                                            //傳送訊息
     console.log("sending message");
-    stompClient.send("/ws/customerMessage", {}, JSON.stringify({'messageContent': $("#message").val(), 'userId':$("#name").val()}));
+    stompClient.send("/ws/customerMessage", {}, JSON.stringify({'messageContent': $("#message").val(), 'clientName':clientName}));
 }
 
 function sendPrivateMessage() {
     console.log("sending private message");
-    stompClient.send("/ws/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val()}));
+    stompClient.send("/ws/private/server/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientName':clientName}));
+    stompClient.send("/ws/private/customer/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientName':clientName}));
 }
 
 </script>

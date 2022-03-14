@@ -3,7 +3,9 @@ package com.tablegame.dto;
 public class Message {
     private String messageContent;
     
-    private String userId;
+    private String clientId;
+    
+    private String clientName;
 
     public String getMessageContent() {
         return messageContent;
@@ -13,11 +15,21 @@ public class Message {
         this.messageContent = messageContent;
     }
 
-	public String getUserId() {
-		return userId;
+	public String getClientId() {
+		return clientId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
 	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+
 }
