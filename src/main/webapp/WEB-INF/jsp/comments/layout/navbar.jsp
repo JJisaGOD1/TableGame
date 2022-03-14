@@ -8,8 +8,11 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
+<style>
 
-<title>Title</title>
+
+</style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

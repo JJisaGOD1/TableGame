@@ -95,7 +95,8 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息
-            showMessage(JSON.parse(message.body).content);     
+            console.log(message)
+        	showMessage(JSON.parse(message.body).content);     
         });
 
         stompClient.subscribe('/user/topic/private-messages', function (message) {
