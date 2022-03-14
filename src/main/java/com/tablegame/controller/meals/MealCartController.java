@@ -79,7 +79,7 @@ public class MealCartController {
 	public ModelAndView checkOrder(ModelAndView mav, HttpSession session) {
 		OrderCart cart = (OrderCart) session.getAttribute("cart");
 		MealOrders newOrders = (MealOrders) session.getAttribute("orders");
-		if(newOrders == null) {
+		if(newOrders == null || cart == null) {
 			mav.setViewName("meals/messages/notExistOrder");
 			return mav;
 		}else {
@@ -109,7 +109,7 @@ public class MealCartController {
 			foodMap.clear();
 
 //			newOrders.setTotalprice(cart.getTotalPrices());
-			mav.setViewName("redirect:/meals/finishedOrder");
+			mav.setViewName("meals/messages/finishedOrder");
 
 			return mav;
 			

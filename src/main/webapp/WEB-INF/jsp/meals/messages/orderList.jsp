@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -42,7 +44,8 @@
 				<tbody>
 					 <c:forEach items="${orderPage.content}" var="order">
 						<tr scope="row">
-							<td><c:out value="${order.orderId}" /></td>
+<%-- 							<td><c:out value="${order.orderId}" /></td> --%>
+							<th scope="row"><p>${order.orderId}</p></th>
 							<td><c:out value="${order.tableNum}" /></td>
 							<td><c:out value="${order.peopleNum}" /></td>
 							<td><c:out value="${order.orderDate}" /></td>
@@ -53,7 +56,10 @@
 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteOrder?orderId=${order.orderId}"><button type="button" class="btn btn-danger">刪除</button></a>
 
 							<a href="${contextRoot}/editOrder?orderId=${order.orderId}"><button type="button" class="btn btn-success">修改</button></a>
-													
+							
+<%-- 							<a href="${contextRoot}/checkOrderDetail?orderId=${order.orderId}"><button type="button" class="btn btn-success">查看明細</button></a> --%>
+							
+							<input type="button" class="edit btn btn-success" value="查看明細" data-toggle="modal" data-target="#checkOrderDetail">
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -121,8 +127,83 @@
 		
 
 
+<div class="modal fade" id="checkOrderDetail" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel"
+							style="font-weight: 600;">歷史紀錄</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!--彈窗內部-->
+
+
+						<table class="table">
+							<thead class="table table-dark">
+								<tr>
+									<th>訂單編號</th>
+									<th>餐點</th>
+									<th>價格</th>
+									<th>分類</th>
+									<th>圖片</th>
+									<th>數量</th>
+									<th>小計</th>
+
+								</tr>
+							</thead>
+							<tbody class="checkOrderDetailTable">
+
+							</tbody>
+						</table>
+						<p></p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">關閉</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
 </div>
 
+<script>
+$(".checkOrderDetail").click(function() {
+	let id = $(this).parent().parent().parent().find("p").html();
+	$.ajax({
+		url : "${contextRoot}/meals/checkOrderDetailAjax?id=" + id,
+		method : "get",
+		success : function(data) {
+			$(".checkOrderDetailTable").empty();
+		console.log(data)
+			data.forEach(element => {
+				let a = "";
+				a+="<tr>";
+				a+="<td>"+element.mealListId+"</td>";
+				a+="<td>"+element.foodList.foodName+"</td>";
+				a+="<td>"+element.foodList.foodPrice+"</td>";
+				a+="<td>"+element.foodList.foodType+"</td>";
+				a+="<td>"+element.foodList.foodImage+"</td>";
+				a+="<td>"+element.quantity+"</td>";
+				a+="<td>"+element.itemPrice+"</td>";
+				a+="</tr>";
+				$(".checkOrderDetailTable").append(a)
+			});
+		},
+	})
+})
+</script>
 
 </body>
 </html>

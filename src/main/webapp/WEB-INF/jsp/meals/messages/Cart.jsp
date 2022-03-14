@@ -232,8 +232,8 @@ input:focus {
       <span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> |
       <span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> |
       <span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span>
-      <a href="${contextRoot}/checkOrder"><input type="button" value="送出訂單" class=  ></a>
-      <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a>
+      <a href="${contextRoot}/meals/finishedOrder"><input type="button" value="送出訂單" class=  ></a>
+      <a href="${contextRoot}/meals/menu"><input type="button" value="新增" class="myButton"></a>
     </div>
   </div>
 <!--   </div> -->
@@ -310,7 +310,7 @@ input:focus {
 		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> |
 		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> |
 		<span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span>
-		<a href="${contextRoot}/checkOrder"><input type="button" value="送出訂單"></a>
+		<a href="${contextRoot}/finishedOrder"><input type="button" value="送出訂單"></a>
 <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a>
 </div>
 

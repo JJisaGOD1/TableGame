@@ -1,16 +1,22 @@
 package com.tablegame.controller.meals;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.meals.MealList;
 import com.tablegame.model.bean.meals.MealListRepository;
+import com.tablegame.model.bean.product.ProductImformation;
 import com.tablegame.service.meals.FoodListService;
 import com.tablegame.service.meals.MealListService;
 import com.tablegame.service.meals.MealOrdersService;
@@ -50,6 +56,12 @@ public class MealListController {
 		return mav;
 	}
 	
-	
+	@ResponseBody
+	@GetMapping(value = "/meals/checkOrderDetailAjax")
+	public MealList checkHistoryoAjax(ModelAndView mav, @RequestParam(name = "mealListId") Integer id) {
+		MealList list = mealService.findById(id);
+
+		return list;
+	}
 
 }
