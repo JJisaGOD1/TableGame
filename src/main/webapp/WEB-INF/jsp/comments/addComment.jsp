@@ -73,11 +73,11 @@
     <nav class="navbar-meals">
     <img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
     
-    <a href="${contextRoot}/addComment" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>意見回復</button></a>
+    <a href="${contextRoot}/addComment" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-comment-detail bx-lg' style="display: flex; justify-content: center; color: black;"></i>意見回復</button></a>
     
     
-    <a href="${contextRoot}/nameComments/1" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>查詢留言</button></a>
-    <a href="${contextRoot}/customerService" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>線上交流</button></a>
+    <a href="${contextRoot}/nameComments/1" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-book-content bx-lg' style="display: flex; justify-content: center; color: black;"></i>查詢留言</button></a>
+    <a href="${contextRoot}/customerService" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-chat bx-lg' style="display: flex; justify-content: center; color: black;"></i>線上交流</button></a>
     </nav>
 </div>
 <!-- 各自的navbar(end) -->
@@ -112,7 +112,7 @@
 
 </div>
 <div class="block2">
-<h2 style="font-weight: 600; color: red; padding-left: 20px ;padding-top: 10px;">注意事項</h2>
+<h2 style="font-weight: 600; color: red; padding-left: 20px ;padding-top: 10px; font-size: 3rem;">注意事項</h2>
 <p>1.請隨時留意回報單之狀態與內容，處理時間因回報單內容而有所不同，還請您耐心等候！</p>
 <p>2.請勿重複填單，避免減緩客服處理問題速度。</p>
 <p>3.若資料填答不實或不全，客服將無法處理，為避免延誤處理時效，請詳細填寫。</p>
@@ -122,7 +122,7 @@
 <p>7.填單回報時，若是有故意造假或刻意陷害他人，將不予受理。</p>
 </div>
 <div class="block3"> 
-<h2 style="font-weight: 600; color: red; padding-left: 20px ;padding-top: 10px;">遊戲瑕疵退換貨</h2>
+<h2 style="font-weight: 600; color: red; padding-left: 20px ;padding-top: 10px; font-size: 3rem;">遊戲瑕疵退換貨</h2>
 <h3 style="padding-left: 20px; font-weight: 600;" >一、請在您購買的門市進行退換貨
 退換貨原則如下：</h3>
 <p>1. 須憑購買發票(免開發票門市除外)</p>
@@ -139,7 +139,7 @@
 		let res = $(this).val();
 		console.log(res);
 		if(res==6) {
-			var str = "<br><label id='product1' class='card-header row1' style='display:block;'>產品</label><select class='form-control' id='product' name='product'>" 
+			var str = "<br><label id='product1' class='card-header row1 ' style='display:block;'>產品</label><select class='form-control coulmn' id='product' name='product'>" 
 			$.ajax({
 				url:"http://localhost:8080/homepage/ajax/product",
 				dataType: "JSON",
