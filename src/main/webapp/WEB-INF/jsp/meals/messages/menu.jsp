@@ -14,7 +14,7 @@
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 	<link href="${contextRoot}/js/jquery-3.6.0.min.js" rel="stylesheet" />
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
+<%-- <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" /> --%>
 <%-- <link href="${contextRoot}/js/sweetalert2.all.min.js" rel="stylesheet" /> --%>
 
 
