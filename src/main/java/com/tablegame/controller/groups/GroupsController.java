@@ -21,6 +21,7 @@ import com.tablegame.model.bean.group.ParticipantBean;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.product.Product;
 import com.tablegame.service.groups.GroupsService;
+import com.tablegame.service.member.MembersService;
 
 
 
@@ -29,6 +30,9 @@ import com.tablegame.service.groups.GroupsService;
 public class GroupsController {
 	@Autowired
 	GroupsService service;
+	
+	@Autowired 
+	MembersService memberService;
 
 	@GetMapping("/ChooseDate")
 	public String choose() {
@@ -222,4 +226,6 @@ public class GroupsController {
 		mav.setViewName("redirect:/groups/TheDateState/" + date);
 		return mav;
 	}
+	
+
 }
