@@ -135,12 +135,12 @@ h1 {
 
 .navbar-wrap{
 	width: 100vw;
-    height: 18vh;
+    height: 10rem;
     background-color: white;
     position: relative;
     top: 0vw;
     font-size: 1.5rem;
-    min-height: 17rem;
+    min-height: 10rem;
 }
 
 
@@ -154,8 +154,8 @@ position: relative;
     padding-top: 2.5rem;
     width: 18vw;
     margin: 0 auto;
-    top: 5vw;
-    width: 19vw;
+	top: 1.5rem;
+    width: 26rem;
 }
 
 .navbarlogo:hover{
@@ -275,7 +275,7 @@ position: relative;
 </nav>
 	</header>
 	
-	
+	<div style="width: 100vw;height: 4rem;"></div>
 
 	
 	
