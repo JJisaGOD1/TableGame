@@ -32,11 +32,11 @@
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
 						<div class="card" style="width: 15vw; padding: auto">
 							<div
-								style="max-width: 15vw; height: 20vw; display: flex; justify-content: center;">
+								style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
 								<a
-									href="${contextRoot}/products/showImformation?id=${P.product_id}">
+									href="${contextRoot}/showImformationnologin?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
-									style="width: 15vw; max-height: 18vw" alt="picture of food"
+									style="width: 15vw; max-height: 18vw" alt="picture of product"
 									class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
@@ -57,12 +57,9 @@
 					</c:when>
 				</c:choose>
 			</c:forEach>
-
 		</div>
-
 	</div>
-	<div style="position: relative; padding-top: 20px; display:"
-		align="center">
+	<div style="position: relative;" align="center">
 		<div class="col-9">
 			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 

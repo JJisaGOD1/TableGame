@@ -50,13 +50,20 @@
 								onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 							<td><c:out value="${P.stock}" />
 							<td><c:out value="${P.sellstatus}" />
-							<td><input type="button" class="edit"
-								value="編輯第${P.product_id}筆" data-toggle="modal"
-								data-target="#editModal"> <input type="button"
-								class="changephoto" data-toggle="modal"
-								data-target="#changephotoModal" value="更改圖片"> <input
-								type="button" class="checkHistory" value="歷史紀錄"
-								data-toggle="modal" data-target="#checkHistory">
+							<td><div>
+									<input type="button" class="btn btn-primary edit"
+										value="編輯第${P.product_id}筆" data-toggle="modal"
+										data-target="#editModal">
+								</div>
+								<div>
+									<input type="button" class="btn btn-secondary changephoto"
+										data-toggle="modal" data-target="#changephotoModal"
+										value="更改圖片">
+								</div>
+								<div>
+									<input type="button" class="checkHistory btn btn-info"
+										value="歷史紀錄" data-toggle="modal" data-target="#checkHistory">
+								</div>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -118,7 +125,8 @@
 									</tr>
 									<tr>
 										<th>價錢</th>
-										<td><form:input path="price" /></td>
+										<td><form:input path="price"
+												oninput="value=value.replace(/[^\d]/g,'')" /></td>
 									</tr>
 									<tr>
 										<th>類型</th>
@@ -126,19 +134,23 @@
 									</tr>
 									<tr>
 										<th>最小遊玩人數</th>
-										<td><form:input path="minplayer" /></td>
+										<td><form:input path="minplayer"
+												oninput="value=value.replace(/[^\d]/g,'')" /></td>
 									</tr>
 									<tr>
 										<th>最大遊玩人數</th>
-										<td><form:input path="maxplayer" /></td>
+										<td><form:input path="maxplayer"
+												oninput="value=value.replace(/[^\d]/g,'')" /></td>
 									</tr>
 									<tr>
 										<th>最適年齡</th>
-										<td><form:input path="low_age" /></td>
+										<td><form:input path="low_age"
+												oninput="value=value.replace(/[^\d]/g,'')" /></td>
 									</tr>
 									<tr>
 										<th>庫存</th>
-										<td><form:input path="stock" /></td>
+										<td><form:input path="stock"
+												oninput="value=value.replace(/[^\d]/g,'')" /></td>
 									</tr>
 									<tr>
 										<th>上下架</th>
@@ -159,8 +171,8 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">關閉</button>
-								<input type="submit" class="btn btn-primary" id="check"
-									value="更動">
+								<input type="submit" class="btn btn-primary editsubmit"
+									id="check" value="更動">
 							</div>
 						</form:form>
 					</div>
@@ -269,7 +281,7 @@
 	</div>
 	<script>
 		$(".edit").click(function() {
-			let id = $(this).parent().parent().find("p").html();
+			let id = $(this).parent().parent().parent().find("p").html();
 			console.log(id)
 			$.ajax({
 				url : "${contextRoot}/products/editproductAjax?id=" + id,
@@ -293,7 +305,7 @@
 
 		$(".changephoto").click(
 				function() {
-					let id = $(this).parent().parent().find("p").html();
+					let id = $(this).parent().parent().parent().find("p").html();
 					console.log(id)
 					$.ajax({
 						url : "${contextRoot}/products/changephotoAjax?id="
@@ -322,7 +334,7 @@
 				})
 
 		$(".checkHistory").click(function() {
-			let id = $(this).parent().parent().find("p").html();
+			let id = $(this).parent().parent().parent().find("p").html();
 			$.ajax({
 				url : "${contextRoot}/products/checkHistoryoAjax?id=" + id,
 				method : "get",
@@ -343,6 +355,16 @@
 				},
 			})
 		})
+		$("form").submit( function () {
+			let maxplayer=$(this).parent().parent().find('#maxplayer').val();
+			let minplayer=$(this).parent().parent().find('#minplayer').val();
+			if (minplayer>=maxplayer){
+				window.alert('最大人數須大於最小人數');
+				return false;
+			}
+        return true;
+    } );
+		
 	</script>
 </body>
 </html>

@@ -67,22 +67,7 @@ public class Product implements Serializable {
 
 	private Integer problem_count;
 
-	public String getProductintroduce() {
-		return productintroduce;
-	}
-
-	public void setProductintroduce(String productintroduce) {
-		this.productintroduce = productintroduce;
-	}
-
-	public Integer getProblem_count() {
-		return problem_count;
-	}
-
-	public void setProblem_count(Integer problem_count) {
-		this.problem_count = problem_count;
-	}
-
+	
 	@Transient
 	private MultipartFile photo;
 
@@ -179,6 +164,21 @@ public class Product implements Serializable {
 
 	public void setPhoto(MultipartFile photo) {
 		this.photo = photo;
+	}
+	public String getProductintroduce() {
+		return productintroduce;
+	}
+
+	public void setProductintroduce(String productintroduce) {
+		this.productintroduce = productintroduce;
+	}
+
+	public Integer getProblem_count() {
+		return problem_count;
+	}
+
+	public void setProblem_count(Integer problem_count) {
+		this.problem_count = problem_count;
 	}
 
 	@Override
