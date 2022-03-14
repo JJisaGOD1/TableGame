@@ -236,6 +236,20 @@ body {
 </style>
 </head>
 <body >
+
+<!-- 各自的navbar -->
+<div class="navbar-wrap">
+<nav class="navbar-meals">
+<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
+
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>開始點餐</button></a>
+
+
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂單明細</button></a>
+<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>確認訂單</button></a>
+</nav>
+</div>
+<!-- 各自的navbar(end) -->
 	<img class="bgImg" src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" />
 <!-- 	<div class="top_food_banner_bg"></div> -->
 	
