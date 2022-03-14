@@ -170,44 +170,11 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
   
 }
 
-.navbar-wrap{
-	width: 100vw;
-    height: 18vh;
-    background-color: white;
-    position: relative;
-    top: 0vw;
-    font-size: 1.5rem;
-    min-height: 17rem;
-}
 
-
-.navbar-meals{
-position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 0.5rem;
-    padding-top: 2.5rem;
-    width: 18vw;
-    margin: 0 auto;
-    top: 5vw;
-    width: 19vw;
-}
-
-.navbarlogo:hover{
- 	opacity: 0.5; 
-/* background-color: blue; */
-
-}
 
 </style>
 
-<!-- Boxicons CDN Link -->
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
-<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
-	rel='stylesheet'>
+
 	
 <!-- CSS only -->
 <link
