@@ -189,10 +189,10 @@ position: relative;
 			<a href="${contextRoot}/addBooking">訂位</a>
 			
 			
-			<li class="nav-item"><c:if test="${member.ratingsBean.id == 3 }">
+			<c:if test="${member.ratingsBean.id == 3 }">
 			
 			
-					<a href="${contextRoot}/customerService">線上客服</a>
+					<a href="${contextRoot}/customerService">留言</a>
 				</c:if> <c:if test="${member.ratingsBean.id == 1 }">
 					<a href="${contextRoot}/backController">後台管理</a>
 				</c:if>
@@ -265,13 +265,14 @@ position: relative;
 					<a class="" href="${contextRoot}/login">登入 </a>
 				</div>
 			</c:if>
-
+<div class="icons" >
 			<c:if test="${member.ratingsBean.id != null }">
 				<div style="display: flex">
-					<span>${member.cusName}，您好</span> <a class="nav-link"
+					<span style="font-size: 2rem">${member.cusName}，您好</span> <a class="nav-link"
 						href="${contextRoot}/logout">登出 </a>
 				</div>
-			</c:if>
+			</c:if></div>
+			
 </nav>
 	</header>
 	

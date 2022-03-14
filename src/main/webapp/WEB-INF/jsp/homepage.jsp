@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-
+<jsp:include page="layout/homaPageNavbar.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html>
@@ -154,105 +154,105 @@ h1 {
 
 	<!-- header section starts  -->
 
-	<header class="header">
+<!-- 	<header class="header"> -->
 
-		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt=""> </a>
+<!-- 		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt=""> </a> -->
 			
 			
-		<nav class="navbar">
+<!-- 		<nav class="navbar"> -->
 
-			<a href="#home">首頁</a>
-			<a href="#about">最新消息</a>
-			<a href="#menu">會員招募</a>
-			<a href="#products">店鋪資訊</a>
-			<a href="${contextRoot}/viewProductsnologin">商品</a>
-			<a href="${contextRoot}/startOrder">點餐</a>
-			<a href="${contextRoot}/groups/ChooseDate">開團</a>
-			<a href="${contextRoot}/addBooking">訂位</a>
+<!-- 			<a href="#home">首頁</a> -->
+<!-- 			<a href="#about">最新消息</a> -->
+<!-- 			<a href="#menu">會員招募</a> -->
+<!-- 			<a href="#products">店鋪資訊</a> -->
+<%-- 			<a href="${contextRoot}/viewProductsnologin">商品</a> --%>
+<%-- 			<a href="${contextRoot}/startOrder">點餐</a> --%>
+<%-- 			<a href="${contextRoot}/groups/ChooseDate">開團</a> --%>
+<%-- 			<a href="${contextRoot}/addBooking">訂位</a> --%>
 			
-			<c:if test="${member.ratingsBean.id == 3 }">
-				<a href="${contextRoot}/customerService">線上客服</a>
-			</c:if>
+<%-- 			<c:if test="${member.ratingsBean.id == 3 }"> --%>
+<%-- 				<a href="${contextRoot}/customerService">線上客服</a> --%>
+<%-- 			</c:if> --%>
 			
-			<c:if test="${member.ratingsBean.id == 1 }">
-				<a href="${contextRoot}/backController">後台管理</a>
-			</c:if>
-		</nav>
+<%-- 			<c:if test="${member.ratingsBean.id == 1 }"> --%>
+<%-- 				<a href="${contextRoot}/backController">後台管理</a> --%>
+<%-- 			</c:if> --%>
+<!-- 		</nav> -->
 
 
 
-		<div class="icons" style="display: flex">
-			<div class="fas fa-search" id="search-btn"></div>
-			<div class="fas fa-shopping-cart" id="cart-btn"></div>
+<!-- 		<div class="icons" style="display: flex"> -->
+<!-- 			<div class="fas fa-search" id="search-btn"></div> -->
+<!-- 			<div class="fas fa-shopping-cart" id="cart-btn"></div> -->
 
 			
-			<c:if test="${member.ratingsBean.id == null }">
-			<div style="display: flex">
-				<a class="nav-link" href="${contextRoot}/addCustomer">註冊
-				</a>
-			</div>
-			<div style="display: flex">
-				<a class="nav-link" href="${contextRoot}/login">登入
-				</a>
-			</div>
-			</c:if>
+<%-- 			<c:if test="${member.ratingsBean.id == null }"> --%>
+<!-- 			<div style="display: flex"> -->
+<%-- 				<a class="nav-link" href="${contextRoot}/addCustomer">註冊 --%>
+<!-- 				</a> -->
+<!-- 			</div> -->
+<!-- 			<div style="display: flex"> -->
+<%-- 				<a class="nav-link" href="${contextRoot}/login">登入 --%>
+<!-- 				</a> -->
+<!-- 			</div> -->
+<%-- 			</c:if> --%>
 			
-			<c:if test="${member.ratingsBean.id != null }">
-			<div style="display: flex">
-				<span>${member.cusName}，您好</span>
-				<a class="nav-link" href="${contextRoot}/logout">登出
-				</a>
-			</div>
-			</c:if>
+<%-- 			<c:if test="${member.ratingsBean.id != null }"> --%>
+<!-- 			<div style="display: flex"> -->
+<%-- 				<span>${member.cusName}，您好</span> --%>
+<%-- 				<a class="nav-link" href="${contextRoot}/logout">登出 --%>
+<!-- 				</a> -->
+<!-- 			</div> -->
+<%-- 			</c:if> --%>
 			
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="search-form">
-			<input type="search" id="search-box" placeholder="search here...">
-			<label for="search-box" class="fas fa-search"></label>
-		</div>
+<!-- 		<div class="search-form"> -->
+<!-- 			<input type="search" id="search-box" placeholder="search here..."> -->
+<!-- 			<label for="search-box" class="fas fa-search"></label> -->
+<!-- 		</div> -->
 
-		<div class="cart-items-container">
-			<div class="cart-item">
-				<span class="fas fa-times"></span> <img src="images/cart-item-1.png"
-					alt="">
-				<div class="content">
-					<h3>cart item 01</h3>
-					<div class="price">$15.99/-</div>
-				</div>
-			</div>
-			<div class="cart-item">
-				<span class="fas fa-times"></span> <img src="images/cart-item-2.png"
-					alt="">
-				<div class="content">
-					<h3>cart item 02</h3>
-					<div class="price">$15.99/-</div>
-				</div>
-			</div>
-			<div class="cart-item">
-				<span class="fas fa-times"></span> <img src="images/cart-item-3.png"
-					alt="">
-				<div class="content">
-					<h3>cart item 03</h3>
-					<div class="price">$15.99/-</div>
-				</div>
-			</div>
-			<div class="cart-item">
-				<span class="fas fa-times"></span> <img src="images/cart-item-4.png"
-					alt="">
-				<div class="content">
-					<h3>cart item 04</h3>
-					<div class="price">$15.99/-</div>
-				</div>
-			</div>
-			<a href="#" class="btn">checkout now</a>
-		</div>
+<!-- 		<div class="cart-items-container"> -->
+<!-- 			<div class="cart-item"> -->
+<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-1.png" -->
+<!-- 					alt=""> -->
+<!-- 				<div class="content"> -->
+<!-- 					<h3>cart item 01</h3> -->
+<!-- 					<div class="price">$15.99/-</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="cart-item"> -->
+<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-2.png" -->
+<!-- 					alt=""> -->
+<!-- 				<div class="content"> -->
+<!-- 					<h3>cart item 02</h3> -->
+<!-- 					<div class="price">$15.99/-</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="cart-item"> -->
+<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-3.png" -->
+<!-- 					alt=""> -->
+<!-- 				<div class="content"> -->
+<!-- 					<h3>cart item 03</h3> -->
+<!-- 					<div class="price">$15.99/-</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="cart-item"> -->
+<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-4.png" -->
+<!-- 					alt=""> -->
+<!-- 				<div class="content"> -->
+<!-- 					<h3>cart item 04</h3> -->
+<!-- 					<div class="price">$15.99/-</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<a href="#" class="btn">checkout now</a> -->
+<!-- 		</div> -->
 
-	</header>
-	<br>
-	<br>
-	<br>
+<!-- 	</header> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
 
 	<!-- header section ends -->
 
