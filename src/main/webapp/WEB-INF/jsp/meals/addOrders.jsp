@@ -7,6 +7,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <%-- <jsp:include page="messages/layout/navbar.jsp"></jsp:include> --%>
 <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+<jsp:include page="messages/layout/mealsNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +15,16 @@
 <title>員工資料</title>
 
 <style>
-
 #slide {
-    position: absolute;
-    left: -100px;
-    width: 100px;
-    height: 100px;
-    background: blue;
-    -webkit-animation: slide 0.5s forwards;
-    -webkit-animation-delay: 2s;
-    animation: slide 0.5s forwards;
-    animation-delay: 2s;
+	position: absolute;
+	left: -100px;
+	width: 100px;
+	height: 100px;
+	background: blue;
+	-webkit-animation: slide 0.5s forwards;
+	-webkit-animation-delay: 2s;
+	animation: slide 0.5s forwards;
+	animation-delay: 2s;
 }
 /* .myButton { */
 /* 	box-shadow: 0px 0px 0px 2px #9fb4f2; */
@@ -72,59 +72,69 @@
 /*   min-height: 100vh; */
 /*   background: linear-gradient(-135deg, #c850c0, #4158d0); */
 /* } */
+.wrapper {
+	background: #fff;
+	padding: 30px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	width: 42rem;
+	border-radius: 12px;
+	display: inline-block;
+	position: relative;
+    top: 23rem;
+    left: -4rem;
 
-.wrapper{
-  width: 450px;
-  background: #fff;
-  padding: 30px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
-.wrapper .input-data{
-  height: 40px;
-  width: 100%;
-  position: relative;
+.wrapper .input-data {
+	height: 40px;
+	width: 100%;
+	position: relative;
 }
-.wrapper .input-data input{
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 17px;
-  border-bottom: 2px solid silver;
+
+.wrapper .input-data input {
+	height: 100%;
+	width: 100%;
+	border: none;
+	font-size: 17px;
+	border-bottom: 2px solid silver;
 }
-.input-data input:focus ~ label,
-.input-data input:valid ~ label{
-  transform: translateY(-20px);
-  font-size: 15px;
-  color: #4158d0;
+
+.input-data input:focus ~ label, .input-data input:valid ~ label {
+	transform: translateY(-20px);
+	font-size: 15px;
+	color: #4158d0;
 }
-.wrapper .input-data label{
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  color: grey;
-  pointer-events: none;
-  transition: all 0.3s ease;
+
+.wrapper .input-data label {
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	color: grey;
+	pointer-events: none;
+	transition: all 0.3s ease;
 }
-.input-data .underline{
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  bottom: 0;
+
+.input-data .underline {
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	bottom: 0;
 }
-.input-data .underline:before{
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 100%;
-  background: #4158d0;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
+
+.input-data .underline:before {
+	position: absolute;
+	content: "";
+	height: 100%;
+	width: 100%;
+	background: #4158d0;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
 }
-.input-data input:focus ~ .underline:before,
-.input-data input:valid ~ .underline:before{
-  transform: scaleX(1);
+
+.input-data input:focus ~ .underline:before, .input-data input:valid ~
+	.underline:before {
+	transform: scaleX(1);
 }
 
 .Img1:hover {
@@ -133,45 +143,85 @@
 	width: 50px;
 }
 
-body{
-background-image: url(uploaded/Breakfast-Template.jpg);
-background-repeat: no-repeat;
-background-size: 100%;
-}
-.card{
-width: 750px;
-box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
+body {
+	background-image: url(uploaded/Breakfast-Template.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
+.card {
+	width: 750px;
+	box-shadow: 3.1px 6.2px 6.2px hsl(0deg 0% 0%/ 0.46);
+}
 
 #a {
-  text-decoration: none;
-/*   background: #eee; */
-  padding: .5em;
-  margin-bottom: 1em;
-  display: inline-block;
-  
+	text-decoration: none;
+	/*   background: #eee; */
+	padding: .5em;
+	margin-bottom: 1em;
+	display: inline-block;
 }
 
 .box {
-  display: block;  
-  background: lightblue;
-  margin-bottom: 1em;
+	display: block;
+	background: lightblue;
+	margin-bottom: 1em;
 }
 
 #fade-in {
-  
-  opacity: 0;
-  transition: all .75s ease;
+	opacity: 0;
+	transition: all .75s ease;
 }
 
 #fade-in.show {
-  opacity: 1;
-  
+	opacity: 1;
 }
 
+.startOrder-btn {
+	/* width: 30rem; */
+    /* height: 5rem; */
+    width: 17rem;
+    height: 4rem;
+    border-radius: 50px;
+    background-color: #EBA800;
+    border: none;
+    font-weight: bold;
+    /* box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 46%); */
+    position: relative;
+    top: 25rem;
+    left: 17rem;
+    z-index: 2;
+    font-size: 1.5rem;
+}
 
+.addOrder-btn {
+	width: 17rem;
+    height: 4rem;
+    /* width: 30rem; */
+    /* height: 5rem; */
+    border-radius: 50px;
+    background-color: #EBA800;
+    border: none;
+    font-weight: bold;
+    /* box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 46%); */
+    position: relative;
+    top: 1.92rem;
+    left: 19.5rem;
+    z-index: 2;
+    font-size: 1.5rem;
+}
 
+.add-order-list {
+	width: 42rem;
+	/* height: 16vw; */
+	/* margin-left: 19vw; */
+	/* margin-top: 30vh; */
+	border-radius: 12px;
+	display: inline-block;
+	position: relative;
+	top: 38rem;
+	left: -18rem;
+}
 </style>
 
 
@@ -186,19 +236,7 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 </head>
 <body>
 
-<!-- 各自的navbar -->
-<div class="navbar-wrap">
-<nav class="navbar-meals">
-<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
 
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>開始點餐</button></a>
-
-
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂單明細</button></a>
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>確認訂單</button></a>
-</nav>
-</div>
-<!-- 各自的navbar(end) -->
 
 <!-- 	<div class="container" id="container"> -->
 <!-- 		<p /> -->
@@ -222,17 +260,18 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 
 <!-- 		</div> -->
 <!-- 	</div> -->
+
 	<a class="slide2" href="#" id="a">
-	<button style="width: 300px; height: 50px; border-radius: 50px; background-color: #EBA800; border: none; font-weight: bold;box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);">開始點餐</button></a>
-	<div style="width: 25vw; height: 16vw ; margin-left: 19vw; margin-top: 30vh;border-radius: 12px;" class="wrapper" id="fade-in">
-	<h1 style="font-weight: border;">歡迎光臨點餐系統</h1>
+	<button class="startOrder-btn">開始點餐</button></a>
+	<div class="wrapper" id="fade-in" style="    font-size: 2rem;">
+	<h1 style="font-size: 3rem; font-weight: 600;">歡迎光臨點餐系統</h1>
 	<form:form class="form" action="${contextRoot}/meals/addOrders"
 							modelAttribute="orders" method="post">
 							<form:errors ></form:errors>
 
 							<p>
 								輸入桌號 :
-								<form:select path="tableNum" class="form-select" aria-label="Default select example">
+								<form:select path="tableNum" class="form-select" aria-label="Default select example" style="font-size: 1.5rem;">
 									<option selected="selected">請選擇桌號</option>
 									<option>1桌</option>
 									<option>2桌</option>
@@ -248,7 +287,7 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 								
 							<p>
 								輸入用餐人數 :
-								<form:input type="number" path="peopleNum" class="form-control" />
+								<form:input type="number" path="peopleNum" class="form-control" min="1" max="12" style="font-size: 1.5rem;"/>
 								
 								<form:errors path="peopleNum" />
 								
@@ -261,7 +300,10 @@ box-shadow:  3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.46);
 								
 								<form:input type="hidden" path="totalprice" class="form-control" value="0.0" />
 							<p>
-								<input type="submit" name="submit" id="btnSubmit" class="btn btn-secondary btn-sm" />
+								<input type="submit" name="submit" id="btnSubmit" class="addOrder-btn" />
+								
+<!-- 								<a class="slide2" href="#" id="a"><button class="startOrder-btn">開始點餐</button></a> -->
+								
 						</form:form>
 	</div>
 

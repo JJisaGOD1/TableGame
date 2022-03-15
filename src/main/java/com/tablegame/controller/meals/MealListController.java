@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.meals.MealList;
 import com.tablegame.model.bean.meals.MealListRepository;
+import com.tablegame.model.bean.meals.MealOrders;
 import com.tablegame.model.bean.product.ProductImformation;
 import com.tablegame.service.meals.FoodListService;
 import com.tablegame.service.meals.MealListService;
@@ -58,10 +59,11 @@ public class MealListController {
 	
 	@ResponseBody
 	@GetMapping(value = "/meals/checkOrderDetailAjax")
-	public MealList checkHistoryoAjax(ModelAndView mav, @RequestParam(name = "mealListId") Integer id) {
-		MealList list = mealService.findById(id);
+	public MealOrders checkHistoryoAjax(ModelAndView mav, @RequestParam(name = "mealListId") Integer id) {
+		MealOrders mealOrders = ordersService.findById(id);
+		
 
-		return list;
+		return mealOrders;
 	}
 
 }

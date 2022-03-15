@@ -31,15 +31,15 @@
 				<th scope="col"> </th>
 			</tr>
 		</thead>
-					<c:forEach items="${mealList}" var="mealList">
+					<c:forEach items="${cart.foodMap}" var="cart">
 						<tr scope="row">
-							<td><c:out value="${mealList.orders.orderId}" /></td>
-							<td><c:out value="${mealList.foodList.foodName}" /></td>
-							<td><c:out value="${mealList.foodList.foodPrice}" /></td>
-							<td><c:out value="${mealList.foodList.foodType}" /></td>
-							<td><c:out value="${mealList.foodList  .foodImage}" /></td>
-							<td><c:out value="${mealList.quantity}" /></td>
-							<td><c:out value="${mealList.itemPrice}" /></td>
+							<td><c:out value="${newOrders.orderId}" /></td>
+							<td><c:out value="${cart.value.food.foodName}" /></td>
+							<td><c:out value="${cart.value.food.foodPrice}" /></td>
+							<td><c:out value="${cart.value.food.foodType}" /></td>
+							<td><img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 150px"/></td>
+							<td><c:out value="${cart.value.quantity}" /></td>
+							<td><c:out value="${cart.value.price}" /></td>
 <%-- 							<td><c:out value="${cart.value.food.foodName}" /></td> --%>
 <%-- 							<td><c:out value="${cart.value.food.foodPrice}" /></td> --%>
 <%-- 							<td><c:out value="${cart.value.food.foodType}" /></td> --%>

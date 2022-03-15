@@ -5,7 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp"></jsp:include>
+
+<jsp:include page="../../layout/homaPageNavbar.jsp"></jsp:include>
+<jsp:include page="../messages/layout/mealsNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,13 +29,13 @@ body {
   height: 100%;
   margin: 0;
 /*   background-color: #7EC855; */
-  background-color: #dedede;
+  background-color: #DDDDDD;
   font-family: 'Roboto', sans-serif;
   transform:none;
 }
 .shopping-cart {
   width: 80vw;
-  margin: 80px auto;
+  margin: 3rem auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
@@ -124,7 +126,7 @@ Let’s add some basic style to  product name and description.
  
 .description span {
   display: block;
-  font-size: 14px;
+  font-size: 1.5rem;
   color: #43484D;
   font-weight: 400;
 }
@@ -210,7 +212,7 @@ input:focus {
   	position: fixed; 
   	right: 31px; 
   	bottom: 31px;
-  	width:8%;
+  	width:9rem;
   }
 
 </style>
@@ -220,26 +222,25 @@ input:focus {
 </head>
 <body>
 
-	<a href="${contextRoot}/checkOrder"> <img src="<c:url value="/uploaded/app-icon-sales-order.png"/>" class="finished_order_icon" /> </a>
+	<a href="${contextRoot}/meals/menu"> <img src="<c:url value="/uploaded/pngwing.com.png"/>" class="finished_order_icon" /> </a>
 
 
 <div class="shopping-cart">
 
   <div class="title">
-    <div style="font-size: 25px; height: 20px">訂單明細</div>
+    <div style="font-size: 2.5rem; height: 20px; position: relative; top: -1rem;">訂單明細</div>
     <div style="display: flex;">
       <p>合計: NT$<c:out value="${C.totalPrices}"/></p>
       <span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> |
       <span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> |
       <span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span>
-      <a href="${contextRoot}/meals/finishedOrder"><input type="button" value="送出訂單" class=  ></a>
-      <a href="${contextRoot}/meals/menu"><input type="button" value="新增" class="myButton"></a>
+
     </div>
   </div>
-<!--   </div> -->
+
  
  
- <table class="table">
+ <table class="table" style="font-size: 1.5rem;">
   <!-- Product #1 -->
  
  <c:forEach items="${C.foodMap}" var="cart">
@@ -255,8 +256,8 @@ input:focus {
 <!--     <div class="buttons"> -->
 
       <a href="${contextRoot}/deleteOneFoodItem?foodId=${cart.value.food.foodId}">
-      <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 30px; opacity: 80%"/>
-<%--       <img src="<c:url value="/uploaded/minus.svg"/>" alt="" /> --%>
+      <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 30px; opacity: 80%;margin: 10px 10px;position: relative;left: 2rem;"/>
+
       </a>
 
 <!--     </div> -->
@@ -289,7 +290,7 @@ input:focus {
     </div>
  </td>
   <td>
-    <div class=""> 小計 NT$: <c:out value="${cart.value.price}" /></div>
+    <div style="font-size: 2rem; color: #6394F8"> 小計 NT$: <c:out value="${cart.value.price}" /></div>
   </td>
     </tr>
     </c:forEach>
@@ -298,21 +299,21 @@ input:focus {
 </table>
  <hr>
  <div style="display: flex; flex-direction: row; justify-content: flex-end;">
-      <div style="margin-right: 2rem;"><div style="display: flex; flex-direction: row-reverse;">合計: </div><p style="font-size: 30px; display: flex; flex-direction: row-reverse;">NT$<c:out value="${C.totalPrices}"/></p>
-      <a href="${contextRoot}/checkOrder"><button style="background-color: #EBBF75; border: none; width: 150px;height: 30px; border-top-left-radius: 10rem; border-top-right-radius: 3rem">送出訂單</button></a></div>
+      <div style="margin-right: 2rem;"><div style="display: flex; flex-direction: row-reverse;font-size: 2rem">合計: </div><p style="font-size: 30px; display: flex; flex-direction: row-reverse;">NT$<c:out value="${C.totalPrices}"/></p>
+      <a href="${contextRoot}/checkOrder"><button style="background-color: #EBBF75;border: none;width: 15.5rem;height: 3.2rem;border-top-left-radius: 10rem;border-top-right-radius: 3rem;font-size: 1.5rem;">送出訂單</button></a></div>
 <%--       <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a> --%>
     </div>
  
  
 </div>
-<div align="center">
-合計: NT$<c:out value="${C.totalPrices}" />
-		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> |
-		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> |
-		<span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span>
-		<a href="${contextRoot}/finishedOrder"><input type="button" value="送出訂單"></a>
-<a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a>
-</div>
+<!-- <div align="center"> -->
+<%-- 合計: NT$<c:out value="${C.totalPrices}" /> --%>
+<%-- 		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> | --%>
+<%-- 		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> | --%>
+<%-- 		<span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span> --%>
+<%-- 		<a href="${contextRoot}/finishedOrder"><input type="button" value="送出訂單"></a> --%>
+<%-- <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a> --%>
+<!-- </div> -->
 
 
 

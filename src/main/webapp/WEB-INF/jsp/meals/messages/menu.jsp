@@ -8,6 +8,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <%-- <jsp:include page="layout/navbar.jsp"></jsp:include> --%>
 <jsp:include page="../../layout/homaPageNavbar.jsp"></jsp:include>
+<jsp:include page="../messages/layout/mealsNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,24 +25,30 @@
 <title>Document</title>
 <!-- <link rel="stylesheet" href="css/stylesheet.css"> -->
 <style>
+
 .top_food_banner {
 	width: 100vw;
 	z-index: -1;
 }
 
 .top_food_banner_bg {
-	background-image: url('uploaded/food_banner.png');
+	background-image: url("${contextRoot}/uploaded/food_banner.png");
 	background-repeat: no-repeat;
 	/* 	background-attachment: fixed; */
 	/* 	background-size: 100% 100%; */
+	background-size:100%;
 	width: 100vw;
 	height: 100vh;
+	position: fixed;
+	z-index: -1;
+	top: 7rem;
+
 }
 
 .finished_order_icon{
   	position: fixed; 
   	right: 6vw; 
-  	top: 12vh;
+  	top: 17vh;
   	width:5vw;
   }
 
@@ -142,10 +149,10 @@ $light-text: #ABB0BE;
   
   
   position: fixed;
-  top: 20vh;
+  top: 24vh;
   right: 6vw;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
+  transition: none;
   
   
   .shopping-cart-header {
@@ -188,48 +195,48 @@ $light-text: #ABB0BE;
    
 }
 
-/* .shopping-cart:after { */
-/* 	bottom: 100%; */
-/* 	left: 89%; */
-/* 	border: solid transparent; */
-/* 	content: " "; */
-/* 	height: 0; */
-/* 	width: 0; */
-/* 	position: absolute; */
-/* 	pointer-events: none; */
-/* 	border-bottom-color: white; */
-/* 	border-width: 8px; */
-/* 	margin-left: -8px; */
-/* } */
+ .shopping-cart:after { 
+ 	bottom: 100%; 
+ 	left: 89%; 
+ 	border: solid transparent; 
+ 	content: " "; 
+ 	height: 0; 
+ 	width: 0; 
+ 	position: absolute; 
+ 	pointer-events: none; 
+ 	border-bottom-color: white; 
+ 	border-width: 8px; 
+ 	margin-left: -8px; 
+ } 
 
-/* .cart-icon { */
-/*   color: #515783; */
-/*   font-size: 24px; */
-/*   margin-right: 7px; */
-/*   float: left; */
-/* } */
+ .cart-icon { 
+  color: #515783; 
+   font-size: 24px; 
+   margin-right: 7px; 
+   float: left; 
+ } 
 
-/* .button { */
-/*   background: $main-color; */
-/*   color:white; */
-/*   text-align: center; */
-/*   padding: 12px; */
-/*   text-decoration: none; */
-/*   display: block; */
-/*   border-radius: 3px; */
-/*   font-size: 16px; */
-/*   margin: 25px 0 15px 0; */
+ .button { 
+   background: $main-color; 
+   color:white; 
+   text-align: center; 
+   padding: 12px; 
+   text-decoration: none; 
+   display: block; 
+   border-radius: 3px; 
+   font-size: 16px; 
+   margin: 25px 0 15px 0; 
   
-/*   &:hover { */
-/*     background: lighten($main-color, 3%); */
-/*   } */
-/* } */
+   &:hover { 
+     background: lighten($main-color, 3%); 
+   } 
+ } 
 
-/* .clearfix:after { */
-/*   content: ""; */
-/*   display: table; */
-/*   clear: both; */
-/* } */
+ .clearfix:after { 
+   content: ""; 
+   display: table; 
+   clear: both; 
+ } 
 
 
 
@@ -237,22 +244,9 @@ $light-text: #ABB0BE;
 </head>
 <body >
 
-<!-- 各自的navbar -->
-<div class="navbar-wrap">
-<nav class="navbar-meals">
-<img alt="" src="${contextRoot}/uploaded/food-menu-solid-24.png">
-
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-food-menu bx-lg' style="display: flex; justify-content: center; color: black;"></i>開始點餐</button></a>
-
-
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂單明細</button></a>
-<a href="" class="navbarlogo"><button style="background-color: white;"><i class='bx bxs-message-square-check bx-lg' style="display: flex; justify-content: center; color: black;"></i>確認訂單</button></a>
-</nav>
-</div>
-<!-- 各自的navbar(end) -->
-	<img class="bgImg" src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" />
+<%-- 	<img class="bgImg" src="<c:url value="/uploaded/food_banner.png"/>" class="top_food_banner" /> --%>
 <!-- 	<div class="top_food_banner_bg"></div> -->
-	
+	<div class="top_food_banner_bg"></div>
 
 	<!-- <div style="background: cover url('<c:url value="/uploaded/food_banner.png"/>'); background-size: cover; width: 100vw; height: 500px;"></div> -->
 	
@@ -303,10 +297,10 @@ $light-text: #ABB0BE;
 					<img src="<c:url value="/uploaded/${food.foodImage}"/>"
 						style="width: 250px" alt="picture of food" class="card-img-top" />
 					<div class="card-body">
-						<h5 class="card-title">
+						<h5 class="card-title" style="font-size: 2rem">
 							<c:out value="${food.foodName}" />
 						</h5>
-						<p class="card-text">
+						<p class="card-text" style="font-size: 2rem">
 							NT$
 							<c:out value="${food.foodPrice}" />
 						</p>
@@ -314,8 +308,8 @@ $light-text: #ABB0BE;
 <%-- 						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" class="btn btn-primary" id="addFoodAlert"><button type="button" class="btn btn-primary" id="addFoodAlert" value="加入訂單"></button></a> --%>
 							
 						 
-						<a href="${contextRoot}/addToCart?foodId=${food.foodId}">
-							<button type="button" id="addFoodAlert" value="加入訂單" class="btn btn-primary">加入訂單</button></a>
+						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" style="text-decoration:none;">
+							<button type="button" id="addFoodAlert" value="加入訂單" class="btn btn-primary btn-lg btn-block" style="font-size: 1.5rem; background-color: #6394F8">加入訂單</button></a>
 						<%-- 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteMessage?id=${workMessages.id}">刪除</a> --%>
 					</div>
 				</div>
@@ -374,15 +368,15 @@ $light-text: #ABB0BE;
       		<span class="badge"><c:out value="${cart.foodMap.size()} "></c:out></span>
         </div>
         
-        <div style="position: relative;top: -1.5vw;right: -12vw;display: flex;">
-      		<span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
-	  		<span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span>
+        <div style="position: relative; top: -1.0vw; right: -12vw; display: inline-block; position: relative; left: 22rem;">
+      		<span class="orderId" style="font-size: 1.4rem;">訂單編號<c:out value="${newOrders.orderId}" /> |</span> 
+	  		<span class="tableNum" style="font-size: 1.4rem;">第<c:out value="${newOrders.tableNum}" /></span>
 	    </div>
 	</div>
 	
 	<div style="display: flex; justify-content: flex-end;">
 <!--         <span class="lighter-text"></span> -->
-        <span class="main-color-text" style="font-size: 1.5rem;color: cornflowerblue;">Total: $<c:out value="${cart.totalPrices}"/></span>
+        <span class="main-color-text" style="font-size: 3rem;color: cornflowerblue;">Total: $<c:out value="${cart.totalPrices}"/></span>
     
     
 		
@@ -393,16 +387,16 @@ $light-text: #ABB0BE;
     </div> <!--end shopping-cart-header -->
     <hr>
 
-<div style="overflow-y: auto; height: 50vh;">
+<div style="overflow-y: auto; height: 50vh; font-size: 1.5rem;">
 
 <c:forEach items="${cart.foodMap}" var="cart">
     <ul class="shopping-cart-items">
       <li class="clearfix" style="margin-bottom: 1rem">
       
-<%--       <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}"> --%>
-<%--       <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 1rem; opacity: 80%"/></a> --%>
+      <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}">
+      <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 2.3rem; opacity: 80%"/></a>
       
-        <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 50px" alt="item1" />
+        <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 60px" alt="item1" />
 <!--         <div> -->
         <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span> |
         <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span> |
@@ -413,7 +407,7 @@ $light-text: #ABB0BE;
 </c:forEach>
 </div>
 
-    <a href="${contextRoot}/goToCart" class="btn btn-primary btn-lg btn-block" style="background-color: #6394F8" >確認訂單</a>
+    <a href="${contextRoot}/goToCart" class="btn btn-primary btn-lg btn-block" style="background-color: #6394F8; font-size:2.2rem;" >確認訂單</a>
   </div> <!--end shopping-cart -->
 <!-- </div>  -->
 <!--end container -->
@@ -485,7 +479,7 @@ $light-text: #ABB0BE;
 	
 	<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 
-
+<!-- <iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe> -->
 
 </body>
 </html>
