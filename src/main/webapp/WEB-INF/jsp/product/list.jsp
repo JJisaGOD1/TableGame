@@ -75,7 +75,23 @@ main-color
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -103,6 +119,14 @@ light-text
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
@@ -116,7 +140,23 @@ light-text
 
 
 
+
+
+
+
+
+
+
+
 #ABB0BE
+
+
+
+
+
+
+
+
 
 
 
@@ -211,25 +251,18 @@ ul {li { display:inline;
 	padding: 20px;
 	position: fixed;
 	top: 18vh;
-	right: 6.4vw; . shopping-cart-header { border-bottom : 1px solid
+	right: 6.4vw;
+	transition:none;
+	.shopping-cart-header{ border-bottom : 1px solid
 	#E8E8E8;
-	padding-bottom: 15px;
-	.
-	shopping-cart-total
-	{
-	float
-	:
-	right;
+	padding-bottom: 15px; .
+	shopping-cart-total {float: right;
 }
 
 }
 .shopping-cart-items {
 	padding-top: 20px;
-	li
-	{
-	margin-bottom
-	:
-	18px;
+	li {margin-bottom: 18px;
 }
 
 img {
@@ -292,6 +325,14 @@ img {
 	:
 	lighten(
 	$
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
