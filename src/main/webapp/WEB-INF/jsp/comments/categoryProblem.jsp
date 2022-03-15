@@ -37,7 +37,8 @@
 			text : '意見回覆類別統計',
 			x : 'center',
 			textStyle : {
-				fontSize : 24
+				fontSize : 24,
+				color : "rgba(204, 62, 62, 1)"
 			}
 		},
 		tooltip : {
@@ -72,7 +73,9 @@
 					shadowColor : 'rgba(0, 0, 0, 0.5)'
 				}
 			},
-
+			label : {
+				fontSize : 16
+			}
 		} ]
 	};
 	/* 傳送ajax請求 */

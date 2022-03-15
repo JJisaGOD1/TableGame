@@ -12,18 +12,40 @@
 <title>Customer WS</title>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 <style>
-    body{
-        background-image: url("${contextRoot}/uploaded/talkBackground.jpg");
+    .background{
+        background-image: url("${contextRoot}/uploaded/chatwallpaper.jpg");
         background-repeat: none;
         background-size: 100%;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		z-index: -90;
+        opacity: 0.7;
+		top: 0;
+
     }
     td{
         font-size: large;
+    }
+    .imgblock{
+        position: fixed;
+        right: 12vw;
+        top: 20vh;
+        width: 30vw;
     }
     .text1{
         text-align: center;
         font-size: xx-large;
         font-weight: bolder;
+    }
+    .sendbox{
+        width: 33vw;
+        background-color: white;
+        position: fixed;
+        right: 12vw;
+        top: 75vh;
+        border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
     .text2{
         font-size: x-large;
@@ -50,8 +72,10 @@
     </nav>
 </div>
 <!-- 各自的navbar(end) -->
+<div class="background"></div>
+<div><img src="${contextRoot}/uploaded/chategg.png" class="imgblock"></div>
     <br>
-    <div class="container" style="margin-left: 28vw; width:70vw;">
+    <div class="container sendbox" >
         
         <div class="row" style="width: 50vw; font-size: x-large; margin: 0px auto; font-weight: 500;" >
             <div class="col-md-9" >
@@ -62,9 +86,9 @@
                     	</div>
                         <label for="message ">訊息輸入:&nbsp;&nbsp;</label>
                         <input type="text" id="message" class="form-control text2" placeholder="訊息輸入">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <button id="send" class="btn btn-success button1" type="button">送出</button>
+                    <button id="send" class="btn btn-secondary button1" type="button">送出</button>
                 </form>
             </div>
         </div>
@@ -76,13 +100,15 @@
                         <input type="text" id="private-message" class="form-control text2" placeholder="Server 私訊">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <button id="send-private" class="btn btn-warning button1" type="button">私訊送出</button>
+                    <button id="send-private" class="btn btn-dark button1" type="button">私訊送出</button>
                 </form>
             </div>
         </div>
+    </div>
+        <div class="container">
         <div class="row">
             <div class="col-md-9" >
-                <table id="message-history" class="table table-striped" style="background-color: white;">
+                <table id="message-history" class="table table-striped" style="background-color: white; margin-left: -35vh;">
                     <thead>
                     <tr>
                         <th class="text1">對話信息</th>
@@ -94,6 +120,7 @@
             </div>
         </div>
     </div>
+</div>
     
     <script src="<c:url value='/webjars/sockjs-client/sockjs.min.js'/>"></script>
 
