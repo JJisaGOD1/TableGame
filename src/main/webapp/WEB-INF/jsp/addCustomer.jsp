@@ -12,7 +12,6 @@
 <title>Insert title here</title>
 <style>
 body {
-	
 	background-color: #dedede;
 }
 
@@ -43,17 +42,19 @@ body {
 </style>
 </head>
 <body>
-	<div class="container-login100" 
-		style="background-image: url('images/bg-01.jpg');">
+	<div class="container-login100"
+		style="background-image:    background-image: url(images/bg-01.jpg);
+    background-repeat: no-repeat;
+    width: 100vw; url('images/bg-01.jpg');">
 
 
 
 
 		<div class="row justify-content-center"
-			style="margin-top: 6vw;margin-left:110px; height: 59vw; min-height: 61vw; width: 80vw;">
-			<div class="col-8" sytel=margin-top: 5vh>
+			style="width: 81vw; margin: 0 auto;">
+			<div class="col-8" style="margin-top: 10vh;">
 				<div class="card block1" margin: 0px auto>
-					<div class="card-header text1" style="fontsize: 2rem">加入會員</div>
+					<div class="card-header text1" style="font-size: 2rem">加入會員</div>
 					<div class="card-body">
 						<form:form class="form" action="${contextRoot}/addCustomer"
 							modelAttribute="addCustomer" method="POST"

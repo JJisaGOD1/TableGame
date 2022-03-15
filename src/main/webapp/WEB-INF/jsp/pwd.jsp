@@ -24,7 +24,9 @@
 </head>
 <body>
 <div class="container-login100"
-			style="background-image: url('images/bg-01.jpg');">
+		style="background-image: 
+    background-repeat: no-repeat;
+    width: 100vw; url('images/bg-01.jpg');">
 	<div class="container login-container">
 	
 		<div class="row">
