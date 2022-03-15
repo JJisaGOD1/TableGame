@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -28,20 +29,22 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="tttbody">
 					<c:forEach var="P" items="${P.content}">
 						<tr>
 							<th scope="row"><c:out value="${P.orderId}" />
 							<td><c:out value="${P.member.id}" />
 							<td><c:out value="${P.member.cusName}" />
 							<td><c:out value="${P.totalprice}" />
-							<td><c:out value="${P.processingstatus}" />
+							<td class="CCC"><c:out value="${P.processingstatus}" />
 							<td><a
 								href="${contextRoot}/products/checkPackage?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a> <a
 								href="${contextRoot}/products/sendPackage?id=${P.orderId}"><input
 									type="button" onclick="return confirm('請確認商品是否已送出?')"
-									value="確認送貨"></a></td>
+									value="確認送貨"></a> <a
+								href="${contextRoot}/products/cancelPackage?id=${P.orderId}"><input
+									type="button" onclick="return confirm('請確認此單作廢?')" value="訂單作廢"></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -50,6 +53,9 @@
 	</div>
 </body>
 <script>
-	
+	window.onload = function() {
+		let List<a> = $('.CCC').html();
+		console.log(a);
+	}
 </script>
 </html>

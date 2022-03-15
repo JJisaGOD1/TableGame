@@ -69,7 +69,19 @@ main-color
 
 
 
+
+
+
+
+
+
 :
+
+
+
+
+
+
 
 
 
@@ -85,6 +97,12 @@ light-text
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -92,7 +110,19 @@ light-text
 
 
 
+
+
+
+
+
+
 #ABB0BE
+
+
+
+
+
+
 
 
 
@@ -270,6 +300,12 @@ img {
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	main-color
 	,
 	3%
@@ -324,6 +360,9 @@ img {
 							<span class="lighter-text">數量:<c:out
 									value='${C.value.quantity}' /></span></li>
 					</ul>
+					<a
+						href="${contextRoot}/products/deleteOneLListItem?id=${C.value.product.product_id}"><input
+						type="button" onclick="return confirm('確認刪除商品?')" value="整個刪除"></a>
 				</c:forEach>
 			</div>
 		</div>

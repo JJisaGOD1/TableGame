@@ -11,6 +11,7 @@
 <jsp:include page="../layout/dashboard.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -84,8 +85,8 @@
 </body>
 <script>
 	$("form").submit(function() {
-		let maxplayer = $(this).parent().parent().find('#maxplayer').val();
-		let minplayer = $(this).parent().parent().find('#minplayer').val();
+		let maxplayer = $(this).parent().find('#maxplayer').val();
+		let minplayer = $(this).parent().find('#minplayer').val();
 		if (minplayer >= maxplayer) {
 			window.alert('最大人數須大於最小人數');
 			return false;

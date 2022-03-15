@@ -38,7 +38,7 @@
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
 							<td><a
-								href="${contextRoot}/products/coustomercheckPackage?id=${P.orderId}"><input
+								href="${contextRoot}/products/coustomercheckOrderList?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a>
 						</tr>
 					</c:forEach>
