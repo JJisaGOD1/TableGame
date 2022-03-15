@@ -3,22 +3,66 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
+<!-- ------導入黑色navbar--------- -->
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+
+
+<!-- ------導入Boxicons--------- -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
+
 <html>
 <head>
+<style>
+/* <!-- ------導入css到<header>裡面--------- --> */
+	.navbar-meals{
+	position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 0.5rem;
+		padding-top: 2.5rem;
+		width: 18vw;
+		margin: 0 auto;
+	}
+	.navbarlogo:hover{
+			opacity: 0.5; 
+	/* background-color: blue; */
+	}
 
+	
+	.body{
+		background-image: url('${contextRoot}/Photo/groupbackground.png');
+		width: 100vw;
+		height: 100vh;
+		margin:0 0;
+		position: fixed;
+		top: 0px;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		opacity:0.3;
+	}
+</style>
+	
+
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <meta charset="UTF-8">
 <title>TheDateStateView</title>
 
 </head>
 <body>
+	<div class="body"></div>
 
-	<a href="${contextRoot}">回登入頁</a>
+	<!-- <a href="${contextRoot}">回登入頁</a> -->
 	
-	<div align="center">
-		<h1>hi ${member.cusName}</h1>
-		<br>
+	<div align="center" style="margin-top: 7rem;">
 		<h2>您選擇的遊玩日期:${date}</h2>
 		<br>
 		<c:choose>
@@ -26,7 +70,7 @@
 				<h3>目前這天還沒有人揪團~~</h3>
 			</c:when>
 			<c:otherwise>
-				<div class="row row-cols-1 row-cols-md-4">
+				<div class="row row-cols-1 row-cols-md-5">
 				<c:forEach items="${groups}" var="group">
 					<div class="col mb-1">
 					<c:choose>
@@ -61,10 +105,21 @@
 												href="${contextRoot }/groups/ToUpdateGroupData/${group.groupId}"
 												>修改
 											</a>
-											<a	class="btn btn-danger"
+											
+													
+											<!-- <a	
+												class="btn btn-danger"
 												href="${contextRoot }/groups/DeleteGroup/${group.groupId}"
-												onclick="return del()">解散!
-											</a>
+												onclick="return del()"
+												>解散
+											</a> -->
+											</button>
+
+											<button id="deleteGroup"+${group.groupId}
+													class="btn btn-danger deleteGroup"
+													value=${group.groupId}
+											>解散
+											</button>
 									</c:when>
 									<c:otherwise>
 										<c:choose>
@@ -76,10 +131,18 @@
 														href="${contextRoot }/groups/ToUpdateParticipantData/${group.groupId}"
 														>修改
 													</a>
-													<a	class="btn btn-danger"
+													<!-- <a	class="btn btn-danger"
 														href="${contextRoot }/groups/Quit/${group.groupId}"
 														onclick="return quit()">退出
-													</a>
+													</a> -->
+													<button id="quitGroup"+${group.groupId}
+													class="btn btn-danger quitGroup"
+													value=${group.groupId}
+													>退出
+													</button>
+													
+													
+													
 												
 											</c:when>
 											<c:otherwise>
@@ -116,23 +179,93 @@
 	
 
 <script>
-	function del() {
-		var msg = "是否解散此團?";
-		if (confirm(msg) == true) {
-			return true;
-		} else {
-			return false;
-		}
+function del() {
+	var msg = "是否解散此團?";
+	if (confirm(msg) == true) {
+		return true;
+	} else {
+		return false;
 	}
+}
 
-	function quit() {
-		var msg = "是否退出此團?";
-		if (confirm(msg) == true) {
-			return true;
-		} else {
-			return false;
+$('.deleteGroup').click(function(){
+	let groupId=$(this).val()
+	Swal.fire({
+	title: '確定解散此團?',
+	text: "此動作無法復原!",
+	icon: 'warning',
+	showCancelButton: true,
+	cancelButtonColor: '#888888',
+	cancelButtonText:'取消',
+	confirmButtonColor: '#3085d6',
+	confirmButtonText: '是，我要解散!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type:'get',
+				url:'http://localhost:8080/homepage/groups/DeleteGroup/'+groupId,
+				cache:false,
+				async:false,
+				success: function(){
+					setTimeout(function(){
+						window.location.reload()
+					},1000)
+				}
+			});
+			Swal.fire(
+			'已解散!',
+			'團體已解散.',
+			'success'
+			)
 		}
+	})
+})
+
+$('.quitGroup').click(function(){
+	let groupId=$(this).val()
+	Swal.fire({
+	title: '確定退出此團?',
+	text: "此動作無法復原!",
+	icon: 'warning',
+	showCancelButton: true,
+	cancelButtonColor: '#888888',
+	cancelButtonText:'取消',
+	confirmButtonColor: '#3085d6',
+	confirmButtonText: '是，我要退出!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type:'get',
+				url:'http://localhost:8080/homepage/groups/Quit/'+groupId,
+				cache:false,
+				async:false,
+				success: function(){
+					setTimeout(function(){
+						window.location.reload()
+					},1000)
+				}
+			});
+			Swal.fire(
+			'已退出!',
+			'您已退出此團!.',
+			'success'
+			)
+		}
+	})
+})
+		
+	
+
+	
+
+function quit() {
+	var msg = "是否退出此團?";
+	if (confirm(msg) == true) {
+		return true;
+	} else {
+		return false;
 	}
+}
 
 </script>
 </body>

@@ -35,12 +35,19 @@
 			opacity: 0.5; 
 	/* background-color: blue; */
 	}
-	body{
-		
-		background-color: rgba(255, 255, 255, .9);
-		background-blend-mode: multiply;
-		background-image: url('${contextRoot}/Photo/2022030417062669.jpg');
-		opacity:0.95;
+
+	
+	.body{
+		background-image: url('${contextRoot}/Photo/groupbackground.png');
+		width: 100vw;
+		height: 100vh;
+		margin:0 0;
+		position: fixed;
+		top: 0px;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		opacity:0.3;
 	}
 </style>
 
@@ -94,12 +101,17 @@
 
 </head>
 <body>
-	<a href="${contextRoot}">回登入頁</a>
+	<!-- <a href="${contextRoot}">回登入頁</a> -->
+	<div class="body">
+		
+	</div>
 	<div class="first" align="center" style="margin-top: 7rem;">
 		<h2>選擇一天開團或入團吧!</h2><br>
 		<div id="datepicker"></div>
 		
 	</div>
+
+	
 
 </body>
 </html>
