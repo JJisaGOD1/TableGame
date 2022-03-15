@@ -5,8 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
-
+<jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 <!DOCTYPE html>
 <html>
 <head>

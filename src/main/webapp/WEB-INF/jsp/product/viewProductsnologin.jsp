@@ -6,7 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
-
+<jsp:include page="layout/NewFile.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +19,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-* {
-	margin: 0;
-	padding: 0;
-}
 
 img {
 	object-fit: scale-down
