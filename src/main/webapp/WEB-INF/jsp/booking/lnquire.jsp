@@ -5,10 +5,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+<<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> 
+
+
 <style>
 body{
 background-image:url(BookingPhoto/body.jpg);
@@ -37,6 +42,7 @@ background-size: 100%;
 
 <a href="lnquire" class="navbarlogo"><button style="background-color: white;"><i class='bx bx-list-ul bx-lg' style="display: flex; justify-content: center; color: black;"></i>訂位查詢</button></a>
 
+
 </nav>
 </div>
 <!-- 各自的navbar(end) -->
@@ -55,9 +61,10 @@ background-size: 100%;
 
 <c:forEach items="${lnquire}" var="lnquires" >
 <div class="col-sm-6 col-md-4" style="width: 360px; height: 360px">
-                <div class="thumbnail" style="width: 280px; height: 280px; background-color:;">
+                <div class="thumbnail" style="width: 280px; height: 280px; background-color:#B3D9D9;">
 
 <div class="caption">
+
 <p>訂位資料</p>
 
 <p>人數:${lnquires.several} </p>
@@ -65,10 +72,12 @@ background-size: 100%;
  <p>時段:${lnquires.period}</p>
  <p>桌號:${lnquires.number} </p>
 <p>備註:${lnquires.remark}</p>
-<p><a href="${contextRoot}/lnquires?id=${lnquires.orderId}"><input type="button" value="修改"> </a>	|  
+
+<p><a href="${contextRoot}/lnquires?id=${lnquires.orderId}"><input type="button" ><i class='bx bxs-edit-alt bx-tada bx-rotate-90 bx-lg' ></i> </a>	|  
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input type="button" value="刪除"></a>
-	
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input type="button" ><i class='bx bx-trash bx-lg'></i></a>
+			
+			
 </p>
 
   </div>
@@ -82,5 +91,13 @@ background-size: 100%;
 
 
 </div>
+<script>
+
+
+
+
+
+
+</script>
 </body>
 </html>
