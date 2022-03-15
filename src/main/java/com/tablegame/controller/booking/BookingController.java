@@ -1,6 +1,7 @@
 package com.tablegame.controller.booking;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -134,14 +135,18 @@ public class BookingController {
 		@PostMapping("/editbooking")
 		public ModelAndView editMessage(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
+		
+			Date d=new Date();
+			msg.setAdded(d);
 			mav.setViewName("booking/editbooking");
-			
+				
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/getAll");	
 				
 			}
 			return mav;
+		
 		}
 		
 		 @GetMapping("/lnquires")

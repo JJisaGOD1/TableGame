@@ -12,6 +12,12 @@
 <jsp:include page="../layout/dashboard.jsp"></jsp:include>
 <<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script> 
+
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="http://tony1966.xyz/test/jquery/jquery.ui.datepicker-zh-TW.js"></script>
+ 
 <meta charset="UTF-8">
 <title>員工資料</title>
 
@@ -54,6 +60,8 @@
 <c:forEach items="${page}" var="bookings">
 
    <tr>
+   <td hidden="true" class="OOOOO">${bookings.orderId}</td>
+   <td hidden="true" class="firstChild">${bookings.user.id}</td>
    <td>${bookings.user.cusName }
    <td>${bookings.user.phone} 
    <td>${bookings.several} 
@@ -69,8 +77,9 @@
 			<!-- <a onclick="delcfm()" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a> -->
 		<button class="deletbooking">刪除</button>
 			<input type="hidden" class="orderId" value="${bookings.orderId}">
-			<input type="button" class="btn btn-primary edit"
-										value="編輯第">
+			<button type="button" class="btn btn-primary editCCC" data-toggle="modal" 
+			data-target="#exampleModal" data-whatever="@mdo">編輯</button>
+
         </td>
    </c:forEach>
 </table>
@@ -103,38 +112,76 @@
 <!-- </div> -->
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">修改訂位</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
+      <!--彈窗內部資料-->
+      <form class="form" method="post" action="${contextRoot}/editbooking"
+			modelAttribute="booking">
+			<fieldset>
+			<div>
+				<label class="t1">ID:</label><input type="text" name="orderId"
+						value="${booking.orderId}"  readonly="true" class="form-control select-area people-select-white IDplace" style="padding-top: 0px">
+			</div>	
+				
+				<div class="dropdown-container" style="vertical-align:top;">
+				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
+							<option value="" disabled selected>預約人數</option>
+							<option value="1">1 人</option>
+							<option value="2">2 人</option>
+							<option value="3">3 人</option>
+							<option value="4">4 人</option>
+							<option value="5">5 人</option>
+							<option value="6">6 人</option>
+							<option value="7">7 人</option>
+							<option value="8">8 人</option>
+					</select></div>
+				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
+						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
+				</div>		
+						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
+							<option value="" disabled selected>預約時段</option>
+							<option>上午</option>
+							<option>下午</option>
+							<option>晚上</option>	
+							</select>
+					</div>		
+			
+			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white" style="padding-top: 0px">
+							<option value="" disabled selected>預約桌號</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>	
+							<option value="8">8</option>
+					</select>
+				</div>	
+				</p>
+				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark"></textarea>
+				</div>
+				
+				<div class="modal-footer">
+							 <button type="submit" class="btn btn-primary">確定</button>
+							 <input type="reset"class="btn btn-info" value="清除">
+							 <button  type="button"class="btn btn-info" id="button" >一鍵輸入</button>
+							 <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+							 	
+							 </div>
+			</fieldset>
+		</form>
+    
     </div>
   </div>
 </div>
+
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <%-- <script src="${contextRoot}/DataTables/datatables.min.js" type="text/javascript"></script> --%>
 <script type="text/javascript">
@@ -184,9 +231,21 @@ $(".deletbooking").click(function(){
     }
 })
 
+$(function() {
+		$("#datepicker").datepicker({
+			dateFormat: 'yy/mm/dd',
+			minDate : 0,
+			maxDate : "14D"
+		});
 
+	});
 
+// $(".editCCC").click(function(){
 
+// 	let OderID=$(this).parent().parent().find(".OOOOO").html();
+// 	$(".IDplace").val(OderID);
+	
+// })
 
 
 
