@@ -53,6 +53,7 @@
 					<li><a href="${contextRoot}/products/viewProducts">查看商品</a></li>
 					<li><a href="${contextRoot}/products/addProduct">新增商品</a></li>
 					<li><a href="${contextRoot}/products/checkOrders">訂單處理</a></li>
+					<li><a href="${contextRoot}/products/Problem">商品分析</a></li>
 				</ul>
 			</li>
 			<li>

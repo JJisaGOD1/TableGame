@@ -63,6 +63,15 @@ public class ProductOrderController {
 		return mav;
 	}
 
+	@GetMapping("/products/coustomercheckOrderList")
+	public ModelAndView coustomercheckOrderList(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+		ProductOrders orders = serviceOs.findById(id);
+
+		mav.addObject("orders", orders);
+		mav.setViewName("product/coustomercheckOrderList");
+		return mav;
+	}
+
 	@GetMapping("/products/cancelPackage")
 	public ModelAndView cancelPackage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 		ProductOrders orders = serviceOs.findById(id);

@@ -6,6 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -60,46 +61,8 @@ style>.top_food_banner {
 	z-index: -5;
 	width: 100vw;
 }
-
-$
-main-color
-
-
-
-
-
-
-:
-
-
-
-
-
-
-;
-$
-light-text
-
-
-
-
-
-
-:
-
-
-
-
-
-
-#ABB0BE
-
-
-
-
-
-
-;
+$main-color:;
+$light-text:#ABB0BE;
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -181,25 +144,18 @@ ul {li { display:inline;
 	padding: 20px;
 	position: fixed;
 	top: 18vh;
-	right: 6.4vw; . shopping-cart-header { border-bottom : 1px solid
+	right: 6.4vw;
+	transition:none;
+	.shopping-cart-header{ border-bottom : 1px solid
 	#E8E8E8;
-	padding-bottom: 15px;
-	.
-	shopping-cart-total
-	{
-	float
-	:
-	right;
+	padding-bottom: 15px; .
+	shopping-cart-total {float: right;
 }
 
 }
 .shopping-cart-items {
 	padding-top: 20px;
-	li
-	{
-	margin-bottom
-	:
-	18px;
+	li {margin-bottom: 18px;
 }
 
 img {
@@ -257,23 +213,7 @@ img {
 	margin: 25px 0 15px 0;
 	&:
 	hover
-	{
-	background
-	:
-	lighten(
-	$
-	
-	
-	
-	
-	
-	
-	
-	
-	main-color
-	,
-	3%
-	);
+	{background:lighten($main-color,3%);
 }
 
 }
@@ -324,6 +264,9 @@ img {
 							<span class="lighter-text">數量:<c:out
 									value='${C.value.quantity}' /></span></li>
 					</ul>
+					<a
+						href="${contextRoot}/products/deleteOneLListItem?id=${C.value.product.product_id}"><input
+						type="button" onclick="return confirm('確認刪除商品?')" value="整個刪除"></a>
 				</c:forEach>
 			</div>
 		</div>

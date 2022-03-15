@@ -62,8 +62,8 @@ font-size:20px
 
 <h1 style="font-weight:bold;text-align:left;padding:10px">店家資訊</h1>
 
-<div class="google-maps" style="float:left; margin-right:10px">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0045591582784!2d121.54122331400265!3d25.033919344450858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xedc006d25a9e35df!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1647221432570!5m2!1szh-TW!2stw" width="500" height="315" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<div class="google-maps" style="float:left; margin-right:10px;margin-top:1vw;">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0045591582784!2d121.54122331400265!3d25.033919344450858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xedc006d25a9e35df!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1647221432570!5m2!1szh-TW!2stw" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 </p>

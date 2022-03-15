@@ -86,7 +86,7 @@ fieldset {
 				<label class="t1"></label><input type="text" name="user" value="${member.id}" readonly="readonly" >
 			</div>	
 				
-				<div class="dropdown-container" style="vertical-align: top">
+				<div class="dropdown-container" style="vertical-align:top;">
 				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
 							<option value="" disabled selected>預約人數</option>
 							<option value="1">1 人</option>

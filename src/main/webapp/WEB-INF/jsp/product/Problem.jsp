@@ -23,7 +23,7 @@
 <body>
 
 	<!-- 為 ECharts 準備一個具備大小（寬高）的 DOM -->
-	<div id="main" style="width: 50vw; height: 50vw; left: 10vw"></div>
+	<div id="main" style="width: 50vw; height: 50vw; left: 260px"></div>
 
 </body>
 <script type="text/javascript">
@@ -44,7 +44,10 @@
 		},
 		tooltip : {
 			trigger : 'item',
-			formatter : "{a} <br/>{b} : {c} ({d}%)"
+			formatter : "{a} <br/>{b} : {c} ({d}%)",
+			textStyle : {
+				fontSize : 15
+			}
 		},
 		/* 顏色和選項的對應關係 */
 		legend : {
@@ -52,7 +55,7 @@
 			left : 'left',
 			data : [],
 			textStyle : {
-				fontSize :16
+				fontSize : 16
 			}
 
 		//待填充資料項1
@@ -72,8 +75,8 @@
 					shadowColor : 'rgba(0, 0, 0, 0.5)'
 				}
 			},
-			textStyle : {
-				fontSize : 24
+			label : {
+				fontSize : 20
 			}
 		} ]
 	};

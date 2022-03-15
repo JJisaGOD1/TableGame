@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +39,7 @@
 							<td><c:out value="${P.totalprice}" />
 							<td><c:out value="${P.processingstatus}" />
 							<td><a
-								href="${contextRoot}/products/coustomercheckPackage?id=${P.orderId}"><input
+								href="${contextRoot}/products/coustomercheckOrderList?id=${P.orderId}"><input
 									type="button" value="確認訂單"></a>
 						</tr>
 					</c:forEach>

@@ -45,7 +45,7 @@ public class MessageController {
 	@MessageMapping(value = "/private/customer/message")
 	@SendToUser("/topic/private-messages")
 	public ResponseMessage getPrivateMessageCus(Message message, Principal principal) throws InterruptedException {
-		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+ " 私訊 : " + message.getMessageContent()));
+		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+ " 私訊 Server : " + message.getMessageContent()));
 	}
 	
 	//server端ajax傳給client 且server顯示

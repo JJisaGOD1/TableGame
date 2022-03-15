@@ -39,7 +39,7 @@ public class CommentController {
 		String name = member.getCusName();
 		service.insertComment(comment, name);
 		
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/addComment");
 		return mav;
 	}
 	
@@ -55,7 +55,7 @@ public class CommentController {
 		String name = member.getCusName();
 		service.insertCommentHasProduct(comment,product,name);
 		
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/addComment");
 		return mav;
 	}
 	

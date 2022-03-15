@@ -1,6 +1,7 @@
 package com.tablegame.controller.booking;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +66,7 @@ public class BookingController {
 //			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 			 
 			 //寄送圖片訊息
-//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
+			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
 			 
 			 //直接輸入email
 //			 serviceE.sendEmailText("chrayray@gmail.com");
@@ -133,14 +135,18 @@ public class BookingController {
 		@PostMapping("/editbooking")
 		public ModelAndView editMessage(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
+		
+			Date d=new Date();
+			msg.setAdded(d);
 			mav.setViewName("booking/editbooking");
-			
+				
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/getAll");	
 				
 			}
 			return mav;
+		
 		}
 		
 		 @GetMapping("/lnquires")
@@ -171,8 +177,8 @@ public class BookingController {
 	 
 		
 	//刪除訂位	
-	 @GetMapping("deletbooking")
-	    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
+	 @GetMapping("deletbooking/{id}")
+	    public ModelAndView deletbooking(ModelAndView mav,@PathVariable("id") Integer id) {
 			
 			service.delete(id);
 			

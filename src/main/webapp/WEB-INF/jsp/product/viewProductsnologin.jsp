@@ -6,14 +6,11 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
-
+<jsp:include page="layout/NewFile.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <style type="text/css">
-html {
-	font-size: xx-small;
-}
 </style>
 
 <link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
@@ -22,10 +19,6 @@ html {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-* {
-	margin: 0;
-	padding: 0;
-}
 
 img {
 	object-fit: scale-down
@@ -46,7 +39,7 @@ img {
 									href="${contextRoot}/showImformationnologin?id=${P.product_id}">
 									<img src="<c:url value='/Photo/${P.photourl}' />"
 									style="width: 15vw; max-height: 18vw; margin-bottom: 0"
-									  alt="picture of product" class="card-img-top"
+									alt="picture of product" class="card-img-top"
 									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
 								</a>
 							</div>
