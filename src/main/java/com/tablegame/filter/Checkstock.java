@@ -1,4 +1,4 @@
-package com.tablegame.filter;
+	package com.tablegame.filter;
 
 import java.io.IOException;
 import java.util.Date;
@@ -38,6 +38,7 @@ public class Checkstock implements Filter {
 			throws IOException, ServletException {
 
 		chain.doFilter(arg0, arg1);
+		
 		List<Product> plist = sevice.findAllProducts();
 		for (Product product : plist) {
 			Integer stock = product.getStock();

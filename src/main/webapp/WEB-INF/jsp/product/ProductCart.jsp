@@ -6,6 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>

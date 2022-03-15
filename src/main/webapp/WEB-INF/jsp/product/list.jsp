@@ -6,6 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -60,116 +61,8 @@ style>.top_food_banner {
 	z-index: -5;
 	width: 100vw;
 }
-
-$
-main-color
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-$
-light-text
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#ABB0BE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
+$main-color:;
+$light-text:#ABB0BE;
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -320,37 +213,7 @@ img {
 	margin: 25px 0 15px 0;
 	&:
 	hover
-	{
-	background
-	:
-	lighten(
-	$
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	main-color
-	,
-	3%
-	);
+	{background:lighten($main-color,3%);
 }
 
 }
