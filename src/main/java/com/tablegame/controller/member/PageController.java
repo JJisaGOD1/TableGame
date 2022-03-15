@@ -35,10 +35,12 @@ import com.tablegame.service.member.MembersService;
 public class PageController {
 	
 	private static final Object PwdForm = null;
+	
 	@Autowired
 	private MembersService service;
 	
-
+	@Autowired
+	private MembersBean member;
 	
 	@GetMapping(value = "/login")
 	public String login() {
@@ -49,6 +51,16 @@ public class PageController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	@GetMapping(value = "/black")
+	public String blackPage() {
+		return "membersPage/black";
+	}
+	
+	@GetMapping(value = "/accountProblem")
+	public String accountProblem() {
+		return "membersPage/accountProblem";
 	}
 	
 	@PostMapping(value = "/login")
@@ -73,8 +85,17 @@ public class PageController {
 			  return mav;
 		  }
 		  else {
-			  mav.setViewName("redirect:/");
-			  return mav;
+			  if(member.getLoginCount() < 2) {
+				  mav.setViewName("redirect:/login");  
+				  member.setLoginCount(member.getLoginCount()+1);
+				  System.out.println(member.getLoginCount());
+				  return mav;
+			  }
+			  else {
+				  mav.setViewName("redirect:/black");
+				  return mav;
+			  }
+
 		  }
 	}
 	
