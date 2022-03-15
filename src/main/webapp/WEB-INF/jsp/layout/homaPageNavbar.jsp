@@ -22,7 +22,7 @@
 <!-- custom css file link  -->
 <link rel="stylesheet" href="${contextRoot}/css/style.css">
 
-<link href="${contextRoot}/css/homePage.css" rel="stylesheet">
+<%-- <link href="${contextRoot}/css/homePage.css" rel="stylesheet"> --%>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextRoot}/js/bootstrap.bundle.min.js" rel="stylesheet">
 
