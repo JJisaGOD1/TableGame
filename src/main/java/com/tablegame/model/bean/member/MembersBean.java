@@ -18,12 +18,15 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
 
+@Component
 @Entity
 @Table(name = "member")
 public class MembersBean implements Serializable{
@@ -70,6 +73,8 @@ public class MembersBean implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "participant")
 	private Set<ParticipantBean> participantedGroups=new LinkedHashSet<ParticipantBean>();
 
+	@Transient
+	private Integer loginCount=0;
 	
 	@PrePersist
 	public void onCreate() {
@@ -164,6 +169,14 @@ public class MembersBean implements Serializable{
 
 	public void setParticipantedGroups(Set<ParticipantBean> participantedGroups) {
 		this.participantedGroups = participantedGroups;
+	}
+
+	public Integer getLoginCount() {
+		return loginCount;
+	}
+
+	public void setLoginCount(Integer loginCount) {
+		this.loginCount = loginCount;
 	}
 
 	
