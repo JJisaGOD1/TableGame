@@ -49,7 +49,7 @@
 									<tbody>
 										 <c:forEach items="${page.content}" var="food">
 											<tr scope="row">
-												<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"   onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
+												<td ><img src="<c:url value="/uploaded/${food.foodImage}"/>" style="width: 100px"  onerror="this.src='${contextRoot}/Photo/nophoto.jpg'"/></td>
 												<td><p>${food.foodId}</p></td>
 												<td><c:out value="${food.foodName}" /></td>
 												<td><c:out value="${food.foodPrice}" /></td>

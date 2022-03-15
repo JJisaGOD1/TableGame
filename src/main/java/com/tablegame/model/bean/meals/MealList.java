@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "MealList")
 public class MealList {
@@ -29,6 +31,7 @@ public class MealList {
 	@Column(name = "meal_list_id")
 	private Integer mealListId;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_order_id")
 	private MealOrders orders;

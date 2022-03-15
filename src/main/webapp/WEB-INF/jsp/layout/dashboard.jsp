@@ -126,7 +126,7 @@
 			<li>
 				<div class="profile-details">
 					<div class="profile-content">
-						<img src="uploaded/loginicon.jpg" alt="profileImg">
+						<img src="${contextRoot}/uploaded/loginicon.jpg" alt="profileImg">
 					</div>
 					<div class="name-job">
 						<div class="profile_name"><c:out value="${member.cusName}"/></div>
