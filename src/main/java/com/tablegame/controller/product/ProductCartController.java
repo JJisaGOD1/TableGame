@@ -98,6 +98,17 @@ public class ProductCartController {
 		return mav;
 	}
 
+	@GetMapping(value = "/products/deleteOneLListItem")
+	public ModelAndView deleteOneLListItem(ModelAndView mav, @RequestParam(name = "id") Integer id, BindingResult rs,
+			HttpSession session) {
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
+		Map<Integer, ProductCartItem> Map = cart.getProductMap();
+		Product product = serviceP.findById(id);
+		serviceC.deleteOneProduct(product, Map);
+		mav.setViewName("redirect:/products/list");
+		return mav;
+	}
+
 	@GetMapping(value = "/products/goToProductCart")
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
 		ProductCart cart = (ProductCart) session.getAttribute("productcart");
