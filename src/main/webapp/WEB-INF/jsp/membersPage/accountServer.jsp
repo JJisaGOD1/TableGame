@@ -35,30 +35,17 @@
                         <input type="text" id="message" class="form-control" placeholder="Public message ">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
+
                     <button id="send" class="btn btn-primary button1" type="button">Send</button>
                     &nbsp;&nbsp;
                     <button id="clear" class="btn btn-danger button1" type="button">Clear</button>
-                </form>
-            </div>
-        </div>
-         <div class="row" style="width: 65vw; font-size: x-large;  font-weight: 500;">
-            <div class="col-md-9">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="private-message">私訊輸入:&nbsp;&nbsp;</label>
-                        <input type="text" id="private-message" class="form-control" placeholder="Private message ">
- 						&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="id">Client-Id:&nbsp;&nbsp;</label>
-                        <input type="text" id="id" class="form-control" placeholder="Client-Id">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
-                    </div>
-                    <button id="send-private" class="btn btn-warning button1" type="button">Private</button>
+
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-9">
-                <table id="message-history" class="table table-striped">
+                <table id="message-history " class="table table-striped">
                     <thead>
                     <tr>
                         <th class="text1">訊息欄</th>
@@ -92,38 +79,18 @@ $(document).ready(function() {
         sendMessage();
     });
 
-    $("#send-private").click(function() {
-        clientId = $("#id").val()
-        console.log(clientId)
-        $.ajax({
-            url:"http://localhost:8080/homepage/send-private-message/"+clientId,
-            method:"Post",
-            contentType:"application/JSON; chartset=UTF-8",
-            dataType:"JSON",
-            data:JSON.stringify({'messageContent': $("#private-message").val()}),
-           
-        });
-        sendServerPrivateMessage();
-    });
-
     $("#clear").click(function() {
         $('#messages').empty();
-    });
+    })
+
 });
 function connect() {
-    var socket = new SockJS(contextRoot + '/our-websocket');
+    var socket = new SockJS(contextRoot + '/prob-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/messages', function (message) {  //訂閱接收訊息 (全域)
+        stompClient.subscribe('/topic/account/messages', function (message) {  //訂閱接收訊息 (全域)
             showMessage(JSON.parse(message.body).content);     
-        });
-
-        stompClient.subscribe('/user/topic/private-messages', function (message) {
-            showMessage(JSON.parse(message.body).content);
-        });
-        stompClient.subscribe('/topic/server/messages', function (message) { //client端私訊server
-            showMessage(JSON.parse(message.body).content);
         });
     });
 }
@@ -134,13 +101,9 @@ function showMessage(message) {                                     //接收訊�
 
 function sendMessage() {                                            //傳送訊息
     console.log("sending message");
-    stompClient.send("/ws/serverMessage", {}, JSON.stringify({'messageContent': $("#message").val()}));
+    stompClient.send("/ws/problemServer", {}, JSON.stringify({'messageContent': $("#message").val()}));
 }
 
-function sendServerPrivateMessage() {
-    console.log("sending Server private message");
-    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientId': clientId}));
-}
 
 </script>
 

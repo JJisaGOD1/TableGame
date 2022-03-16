@@ -56,10 +56,18 @@ public class MessageController {
 					"Server 私訊 : " + message.getMessageContent() 
 					+ "  (To Client-Id : " + message.getClientId()+")"));
 	}
+	//account問題client端
 	@MessageMapping(value = "/problemClient")
 	@SendTo("/topic/account/messages")
 	public ResponseMessage getAccountMessage(Message message) throws InterruptedException {
 		return new ResponseMessage(HtmlUtils.htmlEscape("User : "+message.getMessageContent()));
 		
+	}
+	
+	//account問題server端
+	@MessageMapping(value = "/problemServer")
+	@SendTo("/topic/account/messages")
+	public ResponseMessage getServerAccountMessage(Message message) throws InterruptedException {
+		return new ResponseMessage(HtmlUtils.htmlEscape("Server : "+message.getMessageContent()));
 	}
 }
