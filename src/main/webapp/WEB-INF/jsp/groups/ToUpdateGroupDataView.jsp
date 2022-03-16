@@ -53,6 +53,15 @@
 		background-size: 100%;
 		opacity:0.3;
 	}
+
+	.b1{
+		font-size: 200%;
+	}
+
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
 	
 </style>
 
@@ -61,7 +70,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="b1">
 	<div class="body"></div>
 	<div align="center" style="margin-top: 7rem;font-size: 2rem;" class="updateInfo">
 	<h1>hi 創團團長 ${member.cusName},您想更改甚麼資訊?</h1>
@@ -93,7 +102,7 @@
 				
 				<li class="list-group-item">更改附屬人數(含自己)：
 					<select id="selectPlayerNum" name="updateNum"> 
-						<c:forEach begin="1" end="${remainingNum}" varStatus="loop">
+						<c:forEach begin="1" end="${remainingNum-1}" varStatus="loop">
 							<c:choose>
 							<c:when test="${loop.count==launcherPlayerNow}">
 								<option selected="selected">${loop.count}</option>

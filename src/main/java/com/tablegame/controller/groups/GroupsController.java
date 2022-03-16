@@ -54,8 +54,16 @@ public class GroupsController {
 		
 		List<GroupBean> groups = service.getGroupsByDate(date);
 		Map<Integer,Integer> perGroupNumMap=service.getPlayerNumMapByDate(date);
-		Map<Integer,Integer> oneJoinedGroups = service.getGroupsUsersMap(user,groups);
-		Map<Integer,Integer> oneJoinedNumMap = service.getOneJoinedNumMap(user,date);
+		
+		if(user!=null) {
+			Map<Integer,Integer> oneJoinedGroups = service.getGroupsUsersMap(user,groups);
+			Map<Integer,Integer> oneJoinedNumMap = service.getOneJoinedNumMap(user,date);
+			//k:當天所有團 v:當前使用者
+			mav.getModel().put("oneJoinedGroups", oneJoinedGroups);
+			
+			//k:加入者 v:加入者帶之人數
+			mav.getModel().put("oneJoinedNumMap", oneJoinedNumMap);
+		}
 		
 		mav.getModel().put("groups", groups);
 		mav.getModel().put("date", date);
@@ -63,11 +71,7 @@ public class GroupsController {
 		//每團人數
 		mav.getModel().put("perGroupNumMap", perGroupNumMap);
 		
-		//k:當天所有團 v:當前使用者
-		mav.getModel().put("oneJoinedGroups", oneJoinedGroups);
 		
-		//k:加入者 v:加入者帶之人數
-		mav.getModel().put("oneJoinedNumMap", oneJoinedNumMap);
 		
 		mav.setViewName("groups/TheDateStateView");
 		return mav;
@@ -116,7 +120,6 @@ public class GroupsController {
 	}
 
 
-
 	@GetMapping("/ToJoin/{groupId}")
 	public ModelAndView toJoin(ModelAndView mav, HttpSession hs, @PathVariable int groupId) {
 		MembersBean participant = (MembersBean) hs.getAttribute("member");
@@ -132,7 +135,7 @@ public class GroupsController {
 		mav.setViewName("groups/ToJoinView");
 		return mav;
 	}
-
+	
 	@PostMapping("/Join")
 	public ModelAndView join(ModelAndView mav, HttpSession hs, @RequestParam int groupId,
 			@RequestParam int joinPlayersNum) {
@@ -227,5 +230,4 @@ public class GroupsController {
 		return mav;
 	}
 	
-
 }
