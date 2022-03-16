@@ -60,15 +60,15 @@
 <c:forEach items="${page}" var="bookings">
 
    <tr>
-   <td hidden="true" class="OOOOO">${bookings.orderId}</td>
-   <td hidden="true" class="firstChild">${bookings.user.id}</td>
-   <td>${bookings.user.cusName }
-   <td>${bookings.user.phone} 
-   <td>${bookings.several} 
-   <td><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
-   <td>${bookings.period}
-   <td>${bookings.number} 
-   <td>${bookings.remark} 
+   <td hidden="true" class="userid">${bookings.user.id}</td>
+   <td hidden="true" class="orderId">${bookings.orderId}</td>
+   <td class="cusName">${bookings.user.cusName }
+   <td >${bookings.user.phone} 
+   <td class="sal">${bookings.several} 
+   <td class="date"><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
+   <td class="period">${bookings.period}
+   <td class="number">${bookings.number} 
+   <td class="remark">${bookings.remark} 
    
   
 
@@ -128,12 +128,17 @@
 			modelAttribute="booking">
 			<fieldset>
 			<div>
-				<label class="t1">ID:</label><input type="text" name="orderId"
-						value="${booking.orderId}"  readonly="true" class="form-control select-area people-select-white IDplace" style="padding-top: 0px">
+				<label class="t1">會員ID:</label><input type="text" name="user"
+						readonly="true" class="form-control select-area people-select-white IDplace" style="padding-top: 0px">
+			</div>	
+			
+			<div>
+				<label class="t1">訂位ID:</label><input type="text" name="orderId"
+						readonly="true" class="form-control select-area people-select-white IDtwo" style="padding-top: 0px">
 			</div>	
 				
 				<div class="dropdown-container" style="vertical-align:top;">
-				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
+				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white several" style="padding-top: 0px">
 							<option value="" disabled selected>預約人數</option>
 							<option value="1">1 人</option>
 							<option value="2">2 人</option>
@@ -145,7 +150,7 @@
 							<option value="8">8 人</option>
 					</select></div>
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
+						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white reservation_date" style="padding-top: 0px"></p>
 				</div>		
 						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
@@ -240,12 +245,16 @@ $(function() {
 
 	});
 
-// $(".editCCC").click(function(){
-
-// 	let OderID=$(this).parent().parent().find(".OOOOO").html();
-// 	$(".IDplace").val(OderID);
+$(".editCCC").click(function(){
 	
-// })
+	let OderID=$(this).parent().parent().find(".orderId").html();
+  let severals=$(this).parent().parent().find("sal").html();
+  console.log(severals)
+  let date=$(this).parent().parent().parent().find("date").html();
+	$(".IDtwo").val(OderID);
+	$(".several").val(severals);
+  $(".reservation_date").val(date);
+})
 
 
 
