@@ -135,14 +135,14 @@ $("#button").click(function() {
 // 	$("#datepicker").val('2022/03/25');
 	$("#period").val('下午');
 	$("#number").val('7');
-	$("#remark").val('我要多一張椅子');
+	$("#remark").val('我不要多一張椅子');
 	
 })
 
 
 function time() {
 		$.ajax({
-			url:"http://localhost:8080/homepage/time",
+			url:"http://localhost:8080/homepage/time/"+,
 			type:"post",
 			contentType : 'application/json; charset=UTF-8',//送出格式
 			dataType:"JSON",

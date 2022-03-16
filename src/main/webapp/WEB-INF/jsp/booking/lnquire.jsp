@@ -25,6 +25,19 @@ background-image:url(BookingPhoto/body.jpg);
 background-size: 100%;
 }
 
+table { 
+
+  font-family: 微軟正黑體;
+  font-size:15px; 
+  width:200px;
+ 
+  text-align:center;
+  border-collapse:collapse;
+} 
+td { 
+ 
+  padding:4px;
+} 
 
 </style>
 
@@ -67,21 +80,45 @@ background-size: 100%;
                 <div class="thumbnail" style="width: 280px; height: 280px; background-color:#B3D9D9;">
 
 <div class="">
-
-<p>訂位資料</p>
-<p>會員ID:</p><p  class="userid">${lnquires.user.id} </p>
-<p>訂位ID:</p><p  class="orderId">${lnquires.orderId} </p>
-<p >人數:${lnquires.several} </p>
-<p>訂位日期:<fmt:formatDate pattern="yyyy-MM-dd EEEE" value="${lnquires.reservation_date}"/></p>
- <p>時段:${lnquires.period}</p>
- <p>桌號:${lnquires.number} </p>
-<p>備註:${lnquires.remark}</p>
-
+	
+<table>
+<tr>
+  <td colspan="2" style="font-size:18px;">訂位資料</td>
+  </tr>
+<tr hidden="true">
+  <td>會員ID:</td>
+  <td class="userid">${lnquires.user.id}</td>
+  </tr>
+  <tr hidden="true">
+  <td>訂位ID:</td>
+  <td class="orderId">${lnquires.orderId}</td>
+  </tr>
+  <tr>
+  <td>人數:</td>
+  <td class=>${lnquires.several}</td>
+  </tr>
+  <tr>
+  <td>訂位日期:</td>
+  <td class=><fmt:formatDate pattern="yyyy-MM-dd EEEE" value="${lnquires.reservation_date}"/></td>
+  </tr>
+  <tr>
+  <td>時段:</td>
+  <td class=>${lnquires.period}</td>
+  </tr>
+   <tr>
+  <td>桌號:</td>
+  <td class=>${lnquires.number}</td>
+  </tr>
+  <tr>
+  <td>備註:</td>
+  <td class=>${lnquires.remark}</td>
+  </tr>
+</table>
 				 
-		<button type="button" class="btn btn-primary editCCC" data-toggle="modal" 
-			data-target="#exampleModal" data-whatever="@mdo"><i class='bx bxs-pencil bx-tada bx-lg' ></i></button>		 
+		<button type="button"  data-toggle="modal" 
+			data-target="#exampleModal" data-whatever="@mdo"><i class='bx bx-pencil bx-lg editCCC' ></i></button>		 
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input type="button" ><i class='bx bx-trash bx-lg'></i></a>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><button type="button"><i class='bx bx-trash bx-lg'></i></button></a>
 			
 			
 </p>
@@ -111,7 +148,7 @@ background-size: 100%;
       <!--彈窗內部資料-->
       <form class="form" method="post" action="${contextRoot}/lnquires"
 			modelAttribute="booking">
-			<fieldset>
+			<fieldset style="font-size: 1.5rem;">
 			<div hidden="true">
 				<label class="t1"  >會員ID:</label><input type="text" name="user"
 						readonly="true" class="form-control select-area people-select-white IDplace" style="padding-top: 0px">

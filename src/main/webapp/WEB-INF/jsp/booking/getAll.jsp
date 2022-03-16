@@ -78,8 +78,8 @@
 			 
 			
 		<td>
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}"><button type="button" class="btn btn-primary">刪除</a>
-			<button type="button" class="btn btn-primary editCCC" data-toggle="modal" 
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}"><button type="button" class="btn btn-danger">刪除</button></a>
+			<button type="button" class="btn btn-success editCCC" data-toggle="modal" 
 			data-target="#exampleModal" data-whatever="@mdo">編輯</button>
 
         </td>
