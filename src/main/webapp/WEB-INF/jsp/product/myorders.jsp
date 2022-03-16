@@ -13,13 +13,15 @@
 <head>
 <link href="${contextRoot}/css/forProductPage.css" rel="stylesheet">
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<table class="table">
+			<table id="table_id" class="display" style="width: 50vw;font-size:medium;">
 				<thead class="table table-dark">
 					<tr>
 						<th>訂單編號</th>
@@ -73,7 +75,34 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script>
-	
+	$(document).ready(function() {
+		$('#table_id').DataTable({
+			"lengthMenu" : [ [ 6, 10, 25, 50, -1 ], [ 6, 10, 25, 50, "All" ] ],
+			"language" : {
+				"processing" : "處理中...",
+				"loadingRecords" : "載入中...",
+				"lengthMenu" : "顯示 _MENU_ 項結果",
+				"zeroRecords" : "沒有符合的結果",
+				"info" : "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+				"infoEmpty" : "顯示第 0 至 0 項結果，共 0 項",
+				"infoFiltered" : "(從 _MAX_ 項結果中過濾)",
+				"infoPostFix" : "",
+				"search" : "搜尋:",
+				"paginate" : {
+					"first" : "第一頁",
+					"previous" : "上一頁",
+					"next" : "下一頁",
+					"last" : "最後一頁"
+				},
+				"aria" : {
+					"sortAscending" : ": 升冪排列",
+					"sortDescending" : ": 降冪排列"
+				}
+			}
+		});
+	});
 </script>
 </html>
