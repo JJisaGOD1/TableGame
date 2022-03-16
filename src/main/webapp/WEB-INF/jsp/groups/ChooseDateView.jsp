@@ -16,8 +16,6 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 /* <!-- ------導入css到<header>裡面--------- --> */
 	.navbar-meals{
@@ -49,7 +47,14 @@
 		background-size: 100%;
 		opacity:0.3;
 	}
+
+	#datepicker{
+		font-size: 200%;
+	}
 </style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
 
 	<link rel="stylesheet" href="${contextRoot}/JQuery/jquery-ui-1.13.1.custom/jquery-ui.min.css">
 <!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
@@ -102,9 +107,7 @@
 </head>
 <body>
 	<!-- <a href="${contextRoot}">回登入頁</a> -->
-	<div class="body">
-		
-	</div>
+	<div class="body"></div>
 	<div class="first" align="center" style="margin-top: 7rem;">
 		<h2>選擇一天開團或入團吧!</h2><br>
 		<div id="datepicker"></div>

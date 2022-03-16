@@ -50,7 +50,15 @@
 		background-size: 100%;
 		opacity:0.3;
 	}
+
+	.b1{
+		font-size: 200%;
+	}
 	
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
 </style>
 
 <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +66,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="b1">
 
 <%--
 <c:forEach begin="0" end="21" varStatus="loop">
@@ -68,7 +76,7 @@
 <div class="body"></div>
 	<div  align="center" style="margin-top: 7rem;">
 	
-	<h2>遊玩日期:${date}</h2>
+	<h1>遊玩日期:${date}</h1>
 	
 		<div class="card text-left border-dark mb-3" style="width: 22rem;" >
 		<div class="card-header text-center">團編號：${group.groupId}</div>

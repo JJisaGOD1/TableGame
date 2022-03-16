@@ -59,14 +59,22 @@
 		background-size: 100%;
 		opacity:0.3;
 	}
+
+	.b1{
+		font-size: 200%;
+	}
+
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
 </style>
-<body>
+<body class="b1">
 <div class="body"></div>
-<div align="center">
-<h1>hi ${member.cusName}</h1> 	
+<div align="center" style="margin-top: 7rem;"> 	
 <h2>您選擇的揪團日期：${date}</h2>
 <form id="createGroupForm" action="InsertNewGroup" method="post">
-	<div class="card text-left border-dark mb-3" style="width: 25rem;" >
+	<div class="card text-left border-dark mb-3" style="width: 43rem;" >
 		
 			<ul class="list-group list-group-flush"
 				style="display: inline-block;">

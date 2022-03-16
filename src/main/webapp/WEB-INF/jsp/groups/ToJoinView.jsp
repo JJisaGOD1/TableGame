@@ -19,6 +19,7 @@
 <html>
 <head>
 <style>
+
 /* <!-- ------導入css到<header>裡面--------- --> */
 	.navbar-meals{
 	position: relative;
@@ -49,6 +50,33 @@
 		background-size: 100%;
 		opacity:0.3;
 	}
+
+	.b1{
+		font-size: 200%;
+	}
+
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
+
+	img{
+		object-fit: scale-down;
+		width: 20vw; 
+		/* height: 24vw; */
+	}
+
+	#prodInfo{
+		width: 20vw;
+		display: inline-block;
+	}
+	
+	.all{
+		justify-content: center;
+		display: flex;
+    	margin-left: 40vw;
+	}
+	
 </style>
 
 <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
@@ -56,13 +84,15 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="b1" >
 	<div class="body"></div>
-	<div align="center" style="margin-top: 7rem">
+	<div class="all">
+	<div align="center" style="margin-top: 7rem;display: inline-block ;margin-right: 10rem;">
 	
 	<h2>揪團日:${date}</h2>
 	
-	<div class="card text-left border-dark mb-3" style="width: 22rem;" >
+	<div class="card text-left border-dark mb-3" style="width: 20vw;
+    " >
 	<div class="card-header text-center">團編號：${group.groupId}</div>
 		<ul class="list-group list-group-flush"
 			style="display: inline-block;">
@@ -94,6 +124,18 @@
 		</form>
 		<button id="formBtn" class="btn btn-primary" style="font-size: 2rem;">報團!</button>
 </div>
+<div id="prodInfo" >
+	<ul class="list-group list-group-flush"
+		style="width: 20vw; display: inline-block; margin-top: 10rem;">
+		<li class="list-group-item">${group.product.product_name}</li>
+		<div>
+			<img src="/homepage/Photo/${group.product.photourl}">
+		</div>
+		<li class="list-group-item" style="font-size: 1.5rem;">${group.product.productintroduce}</li>
+	</ul>
+</ul>
+</div>
+</div>
 </body>
 <script>
 	$('#formBtn').click(function(){
@@ -104,6 +146,7 @@
 			cancelButtonText:'取消',
 			confirmButtonText: '我要加入!',
 			denyButtonText: `再想想`,
+			
 			
 		}).then((result) => {
 			if (result.isConfirmed) {
