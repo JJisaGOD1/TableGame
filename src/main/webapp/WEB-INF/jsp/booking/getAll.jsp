@@ -40,10 +40,15 @@
 </head>
 <body>
 
+
 <!-- <div class="col-sm-10 justify-content-center row" id="bsdiv" -->
 <!--   style="margin: 0; padding: 0"> -->
 <div style="width:76vw ; position:relative; top:20vh;left:20vw;" >
-
+<button type="button" class="btn btn-success editCCC" data-toggle="modal" 
+			data-target="#exampleModals" data-whatever="@mdo">編輯</button>
+			
+			
+			
 <table   id="table_id"  class="display">
 
  <thead>
@@ -78,9 +83,12 @@
 			 
 			
 		<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+		
+		
 			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}"><button type="button" class="btn btn-danger">刪除</button></a>
 			<button type="button" class="btn btn-success editCCC" data-toggle="modal" 
-			data-target="#exampleModal" data-whatever="@mdo">編輯</button>
+			data-target="#add" data-whatever="@mdo">編輯</button>
 
         </td>
    </c:forEach>
@@ -115,7 +123,7 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -135,7 +143,7 @@
 			</div>	
 			
 			<div>
-				<label class="t1">訂位ID:</label><input type="text" name="orderIds"
+				<label class="t1">訂位ID:</label><input type="text" name="orderId"
 						readonly="true" class="form-control select-area people-select-white IDtwo" style="padding-top: 0px">
 			</div>	
 			<div>
@@ -191,7 +199,35 @@
     </div>
   </div>
 </div>
-
+<!-- --- -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <%-- <script src="${contextRoot}/DataTables/datatables.min.js" type="text/javascript"></script> --%>
