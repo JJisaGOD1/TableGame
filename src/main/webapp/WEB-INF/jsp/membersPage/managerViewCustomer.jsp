@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/dashboard.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,6 @@
 <title>Manage View Customer</title>
 </head>
 <body>
-<h1>All Customer</h1>
 	<p />
 	<div class="container">
 		<div class="row justify-content-center">
