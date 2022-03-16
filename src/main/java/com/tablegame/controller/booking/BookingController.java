@@ -119,17 +119,17 @@ public class BookingController {
 	 }
 	 
 	 //修改訂位-找到單筆資料
-	 @GetMapping("/editbooking")
-		public ModelAndView editMessage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-			Booking msg = service.findById(id);
-			
-			mav.getModel().put("booking", msg);
-			
-			mav.setViewName("booking/editbooking");
-			
-			return mav;
-			
-		}
+//	 @GetMapping("/editbooking")
+//		public ModelAndView editMessage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+//			Booking msg = service.findById(id);
+//			
+//			mav.getModel().put("booking", msg);
+//			
+//			mav.setViewName("booking/editbooking");
+//			
+//			return mav;
+//			
+//		}
 	 
 	 //修改訂位
 		@PostMapping("/editbooking")

@@ -77,9 +77,9 @@ td {
 
 <c:forEach items="${lnquire}" var="lnquires" >
 <div class="col-sm-6 col-md-4" style="width: 360px; height: 360px">
-                <div class="thumbnail" style="width: 280px; height: 280px; background-color:#B3D9D9;">
+                <div class="thumbnail" style="width: 280px; height: 264px; background-color:#B3D9D9; ">
 
-<div class="">
+<div style="border:2px red solid;">
 	
 <table>
 <tr>
@@ -115,10 +115,10 @@ td {
   </tr>
 </table>
 				 
-		<button type="button"  data-toggle="modal" 
-			data-target="#exampleModal" data-whatever="@mdo"><i class='bx bx-pencil bx-lg editCCC' ></i></button>		 
+		<input type="button"  data-toggle="modal" 
+			data-target="#exampleModal" value="修改"class='btn btn-primary editCCC' >	 
 				 
-			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><button type="button"><i class='bx bx-trash bx-lg'></i></button></a>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input type="button" class='btn btn-info' value="刪除"></a>
 			
 			
 </p>
