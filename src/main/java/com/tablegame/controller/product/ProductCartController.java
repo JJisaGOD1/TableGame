@@ -187,7 +187,7 @@ public class ProductCartController {
 					item.getProduct());
 			serviceOL.insert(orderlist);
 		}
-		session.removeAttribute("cart");
+		session.removeAttribute("productcart");
 		mav.setViewName("redirect:/products/myorders");
 		return mav;
 	}

@@ -19,7 +19,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
 img {
 	object-fit: scale-down
 }
@@ -29,40 +28,41 @@ img {
 	<div class="wrap" style="width: 60vw; margin: 0 auto">
 		<div class="content" style="width: 60vw; padding: 5%">
 			<c:forEach items="${P.content}" var="P">
-				<c:choose>
-					<c:when test="${P.sellstatus=='上架中'&&P.stock>10}">
-						<div class="card"
-							style="width: 15vw; padding: auto; margin-bottom: 0">
-							<div
-								style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
-								<a
-									href="${contextRoot}/showImformationnologin?id=${P.product_id}">
-									<img src="<c:url value='/Photo/${P.photourl}' />"
-									style="width: 15vw; max-height: 18vw; margin-bottom: 0"
-									alt="picture of product" class="card-img-top"
-									onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
-								</a>
-							</div>
-							<div class="card-body" style="padding: 0 1vw 0.5vw 1vw">
-								<h5 class="card-title">
-									<c:out value="${P.product_name}" />
-								</h5>
-								<p class="card-text">
-									NT$
-									<c:out value="${P.price}" />
-								</p>
-								<a
-									href="${contextRoot}/showImformationnologin?id=${P.product_id}"
-									class="btn btn-primary">商品詳細資訊</a>
-							</div>
-						</div>
-					</c:when>
-				</c:choose>
+
+
+				<div class="card"
+					style="width: 15vw; padding: auto; margin-bottom: 0">
+					<div
+						style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
+						<a href="${contextRoot}/showImformationnologin?id=${P.product_id}">
+							<img src="<c:url value='/Photo/${P.photourl}' />"
+							style="width: 15vw; max-height: 18vw; margin-bottom: 0"
+							alt="picture of product" class="card-img-top"
+							onerror="this.src='${contextRoot}/Photo/nophoto.jpg'" />
+						</a>
+					</div>
+					<div class="card-body" style="padding: 0 1vw 0.5vw 1vw">
+						<h5 class="card-title">
+							<c:out value="${P.product_name}" />
+						</h5>
+						<p class="card-text">
+							NT$
+							<c:out value="${P.price}" />
+						</p>
+						<a href="${contextRoot}/showImformationnologin?id=${P.product_id}"
+							class="btn btn-primary">商品詳細資訊</a>
+					</div>
+				</div>
+
+
 			</c:forEach>
 		</div>
 	</div>
-	<div style="position: relative;" align="center">
+	<div
+		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
+		align="center">
 		<div class="col-9">
+			<c:out value="第" />
 			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
 				<c:choose>
@@ -81,6 +81,7 @@ img {
 						|
 					</c:if>
 			</c:forEach>
+			<c:out value="頁" />
 		</div>
 	</div>
 </body>

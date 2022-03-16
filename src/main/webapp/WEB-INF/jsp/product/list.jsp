@@ -310,26 +310,31 @@ img {
 
 		</div>
 	</div>
-	<div style="display: flex; justify-content: center;">
-		<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+	<div
+		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
+		align="center">
+		<div class="col-9">
+			<c:out value="第" />
+			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-			<c:choose>
-				<c:when test="${pageNumber-1==P.number}">
-					<!--page.number:取的當前頁面的頁碼-->
-					<c:out value="${pageNumber}" />
-				</c:when>
-				<c:otherwise>
-					<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
-							value="${pageNumber}" /> </a>
-				</c:otherwise>
-			</c:choose>
+				<c:choose>
+					<c:when test="${pageNumber-1==P.number}">
+						<!--page.number:取的當前頁面的頁碼-->
+						<c:out value="${pageNumber}" />
+					</c:when>
+					<c:otherwise>
+						<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
+								value="${pageNumber}" /> </a>
+					</c:otherwise>
+				</c:choose>
 
-
-			<c:if test="${pageNumber != P.totalPages}">
-				<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+				<c:if test="${pageNumber != P.totalPages}">
+					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-		</c:forEach>
+			</c:forEach>
+			<c:out value="頁" />
+		</div>
 	</div>
 	<div></div>
 	<div style="display: flex; justify-content: center;">
