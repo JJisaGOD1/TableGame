@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="layout/accountProblemBar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +36,7 @@
 <body>
 <div class="background"></div>
 <br>
-<h1 style="font-weight: 600;">帳務客服</h1>
+<h1 style="font-weight: 600; margin-left: 5vw;">帳務客服</h1>
 <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-5 accountblock">
@@ -57,7 +57,7 @@
             <table id="message-history" class="table table-striped" style="background-color: white; margin-left: 40vw;">
                 <thead>
                 <tr>
-                    <th>Message</th>
+                    <th style="font-size: larger;">Message</th>
                 </tr>
                 </thead>
                 <tbody id="messages">

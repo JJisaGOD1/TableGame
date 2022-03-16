@@ -58,6 +58,11 @@ public class PageController {
 		return "membersPage/black";
 	}
 	
+	@GetMapping(value = "/accountServer")
+	public String accountServer() {
+		return "membersPage/accountServer";
+	}
+	
 	@GetMapping(value = "/accountProblem")
 	public String accountProblem() {
 		return "membersPage/accountProblem";

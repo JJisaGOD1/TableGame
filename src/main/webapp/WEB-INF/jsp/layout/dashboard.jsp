@@ -38,8 +38,8 @@
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">會員管理</a></li>
-					<li><a href="${contextRoot}/viewMembers/1">查看會員</a></li>
-					<li><a href="${contextRoot}/viewCustomer/1">查看員工</a></li>
+					<li><a href="${contextRoot}/viewCustomer/1">查看會員</a></li>
+					<li><a href="${contextRoot}/viewMembers/1">查看員工</a></li>
 					<li><a href="${contextRoot}/addManager">新增員工</a></li>
 				</ul>
 			</li>
@@ -93,7 +93,9 @@
           <li><a class="link_name" >留言管理</a></li>
           <li><a href="${contextRoot}/viewComments">留言查看</a></li>
           <li><a href="${contextRoot}/serverService">線上客服</a></li>
+          <li><a href="${contextRoot}/accountServer">帳戶客服</a></li>
           <li><a href="${contextRoot}/categoryProblem">留言分析</a></li>
+          
         </ul>
 			</li>
 			<!-- <li>
