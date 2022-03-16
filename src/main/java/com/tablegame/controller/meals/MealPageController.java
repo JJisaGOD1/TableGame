@@ -168,7 +168,7 @@ public class MealPageController {
 		return "meals/messages/uploadPage"; // 過度跳轉頁
 	}
 
-	@GetMapping("/editPic")
+	@GetMapping("/meals/editPic")
 	public ModelAndView editPic(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId) {
 		FoodList food = foodService.findById(foodId);
 
@@ -179,7 +179,7 @@ public class MealPageController {
 		return mav;
 	}
 
-	@PostMapping("/editPic") // 等價於 @RequestMapping(value = "/upload",method = RequestMethod.POST)
+	@PostMapping("/meals/editPic") // 等價於 @RequestMapping(value = "/upload",method = RequestMethod.POST)
 	public String uplaod(HttpServletRequest req, ModelAndView mav, @Valid @ModelAttribute("food") FoodList food,
 			Model m) {// 1. 接受上傳的檔案
 		// @RequestParam("file")

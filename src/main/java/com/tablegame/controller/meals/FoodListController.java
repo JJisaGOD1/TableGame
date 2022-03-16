@@ -111,6 +111,15 @@ public class FoodListController {
 		return f;
 
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/meals/editPicAjax")
+	public FoodList editPicAjax(ModelAndView mav, @RequestParam(name = "foodId") Integer id) {
+		FoodList f = service.findById(id);
+
+		return f;
+
+	}
 
 	
 	

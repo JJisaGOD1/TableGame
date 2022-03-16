@@ -10,10 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
+
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -56,14 +57,22 @@
 												<td><c:out value="${food.foodType}" /></td>
 												<td><c:out value="${food.foodState}" /></td>
 												<td>
-												<a href="${contextRoot}/deleteFood?foodId=${food.foodId}"><button type="button" class="btn btn-danger" id="confirmedDelete">刪除</button></a>
+<%-- 												<a href="${contextRoot}/deleteFood?foodId=${food.foodId}"> --%>
+													<button type="button" class="btn btn-danger confirmedDelete" id="confirmedDelete" value="${food.foodId}">刪除</button>
+<!-- 												</a> -->
 
 <%-- 												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a> --%>
-
-												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>												
-												<a href="${contextRoot}/editPic?foodId=${food.foodId}"><button type="button" class="btn btn-secondary">新增圖片</button></a>
+<!-- 													使用跳轉畫面 -->
+<%-- 												<a href="${contextRoot}/editFood?foodId=${food.foodId}"><button type="button" class="btn btn-success">修改</button></a>												 --%>
+<%-- 												<a href="${contextRoot}/editPic?foodId=${food.foodId}"><button type="button" class="btn btn-secondary">新增圖片</button></a> --%>
+<!-- 													使用跳轉畫面(以上) -->
 												
 												<input type="button" class="edit btn btn-success" value="修改" data-toggle="modal" data-target="#editFood">
+												
+												
+													<input type="button" class="btn btn-secondary editPic" data-toggle="modal" data-target="#editPic" value="更改圖片">
+														
+												
 												
 <!-- 												<button type="button" class="btn btn-success" class="edit" value="修改" data-toggle="modal" data-target="#editFood">修改</button> -->
 								
@@ -192,7 +201,58 @@
 <!-- 	==================================編輯餐點(以上)================================== -->
 	
 	
-	
+<!-- 	==================================編輯圖片================================== -->	
+			<div class="modal fade" id="editPic" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel"
+							style="font-weight: 600;">編輯圖片</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!--彈窗內部-->
+						<form:form class="form"
+							action="${contextRoot}/meals/editPic"
+							modelAttribute="Food" method="POST" id="editPic"
+							enctype="multipart/form-data">
+
+							<table class="table">
+								<thead class="table table-light	">
+									<tr>
+										<th>圖片</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><form:input path="file" type="file" /></td>
+										<form:input path="foodId" type="hidden" />
+										<form:input path="foodName" type="hidden" />
+										<form:input path="foodPrice" type="hidden" />
+										<form:input path="foodType" type="hidden" />
+										<form:input path="foodState" type="hidden" />
+									</tr>
+								</tbody>
+							</table>
+							<p></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">關閉</button>
+								<input type="submit" class="btn btn-primary" id="check"
+									value="更動">
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+<!-- 	==================================編輯圖片(以上)================================== -->	
 	
 	
 <script src="${contextRoot}/js/jquery-3.6.0.min.js" type="text/javascript"></script>
@@ -251,27 +311,59 @@
 		
 
 
-	document.getElementById("confirmedDelete").onclick = function() {
+	$(".confirmedDelete").click (function() {
+		let id = $(this).parent().parent().find("p").html();
+		console.log(id);
 		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
+			  title: '確認刪除?',
+// 			  text: "You won't be able to revert this!",
 			  icon: 'warning',
 			  showCancelButton: true,
+			  cancelButtonText:'否，取消刪除',
 			  confirmButtonColor: '#3085d6',
 			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
+			  confirmButtonText: '是，確認刪除'
 			}).then((result) => {
 			  if (result.isConfirmed) {
+				  $.ajax({
+					  url: "${contextRoot}/deleteFood?foodId=" + id,
+					  method:'get',
+					  success:function(){
+						  setTimeout(function(){
+							  window.location.reload()
+						  }, 1000)
+					  }
+				  })
 			    Swal.fire(
-			      'Deleted!',
-			      'Your file has been deleted.',
-			      'success'
+			      '刪除成功!',
+// 			      'Your file has been deleted.',
+// 			      'success'
 			    )
 			  }
 			})
-		}
+		})
+		
+// ============================檢視餐點圖片========================================		
+	$(".editPic").click(
+			function() {
+				let id = $(this).parent().parent().find("p").html();
+				console.log(id)
+				$.ajax({
+					url : "${contextRoot}/meals/editPicAjax?foodId="+ id,
+					method : "get",
+					success : function(data) {
+						$("#editPic #foodId").val(data.foodId);
+						$("#editPic #foodName").val(data.foodName);
+						$("#editPic #foodPrice").val(data.foodPrice);
+						$("#editPic #foodType").val(data.foodType);
+						$("#editPic #file").val(data.file);
+						$("#editPic #foodState").val(data.foodState);
+					},
+				})
+			})
 </script>
 
+<!-- <iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe> -->
 
 </body>
 </html>

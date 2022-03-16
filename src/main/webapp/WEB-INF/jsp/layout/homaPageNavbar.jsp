@@ -34,7 +34,7 @@
 }
 
 h1 {
-	text-align: center;
+/* 	text-align: center; */
 }
 
 /* #screenBox { */
