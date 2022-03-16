@@ -53,6 +53,12 @@
     .button1{
 	    font-size: x-large;
         margin-bottom: 2vh;
+    }
+    .button2{
+        position: absolute;
+        left: -15vw;
+        font-size: x-large;
+        margin-bottom: 2vh;
     }    
 </style>
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
@@ -109,8 +115,10 @@
         <div class="row">
             <div class="col-md-9" >
                 <table id="message-history" class="table table-striped" style="background-color: white; margin-left: -35vh;">
+                    
                     <thead>
                     <tr>
+                        <button id="clear" class="btn btn-danger button2" type="button">清除</button>
                         <th class="text1">對話信息</th>
                     </tr>
                     </thead>
@@ -144,6 +152,10 @@ $(document).ready(function() {
     $("#send-private").click(function() {
         sendPrivateMessage();
     });
+
+    $('#clear').click(function(){
+        $('#messages').empty();
+    })
 });
 function connect() {
     var socket = new SockJS(contextRoot + '/our-websocket');

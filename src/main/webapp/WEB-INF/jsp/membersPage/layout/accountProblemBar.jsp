@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="${contextRoot}/"><img
-			src="${contextRoot}/uploaded/dice_logo.png" alt="" width="40vw"></a>
+			src="${contextRoot}/uploaded/accountProblemIcon.png" alt="" width="40vw"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -48,7 +48,7 @@ public class MemberController {
 			RedirectAttributes redirectAttributes) throws MessagingException {
 		service.insertMember(customer);
 		
-//		emailService.sendEmailImg(customer.getEmail());
+		emailService.sendEmailImg(customer.getEmail());
 		
 		redirectAttributes.addFlashAttribute("customer", customer);
 		mav.setViewName("redirect:/insertSuccessView");
