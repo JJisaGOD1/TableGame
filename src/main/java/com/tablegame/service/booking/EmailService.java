@@ -32,7 +32,7 @@ public class EmailService {
         helper.setText("<html><body><img src=\"cid:Test\" ></body></html>", true);
         helper.setText("訂位成功,有任何問題,歡迎來電"+"\n"+"姓名"+book.getUser().getCusName()+"\n"+
         "訂位人數："+book.getNumber()+"\n"+"時段: "+book.getNumber()+"\n"+"桌號: "+book.getSeveral()+"\n"
-        +"備註:"+book.getRemark()+"\n"+"時間"+ft.format(book.getReservation_date()));
+        +"備註:"+book.getRemark()+"\n"+"時間:"+ft.format(book.getReservation_date()));
 
         
         
