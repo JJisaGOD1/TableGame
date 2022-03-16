@@ -23,16 +23,23 @@
 		top: 0;
 
     }
+    .accountblock{
+        position: fixed;
+        top: 50vh;
+        z-index: 10;
+
+    }
 </style>
 <script src="<c:url value='/webjars/sockjs-client/sockjs.min.js'/>"></script>
 <script src="<c:url value='/webjars/stomp-websocket/stomp.min.js'/>"></script>
 </head>
 <body>
 <div class="background"></div>
-<h1>線上客服</h1>
+<br>
+<h1 style="font-weight: 600;">帳務客服</h1>
 <div class="container" style="margin-top: 20px">
-        <div class=>
-            <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-5 accountblock">
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="message"></label>
