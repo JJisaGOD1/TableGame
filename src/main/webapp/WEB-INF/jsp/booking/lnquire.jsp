@@ -67,7 +67,7 @@ background-size: 100%;
 
 <p>訂位資料</p>
 
-<p>人數:${lnquires.several} </p>
+<p class="qqq">人數:${lnquires.several} </p>
 <p>訂位日期:<fmt:formatDate pattern="yyyy-MM-dd EEEE" value="${lnquires.reservation_date}"/></p>
  <p>時段:${lnquires.period}</p>
  <p>桌號:${lnquires.number} </p>
