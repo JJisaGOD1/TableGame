@@ -21,7 +21,8 @@
 	<div class="container">
 		<p />
 		<div class="row justify-content-center">
-			<table id="table_id" class="display" style="width: 50vw;font-size:medium;">
+			<table id="table_id" class="display"
+				style="width: 50vw; font-size: medium;">
 				<thead class="table table-dark">
 					<tr>
 						<th>訂單編號</th>
@@ -42,37 +43,37 @@
 							<td><c:out value="${P.processingstatus}" />
 							<td><a
 								href="${contextRoot}/products/coustomercheckOrderList?id=${P.orderId}"><input
-									type="button" value="確認訂單"></a>
+									type="button" class="btn btn-primary" value="確認訂單"></a>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<div class="row justify-content-center">
-			<div class="col-9">
-				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+<!-- 		<div class="row justify-content-center"> -->
+<!-- 			<div class="col-9"> -->
+<%-- 				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}"> --%>
 
-					<c:choose>
-						<c:when test="${pageNumber-1==P.number}">
-							<!--page.number:取的當前頁面的頁碼-->
-							<c:out value="${pageNumber}" />
-						</c:when>
-						<c:otherwise>
-							<a href="${contextRoot}/products/myorders?p=${pageNumber}"><c:out
-									value="${pageNumber}" /> </a>
-						</c:otherwise>
-					</c:choose>
-
-
-					<c:if test="${pageNumber != P.totalPages}">
-						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
-						|
-					</c:if>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${pageNumber-1==P.number}"> --%>
+<!-- 							page.number:取的當前頁面的頁碼 -->
+<%-- 							<c:out value="${pageNumber}" /> --%>
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<%-- 							<a href="${contextRoot}/products/myorders?p=${pageNumber}"><c:out --%>
+<%-- 									value="${pageNumber}" /> </a> --%>
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
 
 
-				</c:forEach>
-			</div>
-		</div>
+<%-- 					<c:if test="${pageNumber != P.totalPages}"> --%>
+<!-- 						顯示|的條件:如果是最後一頁，後面就不顯示 -->
+<!-- 						| -->
+<%-- 					</c:if> --%>
+
+
+<%-- 				</c:forEach> --%>
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 </body>
 <script type="text/javascript" charset="utf8"
@@ -80,7 +81,7 @@
 <script>
 	$(document).ready(function() {
 		$('#table_id').DataTable({
-			"lengthMenu" : [ [ 6, 10, 25, 50, -1 ], [ 6, 10, 25, 50, "All" ] ],
+			"lengthMenu" : [ [ 5, 10, 25, 50, -1 ], [ 5, 10, 25, 50, "All" ] ],
 			"language" : {
 				"processing" : "處理中...",
 				"loadingRecords" : "載入中...",
