@@ -50,9 +50,9 @@
 		<div class="container-login100"
 			style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
-				style="margin-top: 6vw; height: 35vw; min-height: 30vw; width: 50vw;">
+				style="height: 50vh; width: 39vw; position: relative;">
 				<form class="login100-form validate-form"
-					action="${contextRoot}/login" method="POST">
+					action="${contextRoot}/login" method="POST" style="position: relative; height: 26rem;">
 					<div class="mb-3">
 						<div class="wrap-input100 validate-input m-b-23"
 							data-validate="請輸入帳號">
@@ -70,7 +70,7 @@
 							<a href="${contextRoot}/pwd"> 忘記密碼? </a>
 						</div>
 						<div id="googleInSite" class="g-signin2" data-onsuccess="onSignIn"
-							style="display: inline-block; left: 400px; position: relative; top: 5px;">
+							style="display: inline-block; position: absolute; top: 13rem;">
 						</div>
 						<div class="mb-3"></div>
 						<div class="container-login100-form-btn">

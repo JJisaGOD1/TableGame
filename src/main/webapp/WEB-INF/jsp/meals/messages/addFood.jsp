@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>員工資料</title>
+<title>新增餐點</title>
 
 <style>
 .myButton {
@@ -67,7 +67,7 @@
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card">
-					<div class="card-header">新增餐點</div>
+					<div class="card-header" style="font-size: 2rem">新增餐點</div>
 					<div class="card-body">
 
 						<form:form class="form" action="${contextRoot}/addFood"

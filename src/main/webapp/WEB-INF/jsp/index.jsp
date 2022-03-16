@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<h1>這是後臺管理系統</h1>
+<h1 style="display: inline-block; position: absolute; top: 7rem; left: 20rem;"> 這是後臺管理系統</h1>
 
 </body>
 </html>

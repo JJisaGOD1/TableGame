@@ -228,10 +228,10 @@ input:focus {
 <div class="shopping-cart">
 
   <div class="title">
-    <div style="font-size: 2.5rem; height: 20px; position: relative; top: -1rem;">訂單明細</div>
+    <div style="font-size: 2.5rem; height: 20px; position: relative; top: -1rem;">確認訂單</div>
     <div style="display: flex;">
       <p>合計: NT$<c:out value="${C.totalPrices}"/></p>
-      <span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span> |
+      <span class="orderId">訂單編號<c:out value="${newOrders.orderId}" /></span>
       <span class="tableNum">第<c:out value="${newOrders.tableNum}" /></span> |
       <span class="peopleNum"> <img src="<c:url value="/uploaded/people.png"/>" style="width: 14px"/> <c:out value="${newOrders.peopleNum}" />人</span>
 
@@ -315,7 +315,8 @@ input:focus {
 <%-- <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a> --%>
 <!-- </div> -->
 
-
+<div style="height: 1.5rem; wiwidth 100vw">
+</div>
 
 
 
