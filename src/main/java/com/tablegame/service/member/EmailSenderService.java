@@ -35,14 +35,14 @@ public class EmailSenderService {
         helper.setFrom("jack902221@gmail.com");
         helper.setTo(toEmail);
         helper.setSubject("主旨：歡迎加入 憶起玩桌遊會員");
-        helper.setText("<html><body><div style='text-align: center; width: 30vw;'><img src=\"cid:Test\" width='200px'>"
+        helper.setText("<html><body><div style='text-align: center; width: 30vw;'><img src=\"cid:Test\" width='500px'>"
         		+ "<h1>"+ member.getCusName()+ "歡迎您加入憶起玩桌遊會員</h1>"
         		+ "<h2>讓我們一起投入桌遊的世界吧</h2>"
         		+ "<a href=\"http://localhost:8080/homepage/\"><h3>官方網址<h3></a>"
         		+ "<h3>Best Regards</h3></div></body></html>", true);
 
         FileSystemResource file = new FileSystemResource
-        								(new File("C:/GitTableGame/TableGame/src/main/webapp/uploaded/dice_logo.png"));
+        								(new File("C:/GitTableGame/TableGame/src/main/webapp/uploaded/dice-logo-mail.jpg"));
         helper.addInline("Test", file);
 
         mailSender.send(mimeMessage);

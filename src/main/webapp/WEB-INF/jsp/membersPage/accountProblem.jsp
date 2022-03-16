@@ -29,6 +29,12 @@
         z-index: 10;
 
     }
+    .buttonclear{
+        position: absolute;
+        top: 1vh;
+        right: -37vw;
+    }
+
 </style>
 <script src="<c:url value='/webjars/sockjs-client/sockjs.min.js'/>"></script>
 <script src="<c:url value='/webjars/stomp-websocket/stomp.min.js'/>"></script>
@@ -57,6 +63,7 @@
             <table id="message-history" class="table table-striped" style="background-color: white; margin-left: 40vw;">
                 <thead>
                 <tr>
+                    <button id="clear" class="btn btn-danger buttonclear" type="button">清除</button>
                     <th style="font-size: larger;">Message</th>
                 </tr>
                 </thead>
@@ -78,6 +85,10 @@ $(document).ready(function() {
 
     $("#send").click(function() {   //傳送訊息
         sendMessage();
+    });
+
+    $('#clear').click(function(){
+        $('#messages').empty();
     });
 });
 
