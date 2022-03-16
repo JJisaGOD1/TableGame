@@ -45,9 +45,12 @@
 <div style="width:76vw ; position:relative; top:20vh;left:20vw;" >
 
 <table   id="table_id"  class="display">
+
  <thead>
 <tr>
-<th >會員</th>
+<th hidden="true"  >會員</th>
+<th >訂單</th>
+<th >姓名</th>
 <th >電話</th>
 <th >人數</th>
 <th >訂位日期</th>
@@ -60,10 +63,10 @@
 <c:forEach items="${page}" var="bookings">
 
    <tr>
-   <td hidden="true" class="userid">${bookings.user.id}</td>
-   <td hidden="true" class="orderId">${bookings.orderId}</td>
+   <td class="orderId">${bookings.orderId}
+   <td hidden="true" class="userid">${bookings.user.id}
    <td class="cusName">${bookings.user.cusName }
-   <td >${bookings.user.phone} 
+   <td class="phone">${bookings.user.phone} 
    <td class="sal">${bookings.several} 
    <td class="date"><fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${bookings.reservation_date}"/>
    <td class="period">${bookings.period}
@@ -72,11 +75,10 @@
    
   
 
-  <td> <a href="${contextRoot}/editbooking?id=${bookings.orderId}" ><button  type="button" class="updateBtn chcolor" >編輯</button> </a>	|  
 			 
-			<!-- <a onclick="delcfm()" href="${contextRoot}/deletbooking?id=${bookings.orderId}">刪除</a> -->
-		<button class="deletbooking">刪除</button>
-			<input type="hidden" class="orderId" value="${bookings.orderId}">
+			
+		<td>
+			<a onclick="return confirm('確認刪除')" href="${contextRoot}/deletbooking?id=${bookings.orderId}"><button type="button" class="btn btn-primary">刪除</a>
 			<button type="button" class="btn btn-primary editCCC" data-toggle="modal" 
 			data-target="#exampleModal" data-whatever="@mdo">編輯</button>
 
@@ -127,19 +129,23 @@
       <form class="form" method="post" action="${contextRoot}/editbooking"
 			modelAttribute="booking">
 			<fieldset>
-			<div>
-				<label class="t1">會員ID:</label><input type="text" name="user"
+			<div hidden="true">
+				<label class="t1"  >會員ID:</label><input type="text" name="user"
 						readonly="true" class="form-control select-area people-select-white IDplace" style="padding-top: 0px">
 			</div>	
 			
 			<div>
-				<label class="t1">訂位ID:</label><input type="text" name="orderId"
+				<label class="t1">訂位ID:</label><input type="text" name="orderIds"
 						readonly="true" class="form-control select-area people-select-white IDtwo" style="padding-top: 0px">
 			</div>	
+			<div>
+				<label class="t1">電話:</label><input type="text" name="phone"
+						readonly="true" class="form-control select-area people-select-white phones" style="padding-top: 0px">
+			</div>
 				
 				<div class="dropdown-container" style="vertical-align:top;">
 				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white several" style="padding-top: 0px">
-							<option value="" disabled selected>預約人數</option>
+							<option >預約人數</option>
 							<option value="1">1 人</option>
 							<option value="2">2 人</option>
 							<option value="3">3 人</option>
@@ -152,7 +158,7 @@
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
 						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white reservation_date" style="padding-top: 0px"></p>
 				</div>		
-						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
+						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white periods" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
 							<option>上午</option>
 							<option>下午</option>
@@ -160,7 +166,7 @@
 							</select>
 					</div>		
 			
-			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white" style="padding-top: 0px">
+			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white numbers" style="padding-top: 0px">
 							<option value="" disabled selected>預約桌號</option>
 							<option value="5">5</option>
 							<option value="6">6</option>
@@ -169,7 +175,7 @@
 					</select>
 				</div>	
 				</p>
-				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark"></textarea>
+				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark" class="remarks"></textarea>
 				</div>
 				
 				<div class="modal-footer">
@@ -219,22 +225,23 @@ $(document).ready( function () {
 } );
 
 
-$(".deletbooking").click(function(){
-    let check=confirm("確定刪除")
-    let tr =$(this).closest("tr")
-    let oid=tr.find(".orderId").val()
-    console.log(oid)
+// $(".deletbooking").click(function(){
+//     let check=confirm("確定刪除")
+//     let tr =$(this).closest("tr")
+//     let oid=tr.find(".orderId").val();
+//     console.log("oid:"+oid)
+//     console.log("tr:"+tr)
 
-    if(check==true){
-        $.ajax({
-            url:'${contextRoot}/deletbooking/'+oid,
-            success:function(result){
-                confirm('成功刪除')
-                tr.remove()
-            }
-        })
-    }
-})
+//     if(check==true){
+//         $.ajax({
+//             url:'${contextRoot}/deletbooking/'+oid,
+//             success:function(result){
+//                 confirm('成功刪除')
+//                 tr.remove()
+//             }
+//         })
+//     }
+// })
 
 $(function() {
 		$("#datepicker").datepicker({
@@ -246,17 +253,62 @@ $(function() {
 	});
 
 $(".editCCC").click(function(){
-	
-	let OderID=$(this).parent().parent().find(".orderId").html();
-  let severals=$(this).parent().parent().find("sal").html();
-  console.log(severals)
-  let date=$(this).parent().parent().parent().find("date").html();
+let userid=$(this).parent().parent().find(".userid").html();
+let OderID=$(this).parent().parent().find(".orderId").html();
+let severals=$(this).parent().parent().find(".sal").html();
+let phone=$(this).parent().parent().find(".phone").html();
+let date=$(this).parent().parent().find(".date").html();
+let period=$(this).parent().parent().find(".period").html();
+let number=$(this).parent().parent().find(".number").html();
+let remark=$(this).parent().parent().find(".remark").html();
+  console.log(date)
+   $(".IDplace").val(userid);
 	$(".IDtwo").val(OderID);
-	$(".several").val(severals);
+	$(".several").val(parseInt(severals));
   $(".reservation_date").val(date);
+  $(".phones").val(phone);
+  $(".periods").val(period);
+  $(".numbers").val(parseInt(number));
+  $(".remarks").val(remark);
+  
 })
 
 
+
+// $(document).on('click', '#deleteLocation', function (){  //用一般的.click會有氣泡事件問題
+//   var id = $(this).attr("value");
+
+//   $.ajax({
+//    type : "get",
+//    url : "http://localhost:8080/oldFoodMan/deleteSchedule?schedule_id="+id,
+//    success : function(data) {
+//     Swal.fire({
+//        title: '確定刪除收藏?',
+//        text: "",
+//        icon: 'warning',
+//        showCancelButton: true,
+//        confirmButtonColor: '#3085d6',
+//        cancelButtonColor: '#d33',
+//        confirmButtonText: 'Yes!'
+//      }).then((result) => {
+//        if (result.isConfirmed) {
+//          Swal.fire({
+//          title:'已刪除 !!',
+//          text:'',
+//          icon:'success'
+            
+//          }).then((result) => {
+//        location.reload();
+//       })
+         
+//        }else{
+//         return ;
+//        }
+//      })
+    
+//    },
+//   });
+//  })
 
 
 </script>

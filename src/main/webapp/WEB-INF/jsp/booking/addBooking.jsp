@@ -82,6 +82,8 @@ font-size:20px
 
 <div class="row justify-content-center">
 <a href="addNew"><input type="button" class="button" name="booking" value="立即訂位" style="width:500px;height:50px"/></a>
+
+
 </div>
 </p>
 

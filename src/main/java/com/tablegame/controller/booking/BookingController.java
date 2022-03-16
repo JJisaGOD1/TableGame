@@ -149,24 +149,27 @@ public class BookingController {
 		
 		}
 		
-		 @GetMapping("/lnquires")
-			public ModelAndView lnquires(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-				Booking msg = service.findById(id);
-				
-				mav.getModel().put("booking", msg);
-				
-				mav.setViewName("booking/memberedit");
-				
-				return mav;
-				
-			}
 		
-		 //會員修改訂位
+		//會員修改訂位
+//		 @GetMapping("/lnquires")
+//			public ModelAndView lnquires(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+//				Booking msg = service.findById(id);
+//				
+//				mav.getModel().put("booking", msg);
+//				
+//				mav.setViewName("booking/memberedit");
+//				
+//				return mav;
+//				
+//			}
+		
+		 
 		@PostMapping("/lnquires")
 		public ModelAndView lnquires1(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
-			mav.setViewName("booking/memberedit");
-			
+//			mav.setViewName("booking/memberedit");
+			Date d=new Date();
+			msg.setAdded(d);
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/lnquire");	
@@ -177,15 +180,26 @@ public class BookingController {
 	 
 		
 	//刪除訂位	
-	 @GetMapping("deletbooking/{id}")
-	    public ModelAndView deletbooking(ModelAndView mav,@PathVariable("id") Integer id) {
-			
-			service.delete(id);
-			
-			mav.setViewName("redirect:/getAll");
-			
-			return mav;
-		}
+//	 @GetMapping("deletbooking/{id}")
+//	    public ModelAndView deletbooking(ModelAndView mav,@PathVariable("id") Integer id) {
+//			
+//			service.delete(id);
+//			
+//			mav.setViewName("redirect:/getAll");
+//			
+//			return mav;
+//		}
+		
+		 @GetMapping("deletbooking")
+		    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
+				System.out.println("ssaa");
+				service.delete(id);
+				
+				mav.setViewName("redirect:/getAll");
+				
+				return mav;
+			}
+		
 	 
 	 @GetMapping("deletbookings")
 	    public ModelAndView deletbookings(ModelAndView mav,@RequestParam("id") Integer id) {
