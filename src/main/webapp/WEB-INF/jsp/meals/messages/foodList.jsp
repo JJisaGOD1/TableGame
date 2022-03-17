@@ -188,7 +188,7 @@
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">關閉</button>
 								<input type="submit" class="btn btn-primary" id="check"
-									value="更動">
+									value="確定">
 							</div>
 						</form:form>
 					</div>
@@ -243,7 +243,7 @@
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">關閉</button>
 								<input type="submit" class="btn btn-primary" id="check"
-									value="更動">
+									value="確定">
 							</div>
 						</form:form>
 					</div>
