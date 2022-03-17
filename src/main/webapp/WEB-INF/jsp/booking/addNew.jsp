@@ -132,10 +132,10 @@ fieldset {
 
 $("#button").click(function() {
 	$("#several").val('7');
-// 	$("#datepicker").val('2022/03/25');
+	$("#datepicker").val('2022/03/25');
 	$("#period").val('下午');
 	$("#number").val('7');
-	$("#remark").val('我不要多一張椅子');
+	$("#remark").val('我要多一張椅子');
 	
 })
 

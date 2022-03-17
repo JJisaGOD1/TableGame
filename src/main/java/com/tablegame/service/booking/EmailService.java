@@ -30,15 +30,15 @@ public class EmailService {
         helper.setSubject("主旨：瘋桌遊-訂位成功通知");
         
         
-        helper.setText("<html><body><div style='text-align: center; width: 30vw;'>"
+        helper.setText("<html><body><div style='text-align:center;'>"
         		+ "<img src=\"cid:Test\" width='500px'>"
         +"<h2>訂位成功_有任何問題_歡迎來電<h2>"
-        +"\n"+"姓名"+book.getUser().getCusName()
-        +"\n"+"訂位人數："+book.getNumber()
-        +"\n"+"時段: "+book.getNumber()
-        +"\n"+"桌號: "+book.getSeveral()
-        +"\n"+"備註:"+book.getRemark()
-        +"\n"+"時間:"+ft.format(book.getReservation_date())
+        +"\n"+"姓名: "+book.getUser().getCusName()
+        +"--\n--"+"訂位人數: "+book.getNumber()
+        +"--\n--"+"時段: "+book.getPeriod()
+        +"--\n--"+"時間: "+ft.format(book.getReservation_date())
+        +"--\n--"+"桌號: "+book.getSeveral()
+        +"--\n--"+"備註: "+book.getRemark()
         + "<h3>讓我們一起投入桌遊的世界吧</h3>"
         + "<a href=\"http://localhost:8080/homepage/\"><h3>官方網址<h3></a>"
 		+ "<h3>Best Regards</h3></div></body></html>", true);
@@ -46,7 +46,9 @@ public class EmailService {
         
         
         
-         FileSystemResource file = new FileSystemResource(new File("C:/GitTableGame/TableGame/src/main/webapp/uploaded/dice-logo-mail.jpg"));
+         FileSystemResource file = new FileSystemResource
+        		 (new File("C:/Git/tableGame/src/main/webapp/uploaded/dice-logo-mail.jpg"));
+        
         helper.addInline("Test", file);
        
 

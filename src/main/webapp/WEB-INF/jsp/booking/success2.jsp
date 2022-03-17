@@ -21,16 +21,7 @@ background-image:url('https://lh3.googleusercontent.com/62SVgyCoKfjqsXk8rZhC9bzH
 <body>
 <div align="center">
 <h1>${booking.user.cusName} 訂位成功</h1>
-<table>
-
-
-<tr><td>人數：${booking.several}</tr>
-<tr><td>訂位日期：<fmt:formatDate pattern="yyyy/MM/dd EEEE" value="${booking.reservation_date}"/></td></tr>
-<tr><td>時間：${booking.period}</td></tr>
-<tr><td>桌號：${booking.number}</td></tr>
-<tr><td>備註：${booking.remark}</td></tr>
-
-</table>
+<p>訂位資訊已寄送至您的電子信箱</p>
 </div>
 </body>
 </html>

@@ -77,7 +77,7 @@ td {
 
 <c:forEach items="${lnquire}" var="lnquires" >
 <div class="col-sm-6 col-md-4" style="width: 360px; height: 360px">
-                <div class="thumbnail" style="width: 280px; height: 264px; background-color:#B3D9D9; ">
+                <div class="thumbnail" style="width: 300px; height: 264px; background-color:#B3D9D9; ">
 
 <div style="border:2px red solid;">
 	
@@ -95,23 +95,23 @@ td {
   </tr>
   <tr>
   <td>人數:</td>
-  <td class=>${lnquires.several}</td>
+  <td class="sal">${lnquires.several}</td>
   </tr>
   <tr>
   <td>訂位日期:</td>
-  <td class=><fmt:formatDate pattern="yyyy-MM-dd EEEE" value="${lnquires.reservation_date}"/></td>
+  <td class="date"><fmt:formatDate pattern="yyyy-MM-dd EEEE" value="${lnquires.reservation_date}"/></td>
   </tr>
   <tr>
   <td>時段:</td>
-  <td class=>${lnquires.period}</td>
+  <td class="period">${lnquires.period}</td>
   </tr>
    <tr>
   <td>桌號:</td>
-  <td class=>${lnquires.number}</td>
+  <td class="number">${lnquires.number}</td>
   </tr>
   <tr>
   <td>備註:</td>
-  <td class=>${lnquires.remark}</td>
+  <td class="remark">${lnquires.remark}</td>
   </tr>
 </table>
 				 
