@@ -2,6 +2,7 @@ package com.tablegame.controller.product;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.dto.ProductCart;
@@ -192,4 +194,36 @@ public class ProductCartController {
 		return mav;
 	}
 
+	@ResponseBody
+	@GetMapping(value = "/products/addonetocart")
+	public ProductCart addonetocart(ModelAndView mav, @RequestParam(name = "id") Integer id, HttpSession session,
+			ProductCart cart) {
+		ProductCart c = (ProductCart) session.getAttribute("productcart");
+		if (c == null) {
+			session.setAttribute("productcart", cart);
+		}
+		ProductCart cxcart = (ProductCart) session.getAttribute("productcart");
+		Map<Integer, ProductCartItem> Map = cxcart.getProductMap();
+		Product product = serviceP.findById(id);
+		serviceC.addProduct(product, Map, 1);
+
+		ProductCart CC = (ProductCart) session.getAttribute("productcart");
+
+		return CC;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/products/enterlist")
+	public ProductCart enterlist(ModelAndView mav, HttpSession session, ProductCart cart) {
+		ProductCart c = (ProductCart) session.getAttribute("productcart");
+		if (c == null) {
+			session.setAttribute("productcart", cart);
+		}
+		ProductCart cxcart = (ProductCart) session.getAttribute("productcart");
+		Map<Integer, ProductCartItem> Map = cxcart.getProductMap();
+
+		ProductCart CC = (ProductCart) session.getAttribute("productcart");
+
+		return CC;
+	}
 }
