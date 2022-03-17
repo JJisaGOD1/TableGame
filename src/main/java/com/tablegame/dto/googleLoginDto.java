@@ -9,6 +9,9 @@ public class googleLoginDto implements Serializable {
 
 	@JsonProperty(value = "loginEmail")
 	private String email;
+	
+	@JsonProperty(value = "userName")
+	private String name;
 
 	public googleLoginDto() {
 	}
@@ -19,6 +22,14 @@ public class googleLoginDto implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

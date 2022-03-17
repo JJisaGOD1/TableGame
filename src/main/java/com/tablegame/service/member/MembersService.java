@@ -2,6 +2,7 @@ package com.tablegame.service.member;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,10 @@ public class MembersService {
 	@Autowired
 	private RatingsRepository rateDao;
 	
+	@Autowired
+	private RatingsBean rating;
+	
+	
 	public boolean checkLogin(String email, String pwd) {
 		Optional<MembersBean> option = memDao.findByEmail(email);
 		if(option.isEmpty() || !option.get().getPwd().equals(pwd)) {
@@ -51,7 +56,7 @@ public class MembersService {
 		Integer rating2 =rateDao.findById(2).get().getId();
 		Pageable pgb = PageRequest.of(pageNumber-1, 3, Sort.Direction.ASC, "fk_rating_id");
 		Page<MembersBean> res = memDao.findByRatingMember(rating1, rating2, pgb);
-		System.out.println(res.getContent().get(0).getBirthday()+"115314666666666");
+//		System.out.println(res.getContent().get(0).getBirthday()+"115314666666666");
 		return res;	
 	}
 	public Page<MembersBean> findCustomers(Integer pageNumber) {
@@ -78,6 +83,28 @@ public class MembersService {
 		MembersBean memberBean = option.get();
 		return memberBean;
 	}
+	
+	public MembersBean findByGoogleEmail(String email, String name) {
+		Optional<MembersBean> option = memDao.findByEmail(email);
+		if(option.isEmpty()) {
+			MembersBean member = new MembersBean();
+			member.setCusName(name);
+			member.setEmail(email);
+			member.setPhone("0912345678");
+			member.setPwd("3345678");
+			member.setBirthday(new Date());
+			member.setAddress("南極");
+			rating.setId(3); rating.setRateName("會員");
+			member.setRatingsBean(rating);
+			memDao.save(member);
+			return member;
+		}
+		else {
+			MembersBean memberBean = option.get();
+			return memberBean;
+		}
+	}
+	
 	
 	public void deleteMemberById(Integer id) {
 		memDao.deleteById(id);

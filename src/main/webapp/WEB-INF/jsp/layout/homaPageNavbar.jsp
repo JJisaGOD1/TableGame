@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <!-- Boxicons CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -34,7 +34,8 @@
 }
 
 h1 {
-/* 	text-align: center; */
+	/* 	text-align: center; */
+	
 }
 
 /* #screenBox { */
@@ -103,7 +104,7 @@ h1 {
 	/* } */
 	/* #screenBox:hover .arrow { */
 	/* 	display: block; */
-	/* } */ 
+	/* } */      
 
 #header {
 	background-color: black;
@@ -259,7 +260,7 @@ h1 {
 				<c:if test="${member.ratingsBean.id != null }">
 					<div style="display: flex">
 						<span style="font-size: 2rem">${member.cusName}，您好</span> <a
-							class="nav-link" href="${contextRoot}/logout">登出 </a>
+							onclick="signOut()" href="${contextRoot}/logout" class="nav-link">登出 </a>
 					</div>
 				</c:if>
 			</div>
@@ -275,9 +276,27 @@ h1 {
 
 
 
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/platform.js?onload=onLoad"
+		async defer></script>
 
-	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function onLoad() {
+			gapi.load('auth2', function() {
+				gapi.auth2.init({
+					client_id:'533537045577-jdn4qt2elj0o2g51ufi47igj254rpm7v.apps.googleusercontent.com'
+					});
+			})
+		}
 
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function() {
+				console.log('User signed out.');
+
+			});
+		}
+	</script>
 </body>
 </html>
