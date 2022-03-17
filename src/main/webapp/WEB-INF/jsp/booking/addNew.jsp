@@ -6,6 +6,8 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
  <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+ <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <!DOCTYPE html>
 <html >
 <head>
@@ -90,13 +92,17 @@ fieldset {
 				<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select name="several" id="several"  required class="form-control select-area people-select-white" style="padding-top: 0px">
 							<option value="" disabled selected>預約人數</option>
 							<option value="1">1 人</option>
-							<option value="2">2 人</option>
-							<option value="3">3 人</option>
-							<option value="4">4 人</option>
-							<option value="5">5 人</option>
-							<option value="6">6 人</option>
-							<option value="7">7 人</option>
-							<option value="8">8 人</option>
+									<option value="2">2 人</option>
+									<option value="3">3 人</option>
+									<option value="4">4 人</option>
+									<option value="5">5 人</option>
+									<option value="6">6 人</option>
+									<option value="7">7 人</option>
+									<option value="8">8 人</option>
+									<option value="9">9 人</option>
+									<option value="10">10 人</option>
+									<option value="11">11 人</option>
+									<option value="12">12 人</option>
 					</select></div>
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
 						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
@@ -111,14 +117,21 @@ fieldset {
 			
 			<div><label class="t1">桌號 :</label> <select name="number" id="number" required class="form-control select-area people-select-white" style="padding-top: 0px">
 							<option value="" disabled selected>預約桌號</option>
+					        <option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
 							<option value="5">5</option>
 							<option value="6">6</option>
-							<option value="7">7</option>	
+							<option value="7">7</option>
 							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
 					</select>
 				</div>	
 				</p>
-				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark"></textarea>
+				<div><label class="t1" >備註:</label> <textarea cols="40" rows="1" name="remark" id="remark"  class="form-control select-area people-select-white remarks "
+									style="padding-top: 0px"></textarea>
 				</div>
 				
 				<div>
@@ -137,7 +150,7 @@ $("#button").click(function() {
 	$("#number").val('7');
 	$("#remark").val('我要多一張椅子');
 	
-})
+});
 
 
 function time() {

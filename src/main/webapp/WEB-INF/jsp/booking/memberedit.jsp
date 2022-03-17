@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8"">
-<title>Insert title here</title>
+<title>Insee</title>
 
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -63,7 +63,7 @@
 							<option>5</option>
 							<option>6</option>
 							<option>7</option>	
-							<option>8</option>
+						
 					</select></td></tr>
 <tr><td>備註：<input type="text" name="remark" value="${booking.remark}"  /></td></tr>
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,9 @@ public class BookingController {
 	private BookingService service;
 	@Autowired
 	private EmailService serviceE;
-
+	
+	@Autowired
+	private HttpServlet servlet;
 	
 	@GetMapping("/addBooking")
 	public String addBooking() {
@@ -66,7 +69,7 @@ public class BookingController {
 //			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 			 
 			 //寄送圖片訊息
-			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
+//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
 			 
 			 //直接輸入email
 //			 serviceE.sendEmailText("chrayray@gmail.com");
@@ -75,6 +78,32 @@ public class BookingController {
 			
 			return mav;
 	    }
+	 
+	      //管理員新增
+		 @PostMapping("/userss")
+		    public ModelAndView adds(ModelAndView mav,@Valid 
+		    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session) throws MessagingException {
+
+				 service.insert(msg);
+				 //寄送文字訊息
+//				 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
+				 
+				 //寄送圖片訊息
+//				 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
+				 
+				 //直接輸入email
+//				 serviceE.sendEmailText("chrayray@gmail.com");
+				 mav.getModel().put("booking", msg);
+				 
+				 List<Booking> page =service.findAllbooking();
+					
+				mav.getModel().put("page",page);
+				 mav.setViewName("booking/getAll");
+				
+				return mav;
+		    }
+		 
+	 
 	 
 	 //查全部
 	 @GetMapping("/getAll")
@@ -117,6 +146,33 @@ public class BookingController {
 		 
 		 return mav; 
 	 }
+	 
+	 //電話找ID
+	 @ResponseBody
+	 @GetMapping("/phone/{sp}")
+	 public  MembersBean findByphone(@PathVariable(name="sp")String sp) {
+	
+//		 MembersBean phone=(MembersBean) hs.getAttribute("member");
+		 
+		 
+//		 Integer phones=phone.getId();
+		 
+		 MembersBean msg = service.findByphone(sp);
+		 
+//		 mav.getModel().put("phone", msg);
+//		 
+//		 mav.setViewName("booking/getAll");
+		 
+		 return msg;
+		 
+		 
+		 
+	 }
+	 
+	 
+	 
+	 
+	 
 	 
 	 //修改訂位-找到單筆資料
 //	 @GetMapping("/editbooking")
@@ -164,12 +220,15 @@ public class BookingController {
 //			}
 		
 		 
-		@PostMapping("/lnquires")
-		public ModelAndView lnquires1(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
+		@PostMapping("/member")
+		public ModelAndView lnquires(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
-//			mav.setViewName("booking/memberedit");
+			System.out.println(msg.toString());
+			
 			Date d=new Date();
 			msg.setAdded(d);
+//			mav.setViewName("booking/lnquire");
+			
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/lnquire");	
