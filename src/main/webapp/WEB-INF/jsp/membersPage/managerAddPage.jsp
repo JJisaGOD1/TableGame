@@ -11,6 +11,17 @@
 <meta charset="UTF-8">
 <title>Insert Manage</title>
 <style>
+
+
+ body{ background-color:	#FFFFFF; } 
+ #container{ width:980px; margin:0px auto;} 
+ .keyword{color:red;text-decoration:underline;} 
+.fieldset { 
+	width: 100px; 
+} 
+
+	
+
 	.block1{
 		border-radius: 10px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

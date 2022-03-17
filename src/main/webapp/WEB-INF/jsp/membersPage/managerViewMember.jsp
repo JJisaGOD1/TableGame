@@ -10,6 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Manage View Member</title>
+<style>
+.body{ background-color:#f5f5f5; }
+ #container{ width:980px; margin:0px auto;}
+ .keyword{color:red;text-decoration:underline;}
+.fieldset {
+	width: 100px;
+}
+</style>
 </head>
 <body>
 	<h1>All Member</h1>

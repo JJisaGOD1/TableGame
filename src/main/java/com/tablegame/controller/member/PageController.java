@@ -204,30 +204,22 @@ public class PageController {
 }
 	
 	
-
-	@RequestMapping("/query")
-	public String registration(Model model, HttpServletRequest req, HttpSession hs, Object String) {
-
-		String Email = (String) hs.getAttribute("cusName");
-		System.out.println(Email);
-
-		MembersBean memberBean = service.findByEmail(Email);
-
-		model.addAttribute("queryForm", query());
-		return "membersPage/query";
+@GetMapping(value = "/query")
+	public ModelAndView query(ModelAndView mav, HttpSession session) {
+		MembersBean logCustomer = (MembersBean)session.getAttribute("member");
+		Integer loginCustomerId = logCustomer.getId();
+		
+		MembersBean nowCostomer = service.findMemberById(loginCustomerId); //重資料庫撈新資料
+		
+//		System.out.println(logCustomer.getCusName()); ////更正後Session為舊資料
+		mav.getModel().put("query", nowCostomer);
+		mav.setViewName("membersPage/query");
+		return mav;
 	}
+
 	
 	
 	
-	
-	
-	@GetMapping("/query")
-	public String query() {
-//		PwdForm pwdForm = new PwdForm();
-//		model.addAttribute("PwdForm", PwdForm);
-//		model.addAttribute("loginErrorMsg", req.getAttribute("loginErrorMsg"));
-		return "membersPage/query";
-	}
 	
 	
 	

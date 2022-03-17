@@ -43,13 +43,7 @@ body {
 </head>
 <body>
 	<div class="container-login100"
-		style="background-image:    background-image: url(images/bg-01.jpg);
-    background-repeat: no-repeat;
-    width: 100vw; url('images/bg-01.jpg');">
-
-
-
-
+			style="background-image: url('images/bg-01.jpg');">
 		<div class="row justify-content-center"
 			style="width: 81vw; margin: 0 auto;">
 			<div class="col-8" style="margin-top: 10vh;">
