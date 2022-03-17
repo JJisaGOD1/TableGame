@@ -254,13 +254,9 @@ input:focus {
  
  <td>
     <div class="quantity">
-      <button class="plus-btn" type="button" name="button">
-        <img src="<c:url value="/uploaded/plus.svg"/>" alt="" />
-      </button>
-      <input type="text" name="name" value="<c:out value='${cart.value.quantity}' />">
-      <button class="minus-btn" type="button" name="button">
-        <img src="<c:url value="/uploaded/minus.svg"/>" alt="" />
-      </button>
+      
+      數量:<input type="text" name="name" value="<c:out value='${cart.value.quantity}' />">
+      
     </div>
  </td>
   <td>

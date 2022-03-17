@@ -94,7 +94,7 @@
 		<%-- 			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			 --%>
 		<!-- ==========================================顯示頁數========================================== -->
 		<br>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" align="center">
 			<div class="col-9">
 
 				<c:forEach var="pageNumber" begin="1" end="${orderPage.totalPages}">

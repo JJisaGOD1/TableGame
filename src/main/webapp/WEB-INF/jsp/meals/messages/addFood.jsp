@@ -9,10 +9,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+
 <meta charset="UTF-8">
 <title>新增餐點</title>
 
 <style>
+
+/* Source mixin */
+@mixin make-container($padding-x: $container-padding-x) {
+  width: 100%;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
+  margin-right: auto;
+  margin-left: 25rem;
+}
+
+/* Usage */
+.custom-container {
+  @include make-container();
+}
+
 .myButton {
 	box-shadow: 0px 0px 0px 2px #9fb4f2;
 	background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
@@ -75,10 +93,10 @@
 
 							<p>
 								輸入餐點名稱 :
-								<form:input type="text" path="foodName" name="food_name" class="form-control" />
+								<form:input type="text" path="foodName" name="foodName" class="form-control" />
 							<p>
 								輸入價格 :
-								<form:input type="text" path="foodPrice" name="food_price" class="form-control" />
+								<form:input type="text" path="foodPrice" name="foodPrice" class="form-control" />
 							<p>
 								輸入餐點類型 : 
 <%-- 								<form:input type="text" path="foodType" name="food_type" class="form-control" /> --%>
@@ -104,6 +122,9 @@
 							<p>
 							
 								<input type="submit" name="submit" id="btnSubmit" class="btn btn-secondary btn-sm" />
+								
+								<input type="button" id="oneEnter" class="btn btn-secondary btn-sm oneEnter" value="一鍵輸入"/>
+								
 						</form:form>
 <%-- 						<form action="upload" method="post" enctype="multipart/form-data"> --%>
 <!-- 								選擇圖片:<input type="file" path="foodImage" name="foodImage" accept="image/*" class="form-control" /> <br>  -->
@@ -122,6 +143,18 @@
 		</div>
 	</div>
 	
+	<script>
+	$(".oneEnter").click(function() {
+		$("#foodName").val("薯條");
+		$("#foodPrice").val("50");
+		$("#foodType").val("經典炸物");
+		$("#foodState").val("供應中");		
+	});
+		
+				
+				
+
+	</script>
 
 
 
