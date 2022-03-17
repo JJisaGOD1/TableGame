@@ -182,6 +182,7 @@
 							</table>
 							<p></p>
 							<div class="modal-footer">
+							<input type="button" class="oneEnter1" value="一鍵編輯遊戲"/>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">關閉</button>
 								<input type="submit" class="btn btn-primary editsubmit"
@@ -382,7 +383,14 @@
 			}
         return true;
     } );
+		$(".oneEnter1").click(function() {
+			$("#price").empty();
+			$("#price").val(690);
+			$("#stock").val(70);
+			$("#sellstatus").val("上架中");
 		
+			
+			});
 	</script>
 </body>
 </html>
