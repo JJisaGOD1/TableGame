@@ -14,6 +14,16 @@
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
 <title>View Messages Page</title>
+
+
+<style>
+.body{ background-color:#f5f5f5; }
+ #container{ width:980px; margin:0px auto;}
+ .keyword{color:red;text-decoration:underline;}
+.fieldset {
+	width: 100px;
+}
+</style>
 </head>
 <body>
 	<div class="container">

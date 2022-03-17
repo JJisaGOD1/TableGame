@@ -4,16 +4,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/dashboard.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert Manage</title>
 <style>
-	body{
-		background-color: #dedede;
-	}
+
+ body{ background-color:	#FFFFFF; } 
+ #container{ width:980px; margin:0px auto;} 
+ .keyword{color:red;text-decoration:underline;} 
+.fieldset { 
+	width: 100px; 
+} 
+
+	
 	.block1{
 		border: 1px solid;
 		border-radius: 10px;

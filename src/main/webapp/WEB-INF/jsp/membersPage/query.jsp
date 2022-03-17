@@ -2,165 +2,106 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<jsp:include page="layout/navbar.jsp" />
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<!-- Required meta tags-->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Colorlib Templates">
-<meta name="author" content="Colorlib">
-<meta name="keywords" content="Colorlib Templates">
+<title>Insert title here</title>
+<style>
+body {
+	background-color: #dedede;
+}
 
-<!-- Title Page-->
-<title>Au Register Forms by Colorlib</title>
+.block1 {
+	border: 1px solid;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-<!-- Icons font CSS-->
-<link href="vendor1/mdi-font/css1/material-design-iconic-font.min.css"
-	rel="stylesheet" media="all">
-<link href="vendor1/font-awesome-4.7/css1/font-awesome.min.css"
-	rel="stylesheet" media="all">
-<!-- Font special for pages-->
-<link
-	href="https://fonts.googleapis.com/css1?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+.text1 {
+	text-align: center;
+	font-size: xx-large;
+	font-weight: bolder;
+}
 
-<!-- Vendor CSS-->
-<link href="vendor1/select2/select2.min.css" rel="stylesheet"
-	media="all">
-<link href="vendor1/datepicker/daterangepicker.css" rel="stylesheet"
-	media="all">
+.row1 {
+	display: block;
+	border-radius: 10px 10px 0 0;
+	font-size: larger;
+	font-weight: bolder;
+}
 
-<!-- Main CSS-->
-<link href="css1/main.css" rel="stylesheet" media="all">
+.button1 {
+	position: relative;
+	bottom: 5vh;
+	left: 8vw;
+}
+</style>
 </head>
-
 <body>
+		<div class="row justify-content-center"
+			style="width: 81vw; margin: 0 auto;">
+			<div class="col-8" style="margin-top: 10vh;">
+				<div class="card block1" margin: 0px auto>
+					<div class="card-header text1" style="font-size: 2rem">修改</div>
+					<div class="card-body">
+						<form:form class="form" action="${contextRoot}/query"
+							modelAttribute="${customer.id}" method="POST"
+							style="position: relative;">
 
-	<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-		<div class="wrapper wrapper--w680">
-			<div class="card card-4">
-				<div class="card-body">
-					<h2 class="title">會員資料/修改</h2>
-					<form:form action="${contextRoot}/querySubmit" method="post"
-						modelAttribute="queryForm" id="form">
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">姓名</label>
-									<form:input path="customerName" class="input--style-4"
-										type="text" />
-								</div>
-							</div>
-							<div class="col-2">
+							<form:label path="cusName" class="card-header row1"
+								style="display:block;">姓名</form:label>
+							<form:input type="text" path="cusName" class="form-control"
+								placeholder="Name" autocomplete="off" style="font-size: revert" />
+							<p></p>
 
-								<div class="input-group">
-									<label class="label">密碼</label>
-									<form:input path="pwd" class="input--style-4" type="password" />
-								</div>
-							</div>
-						</div>
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">生日</label>
-									<div class="input-group-icon">
-										<form:input path="birthday"
-											class="input--style-4 js-datepicker" type="text"
-											autocomplete="off" />
-										<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-									</div>
-								</div>
-							</div>
-							
-						</div>
+							<form:label path="email" class="card-header row1"
+								style="display:block;">Email</form:label>
+							<form:input type="email" path="email" class="form-control"
+								placeholder="email" autocomplete="off" style="font-size: revert" />
+							<p></p>
+
+							<form:label path="pwd" class="card-header row1"
+								style="display:block;">密碼</form:label>
+							<form:input type="password" path="pwd" class="form-control"
+								placeholder="Password" style="font-size: revert" />
+							<p></p>
+
+							<form:label path="phone" class="card-header row1"
+								style="display:block;">電話</form:label>
+							<form:input path="phone" class="form-control" placeholder="Phone"
+								autocomplete="off" style="font-size: revert" />
+							<p></p>
+
+							<form:label path="address" class="card-header row1"
+								style="display:block;">地址</form:label>
+							<form:input path="address" class="form-control"
+								placeholder="Address" autocomplete="off"
+								style="font-size: revert" />
+							<p></p>
+
+							<form:label path="birthday" class="card-header row1"
+								style="display:block;">生日</form:label>
+							<form:input type="date" path="birthday" class="form-control"
+								autocomplete="off" style="font-size: revert" />
+							<p></p>
+
+							<select name="ratingsBean" style="display: none">
+								<option value="3">會員</option>
+							</select>
+							<p></p>
+
+							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
+							<button class="btn btn-info">送出</button>
+						</form:form>
 						
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Email</label>
-									<form:input path="email"  type="email"  readonly="true"/>
-								
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">電話</label>
-									<form:input path="phone" class="input--style-4" type="text" />
-								</div>
-							</div>
-						</div>
-        				 
-						<div style="margin">地址&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp鄉鎮市區&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp郵遞區號
-						</div>
-						
-						<label class="label"></label>
-
-						<div id="twzipcode" class="row col-12">
-
-
-							
-								<!-- 地址  -->
-							
-								<div class="input-group">
-								<div data-role="county" data-style="form-control" class="input--style-4"></div>
-								<input type="hidden" id="city" name="street" value="">
-								</div>
-								
-								<!-- 鄉鎮 -->
-								<div class="input-group">
-									<div data-role="district" data-style="form-control" class="input--style-4"></div>
-									<input type="hidden" id="township" name="street" value="">
-								</div>
-								
-								<!-- 郵遞區號 -->
-								<div class="input-group">
-									<div data-role="zipcode" data-style="form-control" class="input--style-4"></div>
-									<input type="hidden" id="postalCode" name="street" value="">
-								</div>
-						</div>
-					
-							<div class="input-group">
-								<label class="label"></label>
-								<form:input path="street" class="input--style-4" type="text" 
-								placeholder="請輸入詳細地址"   value=""/>
-								<form:hidden path="CustomerId" />	
-							</div>
-						
-						<div class="p-t-15">
-							<button class="btn btn--radius-2 btn--blue" type="submit">送出</button>
-						</div>
-					</form:form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- Jquery JS-->
-	<script src="vendor1/jquery/jquery.min.js"></script>
-	<!-- Vendor JS-->
-	<script src="vendor1/select2/select2.min.js"></script>
-	<script src="vendor1/datepicker/moment.min.js"></script>
-	<script src="vendor1/datepicker/daterangepicker.js"></script>
-	<!-- 密碼--------------------------------------------- -->
-
-	<script
-		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-	<!-- Main JS-->
-
-	<!-- add--------------------------------------------- -->
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
-
-	<script src="js1/global.js"></script>
-
 
 </body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
-
 </html>
-<!-- end document-->
