@@ -1,6 +1,7 @@
 package com.tablegame.controller.member;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class MemberController {
 	
 	@Autowired
 	private EmailSenderService emailService;
+	
+	@Autowired
+	private HttpServlet servlet;
 	
 	
 	@PostMapping(value = "/addManager")
@@ -48,7 +52,7 @@ public class MemberController {
 			RedirectAttributes redirectAttributes) throws MessagingException {
 		service.insertMember(customer);
 		
-		emailService.sendEmailImg(customer.getEmail());
+		emailService.sendEmailImg(customer.getEmail(), servlet);
 		
 		redirectAttributes.addFlashAttribute("customer", customer);
 		mav.setViewName("redirect:/insertSuccessView");

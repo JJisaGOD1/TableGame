@@ -74,7 +74,7 @@
 	.all{
 		justify-content: center;
 		display: flex;
-    	margin-left: 40vw;
+    	margin-left: 20vw;
 	}
 	
 </style>
