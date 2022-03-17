@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServlet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,7 +22,7 @@ public class EmailService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	public void sendEmailImg(String toEmail,Booking book) throws MessagingException {
+	public void sendEmailImg(String toEmail,Booking book,HttpServlet servlet) throws MessagingException {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		
 		 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
@@ -47,7 +49,7 @@ public class EmailService {
         
         
          FileSystemResource file = new FileSystemResource
-        		 (new File("C:/Git/tableGame/src/main/webapp/uploaded/dice-logo-mail.jpg"));
+        		 (new File(servlet.getServletContext().getRealPath("uploaded/dice-logo-mail.jpg")));
         
         helper.addInline("Test", file);
        

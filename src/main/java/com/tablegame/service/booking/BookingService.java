@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tablegame.model.bean.booking.Booking;
+import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.repository.booking.BookingRepostitory;
 import com.tablegame.model.repository.member.MembersRepository;
 
@@ -24,6 +25,9 @@ public class BookingService {
 	
 	@Autowired
     private BookingRepostitory bookingDao;
+	
+	@Autowired
+	private MembersRepository  membersDao;
 	//會員登入
 //	public MembersBean getUser(String username,String password) {
 //		Optional<MembersBean> user = loginDao.findByUsernameAndPwd(username, password);
@@ -56,6 +60,8 @@ public class BookingService {
 	}
 	
 	
+	
+	
 	public Booking findById(Integer order_id) {
 		Optional<Booking> op = bookingDao.findById(order_id);
 	    
@@ -75,4 +81,12 @@ public class BookingService {
 		List<Booking> time=bookingDao.findBytime(date, period);
 		return time;
 	}
+	
+	
+	
+	public MembersBean findByphone(String sp){
+		MembersBean phone = membersDao.findByphone(sp);
+		return phone;
+	}
+	
 }
