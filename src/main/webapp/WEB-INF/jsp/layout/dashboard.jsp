@@ -1,4 +1,5 @@
-<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"><%@ page language="java" contentType="text/html; charset=UTF-8"
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet"><%@ page
+	language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -63,26 +64,26 @@
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-          <li><a class="link_name" href="#">餐點管理</a></li>
-          <li><a href="${contextRoot}/orderList">訂單管理</a></li>
-          <li><a href="${contextRoot}/foodList">查看餐點</a></li>
-          <li><a href="${contextRoot}/addFood">新增餐點</a></li>
-        </ul>
+					<li><a class="link_name" href="#">餐點管理</a></li>
+					<li><a href="${contextRoot}/orderList">訂單管理</a></li>
+					<li><a href="${contextRoot}/foodList">查看餐點</a></li>
+					<li><a href="${contextRoot}/addFood">新增餐點</a></li>
+				</ul>
 
 			</li>
-			<li><a href="${contextRoot}/backstage/groups"> <i class='bx bx-grid-alt'></i> <span
-					class="link_name">開團管理</span>
+			<li><a href="${contextRoot}/backstage/groups"> <i
+					class='bx bx-grid-alt'></i> <span class="link_name">開團管理</span>
 			</a>
 				<ul class="sub-menu blank">
 					<li><a class="link_name" href="#">開團管理</a></li>
 				</ul></li>
-			<li><a href="${contextRoot}/getAll"> <i class='bx bx-book-alt'></i> <span
-					class="link_name">訂位管理</span>
+			<li><a href="${contextRoot}/getAll"> <i
+					class='bx bx-book-alt'></i> <span class="link_name">訂位管理</span>
 			</a>
 				<ul class="sub-menu blank">
 					<li><a class="link_name" href="#">訂位管理</a></li>
 				</ul></li>
-				
+
 			<li>
 				<div class="iocn-link">
 					<a href="#"> <i class='bx bx-message'></i> <span
@@ -90,13 +91,13 @@
 					</a> <i class='bx bxs-chevron-down arrow'></i>
 				</div>
 				<ul class="sub-menu">
-          <li><a class="link_name" >留言管理</a></li>
-          <li><a href="${contextRoot}/viewComments">留言查看</a></li>
-          <li><a href="${contextRoot}/serverService">線上客服</a></li>
-          <li><a href="${contextRoot}/accountServer">帳戶客服</a></li>
-          <li><a href="${contextRoot}/categoryProblem">留言分析</a></li>
-          
-        </ul>
+					<li><a class="link_name">留言管理</a></li>
+					<li><a href="${contextRoot}/viewComments">留言查看</a></li>
+					<li><a href="${contextRoot}/serverService">線上客服</a></li>
+					<li><a href="${contextRoot}/accountServer">帳戶客服</a></li>
+					<li><a href="${contextRoot}/categoryProblem">留言分析</a></li>
+
+				</ul>
 			</li>
 			<!-- <li>
 
@@ -132,8 +133,13 @@
 						<img src="${contextRoot}/uploaded/loginicon.jpg" alt="profileImg">
 					</div>
 					<div class="name-job">
-						<div class="profile_name"><c:out value="${member.cusName}"/></div>
-						<div class="job">TBC250<c:out value="${member.id}"/></div>
+						<div class="profile_name">
+							<c:out value="${member.cusName}" />
+						</div>
+						<div class="job">
+							TBC250
+							<c:out value="${member.id}" />
+						</div>
 					</div>
 					<a href="${contextRoot}/logout"><i class='bx bx-log-out'></i></a>
 				</div>
@@ -146,24 +152,24 @@
 				Sidebar</span>
 		</div>
 	</section>
-	
-<!-- 	<section class="home-section"> -->
-<!--     <nav> -->
-<!--       <div class="sidebar-button"> -->
-<!--         <i class='bx bx-menu sidebarBtn'></i> -->
-<!--         <span class="dashboard">Dashboard</span> -->
-<!--       </div> -->
-<!--       <div class="search-box"> -->
-<!--         <input type="text" placeholder="Search..."> -->
-<!--         <i class='bx bx-search' ></i> -->
-<!--       </div> -->
-<!--       <div class="profile-details"> -->
-<!--         <img src="images/profile.jpg" alt=""> -->
-<%--         <span class="admin_name" ><c:out value="${member.cusName}"/></span> --%>
-<!--         <i class='bx bx-chevron-down' ></i> -->
-<!--       </div> -->
-<!--     </nav> -->
-<!--     </section> -->
+
+	<!-- 	<section class="home-section"> -->
+	<!--     <nav> -->
+	<!--       <div class="sidebar-button"> -->
+	<!--         <i class='bx bx-menu sidebarBtn'></i> -->
+	<!--         <span class="dashboard">Dashboard</span> -->
+	<!--       </div> -->
+	<!--       <div class="search-box"> -->
+	<!--         <input type="text" placeholder="Search..."> -->
+	<!--         <i class='bx bx-search' ></i> -->
+	<!--       </div> -->
+	<!--       <div class="profile-details"> -->
+	<!--         <img src="images/profile.jpg" alt=""> -->
+	<%--         <span class="admin_name" ><c:out value="${member.cusName}"/></span> --%>
+	<!--         <i class='bx bx-chevron-down' ></i> -->
+	<!--       </div> -->
+	<!--     </nav> -->
+	<!--     </section> -->
 
 	<script>
   let arrow = document.querySelectorAll(".arrow");
@@ -182,6 +188,7 @@
   });
 
   </script>
-
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

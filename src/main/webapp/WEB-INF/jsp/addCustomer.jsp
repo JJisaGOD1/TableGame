@@ -108,12 +108,13 @@ body {
 	</div>
 	<script>
 		$('#button').click(function() {
-			$('#cusName').val('Nick');
-			$('#email').val('jack902221@gmail.com');
+			console.log(123)
+			$('#cusName').val('qwer');
+			$('#email').val('333@gmail.com');
 			$('#pwd').val('3345678');
 			$('#phone').val('0922645879');
 			$('#address').val('台北市新生南路一段');
-			// $('#birthday').val('1990/09/02');
+		// $('#birthday').val('1990/09/02');
 		})
 	</script>
 </body>

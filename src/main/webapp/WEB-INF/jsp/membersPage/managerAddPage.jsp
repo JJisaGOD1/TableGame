@@ -104,12 +104,14 @@
 	</div>
 	<script>
 		$('#button').click(function(){
-			$('#cusName').val('Nick');
+		$('#cusName').val('Nick');
 			$('#email').val('jack902221@gmail.com');
 			$('#pwd').val('3345678');
 			$('#phone').val('0922645879');
 			$('#address').val('台北市新生南路一段');
 		})
+		
+		
 	</script>
 </body>
 </html>
