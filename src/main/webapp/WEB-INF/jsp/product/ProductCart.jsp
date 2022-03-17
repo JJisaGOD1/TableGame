@@ -6,6 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -56,16 +57,16 @@
 							<td><c:out value="${C.value.price}" />
 							<td><a
 								href="${contextRoot}/products/deleteCartItem?id=${C.value.product.product_id}"><input
-									type="button" onclick="return confirm('確認刪除商品?')" value="刪除"></a>
+									type="button" class="btn btn-primary" onclick="return confirm('確認刪除商品?')" value="刪除"></a>
 								<a
 								href="${contextRoot}/products/deleteOneCartItem?id=${C.value.product.product_id}"><input
-									type="button" onclick="return confirm('確認刪除商品?')" value="整個刪除"></a>
+									type="button" class="btn btn-primary" onclick="return confirm('確認刪除商品?')" value="整個刪除"></a>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<h3>總計${C.price}元</h3>
-			<a href="${contextRoot}/products/Pay"> <input type="button"
+			<a href="${contextRoot}/products/Pay"> <input type="button" class="btn btn-primary"
 				onclick="return confirm('即將進入結帳畫面')" value="結帳"></a>
 		</div>
 	</div>

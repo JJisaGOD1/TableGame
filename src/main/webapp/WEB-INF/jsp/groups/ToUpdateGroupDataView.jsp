@@ -3,20 +3,79 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
+
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ------導入黑色navbar--------- -->
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+
+
+<!-- ------導入Boxicons--------- -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
+
 <html>
 <head>
 
-<link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* <!-- ------導入css到<header>裡面--------- --> */
+	.navbar-meals{
+	position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 0.5rem;
+		padding-top: 2.5rem;
+		width: 18vw;
+		margin: 0 auto;
+	}
+	.navbarlogo:hover{
+			opacity: 0.5; 
+	/* background-color: blue; */
+	}
+
+	
+	.body{
+		background-image: url('${contextRoot}/Photo/groupbackground.png');
+		width: 100vw;
+		height: 100vh;
+		margin:0 0;
+		position: fixed;
+		top: 0px;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		opacity:0.3;
+	}
+
+	.b1{
+		font-size: 200%;
+	}
+
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
+	
+</style>
+
+
 
 <meta charset="utf-8">
 <title>Insert title here</title>
-<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-	<div align="center">
+<body class="b1">
+	<div class="body"></div>
+	<div align="center" style="margin-top: 7rem;font-size: 2rem;" class="updateInfo">
 	<h1>hi 創團團長 ${member.cusName},您想更改甚麼資訊?</h1>
-	<form action="${contextRoot}/groups/UpdateGroupData/${group.groupId}" method="post">
-	<div class="card text-left border-dark mb-3" style="width: 22rem;" >
+	<form id="updateGroupForm" action="${contextRoot}/groups/UpdateGroupData/${group.groupId}" method="post">
+	<div class="card text-left border-dark mb-3" style="width: 32rem;" >
 		
 			<ul class="list-group list-group-flush"
 				style="display: inline-block;">
@@ -43,7 +102,7 @@
 				
 				<li class="list-group-item">更改附屬人數(含自己)：
 					<select id="selectPlayerNum" name="updateNum"> 
-						<c:forEach begin="1" end="${remainingNum}" varStatus="loop">
+						<c:forEach begin="1" end="${remainingNum-1}" varStatus="loop">
 							<c:choose>
 							<c:when test="${loop.count==launcherPlayerNow}">
 								<option selected="selected">${loop.count}</option>
@@ -57,15 +116,15 @@
 				</li>	
 				
 				<li class="list-group-item">揪團簡介：
-				<textarea cols="40" rows="5" id="introduction" name="updateIntroduction">${group.introduction}</textarea>
+					<textarea cols="28" rows="5" id="introduction" name="updateIntroduction">${group.introduction}</textarea>
 				</li>
 			</ul>
 			
-			
-		
 	</div>
-	<input class="btn btn-primary" type="submit" value="修改揪團資料!" >
+		<!-- <input id="updateGroupData" class="btn" type="submit" value="原始修改!" > -->
 </form>
+<button id="formBtn" class="btn btn-primary" style="font-size: 2rem;">修改揪團資料!</button>
+
 		
 	</div>
 <script>
@@ -90,7 +149,6 @@
 				let launcherPlayerNow=parseInt(${launcherPlayerNow})
 				let changeGameId= $('#selectGame').val()
 				
-								
 				if(respData.maxplayer<playersNumNow){
 					console.log("set回:"+originGameId)
 					$("#selectGame").val(originGameId)
@@ -109,11 +167,30 @@
 					originGameId=$('#selectGame').val()
 					console.log(originGameId)
 				}
-				
-				
 			}
 	    });
 	}
+
+	$('#formBtn').click(function(){
+		Swal.fire({
+			title: '您想變更這些資訊嗎?',
+			showDenyButton: true,
+			showCancelButton: true,
+			cancelButtonText:'取消',
+			confirmButtonText: '儲存變更',
+			denyButtonText: `不儲存`,
+			
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setTimeout(function(){
+					$('#updateGroupForm').submit()	
+				},1000)
+				Swal.fire('已儲存變更!', '', 'success')
+			} else if (result.isDenied) {
+				Swal.fire('未變更', '', 'info')
+			}
+		})
+	})
 </script>
 </body>
 </html>

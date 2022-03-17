@@ -106,8 +106,9 @@ public class MealCartController {
 			newOrders.setTotalprice(cart.getTotalPrices() + meal.getTotalprice());
 			oService.insert(newOrders);
 
-			foodMap.clear();
-
+//			foodMap.clear();
+			mav.addObject("newOrders", newOrders);
+			mav.addObject("cart", cart);
 //			newOrders.setTotalprice(cart.getTotalPrices());
 			mav.setViewName("meals/messages/finishedOrder");
 
@@ -170,7 +171,7 @@ public class MealCartController {
 		FoodList food = foodService.findById(foodId);
 		cartService.deleteOneFoodItem(food, Map);
 		mav.addObject("newOrders", newOrders);
-		mav.setViewName("redirect:/addToCart");
+		mav.setViewName("redirect:/meals/menu");
 		return mav;
 	}
 	

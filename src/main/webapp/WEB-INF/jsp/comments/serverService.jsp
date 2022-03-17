@@ -36,6 +36,8 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <button id="send" class="btn btn-primary button1" type="button">Send</button>
+                    &nbsp;&nbsp;
+                    <button id="clear" class="btn btn-danger button1" type="button">Clear</button>
                 </form>
             </div>
         </div>
@@ -100,8 +102,12 @@ $(document).ready(function() {
             dataType:"JSON",
             data:JSON.stringify({'messageContent': $("#private-message").val()}),
            
-        })
+        });
         sendServerPrivateMessage();
+    });
+
+    $("#clear").click(function() {
+        $('#messages').empty();
     });
 });
 function connect() {

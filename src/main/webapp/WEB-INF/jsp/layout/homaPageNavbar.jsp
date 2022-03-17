@@ -34,83 +34,76 @@
 }
 
 h1 {
-	text-align: center;
+/* 	text-align: center; */
 }
 
 /* #screenBox { */
 /* 	margin: 20px auto; */
 /* 	width: 1745px; */
 /* 	height: 70rem; */
-/* 	/* border1: 3px solid grey; */ */
-/* 	overflow: hidden; */
-/* 	position: relative; */
-/* 	background-color: blue; */
-/* } */
-
-/* #movedot { */
-/* 	margin: 0px auto; */
-/* 	width: 1200px; */
-/* 	height: 30px; */
-/* 	/* border: 3px solid grey; */ */
-/* 	/* overflow: hidden; */ */
-/* 	position: relative; */
-/* } */
-
-/* #list { */
-/* 	width: 8725px; */
-/* 	height: 550px; */
-/* 	position: absolute; */
-/* 	z-index: 1; */
-/* } */
-
-/* #list img { */
-/* 	float: left; */
-/* 	width: 1745px; */
-/* 	height: 70rem; */
-/* } */
-
-/* #buttons { */
-/* 	position: absolute; */
-/* 	height: 10px; */
-/* 	width: 100px; */
-/* 	z-index: 2; */
-/* 	bottom: 20px; */
-/* 	right: 540px; */
-/* } */
-
-/* #buttons span { */
-/* 	float: left; */
-/* 	border: 1px solid white; */
-/* 	border-radius: 50%; */
-/* 	height: 10px; */
-/* 	width: 10px; */
-/* 	margin-right: 5px; */
-/* 	background: rgba(128, 128, 128, 0.5); */
-/* } */
-
-/* #buttons .on { */
-/* 	background: black; */
-/* 	opacity: 60%; */
-/* } */
-
-/* .arrow { */
-/* 	margin-top: 100px; */
-/* 	display: none; */
-/* 	line-height: 40px; */
-/* 	text-align: center; */
-/* 	font-size: 30px; */
-/* 	width: 40px; */
-/* 	height: 40px; */
-/* 	position: absolute; */
-/* 	z-index: 2; */
-/* 	top: 140px; */
-/* 	color: white; */
-/* 	background: rgba(255, 255, 255, 0.5); */
-/* } */
-
-/* #screenBox:hover .arrow { */
-/* 	display: block; */
-/* } */
+/* 	/* border1: 3px solid grey; */
+* /
+	/* 	overflow: hidden; */
+	/* 	position: relative; */
+	/* 	background-color: blue; */
+	/* } */
+	/* #movedot { */
+	/* 	margin: 0px auto; */
+	/* 	width: 1200px; */
+	/* 	height: 30px; */
+	/* 	/* border: 3px solid grey; */ * /
+	/* 	/* overflow: hidden; */ * /
+	/* 	position: relative; */
+	/* } */
+	/* #list { */
+	/* 	width: 8725px; */
+	/* 	height: 550px; */
+	/* 	position: absolute; */
+	/* 	z-index: 1; */
+	/* } */
+	/* #list img { */
+	/* 	float: left; */
+	/* 	width: 1745px; */
+	/* 	height: 70rem; */
+	/* } */
+	/* #buttons { */
+	/* 	position: absolute; */
+	/* 	height: 10px; */
+	/* 	width: 100px; */
+	/* 	z-index: 2; */
+	/* 	bottom: 20px; */
+	/* 	right: 540px; */
+	/* } */
+	/* #buttons span { */
+	/* 	float: left; */
+	/* 	border: 1px solid white; */
+	/* 	border-radius: 50%; */
+	/* 	height: 10px; */
+	/* 	width: 10px; */
+	/* 	margin-right: 5px; */
+	/* 	background: rgba(128, 128, 128, 0.5); */
+	/* } */
+	/* #buttons .on { */
+	/* 	background: black; */
+	/* 	opacity: 60%; */
+	/* } */
+	/* .arrow { */
+	/* 	margin-top: 100px; */
+	/* 	display: none; */
+	/* 	line-height: 40px; */
+	/* 	text-align: center; */
+	/* 	font-size: 30px; */
+	/* 	width: 40px; */
+	/* 	height: 40px; */
+	/* 	position: absolute; */
+	/* 	z-index: 2; */
+	/* 	top: 140px; */
+	/* 	color: white; */
+	/* 	background: rgba(255, 255, 255, 0.5); */
+	/* } */
+	/* #screenBox:hover .arrow { */
+	/* 	display: block; */
+	/* } */ 
 
 #header {
 	background-color: black;
@@ -133,35 +126,33 @@ h1 {
 	font-weight: bold;
 }
 
-.navbar-wrap{
+.navbar-wrap {
 	width: 100vw;
-    height: 10rem;
-    background-color: white;
-    position: relative;
-    top: 0vw;
-    font-size: 1.5rem;
-    min-height: 10rem;
+	height: 10rem;
+	background-color: white;
+	position: relative;
+	top: 0vw;
+	font-size: 1.5rem;
+	min-height: 10rem;
 }
 
-
-.navbar-meals{
-position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 0.5rem;
-    padding-top: 2.5rem;
-    width: 18vw;
-    margin: 0 auto;
+.navbar-meals {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 0.5rem;
+	padding-top: 2.5rem;
+	width: 18vw;
+	margin: 0 auto;
 	top: 1.5rem;
-    width: 26rem;
+	width: 26rem;
 }
 
-.navbarlogo:hover{
- 	opacity: 0.5; 
-/* background-color: blue; */
-
+.navbarlogo:hover {
+	opacity: 0.5;
+	/* background-color: blue; */
 }
 </style>
 
@@ -172,38 +163,37 @@ position: relative;
 
 	<header class="header">
 
-		<a href="#" class="logo"> <img src="${contextRoot}/uploaded/dice_logo.png" alt="">
+		<a href="#" class="logo"> <img
+			src="${contextRoot}/uploaded/dice_logo.png" alt="">
 		</a>
 
 
 		<nav class="navbar" style="left: 11.5vw;">
 
-			<a href="${contextRoot}/">首頁</a> 
-			<a href="#about">最新消息</a>
-			<a href="#menu">會員招募</a>
-			<a href="#products">店鋪資訊</a> 
-			<a href="${contextRoot}/viewProductsnologin">商品</a> 
-			<a href="${contextRoot}/startOrder">點餐</a> 
-			<a href="${contextRoot}/groups/ChooseDate">開團</a> 
+			<a href="${contextRoot}/">首頁</a> <a href="#about">最新消息</a> <a
+				href="#menu">會員招募</a> <a href="#products">店鋪資訊</a> <a
+				href="${contextRoot}/viewProductsnologin">商品</a> <a
+				href="${contextRoot}/startOrder">點餐</a> <a
+				href="${contextRoot}/groups/ChooseDate">開團</a> <a
+				href="${contextRoot}/addBooking">訂位</a>
 
-			<a href="${contextRoot}/addBooking">訂位</a>
-			
-			
+
 			<c:if test="${member.ratingsBean.id == 3 }">
-			
-			
-					<a href="${contextRoot}/addComment">留言</a>
-				</c:if> <c:if test="${member.ratingsBean.id == 1 }">
-					<a href="${contextRoot}/backController">後台管理</a>
-				</c:if>
+
+
+				<a href="${contextRoot}/addComment">留言</a>
+			</c:if>
+			<c:if test="${member.ratingsBean.id == 1 }">
+				<a href="${contextRoot}/backController">後台管理</a>
+			</c:if>
 		</nav>
 
-		
-			
 
 
 
-			
+
+
+
 
 
 
@@ -255,7 +245,7 @@ position: relative;
 			</div>
 			<a href="#" class="btn">checkout now</a>
 		</div>
-		
+
 		<nav class="navbar" style="left: 8rem;">
 			<c:if test="${member.ratingsBean.id == null }">
 				<div style="display: flex">
@@ -265,80 +255,29 @@ position: relative;
 					<a class="" href="${contextRoot}/login">登入 </a>
 				</div>
 			</c:if>
-<div class="icons" >
-			<c:if test="${member.ratingsBean.id != null }">
-				<div style="display: flex">
-					<span style="font-size: 2rem">${member.cusName}，您好</span> <a class="nav-link"
-						href="${contextRoot}/logout">登出 </a>
-				</div>
-			</c:if></div>
-			
-</nav>
+			<div class="icons">
+				<c:if test="${member.ratingsBean.id != null }">
+					<div style="display: flex">
+						<span style="font-size: 2rem">${member.cusName}，您好</span> <a
+							class="nav-link" href="${contextRoot}/logout">登出 </a>
+					</div>
+				</c:if>
+			</div>
+
+		</nav>
 	</header>
-	
-	<div style="width: 100vw;height: 4rem;"></div>
 
-	
-	
-	
-	
-	
-	
-	
-<!-- 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
-<!--   <a class="navbar-brand" href="#">Navbar</a> -->
-<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--     <span class="navbar-toggler-icon"></span> -->
-<!--   </button> -->
 
-<!--   <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-<!--     <ul class="navbar-nav mr-auto"> -->
-<!--       <li class="nav-item active"> -->
-<!--         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link" href="#">Link</a> -->
-<!--       </li> -->
-<!--       <li class="nav-item dropdown"> -->
-<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> -->
-<!--           Dropdown -->
-<!--         </a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<!--           <a class="dropdown-item" href="#">Action</a> -->
-<!--           <a class="dropdown-item" href="#">Another action</a> -->
-<!--           <div class="dropdown-divider"></div> -->
-<!--           <a class="dropdown-item" href="#">Something else here</a> -->
-<!--         </div> -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link disabled">Disabled</a> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--     <form class="form-inline my-2 my-lg-0"> -->
-<!--       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-<!--       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-<!--     </form> -->
-<!--   </div> -->
-<!-- </nav> -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+
+
+
+	<div style="width: 100vw; height: 4rem;"></div>
+
+
+
+
+	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

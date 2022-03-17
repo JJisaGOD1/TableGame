@@ -6,6 +6,7 @@
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -60,76 +61,8 @@ style>.top_food_banner {
 	z-index: -5;
 	width: 100vw;
 }
-
-$
-main-color
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-;
-$
-light-text
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-#ABB0BE
-
-
-
-
-
-
-
-
-
-
-
-
-;
+$main-color:;
+$light-text:#ABB0BE;
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -211,25 +144,18 @@ ul {li { display:inline;
 	padding: 20px;
 	position: fixed;
 	top: 18vh;
-	right: 6.4vw; . shopping-cart-header { border-bottom : 1px solid
+	right: 6.4vw;
+	transition:none;
+	.shopping-cart-header{ border-bottom : 1px solid
 	#E8E8E8;
-	padding-bottom: 15px;
-	.
-	shopping-cart-total
-	{
-	float
-	:
-	right;
+	padding-bottom: 15px; .
+	shopping-cart-total {float: right;
 }
 
 }
 .shopping-cart-items {
 	padding-top: 20px;
-	li
-	{
-	margin-bottom
-	:
-	18px;
+	li {margin-bottom: 18px;
 }
 
 img {
@@ -287,29 +213,7 @@ img {
 	margin: 25px 0 15px 0;
 	&:
 	hover
-	{
-	background
-	:
-	lighten(
-	$
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	main-color
-	,
-	3%
-	);
+	{background:lighten($main-color,3%);
 }
 
 }
@@ -406,26 +310,31 @@ img {
 
 		</div>
 	</div>
-	<div style="display: flex; justify-content: center;">
-		<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+	<div
+		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
+		align="center">
+		<div class="col-9">
+			<c:out value="第" />
+			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-			<c:choose>
-				<c:when test="${pageNumber-1==P.number}">
-					<!--page.number:取的當前頁面的頁碼-->
-					<c:out value="${pageNumber}" />
-				</c:when>
-				<c:otherwise>
-					<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
-							value="${pageNumber}" /> </a>
-				</c:otherwise>
-			</c:choose>
+				<c:choose>
+					<c:when test="${pageNumber-1==P.number}">
+						<!--page.number:取的當前頁面的頁碼-->
+						<c:out value="${pageNumber}" />
+					</c:when>
+					<c:otherwise>
+						<a href="${contextRoot}/products/list?p=${pageNumber}"><c:out
+								value="${pageNumber}" /> </a>
+					</c:otherwise>
+				</c:choose>
 
-
-			<c:if test="${pageNumber != P.totalPages}">
-				<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+				<c:if test="${pageNumber != P.totalPages}">
+					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-		</c:forEach>
+			</c:forEach>
+			<c:out value="頁" />
+		</div>
 	</div>
 	<div></div>
 	<div style="display: flex; justify-content: center;">

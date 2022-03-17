@@ -79,29 +79,32 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="row justify-content-center">
-			<div class="col-9">
-				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+	<div
+		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
+		align="center">
+		<div class="col-9">
+			<c:out value="第" />
+			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-					<c:choose>
-						<c:when test="${pageNumber-1==P.number}">
-							<!--page.number:取的當前頁面的頁碼-->
-							<c:out value="${pageNumber}" />
-						</c:when>
-						<c:otherwise>
-							<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
-									value="${pageNumber}" /> </a>
-						</c:otherwise>
-					</c:choose>
+				<c:choose>
+					<c:when test="${pageNumber-1==P.number}">
+						<!--page.number:取的當前頁面的頁碼-->
+						<c:out value="${pageNumber}" />
+					</c:when>
+					<c:otherwise>
+						<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
+								value="${pageNumber}" /> </a>
+					</c:otherwise>
+				</c:choose>
 
-
-					<c:if test="${pageNumber != P.totalPages}">
-						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+				<c:if test="${pageNumber != P.totalPages}">
+					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-				</c:forEach>
-			</div>
+			</c:forEach>
+			<c:out value="頁" />
 		</div>
+	</div>
 		<div class="modal fade" id="editModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -368,9 +371,14 @@
 		$("form").submit( function () {
 			let maxplayer=$(this).parent().parent().find('#maxplayer').val();
 			let minplayer=$(this).parent().parent().find('#minplayer').val();
-			if (minplayer>=maxplayer){
+			let stock=$(this).parent().parent().find('#stock').val();
+
+			if (parseInt(minplayer)>=parseInt(maxplayer)){
 				window.alert('最大人數須大於最小人數');
 				return false;
+			}
+			if (parseInt(stock)<20){
+				window.alert('庫存小於20，將自動下架');
 			}
         return true;
     } );

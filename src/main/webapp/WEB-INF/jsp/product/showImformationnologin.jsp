@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="layout/NewFile.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,7 @@ th	{
 		<div
 			style="position: fixed; left: 40vw; width: auto; top: 10vw; display: inline-block; right: 5vw; max-height: 50vw">
 			<form action="${contextRoot}/addToProductCart" method="get">
-				<table class="table" style="background-color: white">
+				<table class="table" style="background-color: white; width: 50vw;font-size: medium;">
 					<thead class="table table-dark">
 						<tr>
 							<th>編號</th>
@@ -76,7 +77,7 @@ th	{
 					</tbody>
 				</table>
 			</form>
-			<a href="${contextRoot}/viewProductsnologin"><input type="button"
+			<a href="${contextRoot}/viewProductsnologin"><input type="button" class="btn btn-primary"
 				value="回商品總覽"></a>
 		</div>
 		<div class="row justify-content-center">

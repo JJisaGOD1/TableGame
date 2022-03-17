@@ -62,16 +62,17 @@ font-size:20px
 
 <h1 style="font-weight:bold;text-align:left;padding:10px">店家資訊</h1>
 
-<div class="google-maps" style="float:left; margin-right:10px">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0045591582784!2d121.54122331400265!3d25.033919344450858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xedc006d25a9e35df!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1647221432570!5m2!1szh-TW!2stw" width="500" height="315" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<div class="google-maps" style="float:left; margin-right:10px;margin-top:1vw;">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.801582001427!2d121.55230431400287!3d25.040806844174732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abc67380fc9f%3A0xf5c6d17f3e9cb1f5!2zMTA25Y-w5YyX5biC5aSn5a6J5Yy65bu25ZCJ6KGXMTEw6JmfQjE!5e0!3m2!1szh-TW!2stw!4v1647421287279!5m2!1szh-TW!2stw" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
 </div>
 
 </p>
 <div style="background-color:white;">
 <p><i class='bx bxs-location-plus'></i> 位置</p><hr>
-<p>台北市大安區復興南路一段390號2樓</p><hr>
+<p>台北市大安區延吉街110號B1</p><hr>
 <p><i class='bx bx-phone'></i> 聯絡電話</p><hr>
-<p>02-66316588</p><hr>
+<p>02-27119570</p><hr>
 <p><i class='bx bx-time-five'></i> 營業時間</p><hr>
 <p>09:00-21:00</p><hr>
 
@@ -82,6 +83,8 @@ font-size:20px
 
 <div class="row justify-content-center">
 <a href="addNew"><input type="button" class="button" name="booking" value="立即訂位" style="width:500px;height:50px"/></a>
+
+
 </div>
 </p>
 

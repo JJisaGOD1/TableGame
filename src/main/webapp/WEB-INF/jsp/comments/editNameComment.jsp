@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 <style>
 	body{
-        background-image: url("${contextRoot}/uploaded/talkBackground.jpg");
+        background-image: url("${contextRoot}/uploaded/chatwallpaper.jpg");
         background-repeat: none;
         background-size: 100%;
     }

@@ -3,10 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ------導入黑色navbar--------- -->
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
+
+
+<!-- ------導入Boxicons--------- -->
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
 <html>
 <head>
 
 <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <meta charset="UTF-8">
 <title>FillNewGroupDataView</title>
@@ -14,13 +28,53 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
 </head>
-<body>
+<style>
+/* <!-- ------導入css到<header>裡面--------- --> */
+	.navbar-meals{
+	position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 0.5rem;
+		padding-top: 2.5rem;
+		width: 18vw;
+		margin: 0 auto;
+	}
+	.navbarlogo:hover{
+			opacity: 0.5; 
+	/* background-color: blue; */
+	}
 
-<div align="center">
-<h1>hi ${member.cusName}</h1> 	
+	
+	.body{
+		background-image: url('${contextRoot}/Photo/groupbackground.png');
+		width: 100vw;
+		height: 100vh;
+		margin:0 0;
+		position: fixed;
+		top: 0px;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		opacity:0.3;
+	}
+
+	.b1{
+		font-size: 200%;
+	}
+
+	.swal2-popup {
+	font-size: 1.5rem !important;
+
+	}
+</style>
+<body class="b1">
+<div class="body"></div>
+<div align="center" style="margin-top: 7rem;"> 	
 <h2>您選擇的揪團日期：${date}</h2>
-<form action="InsertNewGroup" method="post">
-	<div class="card text-left border-dark mb-3" style="width: 22rem;" >
+<form id="createGroupForm" action="InsertNewGroup" method="post">
+	<div class="card text-left border-dark mb-3" style="width: 43rem;" >
 		
 			<ul class="list-group list-group-flush"
 				style="display: inline-block;">
@@ -47,8 +101,9 @@
 			
 		
 	</div>
-	<input class="btn btn-primary" type="submit" value="開團!" >
+	<!-- <input class="btn btn-primary" type="submit" value="開團!" onclick="return create()"> -->
 </form>
+<button id="formBtn" class="btn btn-primary" style="font-size: 2rem;">開團!</button>
 </div>
 
 <script>
@@ -76,6 +131,45 @@
         	}
 	    });
 	}
+
+	function create() {
+		var msg = "是否建團?";
+		if (confirm(msg) == true) {
+			Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: '建團成功!',
+			showConfirmButton: false,
+			timer: 1500
+			})
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	$('#formBtn').click(function(){
+		Swal.fire({
+			title: '確定建團嗎?',
+			showDenyButton: true,
+			showCancelButton: true,
+			cancelButtonText:'取消',
+			confirmButtonText: '我要建團!',
+			denyButtonText: `再想想`,
+			
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setTimeout(function(){
+					$('#createGroupForm').submit()	
+				},1000)
+				Swal.fire('團房創立成功!', '', 'success')
+			} else if (result.isDenied) {
+				Swal.fire('未建團', '', 'info')
+			}
+		})
+	})
+
+	
 </script>
 </body>
 

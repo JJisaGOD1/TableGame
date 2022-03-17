@@ -45,7 +45,7 @@ public class MessageController {
 	@MessageMapping(value = "/private/customer/message")
 	@SendToUser("/topic/private-messages")
 	public ResponseMessage getPrivateMessageCus(Message message, Principal principal) throws InterruptedException {
-		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+ " 私訊 : " + message.getMessageContent()));
+		return new ResponseMessage(HtmlUtils.htmlEscape(message.getClientName()+ " 私訊 Server : " + message.getMessageContent()));
 	}
 	
 	//server端ajax傳給client 且server顯示
@@ -55,5 +55,19 @@ public class MessageController {
 			return new ResponseMessage(HtmlUtils.htmlEscape(
 					"Server 私訊 : " + message.getMessageContent() 
 					+ "  (To Client-Id : " + message.getClientId()+")"));
+	}
+	//account問題client端
+	@MessageMapping(value = "/problemClient")
+	@SendTo("/topic/account/messages")
+	public ResponseMessage getAccountMessage(Message message) throws InterruptedException {
+		return new ResponseMessage(HtmlUtils.htmlEscape("User : "+message.getMessageContent()));
+		
+	}
+	
+	//account問題server端
+	@MessageMapping(value = "/problemServer")
+	@SendTo("/topic/account/messages")
+	public ResponseMessage getServerAccountMessage(Message message) throws InterruptedException {
+		return new ResponseMessage(HtmlUtils.htmlEscape("Server : "+message.getMessageContent()));
 	}
 }

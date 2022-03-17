@@ -38,8 +38,8 @@
 				</div>
 				<ul class="sub-menu">
 					<li><a class="link_name" href="#">會員管理</a></li>
-					<li><a href="${contextRoot}/viewMembers/1">查看會員</a></li>
-					<li><a href="${contextRoot}/viewCustomer/1">查看員工</a></li>
+					<li><a href="${contextRoot}/viewCustomer/1">查看會員</a></li>
+					<li><a href="${contextRoot}/viewMembers/1">查看員工</a></li>
 					<li><a href="${contextRoot}/addManager">新增員工</a></li>
 				</ul>
 			</li>
@@ -53,6 +53,7 @@
 					<li><a href="${contextRoot}/products/viewProducts">查看商品</a></li>
 					<li><a href="${contextRoot}/products/addProduct">新增商品</a></li>
 					<li><a href="${contextRoot}/products/checkOrders">訂單處理</a></li>
+					<li><a href="${contextRoot}/products/Problem">商品分析</a></li>
 				</ul>
 			</li>
 			<li>
@@ -63,7 +64,7 @@
 				</div>
 				<ul class="sub-menu">
           <li><a class="link_name" href="#">餐點管理</a></li>
-          <li><a href="${contextRoot}/orderList">查看訂單</a></li>
+          <li><a href="${contextRoot}/orderList">訂單管理</a></li>
           <li><a href="${contextRoot}/foodList">查看餐點</a></li>
           <li><a href="${contextRoot}/addFood">新增餐點</a></li>
         </ul>
@@ -92,7 +93,9 @@
           <li><a class="link_name" >留言管理</a></li>
           <li><a href="${contextRoot}/viewComments">留言查看</a></li>
           <li><a href="${contextRoot}/serverService">線上客服</a></li>
+          <li><a href="${contextRoot}/accountServer">帳戶客服</a></li>
           <li><a href="${contextRoot}/categoryProblem">留言分析</a></li>
+          
         </ul>
 			</li>
 			<!-- <li>
@@ -126,7 +129,7 @@
 			<li>
 				<div class="profile-details">
 					<div class="profile-content">
-						<img src="uploaded/loginicon.jpg" alt="profileImg">
+						<img src="${contextRoot}/uploaded/loginicon.jpg" alt="profileImg">
 					</div>
 					<div class="name-job">
 						<div class="profile_name"><c:out value="${member.cusName}"/></div>

@@ -8,10 +8,14 @@
 <html>
 <head>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
@@ -140,11 +144,11 @@ h1 {
 	font-weight: bold;
 }
 
-  /* Make the image fully responsive */
-  .carousel-inner img {
-    width: 90%;
-    height: 80%;
-  }
+/* Make the image fully responsive */
+.carousel-inner img {
+	width: 90%;
+	height: 80%;
+}
 </style>
 
 
@@ -154,186 +158,191 @@ h1 {
 
 	<!-- header section starts  -->
 
-<!-- 	<header class="header"> -->
+	<!-- 	<header class="header"> -->
 
-<!-- 		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt=""> </a> -->
-			
-			
-<!-- 		<nav class="navbar"> -->
-
-<!-- 			<a href="#home">首頁</a> -->
-<!-- 			<a href="#about">最新消息</a> -->
-<!-- 			<a href="#menu">會員招募</a> -->
-<!-- 			<a href="#products">店鋪資訊</a> -->
-<%-- 			<a href="${contextRoot}/viewProductsnologin">商品</a> --%>
-<%-- 			<a href="${contextRoot}/startOrder">點餐</a> --%>
-<%-- 			<a href="${contextRoot}/groups/ChooseDate">開團</a> --%>
-<%-- 			<a href="${contextRoot}/addBooking">訂位</a> --%>
-			
-<%-- 			<c:if test="${member.ratingsBean.id == 3 }"> --%>
-<%-- 				<a href="${contextRoot}/customerService">線上客服</a> --%>
-<%-- 			</c:if> --%>
-			
-<%-- 			<c:if test="${member.ratingsBean.id == 1 }"> --%>
-<%-- 				<a href="${contextRoot}/backController">後台管理</a> --%>
-<%-- 			</c:if> --%>
-<!-- 		</nav> -->
+	<!-- 		<a href="#" class="logo"> <img src="uploaded/dice_logo.png" alt=""> </a> -->
 
 
+	<!-- 		<nav class="navbar"> -->
 
-<!-- 		<div class="icons" style="display: flex"> -->
-<!-- 			<div class="fas fa-search" id="search-btn"></div> -->
-<!-- 			<div class="fas fa-shopping-cart" id="cart-btn"></div> -->
+	<!-- 			<a href="#home">首頁</a> -->
+	<!-- 			<a href="#about">最新消息</a> -->
+	<!-- 			<a href="#menu">會員招募</a> -->
+	<!-- 			<a href="#products">店鋪資訊</a> -->
+	<%-- 			<a href="${contextRoot}/viewProductsnologin">商品</a> --%>
+	<%-- 			<a href="${contextRoot}/startOrder">點餐</a> --%>
+	<%-- 			<a href="${contextRoot}/groups/ChooseDate">開團</a> --%>
+	<%-- 			<a href="${contextRoot}/addBooking">訂位</a> --%>
 
-			
-<%-- 			<c:if test="${member.ratingsBean.id == null }"> --%>
-<!-- 			<div style="display: flex"> -->
-<%-- 				<a class="nav-link" href="${contextRoot}/addCustomer">註冊 --%>
-<!-- 				</a> -->
-<!-- 			</div> -->
-<!-- 			<div style="display: flex"> -->
-<%-- 				<a class="nav-link" href="${contextRoot}/login">登入 --%>
-<!-- 				</a> -->
-<!-- 			</div> -->
-<%-- 			</c:if> --%>
-			
-<%-- 			<c:if test="${member.ratingsBean.id != null }"> --%>
-<!-- 			<div style="display: flex"> -->
-<%-- 				<span>${member.cusName}，您好</span> --%>
-<%-- 				<a class="nav-link" href="${contextRoot}/logout">登出 --%>
-<!-- 				</a> -->
-<!-- 			</div> -->
-<%-- 			</c:if> --%>
-			
+	<%-- 			<c:if test="${member.ratingsBean.id == 3 }"> --%>
+	<%-- 				<a href="${contextRoot}/customerService">線上客服</a> --%>
+	<%-- 			</c:if> --%>
 
-<!-- 		</div> -->
+	<%-- 			<c:if test="${member.ratingsBean.id == 1 }"> --%>
+	<%-- 				<a href="${contextRoot}/backController">後台管理</a> --%>
+	<%-- 			</c:if> --%>
+	<!-- 		</nav> -->
 
-<!-- 		<div class="search-form"> -->
-<!-- 			<input type="search" id="search-box" placeholder="search here..."> -->
-<!-- 			<label for="search-box" class="fas fa-search"></label> -->
-<!-- 		</div> -->
 
-<!-- 		<div class="cart-items-container"> -->
-<!-- 			<div class="cart-item"> -->
-<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-1.png" -->
-<!-- 					alt=""> -->
-<!-- 				<div class="content"> -->
-<!-- 					<h3>cart item 01</h3> -->
-<!-- 					<div class="price">$15.99/-</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="cart-item"> -->
-<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-2.png" -->
-<!-- 					alt=""> -->
-<!-- 				<div class="content"> -->
-<!-- 					<h3>cart item 02</h3> -->
-<!-- 					<div class="price">$15.99/-</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="cart-item"> -->
-<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-3.png" -->
-<!-- 					alt=""> -->
-<!-- 				<div class="content"> -->
-<!-- 					<h3>cart item 03</h3> -->
-<!-- 					<div class="price">$15.99/-</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="cart-item"> -->
-<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-4.png" -->
-<!-- 					alt=""> -->
-<!-- 				<div class="content"> -->
-<!-- 					<h3>cart item 04</h3> -->
-<!-- 					<div class="price">$15.99/-</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<a href="#" class="btn">checkout now</a> -->
-<!-- 		</div> -->
 
-<!-- 	</header> -->
-<!-- 	<br> -->
-<!-- 	<br> -->
-<!-- 	<br> -->
+	<!-- 		<div class="icons" style="display: flex"> -->
+	<!-- 			<div class="fas fa-search" id="search-btn"></div> -->
+	<!-- 			<div class="fas fa-shopping-cart" id="cart-btn"></div> -->
+
+
+	<%-- 			<c:if test="${member.ratingsBean.id == null }"> --%>
+	<!-- 			<div style="display: flex"> -->
+	<%-- 				<a class="nav-link" href="${contextRoot}/addCustomer">註冊 --%>
+	<!-- 				</a> -->
+	<!-- 			</div> -->
+	<!-- 			<div style="display: flex"> -->
+	<%-- 				<a class="nav-link" href="${contextRoot}/login">登入 --%>
+	<!-- 				</a> -->
+	<!-- 			</div> -->
+	<%-- 			</c:if> --%>
+
+	<%-- 			<c:if test="${member.ratingsBean.id != null }"> --%>
+	<!-- 			<div style="display: flex"> -->
+	<%-- 				<span>${member.cusName}，您好</span> --%>
+	<%-- 				<a class="nav-link" href="${contextRoot}/logout">登出 --%>
+	<!-- 				</a> -->
+	<!-- 			</div> -->
+	<%-- 			</c:if> --%>
+
+
+	<!-- 		</div> -->
+
+	<!-- 		<div class="search-form"> -->
+	<!-- 			<input type="search" id="search-box" placeholder="search here..."> -->
+	<!-- 			<label for="search-box" class="fas fa-search"></label> -->
+	<!-- 		</div> -->
+
+	<!-- 		<div class="cart-items-container"> -->
+	<!-- 			<div class="cart-item"> -->
+	<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-1.png" -->
+	<!-- 					alt=""> -->
+	<!-- 				<div class="content"> -->
+	<!-- 					<h3>cart item 01</h3> -->
+	<!-- 					<div class="price">$15.99/-</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 			<div class="cart-item"> -->
+	<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-2.png" -->
+	<!-- 					alt=""> -->
+	<!-- 				<div class="content"> -->
+	<!-- 					<h3>cart item 02</h3> -->
+	<!-- 					<div class="price">$15.99/-</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 			<div class="cart-item"> -->
+	<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-3.png" -->
+	<!-- 					alt=""> -->
+	<!-- 				<div class="content"> -->
+	<!-- 					<h3>cart item 03</h3> -->
+	<!-- 					<div class="price">$15.99/-</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 			<div class="cart-item"> -->
+	<!-- 				<span class="fas fa-times"></span> <img src="images/cart-item-4.png" -->
+	<!-- 					alt=""> -->
+	<!-- 				<div class="content"> -->
+	<!-- 					<h3>cart item 04</h3> -->
+	<!-- 					<div class="price">$15.99/-</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 			<a href="#" class="btn">checkout now</a> -->
+	<!-- 		</div> -->
+
+	<!-- 	</header> -->
+	<!-- 	<br> -->
+	<!-- 	<br> -->
+	<!-- 	<br> -->
 
 	<!-- header section ends -->
 
 
 	<!-- <h1>廣告輪播</h1> -->
 
-<!-- 	<div id="screenBox"> -->
-<!-- 		<div id="list" style="left: 0px"> -->
-<!-- 			<a href="https://www.drawnow.com.tw/course/content/9"><img -->
-<!-- 				src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg" -->
-<!-- 				alt="兒童桌遊得來速" /></a> <a href="https://boardgamer.org/"><img -->
-<!-- 				src="https://boardgamer.org/wp-content/uploads/DBG_BANNER_1920x750px_202111292.jpg" -->
-<!-- 				alt="桌遊好時光" /></a> <a -->
-<!-- 				href="https://www.huashan1914.com/w/huashan1914/exhibition_20102013202243385"><img -->
-<!-- 				src="https://media.huashan1914.com/WebUPD/huashan1914/exhibition/%E6%A1%8C%E9%81%8A%E5%AE%98%E7%B6%B2BN_20102013345694117.jpg" -->
-<!-- 				alt="桌遊1+1" /></a> <a -->
-<!-- 				href="https://www.accupass.com/event/1503301314201047087895"><img -->
-<!-- 				src="https://static.accupass.com/userupload/18f1067aa7344189ae33384ea382d9b6.jpg" -->
-<!-- 				alt="桌遊同樂遊" /></a> <a -->
-<!-- 				href="http://idachdora.cheerydachshund.com/archives/189"><img -->
-<!-- 				src="https://idachdora.cheerydachshund.com/wp-content/uploads/2015/01/850banner.jpg" -->
-<!-- 				alt="幫助孩子左右腦發展" /></a> -->
+	<!-- 	<div id="screenBox"> -->
+	<!-- 		<div id="list" style="left: 0px"> -->
+	<!-- 			<a href="https://www.drawnow.com.tw/course/content/9"><img -->
+	<!-- 				src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg" -->
+	<!-- 				alt="兒童桌遊得來速" /></a> <a href="https://boardgamer.org/"><img -->
+	<!-- 				src="https://boardgamer.org/wp-content/uploads/DBG_BANNER_1920x750px_202111292.jpg" -->
+	<!-- 				alt="桌遊好時光" /></a> <a -->
+	<!-- 				href="https://www.huashan1914.com/w/huashan1914/exhibition_20102013202243385"><img -->
+	<!-- 				src="https://media.huashan1914.com/WebUPD/huashan1914/exhibition/%E6%A1%8C%E9%81%8A%E5%AE%98%E7%B6%B2BN_20102013345694117.jpg" -->
+	<!-- 				alt="桌遊1+1" /></a> <a -->
+	<!-- 				href="https://www.accupass.com/event/1503301314201047087895"><img -->
+	<!-- 				src="https://static.accupass.com/userupload/18f1067aa7344189ae33384ea382d9b6.jpg" -->
+	<!-- 				alt="桌遊同樂遊" /></a> <a -->
+	<!-- 				href="http://idachdora.cheerydachshund.com/archives/189"><img -->
+	<!-- 				src="https://idachdora.cheerydachshund.com/wp-content/uploads/2015/01/850banner.jpg" -->
+	<!-- 				alt="幫助孩子左右腦發展" /></a> -->
 
-<!-- 		</div> -->
-
-
+	<!-- 		</div> -->
 
 
 
-<!-- 		<a href="javascript:;" class="arrow" id="prev" style="left: 20px;"> -->
-<!-- 			<img -->
-<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
-<!-- 			style="height: 40px; color: white; transform: rotateY(180deg);" /> -->
-<!-- 		</a> <a href="javascript:;" class="arrow" id="next" style="right: 20px;"> -->
-<!-- 			<img -->
-<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
-<!-- 			style="height: 40px;" /> -->
-<!-- 		</a> -->
-<!-- 	</div> -->
-<!-- 	<div id="movedot"> -->
-<!-- 		<div id="buttons"> -->
-<!-- 			<span index="1" class="on"></span> <span index="2"></span> <span -->
-<!-- 				index="3"></span> <span index="4"></span> <span index="5"></span> -->
-<!-- 		</div> -->
-<!-- 	</div>A -->
+
+
+	<!-- 		<a href="javascript:;" class="arrow" id="prev" style="left: 20px;"> -->
+	<!-- 			<img -->
+	<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
+	<!-- 			style="height: 40px; color: white; transform: rotateY(180deg);" /> -->
+	<!-- 		</a> <a href="javascript:;" class="arrow" id="next" style="right: 20px;"> -->
+	<!-- 			<img -->
+	<!-- 			src="https://icon-library.com/images/arrow-png-icon/arrow-png-icon-5.jpg " -->
+	<!-- 			style="height: 40px;" /> -->
+	<!-- 		</a> -->
+	<!-- 	</div> -->
+	<!-- 	<div id="movedot"> -->
+	<!-- 		<div id="buttons"> -->
+	<!-- 			<span index="1" class="on"></span> <span index="2"></span> <span -->
+	<!-- 				index="3"></span> <span index="4"></span> <span index="5"></span> -->
+	<!-- 		</div> -->
+	<!-- 	</div>A -->
 	<!-- 廣告輪播 end -->
-	
+
 	<!-- 廣告輪播2 -->
 
-	<div id="demo" class="carousel slide" data-ride="carousel" align="center">
+	<div id="demo" class="carousel slide" data-ride="carousel"
+		align="center">
 
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    <a href="https://www.drawnow.com.tw/course/content/9">
-      <img src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg" alt="Los Angeles" width="1100" height="500"></a>
-    </div>
-    <div class="carousel-item">
-      <img src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="Chicago" width="1100" height="500">
-    </div>
-    <div class="carousel-item">
-      <img src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="New York" width="1100" height="500">
-    </div>
-  </div>
-  
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-<!-- 廣告輪播2-end -->
+		<!-- Indicators -->
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+
+		<!-- The slideshow -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<a href="https://www.drawnow.com.tw/course/content/9"> <img
+					src="https://www.drawnow.com.tw/content/images/2021/07/20210725154714_banner.jpg"
+					alt="Los Angeles" width="1100" height="500"></a>
+			</div>
+			<div class="carousel-item">
+				<img
+					src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg"
+					alt="Chicago" width="1100" height="500">
+			</div>
+			<div class="carousel-item">
+				<img
+					src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg"
+					alt="New York" width="1100" height="500">
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span
+			class="carousel-control-prev-icon"></span>
+		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+	<!-- 廣告輪播2-end -->
 	<!-- 最新消息 -->
 	<!-- <div align="center">
         <div class="card text-center" style="width: 80vw;">
@@ -387,7 +396,7 @@ h1 {
 	<section class="contact" id="contact">
 
 		<h1 class="heading">
-			<span>聯絡我們</span>
+			<span>店鋪訊息</span>
 		</h1>
 
 		<div class="row">
@@ -396,6 +405,27 @@ h1 {
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.7668105713533!2d121.54383974988332!3d25.041986544048036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abda86e156b7%3A0x38b039d7316405f4!2z5qGM6YGK5Zyw5LiL5Z-OIHwg5p2x5Y2A5pyA5aSn5qGM6YGK56m66ZaTIHwg5Y-v55So54aK5aW9IHwg6JedRnVu5Yi4IHwg5qGM6YGK546pfOiyt3znp5985rS75YuV6KaP5YqD!5e0!3m2!1szh-TW!2stw!4v1645933666383!5m2!1szh-TW!2stw"
 				allowfullscreen="" loading="lazy"></iframe>
 
+			<form action="">
+				<h3>基本資料</h3>
+				<div class="inputBox" style="border: none;background: none">
+					<span>地址：</span> <span>台北市大安區延吉街110號B1</span>
+				</div>
+				<div class="inputBox" style="border: none;background: none">
+				<span>如何抵達：</span> <span>板南線/文湖線忠孝復興站4號出口方向，NET.樓上。</span>
+				</div>
+				<div class="inputBox" style="border: none;background: none">
+				<span>電話：</span> <span>02-27119570</span>
+				</div>
+				
+			</form>
+
+		</div>
+	</section>
+	<section class="contact" id="contact">
+		<h1 class="heading">
+			<span>會員招募</span>
+		</h1>
+		<div class="row">
 			<form action="">
 				<h3>基本資料</h3>
 				<div class="inputBox">
@@ -412,9 +442,7 @@ h1 {
 				</div>
 				<input type="submit" value="確認" class="btn">
 			</form>
-
 		</div>
-
 	</section>
 
 	<!-- contact section ends -->

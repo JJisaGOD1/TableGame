@@ -1,6 +1,7 @@
 package com.tablegame.controller.booking;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +66,7 @@ public class BookingController {
 //			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 			 
 			 //寄送圖片訊息
-//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
+			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg);
 			 
 			 //直接輸入email
 //			 serviceE.sendEmailText("chrayray@gmail.com");
@@ -117,50 +119,57 @@ public class BookingController {
 	 }
 	 
 	 //修改訂位-找到單筆資料
-	 @GetMapping("/editbooking")
-		public ModelAndView editMessage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-			Booking msg = service.findById(id);
-			
-			mav.getModel().put("booking", msg);
-			
-			mav.setViewName("booking/editbooking");
-			
-			return mav;
-			
-		}
+//	 @GetMapping("/editbooking")
+//		public ModelAndView editMessage(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+//			Booking msg = service.findById(id);
+//			
+//			mav.getModel().put("booking", msg);
+//			
+//			mav.setViewName("booking/editbooking");
+//			
+//			return mav;
+//			
+//		}
 	 
 	 //修改訂位
 		@PostMapping("/editbooking")
 		public ModelAndView editMessage(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
+		
+			Date d=new Date();
+			msg.setAdded(d);
 			mav.setViewName("booking/editbooking");
-			
+				
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/getAll");	
 				
 			}
 			return mav;
+		
 		}
 		
-		 @GetMapping("/lnquires")
-			public ModelAndView lnquires(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-				Booking msg = service.findById(id);
-				
-				mav.getModel().put("booking", msg);
-				
-				mav.setViewName("booking/memberedit");
-				
-				return mav;
-				
-			}
 		
-		 //會員修改訂位
+		//會員修改訂位
+//		 @GetMapping("/lnquires")
+//			public ModelAndView lnquires(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+//				Booking msg = service.findById(id);
+//				
+//				mav.getModel().put("booking", msg);
+//				
+//				mav.setViewName("booking/memberedit");
+//				
+//				return mav;
+//				
+//			}
+		
+		 
 		@PostMapping("/lnquires")
 		public ModelAndView lnquires1(ModelAndView mav,@Valid@ModelAttribute(name="booking")Booking msg,BindingResult result) {
 			
-			mav.setViewName("booking/memberedit");
-			
+//			mav.setViewName("booking/memberedit");
+			Date d=new Date();
+			msg.setAdded(d);
 			if(!result.hasErrors()) {
 				service.insert(msg);
 				mav.setViewName("redirect:/lnquire");	
@@ -171,15 +180,26 @@ public class BookingController {
 	 
 		
 	//刪除訂位	
-	 @GetMapping("deletbooking")
-	    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
-			
-			service.delete(id);
-			
-			mav.setViewName("redirect:/getAll");
-			
-			return mav;
-		}
+//	 @GetMapping("deletbooking/{id}")
+//	    public ModelAndView deletbooking(ModelAndView mav,@PathVariable("id") Integer id) {
+//			
+//			service.delete(id);
+//			
+//			mav.setViewName("redirect:/getAll");
+//			
+//			return mav;
+//		}
+		
+		 @GetMapping("deletbooking")
+		    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
+				System.out.println("ssaa");
+				service.delete(id);
+				
+				mav.setViewName("redirect:/getAll");
+				
+				return mav;
+			}
+		
 	 
 	 @GetMapping("deletbookings")
 	    public ModelAndView deletbookings(ModelAndView mav,@RequestParam("id") Integer id) {
