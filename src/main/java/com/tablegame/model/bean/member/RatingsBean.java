@@ -13,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Component
 @Entity
 @Table(name = "rating")
 public class RatingsBean implements Serializable {

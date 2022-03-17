@@ -61,20 +61,8 @@ style>.top_food_banner {
 	z-index: -5;
 	width: 100vw;
 }
-
-$
-main-color
-:
-;
-
-
-$
-light-text
-:
-#ABB0BE
-;
-
-
+$main-color:;
+$light-text:#ABB0BE;
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -157,7 +145,8 @@ ul {li { display:inline;
 	position: fixed;
 	top: 18vh;
 	right: 6.4vw;
-	transition: none; . shopping-cart-header { border-bottom : 1px solid
+	transition:none;
+	.shopping-cart-header{ border-bottom : 1px solid
 	#E8E8E8;
 	padding-bottom: 15px; .
 	shopping-cart-total {float: right;
@@ -221,8 +210,10 @@ img {
 	display: block;
 	border-radius: 3px;
 	font-size: 16px;
-	margin: 25px 0 15px 0; &:
-	hover {background: lighten($ main-color, 3%);
+	margin: 25px 0 15px 0;
+	&:
+	hover
+	{background:lighten($main-color,3%);
 }
 
 }
@@ -247,20 +238,36 @@ img {
 					<div style="position: inherit; height: 4vh">
 
 						<div style="">
-							<i class='bx bxs-cart bx-tada bx-sm'></i> <span class="badge"></span>
+							<i class='bx bxs-cart bx-tada bx-sm'></i> <span class="badge"><c:out
+									value="${productcart.productMap.size()} "></c:out></span>
 						</div>
 					</div>
 					<div style="display: flex; justify-content: flex-end;">
 						<!--         <span class="lighter-text"></span> -->
 						<span class="main-color-text"
-							style="font-size: 1.5rem; color: cornflowerblue;">Total: $<span
-							class="totalprice"></span></span>
+							style="font-size: 1.5rem; color: cornflowerblue;">Total: $<c:out
+								value="${productcart.price}" /></span>
 					</div>
 				</div>
 			</div>
 			<!--end shopping-cart-header -->
 			<hr>
-			<div style="overflow-y: auto; height: 50vh;" class="cart">
+			<div style="overflow-y: auto; height: 50vh;">
+
+				<c:forEach items="${productcart.productMap}" var="C">
+					<ul class="shopping-cart-items">
+						<li class="clearfix"><img
+							src="<c:url value="/Photo/${C.value.product.photourl}"/>"
+							style="width: 50px" alt="item1" /> <span class="item-name-cart"><c:out
+									value="${C.value.product.product_name}" /></span> <span
+							class="item-price">單價:NT$<c:out value="${C.value.price}" /></span>
+							<span class="lighter-text">數量:<c:out
+									value='${C.value.quantity}' /></span></li>
+					</ul>
+					<a
+						href="${contextRoot}/products/deleteOneLListItem?id=${C.value.product.product_id}"><input
+						type="button" onclick="return confirm('確認刪除商品?')" value="整個刪除"></a>
+				</c:forEach>
 			</div>
 		</div>
 		<!--end shopping-cart -->
@@ -274,7 +281,6 @@ img {
 					<c:when test="${P.sellstatus=='上架中'&&P.stock>20}">
 						<div class="card"
 							style="width: 15vw; padding: auto; margin-bottom: 0">
-							<p hidden="true">${P.product_id}</p>
 							<div
 								style="max-width: 15vw; height: 18vw; display: flex; justify-content: center;">
 								<a
@@ -293,8 +299,9 @@ img {
 									NT$
 									<c:out value="${P.price}" />
 								</p>
-								<input type="button" onclick="return confirm('是否加入購物車?')"
-									value="加入一個到購物車" class="addonetocart">
+								<a
+									href="${contextRoot}/products/addToProductCart?id=${P.product_id}&quantity=1"
+									class="btn btn-primary" onclick="return confirm('是否加入購物車?')">加入一個到購物車</a>
 							</div>
 						</div>
 					</c:when>
@@ -304,7 +311,7 @@ img {
 		</div>
 	</div>
 	<div
-		style="position: relative; width: 30vw; margin: auto; font-size: x-larg e;"
+		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
 		align="center">
 		<div class="col-9">
 			<c:out value="第" />
@@ -347,79 +354,6 @@ img {
 		});
 
 	})();
-
-	$(".addonetocart").click(function() {
-		let Id = $(this).parent().parent().find("p").html();
-		$.ajax({
-			url : "${contextRoot}/products/addonetocart?id=" +Id,
-			method : "get",
-			success : function(data) {
-				A=data.productMap;
-				console.log(Object.keys(A).length)				 
-				let a="";
-				$(".badge").empty();
-				console.log("sssssss");
-				a=Object.keys(A).length
-				$(".badge").append(a);
-				
-				let b="";
-				$(".totalprice").empty();
-				b=Object.values(data)[1];
-				$(".totalprice").append(b);
-		
-				let c = "";
-				$(".cart").empty();
-				console.log(data.productMap);
-			
-				Object.keys(A).forEach(key => {
-					c="<ul class='shopping-cart-items'>";
-		 			c+="<li class='clearfix'>";
-		 			c+="<img src='${contextRoot}/Photo/"+A[key].product.photourl+"' style='width: 50px' alt='item1' /> <span class='item-name-cart'>"
-		 			c+="<span class='item-name-cart'>"+A[key].product.product_name+"</span>"
-		 			c+="<span class='item-price'>單價:NT"+A[key].price+"</span> <span class='lighter-text'>數量:"+A[key].quantity+"</span></li>"
-					c+="</ul><input type='button' value='整個刪除'>"
-		 			$(".cart").append(c);
-					});
-			},
-		})
-	})
-	
-	function EEntrylist(){
-		$.ajax({
-			url : "${contextRoot}/products/enterlist",
-			method : "get",
-				success : function(data) {
-					A=data.productMap;
-					console.log(Object.keys(A).length)				 
-					let a="";
-					$(".badge").empty();
-					console.log("sssssss");
-					a=Object.keys(A).length
-					$(".badge").append(a);
-					
-					let b="";
-					$(".totalprice").empty();
-					b=Object.values(data)[1];
-					$(".totalprice").append(b);
-			
-					let c = "";
-					$(".cart").empty();
-					console.log(data.productMap);
-				
-					Object.keys(A).forEach(key => {
-						c="<ul class='shopping-cart-items'>";
-			 			c+="<li class='clearfix'>";
-			 			c+="<img src='${contextRoot}/Photo/"+A[key].product.photourl+"' style='width: 50px' alt='item1' /> <span class='item-name-cart'>"
-			 			c+="<span class='item-name-cart'>"+A[key].product.product_name+"</span>"
-			 			c+="<span class='item-price'>單價:NT"+A[key].price+"</span> <span class='lighter-text'>數量:"+A[key].quantity+"</span></li>"
-						c+="</ul><input type='button' value='整個刪除'>"
-			 			$(".cart").append(c);
-						});
-				}
-			})
-	}
-	
-	window.onload=EEntrylist;
 </script>
 
 </html>

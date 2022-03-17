@@ -152,7 +152,6 @@ public class Booking implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("booking [id=");
 		builder.append(orderId);
-		builder.append(", name=");
 		builder.append(", several=");
 		builder.append(several);
 		builder.append(", reservation_date=");

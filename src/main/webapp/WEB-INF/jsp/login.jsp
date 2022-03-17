@@ -52,7 +52,8 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
 				style="height: 50vh; width: 39vw; position: relative;">
 				<form class="login100-form validate-form"
-					action="${contextRoot}/login" method="POST" style="position: relative; height: 26rem;">
+					action="${contextRoot}/login" method="POST"
+					style="position: relative; height: 26rem;">
 					<div class="mb-3">
 						<div class="wrap-input100 validate-input m-b-23"
 							data-validate="請輸入帳號">
@@ -94,14 +95,15 @@
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
 			email = profile.getEmail()
+			userName = profile.getName()
 			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 			console.log('Name: ' + profile.getName());
 			console.log('Image URL: ' + profile.getImageUrl());
 			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		}
-		$("#googleInSite").click(function() {
+
 			emailObject = {
-				"loginEmail" : email
+				"loginEmail" : email,
+				"userName" : userName
 			};
 			emailJsonStr = JSON.stringify(emailObject);
 			console.log(email)
@@ -114,11 +116,33 @@
 				success : function(result) {
 					setTimeout(function() {
 						window.location.href = "/homepage/"
-					}, 1500)
+					})
 
 				},
 			})
-		})
+
+		}
+
+		// $("#googleInSite").click(function() {
+		// 	emailObject = {
+		// 		"loginEmail" : email
+		// 	};
+		// 	emailJsonStr = JSON.stringify(emailObject);
+		// 	console.log(email)
+		// 	$.ajax({
+		// 		url : "http://localhost:8080/homepage/ajax/googlelogin",
+		// 		data : emailJsonStr,
+		// 		method : "POST",
+		// 		dataType : "json",
+		// 		contentType : "application/json; charset=UTF-8",
+		// 		success : function(result) {
+		// 			setTimeout(function() {
+		// 				window.location.href = "/homepage/"
+		// 			}, 1500)
+
+		// 		},
+		// 	})
+		// })
 	</script>
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>

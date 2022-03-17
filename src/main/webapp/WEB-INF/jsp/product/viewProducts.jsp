@@ -17,9 +17,20 @@
 
 
 <style>
-.body{ background-color:#f5f5f5; }
- #container{ width:980px; margin:0px auto;}
- .keyword{color:red;text-decoration:underline;}
+.body {
+	background-color: #f5f5f5;
+}
+
+#container {
+	width: 980px;
+	margin: 0px auto;
+}
+
+.keyword {
+	color: red;
+	text-decoration: underline;
+}
+
 .fieldset {
 	width: 100px;
 }
@@ -79,32 +90,32 @@
 				</tbody>
 			</table>
 		</div>
-	<div
-		style="position: relative; width: 30vw; margin: auto; font-size: x-larg	e;"
-		align="center">
-		<div class="col-9">
-			<c:out value="第" />
-			<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
+		<div
+			style="position: relative; width: 30vw; margin: auto; font-size: x-larg e;"
+			align="center">
+			<div class="col-9">
+				<c:out value="第" />
+				<c:forEach var="pageNumber" begin="1" end="${P.totalPages}">
 
-				<c:choose>
-					<c:when test="${pageNumber-1==P.number}">
-						<!--page.number:取的當前頁面的頁碼-->
-						<c:out value="${pageNumber}" />
-					</c:when>
-					<c:otherwise>
-						<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
-								value="${pageNumber}" /> </a>
-					</c:otherwise>
-				</c:choose>
+					<c:choose>
+						<c:when test="${pageNumber-1==P.number}">
+							<!--page.number:取的當前頁面的頁碼-->
+							<c:out value="${pageNumber}" />
+						</c:when>
+						<c:otherwise>
+							<a href="${contextRoot}/products/viewProducts?p=${pageNumber}"><c:out
+									value="${pageNumber}" /> </a>
+						</c:otherwise>
+					</c:choose>
 
-				<c:if test="${pageNumber != P.totalPages}">
-					<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
+					<c:if test="${pageNumber != P.totalPages}">
+						<!--顯示|的條件:如果是最後一頁，後面就不顯示-->
 						|
 					</c:if>
-			</c:forEach>
-			<c:out value="頁" />
+				</c:forEach>
+				<c:out value="頁" />
+			</div>
 		</div>
-	</div>
 		<div class="modal fade" id="editModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -182,6 +193,7 @@
 							</table>
 							<p></p>
 							<div class="modal-footer">
+								<input type="button" class="oneEnter1" value="一鍵編輯遊戲" />
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">關閉</button>
 								<input type="submit" class="btn btn-primary editsubmit"
@@ -382,7 +394,14 @@
 			}
         return true;
     } );
+		$(".oneEnter1").click(function() {
+			$("#price").empty();
+			$("#price").val(690);
+			$("#stock").val(70);
+			$("#sellstatus").val("上架中");
 		
+			
+			});
 	</script>
 </body>
 </html>

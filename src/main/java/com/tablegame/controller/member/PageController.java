@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.hibernate.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -26,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.dto.PwdForm;
 import com.tablegame.dto.googleLoginDto;
-import com.tablegame.model.bean.member.Member;
 import com.tablegame.model.bean.member.MembersBean;
 import com.tablegame.model.bean.member.RatingsBean;
 import com.tablegame.service.member.MembersService;
@@ -163,10 +161,13 @@ public class PageController {
 
 	@ResponseBody
 	@PostMapping(value = "/ajax/googlelogin")
-	public MembersBean googleLogin(@RequestBody googleLoginDto dto, HttpSession session) {
+	public MembersBean googleLogin(@RequestBody googleLoginDto dto, ModelAndView mav, HttpSession session) {
 		String email = dto.getEmail();
-		MembersBean memberBean = service.findByEmail(email);
+		String name  = dto.getName();
+		MembersBean memberBean = service.findByGoogleEmail(email, name);
+
 		session.setAttribute("member", memberBean);
+		mav.setViewName("redirect:/");
 		return memberBean;
 	}
 
@@ -201,9 +202,17 @@ public class PageController {
 	}
 
 	@GetMapping(value = "/query")
+
 	public ModelAndView query(ModelAndView mav, @RequestParam(name = "id") Integer id) {
 
 		MembersBean nowCostomer = service.findMemberById(id); // 重資料庫撈新資料
+
+	public ModelAndView query(ModelAndView mav, HttpSession session) {
+		MembersBean logCustomer = (MembersBean) session.getAttribute("member");
+		Integer loginCustomerId = logCustomer.getId();
+
+		MembersBean nowCostomer = service.findMemberById(loginCustomerId); // 重資料庫撈新資料
+
 
 //		System.out.println(logCustomer.getCusName()); ////更正後Session為舊資料
 		mav.getModel().put("query", nowCostomer);
@@ -212,8 +221,7 @@ public class PageController {
 	}
 //修改OK
 	@PostMapping("/querySubmit")
-	public String querySubmit(@Valid @ModelAttribute(name = "query") MembersBean bean, Model model, HttpSession hs) {
-
+	public String querySubmit(@Valid @ModelAttribute(name = "query") MembersBean bean, Model model, HttpSession hs) {-
 		
 		MembersBean res=service.insertMember(bean);
 		
@@ -233,4 +241,7 @@ public class PageController {
 //		mav.setViewName("membersPage/managerViewCustomer");
 //		return mav;
 //	}
+
+
+
 }

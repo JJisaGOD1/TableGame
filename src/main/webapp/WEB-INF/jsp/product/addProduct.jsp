@@ -10,7 +10,7 @@
 <head>
 <jsp:include page="../layout/dashboard.jsp" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新增商品</title>
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -78,6 +78,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<input type="button" class="oneEnter" value="一鍵輸入新遊戲"/>
 				<input type="submit" name="submit" />
 			</form:form>
 		</div>
@@ -92,6 +93,24 @@
 			return false;
 		}
 		return true;
+	});
+	
+	$(".oneEnter").click(function() {
+	$("#product_name").val("閃靈快手");
+	$("#price").val(690);
+	$("#gametype").val("派對");
+	$("#minplayer").val(2);
+	$("#maxplayer").val(5);
+	$("#low_age").val(8);
+	$("#stock").val(50);
+	$("#sellstatus").val("上架中");
+	$("#productintroduce").val("幽靈巴頓在城堡的地下室發現1個老相機。他立刻拿起相機四處拍他想要變不見的東西，當然也包括他自己囉。"+
+			"但很可惜的是那個魔法相機照出來的顏色都是錯的。有時候會把綠色的瓶子照成白色，又有時候會照成藍色。"+
+			"巴頓看著那些奇怪顏色的照片，記憶不起來他想要變不見的東西。"+
+			"你能在他離開前，幫他說出正確的名稱，甚至親手把他變不見嗎？"+
+			"如果你能快速地抓走正確的東西，你就有機會獲勝……"+
+			"只要物品顏色出現完全相同或完全不同時，都要立即搶物！");
+	
 	});
 </script>
 </html>
