@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Queue;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -126,27 +129,5 @@ public class MembersService {
 	
 	
 	
-	
-//	修改
-	public void query(QueryForm queryForm) {
-		Optional<MembersBean> op = memDao.findByEmail(queryForm.getEmail());
 
-		if (op.isPresent()) {
-			MembersBean member = op.get();
-	
-			member.setCusName(queryForm.getCustomerName());
-			member.setPwd(queryForm.getPwd());
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			try {
-				member.setBirthday(sdf.parse(queryForm.getBirthday()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			member.setAddress(queryForm.getStreet());
-			member.setPhone(queryForm.getPhone());
-
-			memDao.save(member);
-		}
-	}
 }

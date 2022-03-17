@@ -54,7 +54,7 @@
 							<td><c:out value="${customer.createdTime}" /></td>
 							<td><c:out value="${customer.ratingsBean.rateName}" /></td>
 							<td style="text-align: center"><a
-								href="${contextRoot}/query/${customer.id}">
+								href="${contextRoot}/query?id=${customer.id}">
 									<button type="button" class="btn btn-primary">編輯</button>
 							</a> 
 							<a href="${contextRoot}/admin/deleteCustomer/${customer.id}">

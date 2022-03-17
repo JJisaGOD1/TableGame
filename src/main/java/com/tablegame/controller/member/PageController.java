@@ -202,17 +202,45 @@ public class PageController {
 	}
 
 	@GetMapping(value = "/query")
+
+	public ModelAndView query(ModelAndView mav, @RequestParam(name = "id") Integer id) {
+
+		MembersBean nowCostomer = service.findMemberById(id); // 重資料庫撈新資料
+
 	public ModelAndView query(ModelAndView mav, HttpSession session) {
 		MembersBean logCustomer = (MembersBean) session.getAttribute("member");
 		Integer loginCustomerId = logCustomer.getId();
 
 		MembersBean nowCostomer = service.findMemberById(loginCustomerId); // 重資料庫撈新資料
 
+
 //		System.out.println(logCustomer.getCusName()); ////更正後Session為舊資料
 		mav.getModel().put("query", nowCostomer);
 		mav.setViewName("membersPage/query");
 		return mav;
 	}
+//修改OK
+	@PostMapping("/querySubmit")
+	public String querySubmit(@Valid @ModelAttribute(name = "query") MembersBean bean, Model model, HttpSession hs) {-
+		
+		MembersBean res=service.insertMember(bean);
+		
+
+	return "membersPage/query";
+
+
+	}
+//	@PostMapping("/querySubmit")
+//
+//	public ModelAndView viewCustomers(@Valid @ModelAttribute(name = "query") MembersBean bean, Model model, HttpSession hs ,ModelAndView mav, @PathVariable Integer pageNumber) {
+//		
+//		MembersBean res=service.insertMember(bean);
+////		
+//		
+//		mav.getModel().put("customers", customers);
+//		mav.setViewName("membersPage/managerViewCustomer");
+//		return mav;
+//	}
 
 
 
