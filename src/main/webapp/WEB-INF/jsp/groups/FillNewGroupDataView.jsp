@@ -72,7 +72,9 @@
 
 	}
 
-
+	ul{
+		border-radius: 25px;
+	}
 </style>
 <body class="b1">
 <div class="body"></div>
@@ -178,6 +180,7 @@
 		})
 	})
 
+	
 	$('#oneBtn').click(function(){
 		$('#selectGame').val(101)
 		$('#selectPlayerNum').val(2)
@@ -231,3 +234,4 @@
 <!-- 					"productId":$('#selectGame').val() -->
 <!-- 				}); -->
 <!-- 		console.log(data1) -->
+
