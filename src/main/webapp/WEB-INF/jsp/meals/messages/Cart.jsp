@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
+<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/js/jquery-3.6.0.min.js" rel="stylesheet" />
 
 <style type="text/css">
@@ -285,9 +285,10 @@ input:focus {
         <img src="<c:url value="/uploaded/plus.svg"/>" alt="" />
       </button></a>
       <input type="text" name="name" value="<c:out value='${cart.value.quantity}' />">
+       <a href="${contextRoot}/deleteOneFoodItem2?foodId=${cart.value.food.foodId}">
       <button class="minus-btn" type="button" name="button">
         <img src="<c:url value="/uploaded/minus.svg"/>" alt="" />
-      </button>
+      </button></a>
     </div>
  </td>
   <td>
@@ -301,7 +302,7 @@ input:focus {
  <hr>
  <div style="display: flex; flex-direction: row; justify-content: flex-end;">
       <div style="margin-right: 2rem;"><div style="display: flex; flex-direction: row-reverse;font-size: 2rem">合計: </div><p style="font-size: 30px; display: flex; flex-direction: row-reverse;">NT$<c:out value="${C.totalPrices}"/></p>
-      <a href="${contextRoot}/checkOrder"><button style="background-color: #EBBF75;border: none;width: 15.5rem;height: 3.2rem;border-top-left-radius: 10rem;border-top-right-radius: 3rem;font-size: 1.5rem;">送出訂單</button></a></div>
+      <a href="${contextRoot}/checkOrder" class="confirmedOrder"><button style="background-color: #EBBF75;border: none;width: 15.5rem;height: 3.2rem;border-top-left-radius: 10rem;border-top-right-radius: 3rem;font-size: 1.5rem;" class="confirmedOrder" >送出訂單</button></a></div>
 <%--       <a href="${contextRoot}/menu"><input type="button" value="新增" class="myButton"></a> --%>
     </div>
  
@@ -338,6 +339,8 @@ input:focus {
 
 
 	<script type="text/javascript">
+	
+	
 
 $('.like-btn').on('click', function() {
 	   $(this).toggleClass('is-active');
@@ -373,47 +376,32 @@ $('.plus-btn').on('click', function(e) {
  
     $input.val(value);
 });
-</script>
 
 
-
-<script type="text/javascript">
-
-$('.like-btn').on('click', function() {
-	   $(this).toggleClass('is-active');
-	});
-	
-$('.minus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
- 
-    if (value &amp;amp;gt; 1) {
-        value = value - 1;
-    } else {
-        value = 0;
-    }
- 
-  $input.val(value);
- 
-});
- 
-$('.plus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
- 
-    if (value &amp;amp;lt; 100) {
-        value = value + 1;
-    } else {
-        value =100;
-    }
- 
-    $input.val(value);
+$(".confirmedOrder").click (function() {
+	Swal.fire({
+		  title: 'Are you sure?',
+		  text: "You won't be able to revert this!",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+		  if (result.isConfirmed) {
+		    Swal.fire(
+		      'Deleted!',
+		      'Your file has been deleted.',
+		      'success'
+		    )
+		  }
+		})
 });
 </script>
+
+
+
+
 
 
 <!-- <!-- ================= --> 

@@ -48,6 +48,11 @@ public class CartService {
 //		mealDao.deleteById(meal.getMealListId());
 	}
 	
+	public void deleteOneFoodItem2(FoodList food, Map<Integer, FoodItem> foodMap) {
+		foodMap.remove(food.getFoodId());
+//		mealDao.deleteById(meal.getMealListId());
+	}
+	
 //	public void deleteOneProduct(Product product, Map<Integer, CartItem> productMap) {
 //		productMap.remove(product.getProduct_id());
 //	}

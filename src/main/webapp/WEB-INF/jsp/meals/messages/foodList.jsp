@@ -302,7 +302,8 @@
 									
 									<tr>
 										<th>輸入餐點類型 :</th>
-										<td><form:select path="foodType">請選擇餐點類型
+										<td><form:select path="foodType">
+												<form:option value="請選擇餐點類型" disabled="disabled" >請選擇餐點類型</form:option>
 												<form:option value="研磨咖啡">研磨咖啡</form:option>
 												<form:option value="吐司類">吐司類</form:option>
 												<form:option value="麵類">麵類</form:option>
