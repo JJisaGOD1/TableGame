@@ -43,7 +43,7 @@ body {
 </head>
 <body>
 	<div class="container-login100"
-			style="background-image: url('images/bg-01.jpg');">
+		style="background-image: url('images/bg-01.jpg');">
 		<div class="row justify-content-center"
 			style="width: 81vw; margin: 0 auto;">
 			<div class="col-8" style="margin-top: 10vh;">
@@ -114,7 +114,7 @@ body {
 			$('#pwd').val('3345678');
 			$('#phone').val('0922645879');
 			$('#address').val('台北市新生南路一段');
-		// $('#birthday').val('1990/09/02');
+			$('#birthday').val(1990/09/02);
 		})
 	</script>
 </body>
