@@ -40,12 +40,12 @@
 					modelAttribute="PwdForm">
 					<div id="errorMessge" ></div>
 					<div class="form-group">
-						<input type="text" name="email" class="form-control"
+						<input type="text"  id="email" name="email" class="form-control"
 							placeholder="Email" required />
 					</div>
 					
   					 <div class="form-group"> 
-						<input type="password" name="pwd" class="form-control"
+						<input type="password" id="pwd" name="pwd" class="form-control"
 							placeholder="新密碼" required /> 
 					</div>
 <%-- 					<div class="form-group"> -->
@@ -59,9 +59,21 @@
 					</div>
 						
 				</form>
+				<button id="button33" class="btn btn-danger button33">金賢種</button>
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
+	<script>
+		$('.button33').click(function(){
+			$('#email').val('wwwww@gmail.com');
+			$('#pwd').val('9999');
+		})
+		
+		
+	</script>
+	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>
