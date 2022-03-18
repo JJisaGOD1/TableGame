@@ -172,11 +172,15 @@ h1 {
 		<nav class="navbar" style="left: 11.5vw;">
 
 			<a href="${contextRoot}/">首頁</a> <a href="#about">最新消息</a> <a
-				href="#menu">會員招募</a> <a href="#products">店鋪資訊</a> <a
-				href="${contextRoot}/viewProductsnologin">商品</a> <a
-				href="${contextRoot}/startOrder">點餐</a> <a
-				href="${contextRoot}/groups/ChooseDate">開團</a> <a
-				href="${contextRoot}/addBooking">訂位</a>
+				href="#menu">會員招募</a> 
+				
+			<c:if test="${member.ratingsBean.id == 3 }">
+				<a href="${contextRoot}/customerEditSelf">修改會員資料</a> 
+			</c:if>
+				<a href="${contextRoot}/viewProductsnologin">商品</a> 
+				<a href="${contextRoot}/startOrder">點餐</a> 
+				<a href="${contextRoot}/groups/ChooseDate">開團</a> 
+				<a href="${contextRoot}/addBooking">訂位</a>
 
 
 			<c:if test="${member.ratingsBean.id == 3 }">
