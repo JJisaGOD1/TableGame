@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tablegame.dto.BookingDto;
 import com.tablegame.dto.ProductIdDto;
@@ -62,7 +63,7 @@ public class BookingController {
 	//新增
 	 @PostMapping("/users")
 	    public ModelAndView add(ModelAndView mav,@Valid 
-	    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session) throws MessagingException {
+	    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session,RedirectAttributes redirect) throws MessagingException {
 
 			 service.insert(msg);
 			 //寄送文字訊息
@@ -261,10 +262,10 @@ public class BookingController {
 			}
 		
 	 
-	 @GetMapping("deletbookings")
-	    public ModelAndView deletbookings(ModelAndView mav,@RequestParam("id") Integer id) {
-			
-			service.delete(id);
+	 @GetMapping("deletbookings/{orderid}")
+	    public ModelAndView deletbookings(ModelAndView mav,@PathVariable int orderid) {
+		 System.out.println("ssaa");
+			service.delete(orderid);
 			
 			mav.setViewName("redirect:/lnquire");
 			

@@ -13,6 +13,8 @@
 <
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css"
@@ -137,10 +139,10 @@ td {
 
 									<input type="button" data-toggle="modal"
 										data-target="#exampleModal" value="修改"
-										class='btn btn-primary editCCC'> <a
-										onclick="return confirm('確認刪除')"
-										href="${contextRoot}/deletbookings?id=${lnquires.orderId}"><input
-										type="button" class='btn btn-info' value="刪除"></a>
+										class='btn btn-primary editCCC'> 
+										
+										<button
+										type="button" class='btn btn-info del'>刪除</button>
 
 
 									</p>
@@ -272,37 +274,122 @@ td {
 		</div>
 	</div>
 	<script>
-		$(".editCCC").click(function() {
-			let userid = $(this).parent().parent().find(".userid").html();
-			console.log(userid)
-			let cusName=$(this).parent().parent().find(".cusName").html();
-			let OderID = $(this).parent().parent().find(".orderId").html();
-			let severals = $(this).parent().parent().find(".sal").html();
-			let date = $(this).parent().parent().find(".date").html();
-			let period = $(this).parent().parent().find(".period").html();
-			let number = $(this).parent().parent().find(".number").html();
-			let remark = $(this).parent().parent().find(".remark").html();
-			console.log(date)
-			$(".IDplace").val(userid);
-			$(".cusName").val(cusName);
-			$(".IDtwo").val(OderID);
-			$(".several").val(parseInt(severals));
-			$(".reservation_date").val(date);
-			$(".periods").val(period);
-			$(".numbers").val(number);
-			$(".remarks").val(remark);
+$(".editCCC").click(function() {
+	let userid = $(this).parent().parent().find(".userid").html();
+	console.log(userid)
+	let cusName=$(this).parent().parent().find(".cusName").html();
+	let OderID = $(this).parent().parent().find(".orderId").html();
+	let severals = $(this).parent().parent().find(".sal").html();
+	let date = $(this).parent().parent().find(".date").html();
+	let period = $(this).parent().parent().find(".period").html();
+	let number = $(this).parent().parent().find(".number").html();
+	let remark = $(this).parent().parent().find(".remark").html();
+	console.log(date)
+	$(".IDplace").val(userid);
+	$(".cusName").val(cusName);
+	$(".IDtwo").val(OderID);
+	$(".several").val(parseInt(severals));
+	$(".reservation_date").val(date);
+	$(".periods").val(period);
+	$(".numbers").val(number);
+	$(".remarks").val(remark);
 
-		})
+})
 
-		$(function() {
-			$("#datepicker").datepicker({
-				dateFormat : 'yy/mm/dd',
-				minDate : 0,
-				maxDate : "14D"
-			});
+$(function() {
+	$("#datepicker").datepicker({
+		dateFormat : 'yy/mm/dd',
+		minDate : 0,
+		maxDate : "14D"
+	});
 
-		});
-	</script>
+});
+
+$(".del").click(function() {
+	let dat=$(this).parent().parent().find(".date").html();
+	let orderid=$(this).parent().parent().find(".orderId").html();
+	console.log(orderid)
+	var fullDate = new Date();
+  var yyyy = fullDate.getFullYear();
+  var MM = (fullDate.getMonth() + 1) >= 10 ? (fullDate.getMonth() + 1) : ("0" + (fullDate.getMonth() + 1));
+  var dd = fullDate.getDate() < 10 ? ("0"+fullDate.getDate()) : fullDate.getDate();
+  var today = yyyy + "/" + MM + "/" + dd+" ";
+  console.log(dat)
+  console.log(today)
+  console.log(dat==today)
+	if(dat==today){
+		console.log("same")
+		Swal.fire({
+			  icon: 'error',
+			  title: '當天訂位無法刪除，請聯絡線上客服',
+			  showConfirmButton: false,
+			  timer: 3000
+			})
+	
+	}else{
+		Swal.fire({
+			  title: '你確定嗎？',
+			  text: "您將無法還原此內容！",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  cancelButtonText: '取消',
+			  confirmButtonText: '是的，刪除它！'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				  $.ajax({
+						type:'get',
+						url:'http://localhost:8080/homepage/deletbookings/'+orderid,
+						cache:false,
+						async:false,
+						success: function(){
+							setTimeout(function(){
+								window.location.reload()
+							},1000)
+						}
+					});
+					Swal.fire(
+					'已刪除！',
+					'此筆訂位已被刪除。',
+					'success'
+					)
+				}
+			})
+	}
+	
+
+	
+})
+
+
+// $('.deleteid').click(function(){
+// 	let orderid=$(this).val()
+// 	console.log(orderid)
+	
+// 	let dat=$(this).parent().parent().find(".date").html();
+
+// 	var fullDate = new Date();
+//   var yyyy = fullDate.getFullYear();
+//   var MM = (fullDate.getMonth() + 1) >= 10 ? (fullDate.getMonth() + 1) : ("0" + (fullDate.getMonth() + 1));
+//   var dd = fullDate.getDate() < 10 ? ("0"+fullDate.getDate()) : fullDate.getDate();
+//   var today = yyyy + "/" + MM + "/" + dd+" ";
+//   console.log(dat)
+//   console.log(today)
+//   console.log(dat==today)
+// 	if(dat==today){
+// 		console.log("same")
+// 		Swal.fire({
+// 			  icon: 'error',
+// 			  title: '當天訂位無法刪除，請聯絡線上客服',
+// 			  showConfirmButton: false,
+// 			  timer: 3000
+// 			})
+	
+// 			}
+// 		})
+		
+</script>
 
 
 

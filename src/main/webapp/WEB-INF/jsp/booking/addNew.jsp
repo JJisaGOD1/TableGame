@@ -107,7 +107,7 @@ fieldset {
 									<option value="12">12 人</option>
 					</select></div>
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
+						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px">
 				</div>		
 						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
@@ -161,7 +161,7 @@ $('.ad').click(function(){
 		  icon: 'success',
 		  title: '訂位中請稍後.....',
 		  showConfirmButton: false,
-		  timer: 3000
+		  timer: 8000
 		})
 })
 
