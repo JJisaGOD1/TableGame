@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -64,17 +64,53 @@ style>.top_food_banner {
 
 $
 main-color
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 ;
-
-
 $
 light-text
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 #ABB0BE
+
+
+
+
+
+
+
+
 ;
-
-
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @import
@@ -260,8 +296,7 @@ img {
 			</div>
 			<!--end shopping-cart-header -->
 			<hr>
-			<div style="overflow-y: auto; height: 50vh;" class="cart">
-			</div>
+			<div style="overflow-y: auto; height: 50vh;" class="cart"></div>
 		</div>
 		<!--end shopping-cart -->
 	</div>
@@ -286,15 +321,16 @@ img {
 								</a>
 							</div>
 							<div class="card-body" style="padding: 0 1vw 0.5vw 1vw">
-								<h5 class="card-title">
+								<h3 class="card-title"
+									style="font-size: 2rem; margin-bottom: 5px">
 									<c:out value="${P.product_name}" />
-								</h5>
-								<p class="card-text">
+								</h3>
+								<p class="card-text" style="font-size: 2rem; margin-bottom: 5px">
 									NT$
 									<c:out value="${P.price}" />
 								</p>
-								<input type="button" onclick="return confirm('是否加入購物車?')"
-									value="加入一個到購物車" class="addonetocart">
+								<input type="button" class="btn btn-primary addonetocart" 
+									style="font-size: 1.5rem;margin: 0" value="加入一個到購物車" >
 							</div>
 						</div>
 					</c:when>
@@ -355,10 +391,11 @@ img {
 			method : "get",
 			success : function(data) {
 				A=data.productMap;
-				console.log(Object.keys(A).length)				 
+				console.log(Object.keys(A).length)	
+			console.log(data);
+			
 				let a="";
 				$(".badge").empty();
-				console.log("sssssss");
 				a=Object.keys(A).length
 				$(".badge").append(a);
 				
@@ -369,18 +406,44 @@ img {
 		
 				let c = "";
 				$(".cart").empty();
-				console.log(data.productMap);
+				
 			
 				Object.keys(A).forEach(key => {
 					c="<ul class='shopping-cart-items'>";
+					c+="<li style='display:none;' class='idforajax'> "+A[key].product.product_id+"</li>"
 		 			c+="<li class='clearfix'>";
 		 			c+="<img src='${contextRoot}/Photo/"+A[key].product.photourl+"' style='width: 50px' alt='item1' /> <span class='item-name-cart'>"
-		 			c+="<span class='item-name-cart'>"+A[key].product.product_name+"</span>"
-		 			c+="<span class='item-price'>單價:NT"+A[key].price+"</span> <span class='lighter-text'>數量:"+A[key].quantity+"</span></li>"
-					c+="</ul><input type='button' value='整個刪除'>"
+		 			c+="<span class='item-name-cart' style='font-size: 1.5rem'>"+A[key].product.product_name+"</span>"
+		 			c+="<span class='item-price'  style='font-size: 1.5rem'>單價:NT"+A[key].price+"</span> <span class='lighter-text'  style='font-size: 1.5rem'>數量:"+A[key].quantity+"</span></li>"
+		 			c+="<input type='button' class='deleteall btn btn-primary' value='整個刪除'>"
+		 			c+="</ul>"
 		 			$(".cart").append(c);
 					});
+				
+				
+				Swal.fire({
+					
+					  icon: 'success',
+					  title: '已加入購物車',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
 			},
+			error(data){
+				let a="";
+				$(".badge").empty();
+				console.log("sssssss");
+				a=0;
+				$(".badge").append(a);
+				
+				let b="";
+				$(".totalprice").empty();
+				b=0;
+				$(".totalprice").append(b);
+				
+				let c = "";
+				$(".cart").append(c);
+			}
 		})
 	})
 	
@@ -390,7 +453,8 @@ img {
 			method : "get",
 				success : function(data) {
 					A=data.productMap;
-					console.log(Object.keys(A).length)				 
+					console.log(Object.keys(A).length)		
+					 
 					let a="";
 					$(".badge").empty();
 					console.log("sssssss");
@@ -408,16 +472,111 @@ img {
 				
 					Object.keys(A).forEach(key => {
 						c="<ul class='shopping-cart-items'>";
+						c+="<li style='display:none;' class='idforajax'> "+A[key].product.product_id+"</li>"
 			 			c+="<li class='clearfix'>";
 			 			c+="<img src='${contextRoot}/Photo/"+A[key].product.photourl+"' style='width: 50px' alt='item1' /> <span class='item-name-cart'>"
-			 			c+="<span class='item-name-cart'>"+A[key].product.product_name+"</span>"
-			 			c+="<span class='item-price'>單價:NT"+A[key].price+"</span> <span class='lighter-text'>數量:"+A[key].quantity+"</span></li>"
-						c+="</ul><input type='button' value='整個刪除'>"
+			 			c+="<span class='item-name-cart' style='font-size: 1.5rem'>"+A[key].product.product_name+"</span>"
+			 			c+="<span class='item-price'  style='font-size: 1.5rem'>單價:NT"+A[key].price+"</span> <span class='lighter-text'  style='font-size: 1.5rem'>數量:"+A[key].quantity+"</span></li>"
+			 			c+="<input type='button' class='deleteall btn btn-primary' value='整個刪除'>"
+			 			c+="</ul>"
 			 			$(".cart").append(c);
 						});
+				},
+				error(data){
+					let a="";
+					$(".badge").empty();
+					console.log("sssssss");
+					a=0;
+					$(".badge").append(a);
+					
+					let b="";
+					$(".totalprice").empty();
+					b=0;
+					$(".totalprice").append(b);
+					
+					let c = "";
+					$(".cart").append(c);
 				}
 			})
 	}
+	
+	
+	
+	$(document).on("click",".deleteall",function(){
+		let id=$(this).parent().find("li").html();
+		console.log(id);
+		const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn btn-success',
+			    cancelButton: 'btn btn-danger'
+			  },
+			  buttonsStyling: false
+			})
+			swalWithBootstrapButtons.fire({
+			  title: '確定要移出購物車?',
+			  text: "此操作無法恢復!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: '是!',
+			  cancelButtonText: '否',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
+					$.ajax({
+						url : "${contextRoot}/products/deleteOneItemAJAX?id="+id,
+						method : "get",
+							success : function(data) {
+								A=data.productMap;
+								console.log(Object.keys(A).length)		
+								 
+								let a="";
+								$(".badge").empty();
+								console.log("sssssss");
+								a=Object.keys(A).length
+								$(".badge").append(a);
+								
+								let b="";
+								$(".totalprice").empty();
+								b=Object.values(data)[1];
+								$(".totalprice").append(b);
+						
+								let c = "";
+								$(".cart").empty();
+								console.log(data.productMap);
+							
+								Object.keys(A).forEach(key => {
+									c="<ul class='shopping-cart-items'>";
+									c+="<li style='display:none;' class='idforajax'> "+A[key].product.product_id+"</li>"
+						 			c+="<li class='clearfix'>";
+						 			c+="<img src='${contextRoot}/Photo/"+A[key].product.photourl+"' style='width: 50px' alt='item1' /> <span class='item-name-cart'>"
+						 			c+="<span class='item-name-cart' style='font-size: 1.5rem'>"+A[key].product.product_name+"</span>"
+						 			c+="<span class='item-price'  style='font-size: 1.5rem'>單價:NT"+A[key].price+"</span> <span class='lighter-text'  style='font-size: 1.5rem'>數量:"+A[key].quantity+"</span></li>"
+						 			c+="<input type='button' class='deleteall btn btn-primary' value='整個刪除'>"
+						 			c+="</ul>"
+						 			$(".cart").append(c);
+									});
+							}
+						})
+			    swalWithBootstrapButtons.fire(
+			      'Deleted!',
+			      '商品已移出購物車.',
+			      'success'
+			    )
+			  } else if (
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Cancelled',
+			      '您的操作已被取消:)',
+			      'error'
+			    )
+			  }
+			})
+		
+		
+		
+		
+	})
 	
 	window.onload=EEntrylist;
 </script>
