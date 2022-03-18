@@ -31,7 +31,7 @@
             <div class="col-md-9">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="message">訊息輸入:&nbsp;&nbsp;</label>
+                        <label for="message">訊息輸入:&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="message" class="form-control" placeholder="Public message ">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
@@ -49,7 +49,7 @@
                         <input type="text" id="private-message" class="form-control" placeholder="Private message ">
  						&nbsp;&nbsp;&nbsp;&nbsp;
                         <label for="id">Client-Id:&nbsp;&nbsp;</label>
-                        <input type="text" id="id" class="form-control" placeholder="Client-Id">
+                        <input type="text" id="id" class="form-control" placeholder="Client-Id" readonly="true">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
                     </div>
                     <button id="send-private" class="btn btn-warning button1" type="button">Private</button>
@@ -123,13 +123,23 @@ function connect() {
             showMessage(JSON.parse(message.body).content);
         });
         stompClient.subscribe('/topic/server/messages', function (message) { //client端私訊server
-            showMessage(JSON.parse(message.body).content);
+            showMessage2(JSON.parse(message.body).content);
         });
     });
 }
 
 function showMessage(message) {                                     //接收訊息
     $("#messages").append("<tr><td>" + message + "</td></tr>");
+}
+
+function showMessage2(message) {  
+    console.log(message)
+    resClientId = message.substring(message.indexOf("d : ")+4,message.lastIndexOf(")"))
+    console.log(resClientId)                                   
+    $("#messages").append("<tr><td>" + message + "&nbsp;&nbsp;<button id='private' class='btn btn-info clientId' type='button'>回覆我</button></td></tr>");
+    $("#message-history").on('click', '.clientId', function() {
+        $("#id").val(resClientId);
+    })
 }
 
 function sendMessage() {                                            //傳送訊息
