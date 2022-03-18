@@ -82,11 +82,16 @@
 							<div class="flex-col-c p-t-20">
 
 								<a href="${contextRoot}/addCustomer" class="txt2"> 加入會員 </a>
+								
+								
 							</div>
 						</div>
 
 					</div>
 				</form>
+				<button id="button" class="btn btn-danger button00">最高</button>
+					<button id="button" class="btn btn-danger button11">一般</button>
+						<button id="button" class="btn btn-danger button22">測試</button>
 			</div>
 		</div>
 	</div>
@@ -144,6 +149,34 @@
 		// 	})
 		// })
 	</script>
+	
+	<script>
+		$('.button00').click(function(){
+			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccc');
+		})
+		
+		
+	</script>
+	
+	<script>
+		$('.button11').click(function(){
+			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccc');
+		})
+		
+		
+	</script>
+	
+	<script>
+		$('.button22').click(function(){
+			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccc');
+		})
+		
+		
+	</script>
+	
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
