@@ -93,6 +93,8 @@ public class PageController {
 				System.out.println(member.getLoginCount());
 				return mav;
 			} else {
+				member.setLoginCount(0);
+				System.out.println(member.getLoginCount());
 				mav.setViewName("redirect:/black");
 				return mav;
 			}

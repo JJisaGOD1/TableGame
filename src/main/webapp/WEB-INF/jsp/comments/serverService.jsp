@@ -141,9 +141,11 @@ function showMessage2(message) {
     console.log(resUserName)
     resMessage = message.substring(0,message.indexOf(" ("));
     console.log(resMessage)                                   
-    $("#messages").append("<tr><td>" + resMessage + "&nbsp;&nbsp;<button id='private' class='btn btn-info clientId' type='button'>回覆 " + resUserName + "</button></td></tr>");
+    $("#messages").append("<tr><td>" + resMessage + "&nbsp;&nbsp;<button myValue='" + resClientId + "' myName='"+ resUserName + "' class='btn btn-info clientId' type='button'>回覆 " + resUserName + "</button></td></tr>");
     $("#message-history").on('click', '.clientId', function() {
-        $("#id").val(resClientId);
+        $("#id").val(this.getAttribute('myValue'));
+        ButName  = this.getAttribute('myName')
+        console.log(ButName)    
     })
 }
 
@@ -154,7 +156,7 @@ function sendMessage() {                                            //傳送訊�
 
 function sendServerPrivateMessage() {
     console.log("sending Server private message");
-    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientName': resUserName}));
+    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientName': ButName}));
 }
 
 </script>
