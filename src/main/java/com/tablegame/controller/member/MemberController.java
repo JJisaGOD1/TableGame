@@ -2,6 +2,7 @@ package com.tablegame.controller.member;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,9 +40,9 @@ public class MemberController {
 	
 	@PostMapping(value = "/customerEditSelf")
 	public ModelAndView editSelfCustomer(ModelAndView mav, 
-			@ModelAttribute(name = "customer") MembersBean member) {
+			@ModelAttribute(name = "customer") MembersBean member, HttpSession session) {
 		service.insertMember(member);
-		
+		session.setAttribute("member", member);
 		mav.setViewName("redirect:/customerView");
 		return mav;
 	}
