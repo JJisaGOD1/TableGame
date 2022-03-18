@@ -27,7 +27,7 @@ public class EmailService {
 		
 		 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        helper.setFrom("jack902221@gmail.com");
+        helper.setFrom("ginojay80@gmail.com");
         helper.setTo(toEmail);
         helper.setSubject("主旨：瘋桌遊-訂位成功通知");
         
@@ -61,7 +61,7 @@ public class EmailService {
 	public void sendEmailText(String toEmail,Booking book) {
 		 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
 		SimpleMailMessage message = new SimpleMailMessage();//寄文字訊息
-		message.setFrom("jack902221@gmail.com");
+		message.setFrom("ginojay80@gmail.com");
 		message.setTo(toEmail);
 		message.setSubject("主旨：瘋桌遊-訂位成功通知");
 		message.setText("訂位成功,有任何問題,歡迎來電"+"\n"+"姓名"+book.getUser().getCusName()+"\n"+

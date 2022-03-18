@@ -13,6 +13,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 
 
@@ -82,14 +84,20 @@ font-size:20px
 
 
 <div class="row justify-content-center">
-<a href="addNew"><input type="button" class="button" name="booking" value="立即訂位" style="width:500px;height:50px"/></a>
+<a href="addNew"><input type="button" class="button ad" name="booking" value="立即訂位" style="width:500px;height:50px"/></a>
 
 
 </div>
 </p>
 
 </div>
+<script>
 
+
+
+
+
+</script>
 
 
 
