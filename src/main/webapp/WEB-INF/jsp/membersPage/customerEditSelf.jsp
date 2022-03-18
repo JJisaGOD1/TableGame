@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="../layout/homaPageNavbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +12,20 @@
 <title>Insert Manage</title>
 <style>
 	.formblock{
-		margin: 5rem auto;
+		margin: 20rem auto;
 	}
+</style>
+
+<style>
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
 </style>
 </head>
 <body>
+<div class="container-login100 background66"
+		style="background-image: url('images/bg-01.jpg');">
 <h1>editCustomer Data</h1>
 <div class="container">
     <p/>
@@ -63,6 +72,7 @@
 			</div>
 		</div>
      </div>
+	</div>
 	</div>
 	</div>
 </body>

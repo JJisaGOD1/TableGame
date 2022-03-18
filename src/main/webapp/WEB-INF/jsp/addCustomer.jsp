@@ -19,6 +19,7 @@ body {
 	border: 1px solid;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .text1 {
@@ -39,16 +40,20 @@ body {
 	bottom: 5vh;
 	left: 8vw;
 }
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
 </style>
 </head>
 <body>
-	<div class="container-login100"
+	<div class="container-login100 background66"
 		style="background-image: url('images/bg-01.jpg');">
 		<div class="row justify-content-center"
-			style="width: 81vw; margin: 0 auto;">
-			<div class="col-8" style="margin-top: 10vh;">
-				<div class="card block1" margin: 0px auto>
-					<div class="card-header text1" style="font-size: 2rem">加入會員</div>
+			style="width: 100vw; margin: 0 auto;">
+			<div class="col-8" style="margin-top: 20vh;">
+				<div class="card block1" >
+					<div class="card-header text1" style="font-size: 3rem">加入會員</div>
 					<div class="card-body">
 						<form:form class="form" action="${contextRoot}/addCustomer"
 							modelAttribute="addCustomer" method="POST"
@@ -99,7 +104,7 @@ body {
 							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
 							<button class="btn btn-info">送出</button>
 						</form:form>
-						<button id="button" class="btn btn-danger button1">大之</button>
+						<button id="button" class="btn btn-danger button1">愛玩</button>
 					</div>
 				</div>
 			</div>
@@ -109,7 +114,7 @@ body {
 	<script>
 		$('#button').click(function() {
 			console.log(123)
-			$('#cusName').val('大之');
+			$('#cusName').val('愛玩');
 			$('#email').val('96708009@stud.sju.edu.tw');
 			$('#pwd').val('1111');
 			$('#phone').val('0910234567');
