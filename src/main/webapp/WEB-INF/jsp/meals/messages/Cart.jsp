@@ -280,9 +280,10 @@ input:focus {
  
  <td>
     <div class="quantity">
+    <a href="${contextRoot}/addToCart2?foodId=${cart.value.food.foodId}">
       <button class="plus-btn" type="button" name="button">
         <img src="<c:url value="/uploaded/plus.svg"/>" alt="" />
-      </button>
+      </button></a>
       <input type="text" name="name" value="<c:out value='${cart.value.quantity}' />">
       <button class="minus-btn" type="button" name="button">
         <img src="<c:url value="/uploaded/minus.svg"/>" alt="" />

@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/css/menu.css" rel="stylesheet" />
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 	<link href="${contextRoot}/js/jquery-3.6.0.min.js" rel="stylesheet" />
@@ -236,10 +237,23 @@ $light-text: #ABB0BE;
    content: ""; 
    display: table; 
    clear: both; 
+   margin-bottom: 1rem;
  } 
 
+.cartInfo{
+   overflow-y: auto;
+   height: 50vh;
+   font-size: 1.5rem;
+}
 
+.deleteCartIcon{
+   width: 2.3rem;
+   opacity: 80%
+}
 
+.cartFoodImg{
+   width: 60px
+}
 </style>
 </head>
 <body >
@@ -291,25 +305,30 @@ $light-text: #ABB0BE;
 		<!-- 		</div> -->
 
 
-		<div class="content" style="width: 73vw;">
+		<div class="content foodInfo" style="width: 73vw;">
 			<c:forEach items="${page.content}" var="food">
 				<div class="card" style="margin: 20px 15px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 					<img src="<c:url value="/uploaded/${food.foodImage}"/>"
-						style="width: 250px" alt="picture of food" class="card-img-top" />
+						style="width: 250px" alt="picture of food" class="card-img-top" id="foodImage" />
 					<div class="card-body">
-						<h5 class="card-title" style="font-size: 2rem">
+						<h5 class="card-title" style="font-size: 2rem" id="foodName">
 							<c:out value="${food.foodName}" />
 						</h5>
-						<p class="card-text" style="font-size: 2rem">
+						<p class="card-text" style="font-size: 2rem" id="foodPrice">
 							NT$
 							<c:out value="${food.foodPrice}" />
 						</p>
-						 
+						
+						<input type="hidden" value="${food.foodId}">
+						<input type="hidden" value="${food.foodType}">
+						<input type="hidden" value="${food.foodState}">
 <%-- 						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" class="btn btn-primary" id="addFoodAlert"><button type="button" class="btn btn-primary" id="addFoodAlert" value="加入訂單"></button></a> --%>
 							
 						 
-						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" style="text-decoration:none;">
-							<button type="button" id="addFoodAlert" value="加入訂單" class="btn btn-primary btn-lg btn-block" style="font-size: 1.5rem; background-color: #6394F8">加入訂單</button></a>
+<%-- 						<a href="${contextRoot}/addToCart?foodId=${food.foodId}" style="text-decoration:none;"> --%>
+<!-- 							<button type="button" id="addFoodAlert" value="加入訂單" class="btn btn-primary btn-lg btn-block" style="font-size: 1.5rem; background-color: #6394F8">加入訂單</button></a> -->
+							
+							<button type="button" class="btn btn-primary btn-lg btn-block addFoodToCart" id="addFoodToCart" value="${food.foodId}">加入訂單</button>
 						<%-- 							<a onclick="return confirm('確認刪除?')" href="${contextRoot}/deleteMessage?id=${workMessages.id}">刪除</a> --%>
 					</div>
 				</div>
@@ -365,7 +384,8 @@ $light-text: #ABB0BE;
 		
 		<div style="">
       		<i class='bx bxs-cart bx-tada bx-sm' ></i>
-      		<span class="badge"><c:out value="${cart.foodMap.size()} "></c:out></span>
+<%--       		<span class="badge"><c:out value="${cart.foodMap.size()} "></c:out></span> --%>
+      		<span class="badge"></span>
         </div>
         
         <div style="position: relative; top: -1.0vw; right: -12vw; display: inline-block; position: relative; left: 22rem;">
@@ -376,7 +396,8 @@ $light-text: #ABB0BE;
 	
 	<div style="display: flex; justify-content: flex-end;">
 <!--         <span class="lighter-text"></span> -->
-        <span class="main-color-text" style="font-size: 3rem;color: cornflowerblue;">Total: $<c:out value="${cart.totalPrices}"/></span>
+<%--         <span class="main-color-text" style="font-size: 3rem;color: cornflowerblue;">Total: $<c:out value="${cart.totalPrices}"/></span> --%>
+        <span class="main-color-text" style="font-size: 3rem;color: cornflowerblue;">Total: $ <span class="main-color-text totalprice" style="font-size: 3rem;color: cornflowerblue;"> </span></span>
     
     
 		
@@ -387,24 +408,24 @@ $light-text: #ABB0BE;
     </div> <!--end shopping-cart-header -->
     <hr>
 
-<div style="overflow-y: auto; height: 50vh; font-size: 1.5rem;">
+<div class="cartInfo">
 
-<c:forEach items="${cart.foodMap}" var="cart">
-    <ul class="shopping-cart-items">
-      <li class="clearfix" style="margin-bottom: 1rem">
+<%-- <c:forEach items="${cart.foodMap}" var="cart"> --%>
+<!--     <ul class="shopping-cart-items"> -->
+<!--       <li class="clearfix"> -->
       
-      <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}">
-      <img src="<c:url value="/uploaded/delete2.png"/>" style="width: 2.3rem; opacity: 80%"/></a>
+<%--       <a href="${contextRoot}/deleteOneFoodItemInCart?foodId=${cart.value.food.foodId}"> --%>
+<%--       <img src="<c:url value="/uploaded/delete2.png"/>" class="deleteCartIcon"/></a> --%>
       
-        <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" style="width: 60px" alt="item1" />
-<!--         <div> -->
-        <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span> |
-        <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span> |
-        <span class="lighter-text">數量:<c:out value='${cart.value.quantity}' /></span>
-<!--         </div> -->
-      </li>
-	</ul>
-</c:forEach>
+<%--         <img src="<c:url value="/uploaded/${cart.value.food.foodImage}"/>" alt="item1" class="cartFoodImg"/> --%>
+
+<%--         <span class="item-name-cart"><c:out value="${cart.value.food.foodName}" /></span> | --%>
+<%--         <span class="item-price">單價:NT$<c:out value="${cart.value.food.foodPrice}" /></span> | --%>
+<%--         <span class="lighter-text">數量:<c:out value='${cart.value.quantity}' /></span> --%>
+
+<!--       </li> -->
+<!-- 	</ul> -->
+<%-- </c:forEach> --%>
 </div>
 
     <a href="${contextRoot}/goToCart" class="btn btn-primary btn-lg btn-block" style="background-color: #6394F8; font-size:2.2rem;" >確認訂單</a>
@@ -465,19 +486,132 @@ $light-text: #ABB0BE;
 			})();
 		
 		
-		document.getElementById("addFoodAlert").onclick = function() {
+	
+		
+		$(".addFoodToCart").click (function() {
 			Swal.fire({
 				  position: 'top-end',
 				  icon: 'success',
-				  title: 'Your work has been saved',
+				  title: '加入訂單',
 				  showConfirmButton: false,
-				  timer: 1500
+				  timer: 1000
 				})
-		}
+				
+			let id = $(this).val();
+			console.log(id);
+			
+				$.ajax({
+					url : "${contextRoot}/addToCart?foodId=" + id,
+					method : "get",
+					success : function(data) {
+						
+						A=data.foodMap;
+						console.log(Object.keys(A).length)				 
+						let a="";
+						$(".badge").empty();
+						a=Object.keys(A).length
+						$(".badge").append(a);
+						
+						let b="";
+						$(".totalprice").empty();
+						b=Object.values(data)[1];
+						$(".totalprice").append(b);
+						
+//	 					console.log(data)
+//	 					$(".foodInfo #foodId").val(data.foodId);
+//	 					$(".foodInfo #foodName").val(data.foodName);
+//	 					$(".foodInfo #foodPrice").val(data.foodPrice);
+//	 					$(".foodInfo #foodType").val(data.foodType);
+//	 					$(".foodInfo #foodImage").val(data.foodImage);
+//	 					$(".foodInfo #foodState").val(data.foodState);
+						
+						
+						let c = "";
+						$(".cartInfo").empty();
+						console.log(data.foodMap);
+
+						console.log(typeof data);
+						Object.keys(A).forEach(key => {
+							let c = "";
+							c += "<ul class='shopping-cart-items'>";
+							c += "<li class='clearfix'>";
+
+							c += "<a href='${contextRoot}/deleteOneFoodItemInCart?foodId=" + A[key].food.foodId + "'>"
+							c += "<img src='${contextRoot}/uploaded/delete2.png' class='deleteCartIcon' /> </a>"
+							c += "<img src='${contextRoot}/uploaded/" + A[key].food.foodImage + "' class='cartFoodImg' alt='item1'/> <span class='item-name-cart'>"
+							c += A[key].food.foodName + "</span> |"
+							c += "單價:NT$" + A[key].food.foodPrice + "</span> |"
+							c += "數量:" + A[key].quantity + "</span>"
+							c += "</li>";
+							c += "</ul>";
+							$(".cartInfo").append(c)
+						})
+					}
+				})
+			
+		})
 		
+		function cartList() {
+			$.ajax({
+				url : "${contextRoot}/showCart",
+				method : "get",
+				success : function(data) {
+					
+					A=data.foodMap;
+					console.log(Object.keys(A).length)				 
+					let a="";
+					$(".badge").empty();
+					a=Object.keys(A).length
+					$(".badge").append(a);
+					
+					let b="";
+					$(".totalprice").empty();
+					b=Object.values(data)[1];
+					$(".totalprice").append(b);
+					
+// 					console.log(data)
+// 					$(".foodInfo #foodId").val(data.foodId);
+// 					$(".foodInfo #foodName").val(data.foodName);
+// 					$(".foodInfo #foodPrice").val(data.foodPrice);
+// 					$(".foodInfo #foodType").val(data.foodType);
+// 					$(".foodInfo #foodImage").val(data.foodImage);
+// 					$(".foodInfo #foodState").val(data.foodState);
+					
+					
+					let c = "";
+					$(".cartInfo").empty();
+					console.log(data.foodMap);
+
+					console.log(typeof data);
+					Object.keys(A).forEach(key => {
+						let c = "";
+						c += "<ul class='shopping-cart-items'>";
+						c += "<li class='clearfix'>";
+
+						c += "<a href='${contextRoot}/deleteOneFoodItemInCart?foodId=" + A[key].food.foodId + "'>"
+						c += "<img src='${contextRoot}/uploaded/delete2.png' class='deleteCartIcon' /> </a>"
+						c += "<img src='${contextRoot}/uploaded/" + A[key].food.foodImage + "' class='cartFoodImg' alt='item1'/> <span class='item-name-cart'>"
+						c += A[key].food.foodName + "</span> |"
+						c += "單價:NT$" + A[key].food.foodPrice + "</span> |"
+						c += "數量:" + A[key].quantity + "</span>"
+						c += "</li>";
+						c += "</ul>";
+						$(".cartInfo").append(c)
+					})
+				}
+			})
+			
+		}
+						
+			
+			
+		window.onload=cartList;
+	
 	</script>
 	
-	<script src="${contextRoot}/js/sweetalert2.all.min.js"></script>
+
+	
+	
 
 <!-- <iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe> -->
 

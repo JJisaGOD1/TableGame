@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tablegame.model.bean.meals.FoodItem;
@@ -41,9 +42,32 @@ public class MealCartController {
 
 	@Autowired
 	private MealOrdersService oService;
-
+	
+	@ResponseBody
 	@GetMapping(value = "/addToCart") // @Valid 參考網址:http://www.mydlq.club/article/49/
-	public ModelAndView postNewMessage(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
+	public OrderCart postNewMessage(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
+			BindingResult rs, HttpSession session, OrderCart cart) {
+
+		OrderCart c = (OrderCart) session.getAttribute("cart");
+		if (c == null) {
+			session.setAttribute("cart", cart);
+		}
+		OrderCart cart2 = (OrderCart) session.getAttribute("cart");
+		Map<Integer, FoodItem> foodMap = cart2.getFoodMap();
+		FoodList food = foodService.findById(foodId);
+
+		cartService.addFood(food, foodMap);
+		
+		return cart2;
+//		OrderCart cart = (OrderCart) session.getAttribute("cart");
+
+//		mav.setViewName("redirect:/meals/menu");
+
+//		return mav;
+	}
+	
+	@GetMapping(value = "/addToCart2") // @Valid 參考網址:http://www.mydlq.club/article/49/
+	public ModelAndView postNewMessage2(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
 			BindingResult rs, HttpSession session, OrderCart cart) {
 
 		OrderCart c = (OrderCart) session.getAttribute("cart");
@@ -58,10 +82,22 @@ public class MealCartController {
 		
 //		OrderCart cart = (OrderCart) session.getAttribute("cart");
 
-		mav.setViewName("redirect:/meals/menu");
-
+		mav.setViewName("redirect:/meals/messages/Cart");
+		
 		return mav;
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/showCart")
+	public OrderCart showCart(HttpSession session, OrderCart cart) {
+		OrderCart c = (OrderCart) session.getAttribute("cart");
+		if (c == null) {
+			session.setAttribute("cart", cart);
+		}
+		OrderCart cart2 = (OrderCart) session.getAttribute("cart");
+		return cart2;
+	}
+
 
 	@GetMapping(value = "/goToCart")
 	public ModelAndView cartImformation(ModelAndView mav, HttpSession session) {
@@ -173,6 +209,16 @@ public class MealCartController {
 		mav.addObject("newOrders", newOrders);
 		mav.setViewName("redirect:/meals/menu");
 		return mav;
+	}
+	
+	
+	@ResponseBody
+	@GetMapping(value = "/meals/addFoodToCart")
+	public FoodList addFoodToCart(ModelAndView mav, @RequestParam(name = "foodId") Integer id) {
+		FoodList f = foodService.findById(id);
+
+		return f;
+
 	}
 	
 	
