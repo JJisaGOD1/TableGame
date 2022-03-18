@@ -4,12 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert Manage</title>
+<style>
+	.formblock{
+		margin: 5rem auto;
+	}
+</style>
 </head>
 <body>
 <h1>editCustomer Data</h1>
@@ -17,7 +22,7 @@
     <p/>
     <div class="row justify-content-center">
        <div class="col-6">
-		<div class="card">
+		<div class="card formblock">
 			<div class="card-header">基本資料</div>
 			<div class="card-body">
 				<form:form class="form"  action="${contextRoot}/customerEditSelf"  modelAttribute="customer" method="POST"> 
