@@ -12,6 +12,7 @@
 <title>InsertCustomerSuccessView</title>
 </head>
 <body>
+
 	
 		<p>
 		<p>
@@ -33,7 +34,7 @@
 		<p>
 		<p>
 		<p>
-		<h2>歡迎加入會員,${customer.cusName }</h2>
+		<h2>歡迎加入會員,請到信箱確認!${customer.cusName }</h2>
 		<a href="${contextRoot}/"><button type="button"
 				class="btn btn-primary">回首頁</button></a>
 	

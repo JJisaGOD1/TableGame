@@ -99,7 +99,7 @@ body {
 							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
 							<button class="btn btn-info">送出</button>
 						</form:form>
-						<button id="button" class="btn btn-danger button1">一鍵輸入</button>
+						<button id="button" class="btn btn-danger button1">大之</button>
 					</div>
 				</div>
 			</div>
@@ -109,12 +109,12 @@ body {
 	<script>
 		$('#button').click(function() {
 			console.log(123)
-			$('#cusName').val('qwer');
-			$('#email').val('333@gmail.com');
-			$('#pwd').val('3345678');
-			$('#phone').val('0922645879');
-			$('#address').val('台北市新生南路一段');
-			$('#birthday').val(1990/09/02);
+			$('#cusName').val('大之');
+			$('#email').val('96708009@stud.sju.edu.tw');
+			$('#pwd').val('1111');
+			$('#phone').val('0910234567');
+			$('#address').val('台北市中正路100號');
+		//	$('#birthday').val(1990/09/02);
 		})
 	</script>
 </body>
