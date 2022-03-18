@@ -64,7 +64,7 @@ background-size:100% 100%;
 				<p></p>
 				
 				<form:label path="" class="card-header" style="display:block;">創建時間</form:label>
-				<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE" value="${customer.createdTime }"/>
+				<fmt:formatDate pattern="yyyy-MM-dd EEEE " value="${customer.createdTime }"/>
 <%-- 				<form:input type="text" path="createdTime" class="form-control" readonly="true"/> --%>
 				<p></p>
 				
