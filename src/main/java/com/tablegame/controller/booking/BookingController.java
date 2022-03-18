@@ -69,7 +69,7 @@ public class BookingController {
 //			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 			 
 			 //寄送圖片訊息
-//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
+			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
 			 
 			 //直接輸入email
 //			 serviceE.sendEmailText("chrayray@gmail.com");
@@ -89,7 +89,7 @@ public class BookingController {
 //				 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 				 
 				 //寄送圖片訊息
-//				 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
+				 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
 				 
 				 //直接輸入email
 //				 serviceE.sendEmailText("chrayray@gmail.com");
@@ -249,10 +249,11 @@ public class BookingController {
 //			return mav;
 //		}
 		
-		 @GetMapping("deletbooking")
-		    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
+		 @GetMapping("deletbooking/{orderid}")
+		    public ModelAndView deletbooking(ModelAndView mav,@PathVariable int orderid) {
 				System.out.println("ssaa");
-				service.delete(id);
+				service.delete(orderid);
+				
 				
 				mav.setViewName("redirect:/getAll");
 				
