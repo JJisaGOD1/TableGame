@@ -50,7 +50,7 @@ background-size:100% 100%;
 	<div class="container-login100 background66"
 		style="background-image: url('images/bg-01.jpg');">
 		<div class="row justify-content-center"
-			style="width: 100vw; margin: 0 auto;">
+			style="width: 50vw; margin: 0 auto;">
 			<div class="col-8" style="margin-top: 20vh;">
 				<div class="card block1" >
 					<div class="card-header text1" style="font-size: 3rem">加入會員</div>
@@ -104,6 +104,14 @@ background-size:100% 100%;
 							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
 							<button class="btn btn-info">送出</button>
 						</form:form>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					
 						<button id="button" class="btn btn-danger button1">愛玩</button>
 					</div>
 				</div>
@@ -116,7 +124,7 @@ background-size:100% 100%;
 			console.log(123)
 			$('#cusName').val('愛玩');
 			$('#email').val('96708009@stud.sju.edu.tw');
-			$('#pwd').val('1111');
+			$('#pwd').val('0910123123');
 			$('#phone').val('0910234567');
 			$('#address').val('台北市中正路100號');
 		//	$('#birthday').val(1990/09/02);
