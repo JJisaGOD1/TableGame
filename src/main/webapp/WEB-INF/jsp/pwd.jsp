@@ -18,12 +18,17 @@
         	alert("修改完成");
     } 
     
-  
 </script>
+<style>
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
+</style>
 
 </head>
 <body>
-<div class="container-login100"
+<div class="container-login100 background66"
 			style="background-image: url('images/bg-01.jpg');">
 	<div class="container login-container">
 	
@@ -68,7 +73,7 @@
 	<script>
 		$('.button33').click(function(){
 			$('#email').val('wwwww@gmail.com');
-			$('#pwd').val('9999');
+			$('#pwd').val('2222');
 		})
 		
 		

@@ -89,9 +89,9 @@
 
 					</div>
 				</form>
-				<button id="button" class="btn btn-danger button00">總裁</button>
-					<button id="button" class="btn btn-danger button11">大之</button>
-						<button id="button" class="btn btn-danger button22">假禁吻</button>
+				<button id="button" class="btn btn-danger button00">管理者</button>
+					<button id="button" class="btn btn-danger button11">會員1</button>
+						<button id="button" class="btn btn-danger button22">會員2</button>
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -100,8 +100,8 @@
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<button id="button" class="btn btn-danger button33">金賢種</button>
+						<button id="button" class="btn btn-danger button55">愛玩</button>
+						<button id="button" class="btn btn-danger button66">金賢種</button>
 			</div>
 		</div>
 	</div>
@@ -165,35 +165,35 @@
 			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccc');
 		})
-		
-		
 	</script>
 	
 	<script>
 		$('.button11').click(function(){
-			$('#exampleDropdownFormEmail1').val('96708009@stud.sju.edu.tw');
+			$('#exampleDropdownFormEmail1').val('111@gmail.com');
 			$('#exampleDropdownFormPassword1').val('1111');
 		})
-		
-		
 	</script>
 	
 	<script>
 		$('.button22').click(function(){
 			$('#exampleDropdownFormEmail1').val('uuu@gmail.com');
-			$('#exampleDropdownFormPassword1').val('2222');
+			$('#exampleDropdownFormPassword1').val('1111');
 		})
-		
-		
+	</script>
+	
+	
+	<script>
+		$('.button55').click(function(){
+			$('#exampleDropdownFormEmail1').val('96708009@stud.sju.edu.tw');
+			$('#exampleDropdownFormPassword1').val('1111');
+		})
 	</script>
 	
 	<script>
-		$('.button33').click(function(){
+		$('.button66').click(function(){
 			$('#exampleDropdownFormEmail1').val('wwwww@gmail.com');
-			$('#exampleDropdownFormPassword1').val('9999');
+			$('#exampleDropdownFormPassword1').val('2222');
 		})
-		
-		
 	</script>
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
