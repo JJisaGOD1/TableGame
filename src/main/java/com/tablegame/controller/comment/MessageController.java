@@ -37,7 +37,7 @@ public class MessageController {
 			Thread.sleep(1000);
 			return new ResponseMessage(HtmlUtils.htmlEscape(
 					message.getClientName()+" 私訊 : " + message.getMessageContent() 
-					+ " (Client-Id : " + principal.getName() + ")"));
+					+" ("+ message.getClientName() +" Id : " + principal.getName() + ")"));
 	}
 	
 	
