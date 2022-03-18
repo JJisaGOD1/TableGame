@@ -203,8 +203,8 @@ public class PageController {
 
 	@GetMapping(value = "/query")
 	public ModelAndView query(ModelAndView mav, @RequestParam(name = "id") Integer id) {
-
 		MembersBean nowCostomer = service.findMemberById(id); // 重資料庫撈新資料
+
 
 //		System.out.println(logCustomer.getCusName()); ////更正後Session為舊資料
 		mav.getModel().put("query", nowCostomer);
