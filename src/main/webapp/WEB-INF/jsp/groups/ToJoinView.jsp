@@ -96,7 +96,7 @@
 	<div class="card-header text-center">團編號：${group.groupId}</div>
 		<ul class="list-group list-group-flush"
 			style="display: inline-block;">
-			<li class="list-group-item">發起人：${member.cusName}</li>
+			<li class="list-group-item">發起人：${group.launcher.cusName}</li>
 			<li class="list-group-item">遊戲：${group.product.product_name}</li>
 			<li class="list-group-item">此遊戲最大人數：${group.product.maxplayer}</li>
 			<li class="list-group-item">目前人數：${playersNumNow}</li>

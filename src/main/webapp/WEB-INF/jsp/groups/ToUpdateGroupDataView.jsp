@@ -102,7 +102,7 @@
 				
 				<li class="list-group-item">更改附屬人數(含自己)：
 					<select id="selectPlayerNum" name="updateNum"> 
-						<c:forEach begin="1" end="${remainingNum-1}" varStatus="loop">
+						<c:forEach begin="1" end="${remainingNum}" varStatus="loop">						
 							<c:choose>
 							<c:when test="${loop.count==launcherPlayerNow}">
 								<option selected="selected">${loop.count}</option>
@@ -159,6 +159,9 @@
 					$('#warning').text('')
 					$('#selectPlayerNum option').remove()
 					for(let i=1;i<=respData.maxplayer-playersNumNow+launcherPlayerNow;i++){
+						if(i==respData.maxplayer){
+							break;	
+						}
 						let op=document.createElement('option')
 						op.value=i
 						op.innerHTML=i

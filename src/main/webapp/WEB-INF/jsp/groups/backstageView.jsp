@@ -247,7 +247,7 @@ $('.checkTheGroup').click(function(){
 });
 
 //動態生成按鈕需從其父元素以上開始繫結
-$(document).on('click','#deleteParticipant',function(){
+$(document).on('click','.deleteParticipant',function(){
 	if(confirm('確定刪除此參加者?')){
 		let groupId=parseInt($(this).parent().parent().parent().parent().parent().
 					prev().children()[0].innerHTML.substring(4))
