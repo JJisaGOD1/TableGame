@@ -98,9 +98,12 @@ public class MealPageController {
 //		List<FoodList> text = page.getContent();
 		
 		FoodList f = new FoodList();
+		FoodList ff = new FoodList();
 		
 		mav.getModel().put("page", page);
 		mav.addObject("Food", f);
+		mav.addObject("newFood", ff);
+		
 		return mav;
 	}
 
@@ -213,15 +216,23 @@ public class MealPageController {
 
 //	==============================================================================================
 
+//	非DataTable使用之方法
+//	@ResponseBody
+//	@GetMapping("/orderList")
+//	public ModelAndView viewOrderListPage(ModelAndView mav,
+//			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+//		mav.setViewName("meals/messages/orderList");
+//		Page<MealOrders> orderPage = ordersService.findByPage(pageNumber);
+//		mav.getModel().put("orderPage", orderPage);
+//		return mav;
+//	}
+	
 	@ResponseBody
 	@GetMapping("/orderList")
-	public ModelAndView viewOrderListPage(ModelAndView mav,
-			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+	public ModelAndView viewOrderListWholePage(ModelAndView mav,@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 		mav.setViewName("meals/messages/orderList");
-		Page<MealOrders> orderPage = ordersService.findByPage(pageNumber);
-//				List<FoodList> text = page.getContent();
-		mav.getModel().put("orderPage", orderPage);
-//				mav.addObject("page", page);
+		Page<MealOrders> orderPage = ordersService.findWholeByPage(pageNumber);
+		mav.getModel().put("orderPage2", orderPage);
 		return mav;
 	}
 

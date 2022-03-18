@@ -19,21 +19,23 @@
 <title>Insert title here</title>
 </head>
 <body style="background-color: #E3E6E6">
+<div style="margin-left: 260px">
 
-	<a href="${contextRoot}/addFood"><img alt=""
-		src="${contextRoot}/uploaded/pngwing.com.png"
-		style="width: 4vw; position: fixed; right: 60px; bottom: 40px"></a>
+<%-- 	<a href="${contextRoot}/addFood"> --%>
+	<img src="${contextRoot}/uploaded/pngwing.com.png" style="width: 4vw; position: fixed; right: 2rem; bottom: 2rem" type="button" class="addFood" data-toggle="modal" data-target="#addFood">
+		
+<!-- 		</a> -->
 
-	<div class="container" style="margin-left: auto;margin-right: auto;">
+	<div style="width: 76vw; margin: 0 auto;">
 		<!-- 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1> -->
 		<br>
 		<br>
 
-		<div
-			style="border-radius: 10px; background-color: white; overflow: hidden; width: 70vw; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+		
+		<div style="border-radius: 10px; background-color: white; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 			<table class="table" style="background-color: white;">
 				<thead class="thead-dark">
-					<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">餐點清單</h1>
+					<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold; margin: 0.5rem 1.5rem">餐點清單</h1>
 				</thead>
 				<thead class="thead-dark" style="height: 2rem">
 					<tr>
@@ -91,8 +93,8 @@
 		<!-- 			新增按鈕 -->
 		<%-- 			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			 --%>
 					<br>
-					<div class="row justify-content-center" style="align:center">
-					<div class="col-9">
+					<div class="row justify-content-center" align="center">
+						<div class="col-9">
 						<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 
 							<c:choose>
@@ -114,6 +116,14 @@
 		 				</c:forEach> 
 					</div>
 				</div>
+				<nav aria-label="Page navigation" class="text-center">
+
+			<ul class="pagination" id="page">
+
+			</ul>
+
+		</nav>
+		
 	</div>
 	
 	
@@ -251,9 +261,83 @@
 			</div>
 		</div>
 		
-		
+</div>		
 <!-- 	==================================編輯圖片(以上)================================== -->	
-	
+
+<!-- 	==================================新增餐點================================== -->
+
+<div class="modal fade" id="addFood" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel"
+							style="font-weight: 600;">新增餐點</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!--彈窗內部-->
+						<form:form class="form"
+							action="${contextRoot}/addFood"
+							modelAttribute="newFood" method="POST">
+
+							<table class="table">
+								<thead class="table table-light	">
+									<tr>
+										<th>輸入餐點名稱:</th>
+										<td><form:input path="foodName" /></td>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+									<form:input path="foodId" type="hidden" />
+									<form:input path="foodImage" type="hidden" />
+										<th>輸入價格 :</th>
+										<td><form:input path="foodPrice" /></td>
+									</tr>
+									
+									<tr>
+										<th>輸入餐點類型 :</th>
+										<td><form:select path="foodType">請選擇餐點類型
+												<form:option value="研磨咖啡">研磨咖啡</form:option>
+												<form:option value="吐司類">吐司類</form:option>
+												<form:option value="麵類">麵類</form:option>
+												<form:option value="經典炸物">經典炸物</form:option>
+												<form:option value="鬆餅類">鬆餅類</form:option>
+												<form:option value="飲品">飲品</form:option>
+											</form:select></td>
+										
+									</tr>
+									
+									<tr>
+										<th>輸入狀態 :</th>
+										<td><form:select path="foodState">請選擇狀態
+												<form:option value="供應中">供應中</form:option>
+												<form:option value="未供應">未供應</form:option>
+											</form:select></td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<p></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">關閉</button>
+								<input type="submit" class="btn btn-primary" id="check"
+									value="確定">
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>	
+
+<!-- 	==================================新增餐點(以上)================================== -->		
+
 	
 <script src="${contextRoot}/js/jquery-3.6.0.min.js" type="text/javascript"></script>
 	<script>

@@ -164,7 +164,7 @@ h1 {
 
 	<header class="header">
 
-		<a href="#" class="logo"> <img
+		<a href="${contextRoot}/" class="logo"> <img
 			src="${contextRoot}/uploaded/dice_logo.png" alt="">
 		</a>
 
