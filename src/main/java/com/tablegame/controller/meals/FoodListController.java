@@ -43,6 +43,7 @@ public class FoodListController {
 	@Autowired
 	private FoodListService service;
 	
+//	@ResponseBody
 	@PostMapping(value="/addFood")                  //@Valid 參考網址:http://www.mydlq.club/article/49/
 	public ModelAndView postNewMessage(ModelAndView mav,@Valid @ModelAttribute(name = "newFood") FoodList food, BindingResult rs) {
 		

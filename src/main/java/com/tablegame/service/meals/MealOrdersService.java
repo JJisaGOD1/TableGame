@@ -45,9 +45,14 @@ public class MealOrdersService {
 	
 	
 	public Page<MealOrders> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber -1, 10, Sort.Direction.ASC,"orderId");
+		Pageable pgb = PageRequest.of(pageNumber -1, 10, Sort.Direction.DESC,"orderId");
 
 		return dao.findAll(pgb);
+	}
+	
+	public Page<MealOrders> findWholeByPage(Integer pageNumber){
+		Pageable wholePage = Pageable.unpaged();
+		return dao.findAll(wholePage);
 	}
 	
 	public List<MealOrders> selectFoodTypeCountbyFoodName() {

@@ -30,6 +30,127 @@
 </head>
 <body style="background-color: #E3E6E6">
 
+<div style="margin-left: 260px">
+
+	<div style="width: 76vw; margin: 0 auto;">
+		<br>
+		<br>
+		<!-- 		<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold;">點餐列表</h1> -->
+
+
+
+
+
+
+		<div
+			style="border-radius: 10px; background-color: white; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+			<table class="table" style="background-color: white;overflow: hidden;">
+				<thead class="thead-dark">
+					<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold; margin: 0.5rem 1.5rem">點餐列表</h1>
+				</thead>
+				<thead class="thead-dark" style="height: 2rem">
+					<tr>
+						<th scope="col">點餐編號</th>
+						<th scope="col">桌號</th>
+						<th scope="col">人數</th>
+						<th scope="col">日期</th>
+						<th scope="col">總計</th>
+						<th scope="col">訂單狀態</th>
+						<th scope="col">付款狀態</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<!-- 		<tbody id="tablebody"> -->
+				<tbody>
+					<c:forEach items="${orderPage.content}" var="order">
+						<tr scope="row">
+							<%-- 							<td><c:out value="${order.orderId}" /></td> --%>
+							<th scope="row"><p>${order.orderId}</p></th>
+							<td><c:out value="${order.tableNum}" /></td>
+							<td><c:out value="${order.peopleNum}" /></td>
+							<td><c:out value="${order.orderDate}" /></td>
+							<td><c:out value="${order.totalprice}" /></td>
+							<td><c:out value="${order.processState}" /></td>
+							<td><c:out value="${order.paymentState}" /></td>
+							<td>
+<!-- 							<a onclick="return confirm('確認刪除?')" -->
+<%-- 								href="${contextRoot}/deleteOrder?orderId=${order.orderId}"><button --%>
+<!-- 										type="button" class="btn btn-danger">刪除</button></a> -->
+							<button type="button" class="btn btn-danger confirmedDelete" id="confirmedDelete" value="${order.orderId}">刪除</button>
+							<a href="${contextRoot}/editOrder?orderId=${order.orderId}"><button
+										type="button" class="btn btn-success">修改</button></a> <%-- 							<a href="${contextRoot}/checkOrderDetail?orderId=${order.orderId}"><button type="button" class="btn btn-success">查看明細</button></a> --%>
+
+								<input type="button"
+								class="edit btn btn-success checkOrderDetail" value="查看明細"
+								data-toggle="modal" data-target="#checkOrderDetail">
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+<!-- 		<script> 
+			function del() {
+				if (confirm("確實要刪除嗎？")) {
+					alert("已經刪除！");
+				} else {
+					alert("已經取消了刪除操作");
+				}
+
+			}
+		</script>-->
+
+		<%-- 		<h3>共${page.size()}筆食物資料</h3> --%>
+		<!-- 				size():Collection Object (ArrayList, Set, etc) — 取得集合物件相關大小 -->
+
+
+		<!--新增按鈕 -->
+		<%-- 			<a href="${contextRoot}/addFood"><input type="button" value="新增" class="myButton"></a>			 --%>
+		<!-- ==========================================顯示頁數========================================== -->
+		<br>
+		<div class="row justify-content-center" align="center">
+			<div class="col-9">
+
+				<c:forEach var="pageNumber" begin="1" end="${orderPage.totalPages}">
+
+					<c:choose>
+						<c:when test="${orderPage.number != pageNumber -1}">
+
+
+							<a href="${contextRoot}/orderList?p=${pageNumber}"><c:out
+									value="${pageNumber}" /> </a>
+						</c:when>
+
+						<c:otherwise>
+							<c:out value="${pageNumber}" />
+						</c:otherwise>
+					</c:choose>
+
+					<c:if test="${pageNumber != orderPage.totalPages}">
+			|
+			</c:if>
+
+				</c:forEach>
+			</div>
+		</div>
+
+
+
+		<nav aria-label="Page navigation" class="text-center">
+
+			<ul class="pagination" id="page">
+
+			</ul>
+
+		</nav>
+
+		<!-- ==========================================顯示頁數(以上)========================================== -->
+
+
+
 		<div class="modal fade" id="checkOrderDetail" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -84,63 +205,6 @@
 
 
 
-
-
-
-<!-- ====================================================DataTable==================================================== -->
-
-<div style="margin-left: 260px">
-
-	<div style="width: 76vw; margin: 0 auto;">
-		<p />
-		<div class="row justify-content-center">
-		
-			<table id="table_id" class="display" style="width: 70vw;font-size:medium;">
-				<thead class="table table-dark">
-				<h1 style="font-family: Microsoft JhengHei; font-size: 40px; font-weight: bold; margin: 0.5rem 1.5rem;">點餐列表</h1>
-					<tr>
-						<th scope="col">點餐編號</th>
-						<th scope="col">桌號</th>
-						<th scope="col">人數</th>
-						<th scope="col">日期</th>
-						<th scope="col">總計</th>
-						<th scope="col">訂單狀態</th>
-						<th scope="col">付款狀態</th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody class="tttbody">
-					<c:forEach items="${orderPage2.content}" var="order">
-						<tr scope="row">
-
-							<th scope="row"><p>${order.orderId}</p></th>
-							<td><c:out value="${order.tableNum}" /></td>
-							<td><c:out value="${order.peopleNum}" /></td>
-							<td><c:out value="${order.orderDate}" /></td>
-							<td><c:out value="${order.totalprice}" /></td>
-							<td><c:out value="${order.processState}" /></td>
-							<td><c:out value="${order.paymentState}" /></td>
-							<td>
-<!-- 							<a onclick="return confirm('確認刪除?')" -->
-<%-- 								href="${contextRoot}/deleteOrder?orderId=${order.orderId}"><button --%>
-<!-- 										type="button" class="btn btn-danger">刪除</button></a> -->
-							<button type="button" class="btn btn-danger confirmedDelete" id="confirmedDelete" value="${order.orderId}">刪除</button>
-							<a href="${contextRoot}/editOrder?orderId=${order.orderId}"><button
-										type="button" class="btn btn-success">修改</button></a> <%-- 							<a href="${contextRoot}/checkOrderDetail?orderId=${order.orderId}"><button type="button" class="btn btn-success">查看明細</button></a> --%>
-
-								<input type="button"
-								class="edit btn btn-success checkOrderDetail" value="查看明細"
-								data-toggle="modal" data-target="#checkOrderDetail">
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
-<script type="text/javascript" charset="utf8"
-	src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<!-- ====================================================DataTable==================================================== -->
 
 
 
@@ -207,7 +271,7 @@ $(".confirmedDelete").click (function() {
 
 	$(document).ready(function() {
 		$('#table_id').DataTable({
-			"lengthMenu" : [ [  10, 25, 50, -1 ], [  10, 25, 50, "All" ] ],
+			"lengthMenu" : [ [ 5, 10, 25, 50, -1 ], [ 5, 10, 25, 50, "All" ] ],
 			"language" : {
 				"processing" : "處理中...",
 				"loadingRecords" : "載入中...",
