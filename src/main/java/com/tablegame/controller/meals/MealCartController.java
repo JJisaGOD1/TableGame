@@ -70,10 +70,7 @@ public class MealCartController {
 	public ModelAndView postNewMessage2(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
 			BindingResult rs, HttpSession session, OrderCart cart) {
 
-		OrderCart c = (OrderCart) session.getAttribute("cart");
-		if (c == null) {
-			session.setAttribute("cart", cart);
-		}
+		
 		OrderCart cart2 = (OrderCart) session.getAttribute("cart");
 		Map<Integer, FoodItem> foodMap = cart2.getFoodMap();
 		FoodList food = foodService.findById(foodId);
@@ -82,8 +79,21 @@ public class MealCartController {
 		
 //		OrderCart cart = (OrderCart) session.getAttribute("cart");
 
-		mav.setViewName("redirect:/meals/messages/Cart");
+		mav.setViewName("redirect:/goToCart");
 		
+		return mav;
+	}
+	
+	@GetMapping(value = "/deleteOneFoodItem2") // @Valid 參考網址:http://www.mydlq.club/article/49/
+	public ModelAndView deleteOneFoodItem2(ModelAndView mav, @RequestParam(name = "foodId") Integer foodId,
+			BindingResult rs, HttpSession session) {
+		OrderCart cart = (OrderCart) session.getAttribute("cart");
+		MealOrders newOrders = (MealOrders) session.getAttribute("orders");
+		Map<Integer, FoodItem> Map = cart.getFoodMap();
+		FoodList food = foodService.findById(foodId);
+		cartService.deleteOneFoodItem(food, Map);
+		mav.addObject("newOrders", newOrders);
+		mav.setViewName("redirect:/goToCart");
 		return mav;
 	}
 	
