@@ -3,20 +3,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-<link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+
+<html>
 <!-- ------導入黑色navbar--------- -->
 <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
-
+<!-- ------導入黑色navbar--------- -->
 
 <!-- ------導入Boxicons--------- -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
-<html>
+<!-- ------導入Boxicons--------- -->
+	
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+
 <head>
 
 <link href="${contextRoot }/css/bootstrap.min.css" rel="stylesheet">
@@ -68,6 +71,8 @@
 	font-size: 1.5rem !important;
 
 	}
+
+
 </style>
 <body class="b1">
 <div class="body"></div>
@@ -104,6 +109,10 @@
 	<!-- <input class="btn btn-primary" type="submit" value="開團!" onclick="return create()"> -->
 </form>
 <button id="formBtn" class="btn btn-primary" style="font-size: 2rem;">開團!</button>
+
+<div id="oneInput">
+	<button id="oneBtn" class="btn btn-secondary" style="font-size: 1.5rem;">一起玩~</button>
+</div>
 </div>
 
 <script>
@@ -167,6 +176,12 @@
 				Swal.fire('未建團', '', 'info')
 			}
 		})
+	})
+
+	$('#oneBtn').click(function(){
+		$('#selectGame').val(101)
+		$('#selectPlayerNum').val(2)
+		$('#introduction').val('一起來玩桌遊吧~~')
 	})
 
 	

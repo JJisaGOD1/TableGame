@@ -198,9 +198,17 @@ public class GroupsController {
 		int[] theGroupNum = service.getTheGroupNum(groupId);
 		int playersNumNow = theGroupNum[0];
 		int remainingNum = theGroupNum[1];
+		
+		
+		
 		ParticipantBean participant=service.getParticipantById(launcher.getId(),groupId);
 		int launcherPlayerNow=participant.getParticipantNum();
 		remainingNum=remainingNum+launcherPlayerNow;
+		
+		//當只有發起者時，remainingNum人數須-1避免發起者將帶入人數改成該遊戲最大人數
+		if(group.getParticipants().size()==1) {
+			remainingNum=remainingNum-1;
+		}
 		
 
 		mav.getModel().put("playersNumNow", playersNumNow);

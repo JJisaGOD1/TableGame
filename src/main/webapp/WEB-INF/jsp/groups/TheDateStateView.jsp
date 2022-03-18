@@ -58,6 +58,16 @@
 	font-size: 1.5rem !important;
 
 	}
+
+	/* ul{
+		border-radius: 25px;
+	} */
+
+	/* .card-buttom{
+		border-radius: 25px;
+	} */
+
+	
 </style>
 	
 
@@ -97,16 +107,17 @@
 					</c:choose>	 
 
 <!-- 					<div  class="card text-left border-success mb-3" style="max-width: 18rem;">							  -->
-						<div class="card-header text-center">團編號：${group.groupId}</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">發起者：${group.launcher.cusName}</li>
+					
+						<div class="card-header text-center list-group-item list-group-item-info" style="border-radius: 25px;">團編號：${group.groupId}</div>
+							<ul class="list-group list-group-flush" >
+								<li class="list-group-item" >發起者：${group.launcher.cusName}</li>
 								<li class="list-group-item">遊戲：${group.product.product_name}  <a href="http://localhost:8080/homepage/showImformationnologin?id=${group.product.product_id}" target="_blank"> <i class='bx bx-search bx-md'></i> </a> </li>
 								<li class="list-group-item">現有人數：${perGroupNumMap[group.groupId]}</li>
 								<li class="list-group-item">建團時間：${group.createdTime}</li>
 								<li class="list-group-item">簡介：${group.introduction}</li>
 								
 							</ul>
-							<div class="card-body text-center">
+							<div class="card-body text-center card-buttom">
 								<c:choose>
 									<c:when test="${member==null}">
 										<span style="color:green;">先登入才可報團</span>
@@ -187,6 +198,7 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
+						
 					</div>
 					</div>
 				</c:forEach>
