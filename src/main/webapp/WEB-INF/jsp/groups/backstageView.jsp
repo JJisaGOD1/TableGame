@@ -85,7 +85,7 @@
 	        <h3 class="modal-title" id="popupGroupId" style="width: 250px;">popupGroupId</h3>
 			<span style='margin: 0,auto'></span>遊戲：</span>
 
-		<form id="saveChange" action="${contextRoot}/backstage/groups/saveGameAndNumChange" >
+		<!-- <form id="saveChange" action="${contextRoot}/backstage/groups/saveGameAndNumChange" > -->
 			<input id="inputGroupId" type="text" style="display: none;" value="" name="groupId">
 			<select id="selectGame" name="updateProduct" > 
 			</select>
@@ -128,9 +128,13 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-	        <input type="submit" class="btn btn-primary" value="儲存" onclick="check()"></button>
+			<!-- <input type="submit" class="btn btn-info" value="儲存" onclick="check()"></button> -->
+	        <button id="saveChange" class="btn btn-primary" >儲存</button>
 	      </div>
-		</form>
+		  
+		<!-- </form> -->
+		
+		
 	    </div>
 	  </div>
 	</div>
@@ -316,9 +320,12 @@ $(document).on('click','.deleteParticipant',function(){
 	}
 })
 
-function check(){
-
-}
+$('#saveChange').click(function(){
+	$('input').each(function(index){
+		console.log(index+':'+$(this).val())
+	})
+	
+})
 
 	
 
