@@ -60,7 +60,7 @@
 	            <td>${playerNumPerGroup[group.groupId]}</td>
 	            <td>
 					<!-- 創造 class:checkTheGroup  利用$('.checkTheGroup').click(function({...}))觸發點擊事件-->
-					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#exampleModal" >
+					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#theGroupInfo" >
 					查看
 					</button>
 	            	<a	class="btn btn-danger"
@@ -78,7 +78,7 @@
 
 
 <!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal fade" id="theGroupInfo" tabindex="-1" aria-labelledby="theGroupInfoLabel" aria-hidden="true" >
 	  <div class="modal-dialog" >
 	    <div id="modal-content" class="modal-content" style="width: 700px;">
 	      <div class="modal-header">
@@ -127,14 +127,12 @@
 	
 	      </div>
 	      <div class="modal-footer">
+			  <span id="warning"></span>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 			<!-- <input type="submit" class="btn btn-info" value="儲存" onclick="check()"></button> -->
 	        <button id="saveChange" class="btn btn-primary" >儲存</button>
 	      </div>
-		  
-		<!-- </form> -->
-		
-		
+		<!-- </form> -->		
 	    </div>
 	  </div>
 	</div>
@@ -181,7 +179,7 @@ $('.checkTheGroup').click(function(){
 			})
 
 			$('#popup_table_tbody *').remove()
-			$('#saveChange .numOfparticipant').remove()
+			$('#theGroupInfo .numOfparticipant').remove()
 			//ul dto作法
 			respData.participants.forEach(function(dto, index, arr){
 				// console.log(dto.participant.id.groupId)
@@ -196,12 +194,13 @@ $('.checkTheGroup').click(function(){
 				let numInput=document.createElement('input')
 				numInput.type='number'
 				numInput.name='numOf'+dto.member.id
+				numInput.setAttribute('participantId',dto.member.id);//創造一屬姓名participantId
 				numInput.className='numOfparticipant'
 				numInput.value=dto.participant.participantNum
 				numInput.min=1;numInput.max=10
 				numInput.style.width='3em'
 
-				$('#saveChange').append(numInput)//加到form表單上
+				// $('#saveChange').append(numInput) //加到form表單上
 				num.append(numInput)
 				
 				
@@ -267,7 +266,7 @@ $(document).on('click','.deleteParticipant',function(){
 				
 				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
-				$('#saveChange .numOfparticipant').remove()
+				$('#theGroupInfo .numOfparticipant').remove()
 				//dto作法
 				respData.participants.forEach(function(dto, index, arr){
 					let row=document.createElement('tr')
@@ -281,7 +280,9 @@ $(document).on('click','.deleteParticipant',function(){
 					let numInput=document.createElement('input')
 					numInput.type='number'
 					numInput.name='numOf'+dto.member.id
-					
+					numInput.setAttribute('participantId',dto.member.id);//創造一屬姓名participantId並賦值
+					numInput.participantId=dto.member.id
+					numInput.className='numOfparticipant'
 					numInput.value=dto.participant.participantNum
 					numInput.min=1;numInput.max=10
 					numInput.style.width='3em'
@@ -321,9 +322,57 @@ $(document).on('click','.deleteParticipant',function(){
 })
 
 $('#saveChange').click(function(){
-	$('input').each(function(index){
-		console.log(index+':'+$(this).val())
+	// console.log($('#selectGame').val())
+	// $('.numOfparticipant').each(function(index){
+	// 	console.log(index+':'+$(this).attr('name')+' '+$(this).val())
+	// })
+
+	let numOfparticipants={}
+	$('.numOfparticipant').each(function(index){
+		numOfparticipants[$(this).attr('participantId')]=parseInt( $(this).val())
 	})
+
+	let theGroupChangeInfo={
+		'groupId':parseInt($('#inputGroupId').val()) ,
+		'prodId':parseInt($('#selectGame').val()),
+		'numOfparticipants':numOfparticipants
+	}
+	console.log(theGroupChangeInfo)
+
+	$.ajax({
+		url:'${contextRoot}/groups/changeMaxNums',
+		contentType : 'application/json; charset=UTF-8',//送出格式
+		type:"post",
+		dataType:"JSON",
+		data:JSON.stringify({
+			'productId':$('#selectGame').val()
+		}),
+		success: function(respData) {
+			console.log(respData)
+			let sum=0
+			$('.numOfparticipant').each(function(index){
+				sum+=parseInt( $(this).val())
+			})
+			if(respData.maxplayer<sum){
+				$('#warning').html('更改人數超過所選遊戲最大人數')
+			}else{
+				$('#warning').html('')
+				$.ajax({
+					url:'${contextRoot}/backstage/groups/change',
+					contentType : 'application/json; charset=UTF-8',//送出格式
+					type:"post",
+					dataType:"JSON",
+					data:JSON.stringify(theGroupChangeInfo),
+					success:function(respData){
+						
+					}
+				})
+
+			}
+		}
+	})
+
+
 	
 })
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tablegame.dto.ChangeTheGroupInfoDto;
 import com.tablegame.dto.ParticipantsDto;
 import com.tablegame.dto.ProductIdDto;
 import com.tablegame.model.bean.group.GroupBean;
@@ -64,6 +65,13 @@ public class GroupsAjaxController {
 		ResponseEntity<?> map = this.getParticipants(groupId);
 		
 		return map;
+	}
+	
+	@PostMapping("/backstage/groups/change")
+	public void change(@RequestBody ChangeTheGroupInfoDto json) {
+		System.out.println(json.getGroupId());
+		System.out.println(json.getNumOfparticipants().get(5));
+		service.changeTheGroupInfo(json);
 	}
 	
 	

@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tablegame.dto.ChangeTheGroupInfoDto;
 import com.tablegame.dto.ParticipantsDto;
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
@@ -229,6 +230,10 @@ public class GroupsService {
 		return participantsInfo;
 	}
 	
+	public void changeTheGroupInfo(ChangeTheGroupInfoDto json) {
+		
+	}
+	
 	
 	//static
 	private static Date stringToDate(String stringDate) {
@@ -243,6 +248,8 @@ public class GroupsService {
 		Date dateDate=c.getTime();
 		return dateDate;
 	}
+
+
 	
 	
 
