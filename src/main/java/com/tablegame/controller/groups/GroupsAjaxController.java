@@ -69,8 +69,8 @@ public class GroupsAjaxController {
 	
 	@PostMapping("/backstage/groups/change")
 	public void change(@RequestBody ChangeTheGroupInfoDto json) {
-		System.out.println(json.getGroupId());
-		System.out.println(json.getNumOfparticipants().get(5));
+//		System.out.println(json.getGroupId());
+//		System.out.println(json.getNumOfparticipants().get(5));
 		service.changeTheGroupInfo(json);
 	}
 	

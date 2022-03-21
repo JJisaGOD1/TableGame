@@ -32,11 +32,28 @@
 		width: 200px;
 	}
 
+	#table_style{
+		background-color: white;
+		padding: 1rem 2rem;
+		border-radius: 1rem;
+		box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+		margin: auto;
+		width: 56vw
+	}
+	h1{
+		width: 10vw;
+		display: inline-block;
+		margin-left: 20vw
+	}
+
 </style>
 
 </head>
 <body>
-<div style="width: 1000px ;display: flex ;margin: auto">
+<div style="display: flex ; margin-top: 4rem;">
+	
+	<div id="table_style">
+		<h1 style="padding: 0 auto;">團房列表</h1>
 	<table id="table_id" class="display">
 	    <thead>
 	        <tr>
@@ -51,13 +68,13 @@
 	    </thead>
 	    <tbody>
 	    	<c:forEach items="${groups}" var="group">
-	        <tr>
+	        <tr class="oneGroup">
 	            <td>${group.groupId}</td>
 	            <td>${group.launcher.cusName}</td>
-	            <td>${group.product.product_name }</td>
+	            <td id="gameNameOf${group.groupId}">${group.product.product_name }</td>
 	            <td>${group.gameDate }</td>
 	            <td>${group.createdTime}</td>
-	            <td>${playerNumPerGroup[group.groupId]}</td>
+	            <td id="playerNumOf${group.groupId}">${playerNumPerGroup[group.groupId]}</td>
 	            <td>
 					<!-- 創造 class:checkTheGroup  利用$('.checkTheGroup').click(function({...}))觸發點擊事件-->
 					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#theGroupInfo" >
@@ -73,6 +90,7 @@
 	        </c:forEach>
 	    </tbody>
 	</table>
+	</div>
 	<p>
 	
 
@@ -130,7 +148,7 @@
 			  <span id="warning"></span>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 			<!-- <input type="submit" class="btn btn-info" value="儲存" onclick="check()"></button> -->
-	        <button id="saveChange" class="btn btn-primary" >儲存</button>
+	        <button id="saveChange" class="btn btn-primary" data-dismiss="modal">儲存</button>
 	      </div>
 		<!-- </form> -->		
 	    </div>
@@ -267,6 +285,12 @@ $(document).on('click','.deleteParticipant',function(){
 				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
 				$('#theGroupInfo .numOfparticipant').remove()
+
+				//ajax更改datatable人數
+				// let originNum=$('#playerNumOf'+$('#inputGroupId').val()).html()
+				// console.log('ooooo'+originNum)
+				
+
 				//dto作法
 				respData.participants.forEach(function(dto, index, arr){
 					let row=document.createElement('tr')
@@ -312,6 +336,13 @@ $(document).on('click','.deleteParticipant',function(){
 					row.append(joinedTime)
 					row.append(tdBtn)
 					$('#popup_table_tbody').append(row)
+
+					//ajax更改datatable人數
+					// console.log('hhh'+hiddenParticipantId)
+					// console.log('id'+dto.member.id)
+					// if(hiddenParticipantId==dto.member.id){
+					// 	$('#playerNumOf'+$('#inputGroupId').val()).html(originNum-dto.participant.participantNum)
+					// }
 				})	
 			},
 			error: function(){
@@ -367,7 +398,9 @@ $('#saveChange').click(function(){
 						
 					}
 				})
-
+				//ajax更改datatable之遊戲名及人數
+				$('#playerNumOf'+$('#inputGroupId').val()).html(sum)
+				$('#gameNameOf'+$('#inputGroupId').val()).html( $('#o'+$('#selectGame').val()).html() )
 			}
 		}
 	})

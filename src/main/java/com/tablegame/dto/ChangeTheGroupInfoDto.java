@@ -1,5 +1,6 @@
 package com.tablegame.dto;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +14,7 @@ public class ChangeTheGroupInfoDto {
 	private int prodId;
 	
 	@JsonProperty(value = "numOfparticipants")
-	private Map<Integer, Integer> numOfparticipants;
+	private HashMap<Integer, Integer> numOfparticipants;
 
 	public int getGroupId() {
 		return groupId;
@@ -31,11 +32,11 @@ public class ChangeTheGroupInfoDto {
 		this.prodId = prodId;
 	}
 
-	public Map<Integer, Integer> getNumOfparticipants() {
+	public HashMap<Integer, Integer> getNumOfparticipants() {
 		return numOfparticipants;
 	}
 
-	public void setNumOfparticipants(Map<Integer, Integer> numOfparticipants) {
+	public void setNumOfparticipants(HashMap<Integer, Integer> numOfparticipants) {
 		this.numOfparticipants = numOfparticipants;
 	}
 	
