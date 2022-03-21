@@ -247,7 +247,6 @@ body {
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary">確定</button>
 								<input type="reset" class="btn btn-info" value="清除">
-								<button type="button" class="btn btn-info" id="button">一鍵輸入</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">取消</button>
 
@@ -294,7 +293,7 @@ body {
 
 							<div class="dropdown-container" style="vertical-align: top;">
 								<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select
-									name="several" id="several" required
+									name="several" id="severals" required
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px">
 									<option>預約人數</option>
@@ -323,7 +322,7 @@ body {
 							</div>
 							<div>
 								<label class="t1"><i class='bx bxs-time'></i>時間:</label> <select
-									name="period" id="period"
+									name="period" id="periods"
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px" required onchange="time()">
 									<option value="" disabled selected>預約時段</option>
@@ -334,7 +333,7 @@ body {
 							</div>
 
 							<div>
-								<label class="t1">桌號 :</label> <select name="number" id="number"
+								<label class="t1">桌號 :</label> <select name="number" id="numbers"
 									required
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px">
@@ -354,7 +353,7 @@ body {
 							</p>
 							<div>
 								<label class="t1">備註:</label>
-								<textarea cols="40" rows="1" name="remark" id="remark"
+								<textarea cols="40" rows="1" name="remark" id="remarks"
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px"></textarea>
 							</div>
@@ -362,7 +361,7 @@ body {
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary sure">確定</button>
 								<input type="reset" class="btn btn-info" value="清除">
-								<button type="button" class="btn btn-info" id="button">一鍵輸入</button>
+								<button type="button" class="btn btn-info button" id="button">一鍵輸入</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">取消</button>
 
@@ -408,6 +407,18 @@ body {
 });
 });
 
+$(".button").click(function() {
+	
+	$("#severals").val('12');
+	console.log(several)
+	$("#datepickers").val('2022/03/27');
+	$("#periods").val('下午');
+	$("#numbers").val('9');
+	$("#remarks").val('我要很多張椅子');
+	
+});		
+		
+		
 
 $(function() {
 	$("#datepicker").datepicker({
