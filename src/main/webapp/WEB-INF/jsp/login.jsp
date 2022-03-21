@@ -168,14 +168,14 @@
 	
 	<script>
 		$('.button11').click(function(){
-			$('#exampleDropdownFormEmail1').val('JOJO3456@gmail.com');
+			$('#exampleDropdownFormEmail1').val('jojo3456@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	<script>
 		$('.button22').click(function(){
-			$('#exampleDropdownFormEmail1').val('JOLIN8888@gmail.com');
+			$('#exampleDropdownFormEmail1').val('jolin7777@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
