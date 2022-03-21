@@ -131,6 +131,11 @@
 								<input type="button"
 								class="edit btn btn-success checkOrderDetail" value="查看明細"
 								data-toggle="modal" data-target="#checkOrderDetail">
+							<a href="${contextRoot}/checkOrderState?orderId=${order.orderId}">
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.orderId}">已處理</button></a>
+							
+							<a href="${contextRoot}/checkOrderPay?orderId=${order.orderId}">
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.orderId}">已付款</button></a>
 						</tr>
 					</c:forEach>
 				</tbody>
