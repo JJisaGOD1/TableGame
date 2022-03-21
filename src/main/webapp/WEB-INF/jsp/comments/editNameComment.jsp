@@ -130,7 +130,8 @@
 				} 
 				else {
 					$("#product").remove();
-							}
+					$("#product1").remove()
+					}
 		})
 	</script>
 </body>
