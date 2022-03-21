@@ -286,12 +286,13 @@
 
 							<table class="table">
 								<thead class="table table-light	">
-									<tr>
-										<th>輸入餐點名稱:</th>
-										<td><form:input path="foodName" /></td>
-									</tr>
+									
 								</thead>
-								<tbody>
+								<tbody class="tbody">
+								<tr>
+										<th>輸入餐點名稱:</th>
+										<td><form:input type="text" path="foodName"/></td>
+									</tr>
 
 									<tr>
 									<form:input path="foodId" type="hidden" />
@@ -330,6 +331,7 @@
 									data-dismiss="modal">關閉</button>
 								<input type="submit" class="btn btn-primary" id="check"
 									value="確定">
+								<input type="button" id="oneEnter" class="btn btn-secondary btn-sm oneEnter" value="一鍵輸入"/>
 							</div>
 						</form:form>
 					</div>
@@ -446,6 +448,15 @@
 					},
 				})
 			})
+			
+// ============================檢視餐點圖片(以上)========================================			
+	
+	$(".oneEnter").click(function() {
+		$(".tbody #foodName").val("可爾必思");
+		$(".tbody #foodPrice").val("50");
+		$(".tbody #foodType").val("飲品");
+		$(".tbody #foodState").val("供應中");		
+	});
 </script>
 
 <!-- <iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe> -->
