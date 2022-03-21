@@ -13,7 +13,7 @@
 	rel='stylesheet'>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TableGame</title>
 
 <!-- font awesome cdn link  -->
 <link rel="stylesheet"

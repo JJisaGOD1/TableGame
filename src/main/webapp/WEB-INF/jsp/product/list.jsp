@@ -368,7 +368,7 @@ img {
 	<div></div>
 	<div style="display: flex; justify-content: center;">
 		<a href="${contextRoot}/products/goToProductCart"><input
-			type="button" value="查看購物車"></a>
+			type="button" class="btn btn-primary" style="font-size: 1.5rem;margin: 0" value="查看購物車"></a>
 	</div>
 </body>
 <script>

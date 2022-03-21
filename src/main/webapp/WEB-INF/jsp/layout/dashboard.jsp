@@ -11,7 +11,7 @@
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 
 <meta charset="UTF-8">
-<title>Responsiive Admin Dashboard | CodingLab</title>
+<title>Admin Dashboard</title>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet" />
 
 <!-- Boxicons CDN Link -->
