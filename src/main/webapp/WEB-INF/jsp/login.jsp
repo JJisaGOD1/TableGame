@@ -99,8 +99,8 @@
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<button id="button" class="btn btn-info button55">愛玩</button>
-						<button id="button" class="btn btn-info button66">金賢種</button>
+						<button id="button" class="btn btn-info button55">沉汗典</button>
+						<button id="button" class="btn btn-info button66">青該我</button>
 			</div>
 		</div>
 	</div>
@@ -162,20 +162,20 @@
 	<script>
 		$('.button00').click(function(){
 			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
-			$('#exampleDropdownFormPassword1').val('cccc');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	<script>
 		$('.button11').click(function(){
-			$('#exampleDropdownFormEmail1').val('JOJO3@gmail.com');
+			$('#exampleDropdownFormEmail1').val('JOJO3456@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	<script>
 		$('.button22').click(function(){
-			$('#exampleDropdownFormEmail1').val('JOJO5@gmail.com');
+			$('#exampleDropdownFormEmail1').val('JOLIN8888@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
@@ -183,7 +183,7 @@
 	
 	<script>
 		$('.button55').click(function(){
-			$('#exampleDropdownFormEmail1').val('EEIT138255@gmail.tw');
+			$('#exampleDropdownFormEmail1').val('EEIT138255@gmail.com');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
