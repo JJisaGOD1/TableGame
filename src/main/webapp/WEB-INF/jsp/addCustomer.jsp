@@ -123,10 +123,10 @@ background-size:100% 100%;
 		$('#button').click(function() {
 			console.log(123)
 			$('#cusName').val('愛玩');
-			$('#email').val('96708009@stud.sju.edu.tw');
-			$('#pwd').val('0910123123');
+			$('#email').val('EEIT13825@gmail.tw');
+			$('#pwd').val('cccccccc');
 			$('#phone').val('0910234567');
-			$('#address').val('台北市中正路100號');
+			$('#address').val('台北市中正路200號');
 		//	$('#birthday').val(1990/09/02);
 		})
 	</script>

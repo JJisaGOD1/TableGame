@@ -73,7 +73,7 @@ background-size:100% 100%;
 	<script>
 		$('.button33').click(function(){
 			$('#email').val('nini@gmail.com');
-			$('#pwd').val('0910123123');
+			$('#pwd').val('cccccccc');
 		})
 		
 		
