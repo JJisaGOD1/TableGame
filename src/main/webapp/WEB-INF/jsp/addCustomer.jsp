@@ -125,7 +125,7 @@ background-size:100% 100%;
 			$('#cusName').val('沉汗典');
 			$('#email').val('EEIT138255@gmail.com');
 			$('#pwd').val('cccccccc');
-			$('#phone').val('0910234567');
+			$('#phone').val('0930531836');
 			$('#address').val('台北市中正路200號');
 		//	$('#birthday').val(1990/09/02);
 		})
