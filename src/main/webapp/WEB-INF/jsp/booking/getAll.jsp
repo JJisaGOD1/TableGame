@@ -99,11 +99,13 @@ body {
 					<td>
 <!-- 					 <a onclick="return confirm('確認刪除')" -->
 <%-- 						href="${contextRoot}/deletbooking?id=${bookings.orderId}"> --%>
-						<button
-								type="button" id="deleteid"+${bookings.orderId} class="btn btn-danger deleteid" value=${bookings.orderId}>刪除</button></a>
-								
+							
 						<button type="button" class="btn btn-success editCCC"
 							data-toggle="modal" data-target="#add">編輯</button>
+							
+							<button
+								type="button" id="deleteid"+${bookings.orderId} 
+								class="btn btn-danger deleteid" value=${bookings.orderId}>刪除</button></a>
 
 					</td>
 					
@@ -199,7 +201,7 @@ body {
 								<p>
 									<label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label>
 									<input type="text" id="datepicker" name="reservation_date"
-										autocomplete="off" required onchange="time()"
+										autocomplete="off" 
 										class="form-control select-area people-select-white reservation_date"
 										style="padding-top: 0px">
 								</p>
@@ -314,7 +316,7 @@ body {
 								<p>
 									<label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label>
 									<input type="text" id="datepickers" name="reservation_date"
-										autocomplete="off" required onchange="time()"
+										autocomplete="off" 
 										class="form-control select-area people-select-white "
 										style="padding-top: 0px">
 								</p>
@@ -358,7 +360,7 @@ body {
 							</div>
 
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-primary">確定</button>
+								<button type="submit" class="btn btn-primary sure">確定</button>
 								<input type="reset" class="btn btn-info" value="清除">
 								<button type="button" class="btn btn-info" id="button">一鍵輸入</button>
 								<button type="button" class="btn btn-secondary"
@@ -502,6 +504,16 @@ Swal.fire({
 	})
 })
 
+
+$('.sure').click(function(){
+	Swal.fire({
+		
+		  icon: 'success',
+		  title: '訂位中請稍後.....',
+		  showConfirmButton: false,
+		  timer: 10000
+		})
+})
 
 
 		// $(document).on('click', '#deleteLocation', function (){  //用一般的.click會有氣泡事件問題
