@@ -168,30 +168,30 @@
 	
 	<script>
 		$('.button11').click(function(){
-			$('#exampleDropdownFormEmail1').val('jeff@gmail.com');
-			$('#exampleDropdownFormPassword1').val('0910123123');
+			$('#exampleDropdownFormEmail1').val('JOJO3@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	<script>
 		$('.button22').click(function(){
-			$('#exampleDropdownFormEmail1').val('allpass@gmail.com');
-			$('#exampleDropdownFormPassword1').val('0910123123');
+			$('#exampleDropdownFormEmail1').val('JOJO5@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	
 	<script>
 		$('.button55').click(function(){
-			$('#exampleDropdownFormEmail1').val('96708009@stud.sju.edu.tw');
-			$('#exampleDropdownFormPassword1').val('0910123123');
+			$('#exampleDropdownFormEmail1').val('EEIT138255@gmail.tw');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
 	
 	<script>
 		$('.button66').click(function(){
 			$('#exampleDropdownFormEmail1').val('nini@gmail.com');
-			$('#exampleDropdownFormPassword1').val('1111111111');
+			$('#exampleDropdownFormPassword1').val('aaaaaaaa');
 		})
 	</script>
 
