@@ -327,8 +327,13 @@ h1 {
 			</div>
 			<div class="carousel-item">
 				<img
-					src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg"
+					src="${contextRoot}/uploaded/banner3.jpg"
 					alt="Chicago" width="1100" height="500">
+			</div>
+			<div class="carousel-item">
+				<img
+					src="${contextRoot}/uploaded/20180322111623_banner.jpg"
+					alt="New York" width="1100" height="500">
 			</div>
 			<div class="carousel-item">
 				<img

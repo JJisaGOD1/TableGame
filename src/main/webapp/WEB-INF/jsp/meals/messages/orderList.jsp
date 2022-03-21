@@ -131,11 +131,27 @@
 								<input type="button"
 								class="edit btn btn-success checkOrderDetail" value="查看明細"
 								data-toggle="modal" data-target="#checkOrderDetail">
-							<a href="${contextRoot}/checkOrderState?orderId=${order.orderId}">
-							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.orderId}">已處理</button></a>
+<%-- 							<a href="${contextRoot}/checkOrderState?orderId=${order.orderId}"> --%>
+<%-- 							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.orderId}">已處理</button></a> --%>
 							
+							<c:if test="${order.processState=='已處理'}">
+							<a href="${contextRoot}/checkOrderState?orderId=${order.orderId}">
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="已處理" disabled="disabled">已處理</button></a>
+							</c:if>
+							<c:if test="${order.processState!='已處理'}">
+							<a href="${contextRoot}/checkOrderState?orderId=${order.orderId}">
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.processState}">${order.processState}</button></a>
+							</c:if>
+							
+							<c:if test="${order.paymentState=='已付款'}">
 							<a href="${contextRoot}/checkOrderPay?orderId=${order.orderId}">
-							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.orderId}">已付款</button></a>
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.paymentState}" disabled="disabled">已付款</button></a>
+							</c:if>
+							<c:if test="${order.paymentState!='已付款'}">
+							<a href="${contextRoot}/checkOrderPay?orderId=${order.orderId}">
+							<button type="button" class="btn btn-secondary checkOrder" id="checkOrder" value="${order.paymentState}">${order.paymentState}</button></a>
+							</c:if>
+							
 						</tr>
 					</c:forEach>
 				</tbody>
