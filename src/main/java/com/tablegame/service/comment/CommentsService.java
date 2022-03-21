@@ -146,7 +146,7 @@ public class CommentsService {
 	}
 
 	public Page<CommentsBean> findByConditionsId(Integer conditionId, Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 5, Sort.Direction.DESC, "created_time");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 10, Sort.Direction.DESC, "created_time");
 		Page<CommentsBean> comments = comDao.findByConditionsId(conditionId, pgb);
 		return comments;
 	}
