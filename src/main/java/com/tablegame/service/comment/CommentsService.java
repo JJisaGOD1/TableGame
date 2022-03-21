@@ -80,7 +80,7 @@ public class CommentsService {
 	}
 
 	public Page<CommentsBean> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 3, Sort.Direction.DESC, "createdTime");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 6, Sort.Direction.DESC, "createdTime");
 		Page<CommentsBean> res = comDao.findAll(pgb);
 		return res;
 	}
