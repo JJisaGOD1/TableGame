@@ -112,7 +112,7 @@ background-size:100% 100%;
 					<p></p>
 					<p></p>
 					
-						<button id="button" class="btn btn-danger button1">愛玩</button>
+						<button id="button" class="btn btn-danger button1">沉汗典</button>
 					</div>
 				</div>
 			</div>
@@ -122,8 +122,8 @@ background-size:100% 100%;
 	<script>
 		$('#button').click(function() {
 			console.log(123)
-			$('#cusName').val('愛玩');
-			$('#email').val('EEIT138255@gmail.tw');
+			$('#cusName').val('沉汗典');
+			$('#email').val('EEIT138255@gmail.com');
 			$('#pwd').val('cccccccc');
 			$('#phone').val('0910234567');
 			$('#address').val('台北市中正路200號');
