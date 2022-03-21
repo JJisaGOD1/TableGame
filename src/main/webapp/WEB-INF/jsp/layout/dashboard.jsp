@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body>
+<body style="background-color: #E3E6E6">
 
 
 	<div class="sidebar ">
