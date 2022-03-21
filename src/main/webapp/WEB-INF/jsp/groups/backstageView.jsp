@@ -154,11 +154,13 @@
 	    </div>
 	  </div>
 	</div>
+	<!-- Modal -->
 </div>
 
 <script >
 
 $('.checkTheGroup').click(function(){
+	$('#warning').html('')//清空#warning
 
 	let groupId=parseInt($(this).parent().parent().children()[0].innerHTML)
 	$('#inputGroupId').val(groupId)
@@ -281,15 +283,14 @@ $(document).on('click','.deleteParticipant',function(){
 			dataType:"JSON",
 			success: function(respData) {
 				console.log(respData)
+
+				//ajax更改datatable人數
+				let originNum=parseInt( $('#playerNumOf'+groupId).html() )
+				let tempNum=originNum
 				
 				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
 				$('#theGroupInfo .numOfparticipant').remove()
-
-				//ajax更改datatable人數
-				// let originNum=$('#playerNumOf'+$('#inputGroupId').val()).html()
-				// console.log('ooooo'+originNum)
-				
 
 				//dto作法
 				respData.participants.forEach(function(dto, index, arr){
@@ -312,6 +313,9 @@ $(document).on('click','.deleteParticipant',function(){
 					numInput.style.width='3em'
 					num.append(numInput)
 					// $('#saveChange').append(numInput)
+					
+					//ajax更改datatable人數，原始人數減去剩餘人數得出被刪減人數
+					tempNum-=dto.participant.participantNum
 
 					let joinedTime=document.createElement('td')
 					joinedTime.innerHTML=dto.participant.joinedTime
@@ -337,13 +341,11 @@ $(document).on('click','.deleteParticipant',function(){
 					row.append(tdBtn)
 					$('#popup_table_tbody').append(row)
 
-					//ajax更改datatable人數
-					// console.log('hhh'+hiddenParticipantId)
-					// console.log('id'+dto.member.id)
-					// if(hiddenParticipantId==dto.member.id){
-					// 	$('#playerNumOf'+$('#inputGroupId').val()).html(originNum-dto.participant.participantNum)
-					// }
+					
+					
 				})	
+				//ajax更改datatable人數，原始人數減去被刪減人數得出剩餘人數
+				$('#playerNumOf'+$('#inputGroupId').val()).html(originNum-tempNum)
 			},
 			error: function(){
 				console.log('something wrong')
@@ -357,6 +359,8 @@ $('#saveChange').click(function(){
 	// $('.numOfparticipant').each(function(index){
 	// 	console.log(index+':'+$(this).attr('name')+' '+$(this).val())
 	// })
+
+	
 
 	let numOfparticipants={}
 	$('.numOfparticipant').each(function(index){
@@ -382,42 +386,34 @@ $('#saveChange').click(function(){
 			console.log(respData)
 			let sum=0
 			$('.numOfparticipant').each(function(index){
-				sum+=parseInt( $(this).val())
+				sum+=parseInt($(this).val())
 			})
 			if(respData.maxplayer<sum){
-				$('#warning').html('更改人數超過所選遊戲最大人數')
+				$('#warning').html('更改人數超過所選遊戲最大人數').css('color','red')
 			}else{
 				$('#warning').html('')
-				$('#theGroupInfo').modal('hide');
+				$('#theGroupInfo').modal('hide');//移除彈窗
+				$('.modal-backdrop').remove();//移除遮罩
 				$.ajax({
 					url:'${contextRoot}/backstage/groups/change',
 					contentType : 'application/json; charset=UTF-8',//送出格式
 					type:"post",
-					dataType:"JSON",
+					// dataType:"JSON",
 					data:JSON.stringify(theGroupChangeInfo),
-					success:function(respData){
-						
+					success:function(){
+						//ajax更改datatable之遊戲名及人數
+						$('#playerNumOf'+$('#inputGroupId').val()).html(sum)
+						$('#gameNameOf'+$('#inputGroupId').val()).html( $('#o'+$('#selectGame').val()).html())
 					}
 				})
-				//ajax更改datatable之遊戲名及人數
-				$('#playerNumOf'+$('#inputGroupId').val()).html(sum)
-				$('#gameNameOf'+$('#inputGroupId').val()).html( $('#o'+$('#selectGame').val()).html() )
 			}
 		}
 	})
-
-
-	
 })
 
-	
-
-
-
-
-$(document).ready( function () {
+$(document).ready(function(){
     $('#table_id').DataTable({
-    	"lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ],
+    	"lengthMenu": [ [5,10, 25, 50, -1],[5,10, 25, 50, "All"] ],
     	"language": {
             "processing": "處理中...",
             "loadingRecords": "載入中...",
@@ -442,7 +438,6 @@ $(document).ready( function () {
     }
     );
 } );
-
 
 function del() {
 	var msg = "是否刪除此團?";
