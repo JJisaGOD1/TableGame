@@ -46,21 +46,7 @@ fieldset {
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://tony1966.xyz/test/jquery/jquery.ui.datepicker-zh-TW.js"></script>
- 
-<script>
-	$(function() {
-		$("#datepicker").datepicker({
-			dateFormat: 'yy/mm/dd',
-			minDate : 0,
-			maxDate : "14D"
-		});
-
-	});
-	
-
-	
-</script>
-
+ㄋ
 </head>
 <body>
  
@@ -107,7 +93,7 @@ fieldset {
 									<option value="12">12 人</option>
 					</select></div>
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px">
+						name="reservation_date" autocomplete="off" class="form-control select-area people-select-white" readonly="readonly">
 				</div>		
 						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
@@ -161,9 +147,20 @@ $('.ad').click(function(){
 		  icon: 'success',
 		  title: '訂位中請稍後.....',
 		  showConfirmButton: false,
-		  timer: 8000
+		  timer: 10000
 		})
 })
+
+
+$(function() {
+		$("#datepicker").datepicker({
+			dateFormat: "yy/mm/dd",
+			minDate : 0,
+			maxDate : "14D"
+		});
+
+	});
+	
 
 // function time() {
 // 		$.ajax({

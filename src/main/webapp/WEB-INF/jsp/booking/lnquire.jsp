@@ -10,7 +10,7 @@
 <html>
 <head>
 <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
-<
+
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -214,11 +214,12 @@ td {
 							</div>
 							<div>
 								<p>
+<!-- 								required onchange="time()" -->
 									<label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label>
 									<input type="text" id="datepicker" name="reservation_date"
-										autocomplete="off" required onchange="time()"
+										autocomplete="off" 
 										class="form-control select-area people-select-white reservation_date"
-										style="padding-top: 0px">
+										readonly="readonly">
 								</p>
 							</div>
 							<div>
@@ -274,6 +275,18 @@ td {
 		</div>
 	</div>
 	<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			dateFormat : 'yy/mm/dd',
+			minDate : 0,
+			maxDate : "14D"
+		});
+
+	});	
+	
+	
+	
+	
 $(".editCCC").click(function() {
 	let userid = $(this).parent().parent().find(".userid").html();
 	console.log(userid)
@@ -296,14 +309,12 @@ $(".editCCC").click(function() {
 
 })
 
-$(function() {
-	$("#datepicker").datepicker({
-		dateFormat : 'yy/mm/dd',
-		minDate : 0,
-		maxDate : "14D"
-	});
 
-});
+
+
+
+
+
 
 $(".del").click(function() {
 	let dat=$(this).parent().parent().find(".date").html();
@@ -361,6 +372,9 @@ $(".del").click(function() {
 
 	
 })
+
+
+
 
 
 // $('.deleteid').click(function(){
