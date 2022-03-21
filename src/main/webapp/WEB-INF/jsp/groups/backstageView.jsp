@@ -148,7 +148,7 @@
 			  <span id="warning"></span>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 			<!-- <input type="submit" class="btn btn-info" value="儲存" onclick="check()"></button> -->
-	        <button id="saveChange" class="btn btn-primary" data-dismiss="modal">儲存</button>
+	        <button id="saveChange" class="btn btn-primary">儲存</button>
 	      </div>
 		<!-- </form> -->		
 	    </div>
@@ -388,6 +388,7 @@ $('#saveChange').click(function(){
 				$('#warning').html('更改人數超過所選遊戲最大人數')
 			}else{
 				$('#warning').html('')
+				$('#theGroupInfo').modal('hide');
 				$.ajax({
 					url:'${contextRoot}/backstage/groups/change',
 					contentType : 'application/json; charset=UTF-8',//送出格式
