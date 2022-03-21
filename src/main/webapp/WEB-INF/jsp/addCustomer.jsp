@@ -7,6 +7,9 @@
 <jsp:include page="layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -102,7 +105,7 @@ background-size:100% 100%;
 							<p></p>
 
 							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
-							<button class="btn btn-info">送出</button>
+							<button id="subBtn" class="btn btn-info">送出</button>
 						</form:form>
 					<p></p>
 					<p></p>
@@ -129,6 +132,18 @@ background-size:100% 100%;
 			$('#address').val('台北市中正路200號');
 		//	$('#birthday').val(1990/09/02);
 		})
+		
+		$('#subBtn').click(function () {
+							Swal.fire({
+								title: '請稍後',
+								html: '請稍後',
+								showConfirmButton: false,
+								didOpen: () => {
+									Swal.showLoading()
+								}
+							})
+						})
+		
 	</script>
 </body>
 </html>
