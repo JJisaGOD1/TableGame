@@ -104,9 +104,9 @@
 	</div>
 	<script>
 		$('#button').click(function(){
-		$('#cusName').val('Nick');
-			$('#email').val('jack902221@gmail.com');
-			$('#pwd').val('3345678');
+		$('#cusName').val('新進人員');
+			$('#email').val('qqqaaazzz@gmail.com');
+			$('#pwd').val('cccccccc');
 			$('#phone').val('0922645879');
 			$('#address').val('台北市新生南路一段');
 		})

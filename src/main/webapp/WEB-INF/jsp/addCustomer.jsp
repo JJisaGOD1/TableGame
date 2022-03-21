@@ -123,7 +123,7 @@ background-size:100% 100%;
 		$('#button').click(function() {
 			console.log(123)
 			$('#cusName').val('愛玩');
-			$('#email').val('EEIT13825@gmail.tw');
+			$('#email').val('EEIT138255@gmail.tw');
 			$('#pwd').val('cccccccc');
 			$('#phone').val('0910234567');
 			$('#address').val('台北市中正路200號');

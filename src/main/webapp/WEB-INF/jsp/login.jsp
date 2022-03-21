@@ -183,7 +183,7 @@
 	
 	<script>
 		$('.button55').click(function(){
-			$('#exampleDropdownFormEmail1').val('EEIT13825@gmail.tw');
+			$('#exampleDropdownFormEmail1').val('EEIT138255@gmail.tw');
 			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
 	</script>
