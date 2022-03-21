@@ -102,5 +102,55 @@ public class MealOrdersController {
 		return mav;
 
 	}
+	
+	@GetMapping("/checkOrderState")
+	public ModelAndView checkOrderState(ModelAndView mav, @RequestParam("orderId") Integer orderId,
+			BindingResult result) {
+		MealOrders mealOrders = service.findById(orderId);
+		
+		if (!result.hasErrors()) {
+			
+//			MealOrders newOrders = new MealOrders();
+			
+			mealOrders.setOrderId(orderId);
+			mealOrders.setPeopleNum(mealOrders.getPeopleNum());
+			mealOrders.setTableNum(mealOrders.getTableNum());
+			mealOrders.setOrderId(mealOrders.getOrderId());
+			mealOrders.setTotalprice(mealOrders.getTotalprice());
+			mealOrders.setProcessState("已處理");
+			mealOrders.setPaymentState(mealOrders.getPaymentState());
+			mealOrders.setOrderDate(mealOrders.getOrderDate());
+			service.insert(mealOrders);
+			mav.setViewName("redirect:/orderList");
+		}
+
+		return mav;
+
+	}
+	
+	@GetMapping("/checkOrderPay")
+	public ModelAndView checkOrderPay(ModelAndView mav, @RequestParam("orderId") Integer orderId,
+			BindingResult result) {
+		MealOrders mealOrders = service.findById(orderId);
+		
+		if (!result.hasErrors()) {
+			
+//			MealOrders newOrders = new MealOrders();
+			
+			mealOrders.setOrderId(orderId);
+			mealOrders.setPeopleNum(mealOrders.getPeopleNum());
+			mealOrders.setTableNum(mealOrders.getTableNum());
+			mealOrders.setOrderId(mealOrders.getOrderId());
+			mealOrders.setTotalprice(mealOrders.getTotalprice());
+			mealOrders.setProcessState(mealOrders.getProcessState());
+			mealOrders.setPaymentState("已付款");
+			mealOrders.setOrderDate(mealOrders.getOrderDate());
+			service.insert(mealOrders);
+			mav.setViewName("redirect:/orderList");
+		}
+
+		return mav;
+
+	}
 
 }

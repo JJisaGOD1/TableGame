@@ -377,7 +377,7 @@ h1 {
 		<div class="row">
 
 			<div class="image">
-				<img src="image/servie.jfif" alt="">
+				<img src="${contextRoot}/uploaded/1647427489850sports-white-black-macro-dice-lot-625102-wallhere.com.jpg" alt="">
 			</div>
 
 			<div class="content">
