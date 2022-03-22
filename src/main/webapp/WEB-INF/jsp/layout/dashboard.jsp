@@ -6,12 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="icon" type="image/x-icon" href="${contextRoot}/uploaded/favicon.ico" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 
 <meta charset="UTF-8">
-<title>Responsiive Admin Dashboard | CodingLab</title>
+<title>憶起玩桌遊(後台系統)</title>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet" />
 
 <!-- Boxicons CDN Link -->

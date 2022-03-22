@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="shortcut icon" href="src/main/resources/favicon.ico">
+<link rel="icon" type="image/x-icon" href="${contextRoot}/uploaded/favicon.ico" />
 	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <!-- Boxicons CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
@@ -13,7 +16,7 @@
 	rel='stylesheet'>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>憶起玩桌遊</title>
 
 <!-- font awesome cdn link  -->
 <link rel="stylesheet"
