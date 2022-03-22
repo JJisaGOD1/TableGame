@@ -15,7 +15,7 @@
 <title>憶起玩桌遊(後台系統)</title>
 
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet" />
-
+<link rel="icon" type="image/x-icon" href="${contextRoot}/uploaded/favicon.ico" />
 <!-- Boxicons CDN Link -->
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
