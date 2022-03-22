@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +24,7 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.tablegame.model.bean.comment.CommentsBean;
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
 
@@ -72,6 +74,9 @@ public class MembersBean implements Serializable{
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "participant")
 	private Set<ParticipantBean> participantedGroups=new LinkedHashSet<ParticipantBean>();
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "membersBean",cascade = CascadeType.ALL)
+	private Set<CommentsBean> comments=new LinkedHashSet<CommentsBean>();
 
 	@Transient
 	private Integer loginCount=0;

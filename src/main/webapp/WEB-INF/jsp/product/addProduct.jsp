@@ -88,9 +88,13 @@
 	$("form").submit(function() {
 		let maxplayer = $(this).parent().find('#maxplayer').val();
 		let minplayer = $(this).parent().find('#minplayer').val();
+		let stock=$(this).parent().find('#stock').val();
 		if (minplayer >= maxplayer) {
 			window.alert('最大人數須大於最小人數');
 			return false;
+		}
+		if (parseInt(stock)<=20){
+			window.alert('庫存小於20，將自動下架');
 		}
 		return true;
 	});

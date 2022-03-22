@@ -32,11 +32,28 @@
 		width: 200px;
 	}
 
+	#table_style{
+		background-color: white;
+		padding: 1rem 2rem;
+		border-radius: 1rem;
+		box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+		margin: auto;
+		width: 56vw
+	}
+	h1{
+		width: 10vw;
+		display: inline-block;
+		margin-left: 20vw
+	}
+
 </style>
 
 </head>
 <body>
-<div style="width: 1000px ;display: flex ;margin: auto">
+<div style="display: flex ; margin-top: 4rem;">
+	
+	<div id="table_style">
+		<h1 style="padding: 0 auto;">團房列表</h1>
 	<table id="table_id" class="display">
 	    <thead>
 	        <tr>
@@ -51,16 +68,16 @@
 	    </thead>
 	    <tbody>
 	    	<c:forEach items="${groups}" var="group">
-	        <tr>
+	        <tr class="oneGroup">
 	            <td>${group.groupId}</td>
 	            <td>${group.launcher.cusName}</td>
-	            <td>${group.product.product_name }</td>
+	            <td id="gameNameOf${group.groupId}">${group.product.product_name }</td>
 	            <td>${group.gameDate }</td>
 	            <td>${group.createdTime}</td>
-	            <td>${playerNumPerGroup[group.groupId]}</td>
+	            <td id="playerNumOf${group.groupId}">${playerNumPerGroup[group.groupId]}</td>
 	            <td>
 					<!-- 創造 class:checkTheGroup  利用$('.checkTheGroup').click(function({...}))觸發點擊事件-->
-					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#exampleModal" >
+					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#theGroupInfo" >
 					查看
 					</button>
 	            	<a	class="btn btn-danger"
@@ -73,19 +90,20 @@
 	        </c:forEach>
 	    </tbody>
 	</table>
+	</div>
 	<p>
 	
 
 
 <!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal fade" id="theGroupInfo" tabindex="-1" aria-labelledby="theGroupInfoLabel" aria-hidden="true" >
 	  <div class="modal-dialog" >
 	    <div id="modal-content" class="modal-content" style="width: 700px;">
 	      <div class="modal-header">
 	        <h3 class="modal-title" id="popupGroupId" style="width: 250px;">popupGroupId</h3>
 			<span style='margin: 0,auto'></span>遊戲：</span>
 
-		<form id="saveChange" action="${contextRoot}/backstage/groups/saveGameAndNumChange" >
+		<!-- <form id="saveChange" action="${contextRoot}/backstage/groups/saveGameAndNumChange" > -->
 			<input id="inputGroupId" type="text" style="display: none;" value="" name="groupId">
 			<select id="selectGame" name="updateProduct" > 
 			</select>
@@ -127,18 +145,22 @@
 	
 	      </div>
 	      <div class="modal-footer">
+			  <span id="warning"></span>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-	        <input type="submit" class="btn btn-primary" value="儲存" onclick="check()"></button>
+			<!-- <input type="submit" class="btn btn-info" value="儲存" onclick="check()"></button> -->
+	        <button id="saveChange" class="btn btn-primary">儲存</button>
 	      </div>
-		</form>
+		<!-- </form> -->		
 	    </div>
 	  </div>
 	</div>
+	<!-- Modal -->
 </div>
 
 <script >
 
 $('.checkTheGroup').click(function(){
+	$('#warning').html('')//清空#warning
 
 	let groupId=parseInt($(this).parent().parent().children()[0].innerHTML)
 	$('#inputGroupId').val(groupId)
@@ -177,7 +199,7 @@ $('.checkTheGroup').click(function(){
 			})
 
 			$('#popup_table_tbody *').remove()
-			$('#saveChange .numOfparticipant').remove()
+			$('#theGroupInfo .numOfparticipant').remove()
 			//ul dto作法
 			respData.participants.forEach(function(dto, index, arr){
 				// console.log(dto.participant.id.groupId)
@@ -192,12 +214,13 @@ $('.checkTheGroup').click(function(){
 				let numInput=document.createElement('input')
 				numInput.type='number'
 				numInput.name='numOf'+dto.member.id
+				numInput.setAttribute('participantId',dto.member.id);//創造一屬姓名participantId
 				numInput.className='numOfparticipant'
 				numInput.value=dto.participant.participantNum
 				numInput.min=1;numInput.max=10
 				numInput.style.width='3em'
 
-				$('#saveChange').append(numInput)//加到form表單上
+				// $('#saveChange').append(numInput) //加到form表單上
 				num.append(numInput)
 				
 				
@@ -247,7 +270,7 @@ $('.checkTheGroup').click(function(){
 });
 
 //動態生成按鈕需從其父元素以上開始繫結
-$(document).on('click','#deleteParticipant',function(){
+$(document).on('click','.deleteParticipant',function(){
 	if(confirm('確定刪除此參加者?')){
 		let groupId=parseInt($(this).parent().parent().parent().parent().parent().
 					prev().children()[0].innerHTML.substring(4))
@@ -260,10 +283,15 @@ $(document).on('click','#deleteParticipant',function(){
 			dataType:"JSON",
 			success: function(respData) {
 				console.log(respData)
+
+				//ajax更改datatable人數
+				let originNum=parseInt( $('#playerNumOf'+groupId).html() )
+				let tempNum=originNum
 				
 				$('#popupGroupId').html('團編號：'+groupId)
 				$('#popup_table_tbody *').remove()
-				$('#saveChange .numOfparticipant').remove()
+				$('#theGroupInfo .numOfparticipant').remove()
+
 				//dto作法
 				respData.participants.forEach(function(dto, index, arr){
 					let row=document.createElement('tr')
@@ -277,12 +305,17 @@ $(document).on('click','#deleteParticipant',function(){
 					let numInput=document.createElement('input')
 					numInput.type='number'
 					numInput.name='numOf'+dto.member.id
-					
+					numInput.setAttribute('participantId',dto.member.id);//創造一屬姓名participantId並賦值
+					numInput.participantId=dto.member.id
+					numInput.className='numOfparticipant'
 					numInput.value=dto.participant.participantNum
 					numInput.min=1;numInput.max=10
 					numInput.style.width='3em'
 					num.append(numInput)
 					// $('#saveChange').append(numInput)
+					
+					//ajax更改datatable人數，原始人數減去剩餘人數得出被刪減人數
+					tempNum-=dto.participant.participantNum
 
 					let joinedTime=document.createElement('td')
 					joinedTime.innerHTML=dto.participant.joinedTime
@@ -307,7 +340,12 @@ $(document).on('click','#deleteParticipant',function(){
 					row.append(joinedTime)
 					row.append(tdBtn)
 					$('#popup_table_tbody').append(row)
+
+					
+					
 				})	
+				//ajax更改datatable人數，原始人數減去被刪減人數得出剩餘人數
+				$('#playerNumOf'+$('#inputGroupId').val()).html(originNum-tempNum)
 			},
 			error: function(){
 				console.log('something wrong')
@@ -316,18 +354,66 @@ $(document).on('click','#deleteParticipant',function(){
 	}
 })
 
-function check(){
-
-}
+$('#saveChange').click(function(){
+	// console.log($('#selectGame').val())
+	// $('.numOfparticipant').each(function(index){
+	// 	console.log(index+':'+$(this).attr('name')+' '+$(this).val())
+	// })
 
 	
 
+	let numOfparticipants={}
+	$('.numOfparticipant').each(function(index){
+		numOfparticipants[$(this).attr('participantId')]=parseInt( $(this).val())
+	})
 
+	let theGroupChangeInfo={
+		'groupId':parseInt($('#inputGroupId').val()) ,
+		'prodId':parseInt($('#selectGame').val()),
+		'numOfparticipants':numOfparticipants
+	}
+	console.log(theGroupChangeInfo)
 
+	$.ajax({
+		url:'${contextRoot}/groups/changeMaxNums',
+		contentType : 'application/json; charset=UTF-8',//送出格式
+		type:"post",
+		dataType:"JSON",
+		data:JSON.stringify({
+			'productId':$('#selectGame').val()
+		}),
+		success: function(respData) {
+			console.log(respData)
+			let sum=0
+			$('.numOfparticipant').each(function(index){
+				sum+=parseInt($(this).val())
+			})
+			if(respData.maxplayer<sum){
+				$('#warning').html('更改人數超過所選遊戲最大人數').css('color','red')
+			}else{
+				$('#warning').html('')
+				$('#theGroupInfo').modal('hide');//移除彈窗
+				$('.modal-backdrop').remove();//移除遮罩
+				$.ajax({
+					url:'${contextRoot}/backstage/groups/change',
+					contentType : 'application/json; charset=UTF-8',//送出格式
+					type:"post",
+					// dataType:"JSON",
+					data:JSON.stringify(theGroupChangeInfo),
+					success:function(){
+						//ajax更改datatable之遊戲名及人數
+						$('#playerNumOf'+$('#inputGroupId').val()).html(sum)
+						$('#gameNameOf'+$('#inputGroupId').val()).html( $('#o'+$('#selectGame').val()).html())
+					}
+				})
+			}
+		}
+	})
+})
 
-$(document).ready( function () {
+$(document).ready(function(){
     $('#table_id').DataTable({
-    	"lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ],
+    	"lengthMenu": [ [5,10, 25, 50, -1],[5,10, 25, 50, "All"] ],
     	"language": {
             "processing": "處理中...",
             "loadingRecords": "載入中...",
@@ -352,7 +438,6 @@ $(document).ready( function () {
     }
     );
 } );
-
 
 function del() {
 	var msg = "是否刪除此團?";

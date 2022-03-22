@@ -4,15 +4,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="layout/navbar.jsp" />
+<jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+	.card{
+		margin: 20rem auto;
+	}
+</style>
+
+<style>
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
+</style>
+
+
 </head>
 <body>
-<h1>ViewCustomer Data</h1>
+<div class="container-login100 background66"
+			style="background-image: url('images/bg-01.jpg');">
+<h1>OK</h1>
 <div class="container">
     <p/>
     <div class="row justify-content-center">
@@ -47,7 +64,7 @@
 				<p></p>
 				
 				<form:label path="" class="card-header" style="display:block;">創建時間</form:label>
-				<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE" value="${customer.createdTime }"/>
+				<fmt:formatDate pattern="yyyy-MM-dd EEEE " value="${customer.createdTime }"/>
 <%-- 				<form:input type="text" path="createdTime" class="form-control" readonly="true"/> --%>
 				<p></p>
 				
@@ -57,6 +74,7 @@
 			</div>
 		</div>
      </div>
+	</div>
 	</div>
 	</div>
 </body>

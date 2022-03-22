@@ -8,6 +8,8 @@
  <jsp:include page="../layout/homaPageNavbar.jsp"></jsp:include>
  <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -44,21 +46,7 @@ fieldset {
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://tony1966.xyz/test/jquery/jquery.ui.datepicker-zh-TW.js"></script>
- 
-<script>
-	$(function() {
-		$("#datepicker").datepicker({
-			dateFormat: 'yy/mm/dd',
-			minDate : 0,
-			maxDate : "14D"
-		});
-
-	});
-	
-
-	
-</script>
-
+ㄋ
 </head>
 <body>
  
@@ -105,7 +93,7 @@ fieldset {
 									<option value="12">12 人</option>
 					</select></div>
 				<div><p><label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label> <input type="text" id="datepicker"
-						name="reservation_date" autocomplete="off" required onchange="time()" class="form-control select-area people-select-white" style="padding-top: 0px"></p>
+						name="reservation_date" autocomplete="off" class="form-control select-area people-select-white" readonly="readonly">
 				</div>		
 						<div><label class="t1"><i class='bx bxs-time'></i>時間:</label> <select name="period" id="period" class="form-control select-area people-select-white" style="padding-top: 0px" required onchange="time()">
 							<option value="" disabled selected>預約時段</option>
@@ -135,15 +123,15 @@ fieldset {
 				</div>
 				
 				<div>
-							 <input type="submit" class="btn btn-info" value="確定" />
-							 <input type="reset"class="btn btn-info" value="清除">
-							 <button  type="button"class="btn btn-info" id="button" >一鍵輸入</button>
+							 <input type="submit" class="btn btn-info ad" value="確定" />
+							 <input type="reset"class="btn btn-info " value="清除">
+							 <button  type="button"class="btn btn-info button" id="button" >一鍵輸入</button>
 							 </div>
 			</fieldset>
 		</form>
 <script type="text/javascript">
 
-$("#button").click(function() {
+$(".button").click(function() {
 	$("#several").val('7');
 	$("#datepicker").val('2022/03/25');
 	$("#period").val('下午');
@@ -153,53 +141,74 @@ $("#button").click(function() {
 });
 
 
-function time() {
-		$.ajax({
-			url:"http://localhost:8080/homepage/time/"+,
-			type:"post",
-			contentType : 'application/json; charset=UTF-8',//送出格式
-			dataType:"JSON",
-			data:JSON.stringify({
-					"date":$('#datepicker').val(),
-					"period":$('#period').val()
-				}),
+$('.ad').click(function(){
+	Swal.fire({
+		
+		  icon: 'success',
+		  title: '訂位中請稍後.....',
+		  showConfirmButton: false,
+		  timer: 10000
+		})
+})
+
+
+$(function() {
+		$("#datepicker").datepicker({
+			dateFormat: "yy/mm/dd",
+			minDate : 0,
+			maxDate : "14D"
+		});
+
+	});
+	
+
+// function time() {
+// 		$.ajax({
+// 			url:"http://localhost:8080/homepage/time/"+,
+// 			type:"post",
+// 			contentType : 'application/json; charset=UTF-8',//送出格式
+// 			dataType:"JSON",
+// 			data:JSON.stringify({
+// 					"date":$('#datepicker').val(),
+// 					"period":$('#period').val()
+// 				}),
 				
-			success: function(data) {
-				$('#number option').r
+// 			success: function(data) {
+// 				$('#number option').r
 				
 				
 				
 				
 				
 				
-				let playersNumNow=parseInt(${playersNumNow})
-				let launcherPlayerNow=parseInt(${launcherPlayerNow})
-				let changeGameId= $('#selectGame').val()
+// 				let playersNumNow=parseInt(${playersNumNow})
+// 				let launcherPlayerNow=parseInt(${launcherPlayerNow})
+// 				let changeGameId= $('#selectGame').val()
 				
 				
-				if(respData.maxplayer<playersNumNow){
-					console.log("set回:"+originGameId)
-					$("#selectGame").val(originGameId)
-					$('#warning').css('color','red')
-					$('#warning').text('人數超過所選遊戲:'+respData.product_name+' 之最大遊玩人數')
+// 				if(respData.maxplayer<playersNumNow){
+// 					console.log("set回:"+originGameId)
+// 					$("#selectGame").val(originGameId)
+// 					$('#warning').css('color','red')
+// 					$('#warning').text('人數超過所選遊戲:'+respData.product_name+' 之最大遊玩人數')
 					
-				}else{
-					$('#warning').text('')
-					$('#selectPlayerNum option').remove()
-					for(let i=1;i<=respData.maxplayer-playersNumNow+launcherPlayerNow;i++){
-						let op=document.createElement('option')
-						op.value=i
-						op.innerHTML=i
-						$('#selectPlayerNum').append(op)
-					}	
-					originGameId=$('#selectGame').val()
-					console.log(originGameId)
-				}
+// 				}else{
+// 					$('#warning').text('')
+// 					$('#selectPlayerNum option').remove()
+// 					for(let i=1;i<=respData.maxplayer-playersNumNow+launcherPlayerNow;i++){
+// 						let op=document.createElement('option')
+// 						op.value=i
+// 						op.innerHTML=i
+// 						$('#selectPlayerNum').append(op)
+// 					}	
+// 					originGameId=$('#selectGame').val()
+// 					console.log(originGameId)
+// 				}
 				
 				
-			}
-	    });
-	}
+// 			}
+// 	    });
+// 	}
 </script>
 
 

@@ -7,6 +7,9 @@
 <jsp:include page="layout/homaPageNavbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -19,6 +22,7 @@ body {
 	border: 1px solid;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .text1 {
@@ -39,16 +43,20 @@ body {
 	bottom: 5vh;
 	left: 8vw;
 }
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
 </style>
 </head>
 <body>
-	<div class="container-login100"
+	<div class="container-login100 background66"
 		style="background-image: url('images/bg-01.jpg');">
 		<div class="row justify-content-center"
-			style="width: 81vw; margin: 0 auto;">
-			<div class="col-8" style="margin-top: 10vh;">
-				<div class="card block1" margin: 0px auto>
-					<div class="card-header text1" style="font-size: 2rem">加入會員</div>
+			style="width: 50vw; margin: 0 auto;">
+			<div class="col-8" style="margin-top: 20vh;">
+				<div class="card block1" >
+					<div class="card-header text1" style="font-size: 3rem">加入會員</div>
 					<div class="card-body">
 						<form:form class="form" action="${contextRoot}/addCustomer"
 							modelAttribute="addCustomer" method="POST"
@@ -97,9 +105,17 @@ body {
 							<p></p>
 
 							<!-- 				<input class= "btn btn-info" type="submit" name="submit" style="font-weight: 900;" /> -->
-							<button class="btn btn-info">送出</button>
+							<button id="subBtn" class="btn btn-info">送出</button>
 						</form:form>
-						<button id="button" class="btn btn-danger button1">一鍵輸入</button>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					
+						<button id="button" class="btn btn-danger button1">沉汗典</button>
 					</div>
 				</div>
 			</div>
@@ -109,13 +125,25 @@ body {
 	<script>
 		$('#button').click(function() {
 			console.log(123)
-			$('#cusName').val('qwer');
-			$('#email').val('333@gmail.com');
-			$('#pwd').val('3345678');
-			$('#phone').val('0922645879');
-			$('#address').val('台北市新生南路一段');
-			$('#birthday').val(1990/09/02);
+			$('#cusName').val('沉汗典');
+			$('#email').val('EEIT138255@gmail.com');
+			$('#pwd').val('cccccccc');
+			$('#phone').val('0930531836');
+			$('#address').val('台北市中正路200號');
+		//	$('#birthday').val(1990/09/02);
 		})
+		
+		$('#subBtn').click(function () {
+							Swal.fire({
+								title: '請稍後',
+								html: '請稍後',
+								showConfirmButton: false,
+								didOpen: () => {
+									Swal.showLoading()
+								}
+							})
+						})
+		
 	</script>
 </body>
 </html>

@@ -75,6 +75,7 @@ public class PageController {
 			Integer level = service.checkLevel(email);
 			MembersBean memberBean = service.findByEmail(email);
 			session.setAttribute("member", memberBean);
+			member.setLoginCount(0);
 			switch (level) {
 			case 1:
 				mav.setViewName("redirect:/");
@@ -93,6 +94,8 @@ public class PageController {
 				System.out.println(member.getLoginCount());
 				return mav;
 			} else {
+				member.setLoginCount(0);
+				System.out.println(member.getLoginCount());
 				mav.setViewName("redirect:/black");
 				return mav;
 			}

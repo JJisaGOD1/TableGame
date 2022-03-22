@@ -89,9 +89,18 @@
 
 					</div>
 				</form>
-				<button id="button" class="btn btn-danger button00">最高</button>
-					<button id="button" class="btn btn-danger button11">一般</button>
-						<button id="button" class="btn btn-danger button22">測試</button>
+				<button id="button" class="btn btn-danger button00">管理者</button>
+					<button id="button" class="btn btn-success button11">會員1</button>
+						<button id="button" class="btn btn-primary button22">會員2</button>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						<button id="button" class="btn btn-info button55">沉汗典</button>
+						<button id="button" class="btn btn-info button66">青該我</button>
 			</div>
 		</div>
 	</div>
@@ -153,30 +162,38 @@
 	<script>
 		$('.button00').click(function(){
 			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
-			$('#exampleDropdownFormPassword1').val('cccc');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
-		
-		
 	</script>
 	
 	<script>
 		$('.button11').click(function(){
-			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
-			$('#exampleDropdownFormPassword1').val('cccc');
+			$('#exampleDropdownFormEmail1').val('jojo3456@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
-		
-		
 	</script>
 	
 	<script>
 		$('.button22').click(function(){
-			$('#exampleDropdownFormEmail1').val('rora@gmail.com');
-			$('#exampleDropdownFormPassword1').val('cccc');
+			$('#exampleDropdownFormEmail1').val('jolin7777@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
 		})
-		
-		
 	</script>
 	
+	
+	<script>
+		$('.button55').click(function(){
+			$('#exampleDropdownFormEmail1').val('EEIT138255@gmail.com');
+			$('#exampleDropdownFormPassword1').val('cccccccc');
+		})
+	</script>
+	
+	<script>
+		$('.button66').click(function(){
+			$('#exampleDropdownFormEmail1').val('nini@gmail.com');
+			$('#exampleDropdownFormPassword1').val('aaaaaaaa');
+		})
+	</script>
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>

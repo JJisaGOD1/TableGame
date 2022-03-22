@@ -54,7 +54,7 @@ public class MessageController {
 		public ResponseMessage getServerPrivateMessage(Message message) throws InterruptedException {
 			return new ResponseMessage(HtmlUtils.htmlEscape(
 					"Server 私訊 : " + message.getMessageContent() 
-					+ "  (To Client-Id : " + message.getClientId()+")"));
+					+ " (To  " + message.getClientName() + ")"));
 	}
 	//account問題client端
 	@MessageMapping(value = "/problemClient")

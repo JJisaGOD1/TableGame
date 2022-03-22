@@ -389,7 +389,7 @@
 				window.alert('最大人數須大於最小人數');
 				return false;
 			}
-			if (parseInt(stock)<20){
+			if (parseInt(stock)<=20){
 				window.alert('庫存小於20，將自動下架');
 			}
         return true;

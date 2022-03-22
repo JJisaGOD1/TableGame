@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tablegame.dto.BookingDto;
 import com.tablegame.dto.ProductIdDto;
@@ -62,14 +63,14 @@ public class BookingController {
 	//新增
 	 @PostMapping("/users")
 	    public ModelAndView add(ModelAndView mav,@Valid 
-	    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session) throws MessagingException {
+	    		@ModelAttribute(name = "booking") Booking msg ,MembersBean customer,HttpSession session,RedirectAttributes redirect) throws MessagingException {
 
 			 service.insert(msg);
 			 //寄送文字訊息
 //			 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 			 
 			 //寄送圖片訊息
-//			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
+			 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
 			 
 			 //直接輸入email
 //			 serviceE.sendEmailText("chrayray@gmail.com");
@@ -89,7 +90,7 @@ public class BookingController {
 //				 serviceE.sendEmailText(msg.getUser().getEmail(),msg);
 				 
 				 //寄送圖片訊息
-//				 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
+				 serviceE.sendEmailImg(msg.getUser().getEmail(),msg,servlet);
 				 
 				 //直接輸入email
 //				 serviceE.sendEmailText("chrayray@gmail.com");
@@ -249,10 +250,11 @@ public class BookingController {
 //			return mav;
 //		}
 		
-		 @GetMapping("deletbooking")
-		    public ModelAndView deletbooking(ModelAndView mav,@RequestParam("id") Integer id) {
+		 @GetMapping("deletbooking/{orderid}")
+		    public ModelAndView deletbooking(ModelAndView mav,@PathVariable int orderid) {
 				System.out.println("ssaa");
-				service.delete(id);
+				service.delete(orderid);
+				
 				
 				mav.setViewName("redirect:/getAll");
 				
@@ -260,10 +262,10 @@ public class BookingController {
 			}
 		
 	 
-	 @GetMapping("deletbookings")
-	    public ModelAndView deletbookings(ModelAndView mav,@RequestParam("id") Integer id) {
-			
-			service.delete(id);
+	 @GetMapping("deletbookings/{orderid}")
+	    public ModelAndView deletbookings(ModelAndView mav,@PathVariable int orderid) {
+		 System.out.println("ssaa");
+			service.delete(orderid);
 			
 			mav.setViewName("redirect:/lnquire");
 			

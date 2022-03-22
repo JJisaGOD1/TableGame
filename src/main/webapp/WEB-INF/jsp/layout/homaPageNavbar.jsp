@@ -16,7 +16,9 @@
 	rel='stylesheet'>
 
 <meta charset="UTF-8">
+
 <title>憶起玩桌遊</title>
+
 
 <!-- font awesome cdn link  -->
 <link rel="stylesheet"
@@ -305,7 +307,8 @@ h1 {
 			});
 		}
 	</script>
-	
+	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 	
 </body>
 </html>

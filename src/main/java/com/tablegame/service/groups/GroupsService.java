@@ -3,6 +3,7 @@ package com.tablegame.service.groups;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tablegame.dto.ChangeTheGroupInfoDto;
 import com.tablegame.dto.ParticipantsDto;
 import com.tablegame.model.bean.group.GroupBean;
 import com.tablegame.model.bean.group.ParticipantBean;
@@ -229,6 +231,26 @@ public class GroupsService {
 		return participantsInfo;
 	}
 	
+	//for this.changeTheGroupInfo()
+	public void updateTheGroupGame(int groupId,int prodId) {
+		GroupBean group = groupsDao.getById(groupId);
+		group.setProductId(prodId);
+		group.setProduct(productDao.getById(prodId));
+		groupsDao.save(group);
+	}
+	//後台修改多筆資料方法
+	public void changeTheGroupInfo(ChangeTheGroupInfoDto json) {
+		HashMap<Integer, Integer> numOfparticipants = json.getNumOfparticipants();
+		for(Map.Entry<Integer, Integer> entry:numOfparticipants.entrySet()) {
+			System.out.println("userid:"+entry.getKey()+" num:"+entry.getValue());
+			this.updateParticipantNum(
+					userDao.getById(entry.getKey())
+					,json.getGroupId()
+					,entry.getValue());
+		}
+		this.updateTheGroupGame(json.getGroupId(), json.getProdId());
+	}
+	
 	
 	//static
 	private static Date stringToDate(String stringDate) {
@@ -243,6 +265,8 @@ public class GroupsService {
 		Date dateDate=c.getTime();
 		return dateDate;
 	}
+
+
 	
 	
 

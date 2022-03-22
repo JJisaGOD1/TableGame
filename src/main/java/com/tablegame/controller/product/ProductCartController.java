@@ -214,16 +214,24 @@ public class ProductCartController {
 
 	@ResponseBody
 	@GetMapping(value = "/products/enterlist")
-	public ProductCart enterlist(ModelAndView mav, HttpSession session, ProductCart cart) {
+	public ProductCart enterlist(HttpSession session, ProductCart cart) {
 		ProductCart c = (ProductCart) session.getAttribute("productcart");
 		if (c == null) {
 			session.setAttribute("productcart", cart);
 		}
-		ProductCart cxcart = (ProductCart) session.getAttribute("productcart");
-		Map<Integer, ProductCartItem> Map = cxcart.getProductMap();
-
 		ProductCart CC = (ProductCart) session.getAttribute("productcart");
 
+		return CC;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/products/deleteOneItemAJAX")
+	public ProductCart deleteOneItemAJAX(@RequestParam(name = "id") Integer id, HttpSession session) {
+		ProductCart cart = (ProductCart) session.getAttribute("productcart");
+		Map<Integer, ProductCartItem> Map = cart.getProductMap();
+		Product product = serviceP.findById(id);
+		serviceC.deleteOneProduct(product, Map);
+		ProductCart CC = (ProductCart) session.getAttribute("productcart");
 		return CC;
 	}
 }

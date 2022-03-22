@@ -103,6 +103,7 @@ $(document).ready(function() {
             data:JSON.stringify({'messageContent': $("#private-message").val()}),
            
         });
+        console.log(resUserName);
         sendServerPrivateMessage();
     });
 
@@ -135,10 +136,16 @@ function showMessage(message) {                                     //接收訊�
 function showMessage2(message) {  
     console.log(message)
     resClientId = message.substring(message.indexOf("d : ")+4,message.lastIndexOf(")"))
-    console.log(resClientId)                                   
-    $("#messages").append("<tr><td>" + message + "&nbsp;&nbsp;<button id='private' class='btn btn-info clientId' type='button'>回覆我</button></td></tr>");
+    console.log(resClientId)
+    resUserName = message.substring(message.indexOf("(")+1,message.indexOf(" I"));
+    console.log(resUserName)
+    resMessage = message.substring(0,message.indexOf(" ("));
+    console.log(resMessage)                                   
+    $("#messages").append("<tr><td>" + resMessage + "&nbsp;&nbsp;<button myValue='" + resClientId + "' myName='"+ resUserName + "' class='btn btn-info clientId' type='button'>回覆 " + resUserName + "</button></td></tr>");
     $("#message-history").on('click', '.clientId', function() {
-        $("#id").val(resClientId);
+        $("#id").val(this.getAttribute('myValue'));
+        ButName  = this.getAttribute('myName')
+        console.log(ButName)    
     })
 }
 
@@ -149,7 +156,7 @@ function sendMessage() {                                            //傳送訊�
 
 function sendServerPrivateMessage() {
     console.log("sending Server private message");
-    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientId': clientId}));
+    stompClient.send("/ws/server/private/message", {}, JSON.stringify({'messageContent': $("#private-message").val(),'clientName': ButName}));
 }
 
 </script>

@@ -14,6 +14,7 @@
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css"
 	rel="stylesheet">
@@ -40,17 +41,26 @@
 			alert("已經刪除");
 	}
 </script>
+<style>
 
+body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+</style>
 
 </head>
 <body>
 
+<!-- 	加號按鈕 -->
+<button type="button" class="btn btn-success"
+			data-toggle="modal" data-target="#exampleModals"><img alt=""
+		src="${contextRoot}/uploaded/pngwing.com.png"
+		style="width: 4vw; position: fixed; right: 60px; top: 110px; z-index: 999"></button>
 
 	<!-- <div class="col-sm-10 justify-content-center row" id="bsdiv" -->
 	<!--   style="margin: 0; padding: 0"> -->
 	<div style="width: 76vw; position: relative; top: 20vh; left: 20vw;">
-		<button type="button" class="btn btn-success"
-			data-toggle="modal" data-target="#exampleModals">新增訂位</button>
 
 
 
@@ -68,6 +78,9 @@
 					<th>桌號</th>
 					<th>備註</th>
 					<th>工具</th>
+									
+		
+					
 				</tr>
 			</thead>
 			<c:forEach items="${page}" var="bookings">
@@ -84,13 +97,18 @@
 					<td class="number">${bookings.number}
 					<td class="remark">${bookings.remark}
 					<td>
-					 <a onclick="return confirm('確認刪除')"
-						href="${contextRoot}/deletbooking?id=${bookings.orderId}"><button
-								type="button" class="btn btn-danger">刪除</button></a>
+<!-- 					 <a onclick="return confirm('確認刪除')" -->
+<%-- 						href="${contextRoot}/deletbooking?id=${bookings.orderId}"> --%>
+							
 						<button type="button" class="btn btn-success editCCC"
-							data-toggle="modal" data-target="#add" data-whatever="@mdo">編輯</button>
+							data-toggle="modal" data-target="#add">編輯</button>
+							
+							<button
+								type="button" id="deleteid"+${bookings.orderId} 
+								class="btn btn-danger deleteid" value=${bookings.orderId}>刪除</button></a>
 
 					</td>
+					
 			</c:forEach>
 		</table>
 
@@ -183,7 +201,7 @@
 								<p>
 									<label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label>
 									<input type="text" id="datepicker" name="reservation_date"
-										autocomplete="off" required onchange="time()"
+										autocomplete="off" 
 										class="form-control select-area people-select-white reservation_date"
 										style="padding-top: 0px">
 								</p>
@@ -229,7 +247,6 @@
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary">確定</button>
 								<input type="reset" class="btn btn-info" value="清除">
-								<button type="button" class="btn btn-info" id="button">一鍵輸入</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">取消</button>
 
@@ -276,7 +293,7 @@
 
 							<div class="dropdown-container" style="vertical-align: top;">
 								<label class="t1"><i class='bx bxs-user-plus'></i>人數 :</label><select
-									name="several" id="several" required
+									name="several" id="severals" required
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px">
 									<option>預約人數</option>
@@ -297,15 +314,15 @@
 							<div>
 								<p>
 									<label class="t1"><i class='bx bx-time-five'></i>訂位日期:</label>
-									<input type="text" id="datepicker" name="reservation_date"
-										autocomplete="off" required onchange="time()"
+									<input type="text" id="datepickers" name="reservation_date"
+										autocomplete="off" 
 										class="form-control select-area people-select-white "
 										style="padding-top: 0px">
 								</p>
 							</div>
 							<div>
 								<label class="t1"><i class='bx bxs-time'></i>時間:</label> <select
-									name="period" id="period"
+									name="period" id="periods"
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px" required onchange="time()">
 									<option value="" disabled selected>預約時段</option>
@@ -316,7 +333,7 @@
 							</div>
 
 							<div>
-								<label class="t1">桌號 :</label> <select name="number" id="number"
+								<label class="t1">桌號 :</label> <select name="number" id="numbers"
 									required
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px">
@@ -336,15 +353,15 @@
 							</p>
 							<div>
 								<label class="t1">備註:</label>
-								<textarea cols="40" rows="1" name="remark" id="remark"
+								<textarea cols="40" rows="1" name="remark" id="remarks"
 									class="form-control select-area people-select-white "
 									style="padding-top: 0px"></textarea>
 							</div>
 
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-primary">確定</button>
+								<button type="submit" class="btn btn-primary sure">確定</button>
 								<input type="reset" class="btn btn-info" value="清除">
-								<button type="button" class="btn btn-info" id="button">一鍵輸入</button>
+								<button type="button" class="btn btn-info button" id="button">一鍵輸入</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">取消</button>
 
@@ -390,26 +407,30 @@
 });
 });
 
-		// $(".deletbooking").click(function(){
-		//     let check=confirm("確定刪除")
-		//     let tr =$(this).closest("tr")
-		//     let oid=tr.find(".orderId").val();
-		//     console.log("oid:"+oid)
-		//     console.log("tr:"+tr)
-
-		//     if(check==true){
-		//         $.ajax({
-		//             url:'${contextRoot}/deletbooking/'+oid,
-		//             success:function(result){
-		//                 confirm('成功刪除')
-		//                 tr.remove()
-		//             }
-		//         })
-		//     }
-		// })
+$(".button").click(function() {
+	
+	$("#severals").val('12');
+	console.log(several)
+	$("#datepickers").val('2022/03/27');
+	$("#periods").val('下午');
+	$("#numbers").val('9');
+	$("#remarks").val('我要很多張椅子');
+	
+});		
+		
+		
 
 $(function() {
 	$("#datepicker").datepicker({
+		dateFormat : 'yy/mm/dd',
+		minDate : 0,
+		maxDate : "14D"
+	});
+
+});
+
+$(function() {
+	$("#datepickers").datepicker({
 		dateFormat : 'yy/mm/dd',
 		minDate : 0,
 		maxDate : "14D"
@@ -457,9 +478,54 @@ function phone() {
 		$('.user').val(data.id);
 		
 	}
-	
 	})
 }
+
+$('.deleteid').click(function(){
+	let orderid=$(this).val()
+	console.log(orderid)
+Swal.fire({
+	  title: '你確定嗎？',
+	  text: "您將無法還原此內容！",
+	  icon: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  cancelButtonText: '取消',
+	  confirmButtonText: '是的，刪除它！'
+	}).then((result) => {
+	  if (result.isConfirmed) {
+		  $.ajax({
+				type:'get',
+				url:'http://localhost:8080/homepage/deletbooking/'+orderid,
+				cache:false,
+				async:false,
+				success: function(){
+					setTimeout(function(){
+						window.location.reload()
+					},1000)
+				}
+			});
+			Swal.fire(
+			'已刪除！',
+			'此筆訂位已被刪除。',
+			'success'
+			)
+		}
+	})
+})
+
+
+$('.sure').click(function(){
+	Swal.fire({
+		
+		  icon: 'success',
+		  title: '訂位中請稍後.....',
+		  showConfirmButton: false,
+		  timer: 10000
+		})
+})
+
 
 		// $(document).on('click', '#deleteLocation', function (){  //用一般的.click會有氣泡事件問題
 		//   var id = $(this).attr("value");

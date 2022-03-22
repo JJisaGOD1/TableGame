@@ -32,7 +32,7 @@ public interface MembersRepository extends JpaRepository<MembersBean, Integer> {
 	@Query(value="select * from Member ",nativeQuery = true)
 	public MembersBean findAllMember(@Param(value="email")String email);
 	
-	//電話找會員
+	//電話找會員 志豪寫
 	@Query(value = "select * from member where phone = :phone ", nativeQuery = true)
 	public MembersBean findByphone(@Param(value = "phone") String sp);
 }

@@ -71,7 +71,7 @@ li{
 						<div class="card sty1">
 							<div class="card-header">
 								<span>留言時間:&nbsp;&nbsp;
-								<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE"
+								<fmt:formatDate pattern="yyyy-MM-dd EEEE"
 									value="${page.createdTime}"  /></span>
 							</div>
 							<div class="card-body">
@@ -272,3 +272,4 @@ li{
 
 </body>
 </html>
+<!-- 測試 -->

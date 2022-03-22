@@ -18,12 +18,17 @@
         	alert("修改完成");
     } 
     
-  
 </script>
+<style>
+.background66{
+height:100vh;
+background-size:100% 100%;
+}
+</style>
 
 </head>
 <body>
-<div class="container-login100"
+<div class="container-login100 background66"
 			style="background-image: url('images/bg-01.jpg');">
 	<div class="container login-container">
 	
@@ -40,12 +45,12 @@
 					modelAttribute="PwdForm">
 					<div id="errorMessge" ></div>
 					<div class="form-group">
-						<input type="text" name="email" class="form-control"
+						<input type="text"  id="email" name="email" class="form-control"
 							placeholder="Email" required />
 					</div>
 					
   					 <div class="form-group"> 
-						<input type="password" name="pwd" class="form-control"
+						<input type="password" id="pwd" name="pwd" class="form-control"
 							placeholder="新密碼" required /> 
 					</div>
 <%-- 					<div class="form-group"> -->
@@ -59,9 +64,21 @@
 					</div>
 						
 				</form>
+				<button id="button33" class="btn btn-danger button33">青該我</button>
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
+	<script>
+		$('.button33').click(function(){
+			$('#email').val('nini@gmail.com');
+			$('#pwd').val('cccccccc');
+		})
+		
+		
+	</script>
+	<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+	<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>
