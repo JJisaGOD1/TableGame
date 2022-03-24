@@ -73,7 +73,7 @@
 						
 						<div class="card-header">
 							<span class="span1">留言時間:&nbsp;&nbsp;
-							<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss EEEE"
+							<fmt:formatDate pattern="yyyy-MM-dd EEEE"
 								value="${comment.createdTime}" /> </span>
 						</div>
 						<div class="card-body">
