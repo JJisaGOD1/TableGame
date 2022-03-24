@@ -184,7 +184,7 @@ h1 {
 			</c:if>
 				<a href="${contextRoot}/viewProductsnologin">商品</a> 
 				<a href="${contextRoot}/startOrder">點餐</a> 
-				<a href="${contextRoot}/groups/ChooseDate">開團</a> 
+				<a href="${contextRoot}/groups/ChooseDate">揪團</a> 
 				<a href="${contextRoot}/addBooking">訂位</a>
 
 

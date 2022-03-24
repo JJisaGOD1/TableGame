@@ -24,6 +24,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -80,11 +82,17 @@
 					<button type="button" class="btn btn-success checkTheGroup" data-toggle="modal" data-target="#theGroupInfo" >
 					查看
 					</button>
-	            	<a	class="btn btn-danger"
+	            	<!-- <a	class="btn btn-danger"
 						href="${contextRoot}/backstage/groups/DeleteGroup/${group.groupId}"
 						onclick="return del()">
 					刪除
-					</a>
+					</a> -->
+					<button 
+						id="deleteGroup"+${group.groupId}
+						class="btn btn-danger deleteGroup"
+						value=${group.groupId}
+						>刪除
+					</button>
 	            </td>
 	        </tr>
 	        </c:forEach>
@@ -158,6 +166,39 @@
 </div>
 
 <script >
+
+$('.deleteGroup').click(function(){
+	let groupId=$(this).val()
+	Swal.fire({
+	title: '確定解散此團?',
+	text: "此動作無法復原!",
+	icon: 'warning',
+	showCancelButton: true,
+	cancelButtonColor: '#888888',
+	cancelButtonText:'取消',
+	confirmButtonColor: '#3085d6',
+	confirmButtonText: '是，我要解散!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type:'get',
+				url:'http://localhost:8080/homepage/backstage/groups/DeleteGroup/'+groupId,
+				cache:false,
+				async:false,
+				success: function(){
+					setTimeout(function(){
+						window.location.reload()
+					},1000)
+				}
+			});
+			Swal.fire(
+			'已解散!',
+			'團體已解散.',
+			'success'
+			)
+		}
+	})
+})
 
 $('.checkTheGroup').click(function(){
 	$('#warning').html('')//清空#warning
@@ -410,6 +451,8 @@ $('#saveChange').click(function(){
 		}
 	})
 })
+
+
 
 $(document).ready(function(){
     $('#table_id').DataTable({
